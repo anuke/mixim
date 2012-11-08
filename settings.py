@@ -153,3 +153,5 @@ LOGGING = {
 AUTH_PROFILE_MODULE = 'server.UserProfile'
 
 MAKE_THUMBNAIL_SCRIPT = '/usr/local/bin/make_thumb'
+RESIZE_IMAGE_SCRIPT = '/usr/local/bin/resize_media'
+TEMP_MEDIA_URL = MEDIA_URL.replace('media', 'temp', 1)

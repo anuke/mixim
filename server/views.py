@@ -1,9 +1,13 @@
 from django.contrib.auth import authenticate, login
+from django.http import Http404
+from django.shortcuts import redirect
 
 from decorators import *
-from models import *
-from forms import *
 from errors import *
+from forms import *
+from media import resize_image
+from models import *
+import settings
 
 
 @serialize
@@ -15,8 +19,7 @@ def auth_register(request):
 
     form.save()
 
-# asdasdasdsd
-# asdasdsd "a"
+
 @serialize
 @require_method("POST")
 def auth_login(request):
@@ -155,3 +158,18 @@ def comment_add(request, media_id):
     text   = request.POST.get('text')
 
     Comment.objects.create(author=author, media=media, text=text)
+
+
+def handle404(request):
+    request._req.add_common_vars()
+    url = request._req.subprocess_env['REDIRECT_URL']
+
+    if not url.startswith('/media/resized/'):
+        raise Http404
+
+    splitted = url.split("/")
+    new_size = splitted[3]
+    path = "original/" + "/".join(splitted[4:])
+    resize_image(path, new_size)
+
+    return redirect(settings.TEMP_MEDIA_URL + '/'.join(splitted[2:]))

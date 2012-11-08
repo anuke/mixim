@@ -31,5 +31,7 @@ def prepare_thumbnail(instance):
     subprocess.call([settings.MAKE_THUMBNAIL_SCRIPT, original_path, thumbnail_path])
 
 
-def resize_image(instance, new_size):
-    pass
+def resize_image(path, new_size):
+    original_path = settings.MEDIA_ROOT + path
+    resized_path = original_path.replace('original', 'resized/' + new_size, 1)
+    subprocess.call([settings.RESIZE_IMAGE_SCRIPT, new_size, original_path, resized_path])
