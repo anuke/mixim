@@ -1,7 +1,3 @@
-import hashlib
-import datetime
-import os
-
 from django.db import models
 from django.db.models.query import QuerySet
 from django.contrib.auth.models import User
@@ -10,6 +6,7 @@ from django.db.models.signals import post_save
 
 from choices import GENDERS, STATUSES
 from serializers import to_plain_data
+from media import media_upload_path, prepare_thumbnail, thumbnail_url
 
 
 class UserProfile(models.Model):
@@ -113,16 +110,6 @@ class MediaFileManager(models.Manager):
         return getattr(self.get_query_set(), name)
 
 
-def media_upload_path(instance, filename):
-    sha1 = hashlib.sha1()
-    sha1.update(filename)
-    sha1.update(str(datetime.datetime.now()))
-    digest = sha1.hexdigest()
-
-    _, ext = os.path.splitext(filename)
-    return "%s/%s%s" % (instance.author.id, digest, ext)
-
-
 class MediaFile(models.Model):
     author      = models.ForeignKey(User)
     pet         = models.ForeignKey(Pet, null=True, blank=True)
@@ -133,15 +120,14 @@ class MediaFile(models.Model):
 
     objects = MediaFileManager()
 
-    def __get_owner(self):
-        return self.author
-
-    owner = property(__get_owner)
+    owner     = property(lambda self: self.author)
+    original  = property(lambda self: self.file.url)
+    thumbnail = property(lambda self: thumbnail_url(self.file.url))
 
     def plain_data(self):
         return to_plain_data(self,
             'id', 'author:author.username', 'pet:pet.name',
-            'created', 'file:file.url', 'description', 'tags')
+            'created', 'original', 'thumbnail', 'description', 'tags')
 
     def __unicode__(self):
         return self.file.url
@@ -171,9 +157,17 @@ class Comment(models.Model):
         ordering = ["-created"]
 
 
+# Signal callbacks
+
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
 
 
+def create_media_file(sender, instance, created, **kwargs):
+    if created:
+        prepare_thumbnail(instance)
+
+
 post_save.connect(create_user_profile, sender=User)
+post_save.connect(create_media_file, sender=MediaFile)

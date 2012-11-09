@@ -1,0 +1,6 @@
+#!/bin/bash
+
+path=$(dirname $2)
+mkdir -p "$path"
+
+/usr/bin/convert "$1" -resize 100^x75^ -quality 75 -gravity center -crop 100x75+0+0 "$2"
