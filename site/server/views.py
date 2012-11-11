@@ -17,7 +17,8 @@ def auth_register(request):
     if not form.is_valid():
         raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
 
-    form.save()
+    user = form.save()
+    return user.profile
 
 
 @serialize
@@ -34,6 +35,7 @@ def auth_login(request):
         raise proto_exc(EXC_INACTIVE_USER, {"username": username})
 
     login(request, user)
+    return user.profile
 
 
 @serialize
