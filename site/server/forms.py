@@ -102,9 +102,10 @@ class MediaForm(forms.ModelForm):
 
     def save(self, commit=True):
         media = super(MediaForm, self).save(commit=False)
-        media.save()
 
         if commit:
+            media.save()
+
             tags = self.cleaned_data['tags']
             if tags:
                 for name in tags.split(","):
