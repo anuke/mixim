@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.http import Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render_to_response
 
 from decorators import *
 from errors import *
@@ -36,6 +36,18 @@ def auth_login(request):
 
     login(request, user)
     return user.profile
+
+
+def auth_activate(request, activation_key):
+    try:
+        profile = UserProfile.objects.get(activation_key=activation_key)
+        profile.activate()
+
+        login(request, profile.user)
+
+        return render_to_response('/auth/activation_done.html')
+    except UserProfile.DoesNotExist:
+        return render_to_response('/auth/activation_failed.html')
 
 
 @serialize

@@ -21,6 +21,10 @@ class UserProfile(models.Model):
     status   = models.CharField(name=_("Status"), max_length=50, choices=STATUSES, default='unverified')
     activation_key = models.CharField(name=_("Activation Key"), max_length=30, default='old-user')
 
+    def activate(self):
+        self.status = 'verified'
+        self.save()
+
     def plain_data(self):
         return to_plain_data(self,
             'id', 'username:user.username', 'email:user.email',
