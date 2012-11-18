@@ -8,7 +8,8 @@ GENDERS = (
 
 
 STATUSES = (
-    ('verify', _('Verified')),
-    ('block', _('Blocked')),
-    ('deleted', _('Deleted')),
+    ('unverified', _('Unverified')),
+    ('verified',   _('Verified')),
+    ('blocked',    _('Blocked')),
+    ('deleted',    _('Deleted')),
 )

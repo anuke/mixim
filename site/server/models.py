@@ -1,3 +1,6 @@
+import random
+import string
+
 from django.db import models
 from django.db.models.query import QuerySet
 from django.contrib.auth.models import User
@@ -15,7 +18,8 @@ class UserProfile(models.Model):
     city     = models.CharField(name=_("City"), max_length=50, blank=True, null=True)
     gender   = models.CharField(name=_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
     birthday = models.DateField(name=_("Birthday"), blank=True, null=True)
-    status   = models.CharField(name=_("Status"), max_length=50, choices=STATUSES, blank=True, null=True)
+    status   = models.CharField(name=_("Status"), max_length=50, choices=STATUSES, default='unverified')
+    activation_key = models.CharField(name=_("Activation Key"), max_length=30, default='old-user')
 
     def plain_data(self):
         return to_plain_data(self,
@@ -161,7 +165,8 @@ class Comment(models.Model):
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(user=instance)
+        activation_key = ''.join(random.choice(string.ascii_uppercase + string.digits) for n in range(30))
+        UserProfile.objects.create(user=instance, activation_key=activation_key)
 
 
 def create_media_file(sender, instance, created, **kwargs):
