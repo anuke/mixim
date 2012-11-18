@@ -1,4 +1,8 @@
+import random
+import string
+
 from django.contrib.auth import authenticate, login
+from django.core.mail import send_mail
 from django.http import Http404
 from django.shortcuts import redirect, render_to_response
 
@@ -48,6 +52,22 @@ def auth_activate(request, activation_key):
         return render_to_response('/auth/activation_done.html')
     except UserProfile.DoesNotExist:
         return render_to_response('/auth/activation_failed.html')
+
+
+@serialize
+@require_method("GET")
+@require_exist(User)
+def auth_reset_password(request):
+    email = request.GET['email']
+    user = User.objects.get(username=email)
+
+    password = ''.join(random.choice(string.letters + string.digits) for n in range(8))
+    user.set_password(password)
+    user.save()
+
+    send_mail('Mixim Password Reminder',
+        'Your new password: %s' % password,
+        None, [user.email])
 
 
 @serialize
