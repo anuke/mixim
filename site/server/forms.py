@@ -1,9 +1,12 @@
 from django import forms
+from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 from models import Pet, MediaFile, MediaTag
 from choices import GENDERS
+
+import settings
 
 
 class RegistrationForm(forms.ModelForm):
@@ -48,11 +51,17 @@ class RegistrationForm(forms.ModelForm):
 
         if commit:
             user.save()
-            user.profile.country  = self.cleaned_data['country']
-            user.profile.city     = self.cleaned_data['city']
-            user.profile.gender   = self.cleaned_data['gender']
-            user.profile.birthday = self.cleaned_data['birthday']
-            user.profile.save()
+
+            profile = user.profile
+            profile.country  = self.cleaned_data['country']
+            profile.city     = self.cleaned_data['city']
+            profile.gender   = self.cleaned_data['gender']
+            profile.birthday = self.cleaned_data['birthday']
+            profile.save()
+
+            send_mail('Mixim Activation Code',
+                'Please visit %s%s to activate your profile.' % (settings.ACTIVATION_URL, profile.activation_code),
+                None, [user.email])
 
         return user
 
