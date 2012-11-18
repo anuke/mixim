@@ -118,7 +118,10 @@ def media_list(request, start=0, limit=10):
     if authors:
         query = query.posted_by(authors)
 
+    start = int(start)
+    limit = int(limit)
     end = start + limit
+
     return query[start:end]
 
 
