@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^idrop/', include('idrop.foo.urls')),
 
     url(r'^activate/([A-Z0-9]+)/$', 'server.views.auth_activate'),
+    url(r'^404/$', 'server.views.handle404'),
 
     url(r'^([^/]+)/auth/register/', 'server.views.auth_register'),
     url(r'^([^/]+)/auth/login/', 'server.views.auth_login'),
