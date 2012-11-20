@@ -1,7 +1,7 @@
 import random
 import string
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
 from django.http import Http404
 from django.shortcuts import redirect, render_to_response
@@ -40,6 +40,11 @@ def auth_login(request):
 
     login(request, user)
     return user.profile
+
+
+@serialize
+def auth_logout(request):
+    logout(request)
 
 
 def auth_activate(request, activation_key):
