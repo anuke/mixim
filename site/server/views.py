@@ -43,6 +43,13 @@ def auth_login(request):
 
 
 @serialize
+@require_method("GET")
+def auth_logged(request):
+    return request.user.is_authenticated()
+
+
+@serialize
+@require_method("GET")
 def auth_logout(request):
     logout(request)
 
