@@ -190,7 +190,6 @@ def media_upload(request):
 
 @serialize
 @require_method("GET")
-@require_auth
 @require_exist(MediaFile)
 def comment_list(request, media_id):
     media  = MediaFile.objects.get(pk=media_id)
