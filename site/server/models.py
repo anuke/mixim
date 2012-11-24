@@ -21,13 +21,15 @@ class UserProfile(models.Model):
     status   = models.CharField(name=_("Status"), max_length=50, choices=STATUSES, default='unverified')
     activation_key = models.CharField(name=_("Activation Key"), max_length=30, default='old-user')
 
+    display_name = property(lambda self: self.user.username.partition('@')[0])
+
     def activate(self):
         self.status = 'verified'
         self.save()
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'username:user.username', 'email:user.email',
+            'id', 'username:display_name',
             'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets')
 
     def __unicode__(self):
@@ -134,7 +136,7 @@ class MediaFile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-                'id', 'authorId:author.id', 'author:author.username', 'pet:pet.name',
+                'id', 'authorId:author.id', 'author:author.profile.display_name', 'pet:pet.name',
             'created', 'original', 'thumbnail', 'description', 'tags')
 
     def __unicode__(self):
@@ -154,7 +156,7 @@ class Comment(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'author:author.username', 'created', 'text')
+            'id', 'author:author.profile.display_name', 'created', 'text')
 
     def __unicode__(self):
         return u"%s: %s" % (self.owner, self.text[0:50])
