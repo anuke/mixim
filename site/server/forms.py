@@ -99,7 +99,7 @@ class PetForm(forms.ModelForm):
 
     class Meta:
         model = Pet
-        fields = ("name", "species", "breed", "color", "birthday", "gender", )
+        fields = ("name", "species", "breed", "color", "birthday", "gender", "about" )
 
 
 class MediaForm(forms.ModelForm):

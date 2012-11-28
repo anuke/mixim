@@ -48,6 +48,7 @@ class Pet(models.Model):
     color    = models.CharField(name=_("Species"), max_length=50, blank=True, null=True)
     birthday = models.DateField(name=_("Birthday"), blank=True, null=True)
     gender   = models.CharField(name=_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
+    about    = models.TextField(name=_("About"), blank=True, null=True)
     enabled  = models.BooleanField(name=_("Enanled"), default=True)
 
     def enable(self):
@@ -60,7 +61,7 @@ class Pet(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'name', 'species', 'breed', 'color', 'birthday', 'gender', 'enabled')
+            'id', 'name', 'species', 'breed', 'color', 'birthday', 'gender', 'enabled', 'about')
 
     def __unicode__(self):
         return self.name
