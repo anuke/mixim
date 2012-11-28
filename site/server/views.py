@@ -90,6 +90,13 @@ def profile_get(request, user_id):
 
 
 @serialize
+@require_method("GET")
+@require_auth
+def profile_my(request):
+    return request.user.profile
+
+
+@serialize
 @require_method("POST")
 @require_auth
 def profile_save(request):
