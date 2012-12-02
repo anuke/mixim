@@ -109,6 +109,14 @@ class MediaFileQuerySet(QuerySet):
         author_names = [name.strip() for name in authors.split(",")]
         return self.filter(author__username__in=author_names)
 
+    def with_pet(self, pet_id):
+        if pet_id == "no":
+            return self.filter(pet__id__isnull=True)
+        elif pet_id:
+            return self.filter(pet__id=int(pet_id))
+        else:
+            return self;
+
 
 class MediaFileManager(models.Manager):
     def get_query_set(self):
