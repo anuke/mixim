@@ -62,7 +62,7 @@ class RegistrationForm(forms.ModelForm):
             profile.save()
 
             send_mail('Mixim Activation Code',
-                'Please visit %s%s to activate your profile.' % (settings.ACTIVATION_URL, profile.activation_code),
+                'Please visit %s%s to activate your profile.' % (settings.ACTIVATION_URL, profile.activation_key),
                 None, [user.email])
 
         return user
