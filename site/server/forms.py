@@ -25,7 +25,7 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("username",)
+        fields = ("username","email",)
 
     def clean_username(self):
         username = self.cleaned_data["username"]
@@ -48,6 +48,8 @@ class RegistrationForm(forms.ModelForm):
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
+        if not user.email:
+            user.email = user.username
 
         if commit:
             user.save()

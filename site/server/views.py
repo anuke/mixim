@@ -160,15 +160,18 @@ def pet_disable(request, pet_id):
 @serialize
 @require_method("GET")
 def media_list(request, start=0, limit=10):
-    tags    = request.GET.get('tags')
-    authors = request.GET.get('authors')
-    pet_id  = request.GET.get('pet_id')
+    tags      = request.GET.get('tags')
+    authors   = request.GET.get('authors')
+    author_id = request.GET.get('author_id')
+    pet_id    = request.GET.get('pet_id')
 
     query = MediaFile.objects.all()
     if tags:
         query = query.tagged_with(tags)
     if authors:
         query = query.posted_by(authors)
+    if author_id:
+        query = query.with_author(author_id)
     if pet_id:
         query = query.with_pet(pet_id)
 
