@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/auth/logged/', 'server.views.auth_logged'),
     url(r'^([^/]+)/auth/resetpassword/', 'server.views.auth_reset_password'),
 
+    url(r'^([^/]+)/user/stat/', 'server.views.user_stat'),
+
     url(r'^([^/]+)/profile/get/(\d+)', 'server.views.profile_get'),
     url(r'^([^/]+)/profile/get/my', 'server.views.profile_my'),
     url(r'^([^/]+)/profile/save/', 'server.views.profile_save'),

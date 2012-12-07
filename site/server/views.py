@@ -84,6 +84,12 @@ def auth_reset_password(request):
 
 @serialize
 @require_method("GET")
+def user_stat(request):
+    return { "count": User.objects.count() }
+
+
+@serialize
+@require_method("GET")
 @require_exist(User)
 def profile_get(request, user_id):
     return User.objects.get(pk=user_id).profile
