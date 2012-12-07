@@ -30,6 +30,7 @@ urlpatterns = patterns('',
 
     url(r'^([^/]+)/media/list/(\d+)/(\d+)/', 'server.views.media_list'),
     url(r'^([^/]+)/media/get/(\d+)/', 'server.views.media_get'),
+    url(r'^([^/]+)/media/like/(\d+)/', 'server.views.media_like'),
     url(r'^([^/]+)/media/upload/', 'server.views.media_upload'),
 
     url(r'^([^/]+)/comment/list/(\d+)/', 'server.views.comment_list'),

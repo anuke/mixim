@@ -27,6 +27,10 @@ class UserProfile(models.Model):
         self.status = 'verified'
         self.save()
 
+    def likes(self, media):
+        _, created = Like.objects.getOrCreate(user=self, media=media)
+        return created
+
     def plain_data(self):
         return to_plain_data(self,
             'id', 'username:display_name',
@@ -148,11 +152,12 @@ class MediaFile(models.Model):
     owner     = property(lambda self: self.author)
     original  = property(lambda self: self.file.url)
     thumbnail = property(lambda self: thumbnail_url(self.file.url))
+    likes     = property(lambda self: self.like_set.count())
 
     def plain_data(self):
         return to_plain_data(self,
-                'id', 'authorId:author.id', 'author:author.profile.display_name', 'pet:pet.name',
-            'created', 'original', 'thumbnail', 'description', 'tags')
+            'id', 'authorId:author.id', 'author:author.profile.display_name', 'pet:pet.name',
+            'created', 'original', 'thumbnail', 'description', 'tags', 'likes')
 
     def __unicode__(self):
         return self.file.url
@@ -180,6 +185,12 @@ class Comment(models.Model):
         verbose_name = _("Member")
         verbose_name_plural = _("Members")
         ordering = ["-created"]
+
+
+class Like(models.Model):
+    user    = models.ForeignKey(User)
+    media   = models.ForeignKey(MediaFile)
+    created = models.DateTimeField(name=_("Created"), auto_now_add=True)
 
 
 # Signal callbacks

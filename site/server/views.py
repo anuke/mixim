@@ -190,6 +190,15 @@ def media_get(request, media_id):
 
 
 @serialize
+@require_method("GET")
+@require_auth
+@require_exist(MediaFile)
+def media_like(request, media_id):
+    media = MediaFile.objects.get(pk=media_id)
+    return request.user.profile.like(media)
+
+
+@serialize
 @require_method("POST")
 @require_auth
 def media_upload(request):
