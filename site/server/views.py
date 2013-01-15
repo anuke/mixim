@@ -59,11 +59,14 @@ def auth_activate(request, activation_key):
         profile = UserProfile.objects.get(activation_key=activation_key)
         profile.activate()
 
+        # need to be upgraded in case of changing auth backends
+        profile.user.backend = 'django.contrib.auth.backends.ModelBackend'
+
         login(request, profile.user)
 
-        return render_to_response('/auth/activation_done.html')
+        return render_to_response('auth/activation_done.html')
     except UserProfile.DoesNotExist:
-        return render_to_response('/auth/activation_failed.html')
+        return render_to_response('auth/activation_failed.html')
 
 
 @serialize
