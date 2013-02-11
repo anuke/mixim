@@ -152,8 +152,6 @@ LOGGING = {
 
 AUTH_PROFILE_MODULE = 'server.UserProfile'
 
-DEFAULT_FROM_EMAIL = 'mixim.bot@gmail.com'
-
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mixim.bot@gmail.com'
@@ -162,6 +160,7 @@ EMAIL_USE_TLS = True
 
 MAKE_THUMBNAIL_SCRIPT = '/usr/local/bin/make_thumb'
 RESIZE_IMAGE_SCRIPT = '/usr/local/bin/resize_media'
+RESIZE_THUMBNAIL_SCRIPT = '/usr/local/bin/resize_thumb'
 TEMP_MEDIA_URL = MEDIA_URL.replace('media', 'temp', 1)
 
 ACTIVATION_URL = 'http://mixim.ru/activate/'

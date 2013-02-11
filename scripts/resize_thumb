@@ -1,0 +1,11 @@
+#!/bin/bash
+
+path=$(dirname $3)
+mkdir -p "$path"
+
+size=$1
+src=$2
+dst=$3
+size_=$(echo ${size} | sed 's/[0-9][0-9]*/\0^/g')
+
+/usr/bin/convert "${src}" -resize ${size_} -quality 75 -gravity center -crop ${size}+0+0 "${dst}"

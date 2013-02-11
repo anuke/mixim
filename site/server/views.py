@@ -9,7 +9,7 @@ from django.shortcuts import redirect, render_to_response
 from decorators import *
 from errors import *
 from forms import *
-from media import resize_image
+from media import resize_image, resize_thumbnail
 from models import *
 import settings
 
@@ -243,12 +243,19 @@ def handle404(request):
     request._req.add_common_vars()
     url = request._req.subprocess_env['REDIRECT_URL']
 
-    if not url.startswith('/media/resized/'):
+    if  url.startswith('/media/resized/'):
+        splitted = url.split("/")
+        new_size = splitted[3]
+        path = "original/" + "/".join(splitted[4:])
+        resize_image(path, new_size)
+
+        return redirect(settings.TEMP_MEDIA_URL + '/'.join(splitted[2:]))
+    elif  url.startswith('/media/thumbnails/'):
+        splitted = url.split("/")
+        new_size = splitted[3]
+        path = "original/" + "/".join(splitted[4:])
+        resize_thumbnail(path, new_size)
+
+        return redirect(settings.TEMP_MEDIA_URL + '/'.join(splitted[2:]))
+    else:
         raise Http404
-
-    splitted = url.split("/")
-    new_size = splitted[3]
-    path = "original/" + "/".join(splitted[4:])
-    resize_image(path, new_size)
-
-    return redirect(settings.TEMP_MEDIA_URL + '/'.join(splitted[2:]))
