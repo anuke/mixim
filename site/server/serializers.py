@@ -14,6 +14,8 @@ def to_plain(value):
         return value
     if isinstance(value, datetime.datetime):
         return value.strftime("%d/%m/%Y %H:%M:%S")
+    if isinstance(value, datetime.date):
+        return value.strftime("%d/%m/%Y")
     if isinstance(value, (set, list)):
         return map(to_plain, value)
     if isinstance(value, dict):
