@@ -154,10 +154,20 @@ class MediaFile(models.Model):
     thumbnail = property(lambda self: thumbnail_url(self.file.url))
     likes     = property(lambda self: self.like_set.count())
 
+    def aware_of(self, user):
+        self.favourite__ = Like.objects.filter(user=user, media=self).exists()
+
+    def get_favourite(self):
+        if hasattr(self, 'favourite__'):
+            return self.favourite__
+        return False
+
+    favourite = property(get_favourite)
+
     def plain_data(self):
         return to_plain_data(self,
             'id', 'authorId:author.id', 'author:author.profile.display_name', 'pet:pet.name',
-            'created', 'original', 'thumbnail', 'description', 'tags', 'likes')
+            'created', 'original', 'thumbnail', 'description', 'tags', 'likes', 'favourite',)
 
     def __unicode__(self):
         return self.file.url

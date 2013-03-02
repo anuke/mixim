@@ -185,13 +185,20 @@ def media_list(request, start=0, limit=10):
     limit = int(limit)
     end = start + limit
 
-    return query[start:end]
+    result = list(query[start:end])
+    # TODO: rewrite to left join
+    if request.user.is_authenticated():
+        for media in result:
+            media.aware_of(request.user)
+    return result
 
 
 @serialize
 @require_method("GET")
 @require_id(MediaFile)
 def media_get(request, media):
+    if request.user.is_authenticated():
+        media.aware_of(request.user)
     return media
 
 
