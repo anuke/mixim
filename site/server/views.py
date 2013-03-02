@@ -204,7 +204,7 @@ def media_get(request, media_id):
 @require_exist(MediaFile)
 def media_like(request, media_id):
     media = MediaFile.objects.get(pk=media_id)
-    return request.user.profile.like(media)
+    return request.user.profile.likes(media)
 
 
 @serialize

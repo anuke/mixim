@@ -28,7 +28,7 @@ class UserProfile(models.Model):
         self.save()
 
     def likes(self, media):
-        _, created = Like.objects.getOrCreate(user=self, media=media)
+        _, created = Like.objects.get_or_create(user=self.user, media=media)
         return created
 
     def plain_data(self):
