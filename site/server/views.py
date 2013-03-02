@@ -93,9 +93,9 @@ def user_stat(request):
 
 @serialize
 @require_method("GET")
-@require_exist(User)
-def profile_get(request, user_id):
-    return User.objects.get(pk=user_id).profile
+@require_id(User)
+def profile_get(request, user):
+    return user.profile
 
 
 @serialize
@@ -130,17 +130,16 @@ def pet_add(request):
 
 @serialize
 @require_method("GET")
-@require_exist(Pet)
-def pet_get(request, pet_id):
-    return Pet.objects.get(pk=pet_id)
+@require_id(Pet)
+def pet_get(request, pet):
+    return pet
 
 
 @serialize
 @require_method("POST")
 @require_auth
 @require_ownership(Pet)
-def pet_save(request, pet_id):
-    pet = Pet.objects.get(pk=pet_id)
+def pet_save(request, pet):
     form = PetForm(request.POST, instance=pet)
     if not form.is_valid():
         raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
@@ -152,8 +151,7 @@ def pet_save(request, pet_id):
 @require_method("GET")
 @require_auth
 @require_ownership(Pet)
-def pet_enable(request, pet_id):
-    pet = Pet.objects.get(pk=pet_id)
+def pet_enable(request, pet):
     pet.enable()
 
 
@@ -161,8 +159,7 @@ def pet_enable(request, pet_id):
 @require_method("GET")
 @require_auth
 @require_ownership(Pet)
-def pet_disable(request, pet_id):
-    pet = Pet.objects.get(pk=pet_id)
+def pet_disable(request, pet):
     pet.disable()
 
 
@@ -193,17 +190,16 @@ def media_list(request, start=0, limit=10):
 
 @serialize
 @require_method("GET")
-@require_exist(MediaFile)
-def media_get(request, media_id):
-    return MediaFile.objects.get(pk=media_id)
+@require_id(MediaFile)
+def media_get(request, media):
+    return media
 
 
 @serialize
 @require_method("GET")
 @require_auth
-@require_exist(MediaFile)
-def media_like(request, media_id):
-    media = MediaFile.objects.get(pk=media_id)
+@require_id(MediaFile)
+def media_like(request, media):
     return request.user.profile.likes(media)
 
 
@@ -221,19 +217,17 @@ def media_upload(request):
 
 @serialize
 @require_method("GET")
-@require_exist(MediaFile)
-def comment_list(request, media_id):
-    media  = MediaFile.objects.get(pk=media_id)
+@require_id(MediaFile)
+def comment_list(request, media):
     return media.comments
 
 
 @serialize
 @require_method("POST")
 @require_auth
-@require_exist(MediaFile)
-def comment_add(request, media_id):
+@require_id(MediaFile)
+def comment_add(request, media):
     author = request.user
-    media  = MediaFile.objects.get(pk=media_id)
     text   = request.POST.get('text')
 
     Comment.objects.create(author=author, media=media, text=text)

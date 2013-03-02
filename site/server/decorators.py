@@ -59,6 +59,22 @@ def require_exist(model):
     return decor
 
 
+def require_id(model):
+    def decor(f):
+        def wrapper(request, entity_id, *args, **kwargs):
+            try:
+                entity = model.objects.get(pk=entity_id)
+            except model.DoesNotExist:
+                raise proto_exc(EXC_ENTITY_NOT_EXIST, {"model": model.__name__, "id": entity_id})
+
+            return f(request, entity, *args, **kwargs)
+
+        wrapper.__name__ = f.__name__
+        return wrapper
+
+    return decor
+
+
 def require_ownership(model):
     def decor(f):
         def wrapper(request, entity_id, *args, **kwargs):
@@ -69,7 +85,7 @@ def require_ownership(model):
             except model.DoesNotExist:
                 raise proto_exc(EXC_ENTITY_NOT_EXIST, {"model": model.__name__, "id": entity_id})
 
-            return f(request, entity_id, *args, **kwargs)
+            return f(request, entity, *args, **kwargs)
 
         wrapper.__name__ = f.__name__
         return wrapper
