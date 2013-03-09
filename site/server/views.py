@@ -88,7 +88,9 @@ def auth_reset_password(request):
 @serialize
 @require_method("GET")
 def user_stat(request):
-    return { "count": User.objects.count() }
+    users = User.objects.count()
+    pets = Pet.objects.count()
+    return { "count": users + pets }
 
 
 @serialize
