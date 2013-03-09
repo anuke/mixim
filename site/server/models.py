@@ -53,7 +53,7 @@ class Pet(models.Model):
     birthday = models.DateField(name=_("Birthday"), blank=True, null=True)
     gender   = models.CharField(name=_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
     about    = models.TextField(name=_("About"), blank=True, null=True)
-    enabled  = models.BooleanField(name=_("Enanled"), default=True)
+    enabled  = models.BooleanField(name=_("Enabled"), default=True)
 
     def enable(self):
         self.enabled = True
@@ -139,6 +139,10 @@ class MediaFileManager(models.Manager):
         return getattr(self.get_query_set(), name)
 
 
+class EnabledMediaFileManager(MediaFileManager):
+    def get_query_set(self):
+        return MediaFileQuerySet(self.model).filter(enabled=True)
+
 class MediaFile(models.Model):
     author      = models.ForeignKey(User)
     pet         = models.ForeignKey(Pet, null=True, blank=True)
@@ -146,8 +150,10 @@ class MediaFile(models.Model):
     file        = models.FileField(name=_("File"), upload_to=media_upload_path)
     description = models.TextField(name=_("Description"), null=True, blank=True)
     tags        = models.ManyToManyField(MediaTag, related_name='files+', null=True, blank=True)
+    enabled     = models.BooleanField(name=_("Enabled"), default=True)
 
     objects = MediaFileManager()
+    enabled_objects = EnabledMediaFileManager()
 
     owner     = property(lambda self: self.author)
     original  = property(lambda self: self.file.url)

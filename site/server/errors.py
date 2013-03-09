@@ -4,6 +4,7 @@ EXC_AUTH_FAILED        = (112, "Authentication failed")
 EXC_INACTIVE_USER      = (113, "Authentication failed")
 EXC_ENTITY_NOT_EXIST   = (121, "Entity does not exist")
 EXC_NOT_OWNER          = (122, "Ownership violation")
+EXC_ENTITY_DISABLED    = (123, "Entity is disabled")
 EXC_INVALID_DATA       = (130, "Invalid input data")
 
 

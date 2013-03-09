@@ -59,11 +59,12 @@ def require_exist(model):
     return decor
 
 
-def require_id(model):
+def require_id(model, enabled=False):
     def decor(f):
         def wrapper(request, entity_id, *args, **kwargs):
             try:
-                entity = model.objects.get(pk=entity_id)
+                manager = enabled and model.enabled_objects or model.objects
+                entity = manager.get(pk=entity_id)
             except model.DoesNotExist:
                 raise proto_exc(EXC_ENTITY_NOT_EXIST, {"model": model.__name__, "id": entity_id})
 

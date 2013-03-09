@@ -173,7 +173,7 @@ def media_list(request, start=0, limit=10):
     author_id = request.GET.get('author_id')
     pet_id    = request.GET.get('pet_id')
 
-    query = MediaFile.objects.all()
+    query = MediaFile.enabled_objects.all()
     if tags:
         query = query.tagged_with(tags)
     if authors:
@@ -197,7 +197,7 @@ def media_list(request, start=0, limit=10):
 
 @serialize
 @require_method("GET")
-@require_id(MediaFile)
+@require_id(MediaFile, enabled=True)
 def media_get(request, media):
     if request.user.is_authenticated():
         media.aware_of(request.user)
@@ -207,7 +207,7 @@ def media_get(request, media):
 @serialize
 @require_method("GET")
 @require_auth
-@require_id(MediaFile)
+@require_id(MediaFile, enabled=True)
 def media_like(request, media):
     return request.user.profile.likes(media)
 
@@ -226,7 +226,7 @@ def media_upload(request):
 
 @serialize
 @require_method("GET")
-@require_id(MediaFile)
+@require_id(MediaFile, enabled=True)
 def comment_list(request, media):
     return media.comments
 
@@ -234,7 +234,7 @@ def comment_list(request, media):
 @serialize
 @require_method("POST")
 @require_auth
-@require_id(MediaFile)
+@require_id(MediaFile, enabled=True)
 def comment_add(request, media):
     author = request.user
     text   = request.POST.get('text')
