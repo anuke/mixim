@@ -160,6 +160,14 @@ class MediaFile(models.Model):
     thumbnail = property(lambda self: thumbnail_url(self.file.url))
     likes     = property(lambda self: self.like_set.count())
 
+    def enable(self):
+        self.enabled = True
+        self.save()
+
+    def disable(self):
+        self.enabled = False
+        self.save()
+
     def aware_of(self, user):
         self.favourite__ = Like.objects.filter(user=user, media=self).exists()
 

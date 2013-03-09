@@ -213,6 +213,22 @@ def media_like(request, media):
 
 
 @serialize
+@require_method("GET")
+@require_auth
+@require_ownership(MediaFile)
+def media_enable(request, media):
+    media.enable()
+
+
+@serialize
+@require_method("GET")
+@require_auth
+@require_ownership(MediaFile)
+def media_disable(request, media):
+    media.disable()
+
+
+@serialize
 @require_method("POST")
 @require_auth
 def media_upload(request):
