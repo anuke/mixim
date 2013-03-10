@@ -176,6 +176,19 @@ class MediaFile(models.Model):
             return self.favourite__
         return False
 
+    def tag_with(self, tag_names):
+        def save_tag(name):
+            return Media.objects.save(name.strip())
+
+        new_tags = set([tag for tag,_ in [save_tag(name) for name in tag_names]])
+        old_tags = set(self.tags.all())
+
+        add_tags = new_tags - old_tags
+        del_tags = old_tags - new_tags
+
+        self.tags.remove(del_tags)
+        self.tags.add(add_tags)
+
     favourite = property(get_favourite)
 
     def plain_data(self):

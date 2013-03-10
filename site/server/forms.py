@@ -118,9 +118,6 @@ class MediaForm(forms.ModelForm):
             media.save()
 
             tags = self.cleaned_data['tags']
-            if tags:
-                for name in tags.split(","):
-                    tag, _ = MediaTag.objects.save(name.strip())
-                    media.tags.add(tag)
+            media.tag_with(tags.split(","))
 
         return media
