@@ -241,6 +241,18 @@ def media_upload(request):
 
 
 @serialize
+@require_method("POST")
+@require_auth
+@require_ownership(MediaFile)
+def media_save(request, media):
+    form = MediaForm(request.POST, instance=media)
+    if not form.is_valid():
+        raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
+
+    form.save()
+
+
+@serialize
 @require_method("GET")
 @require_id(MediaFile, enabled=True)
 def comment_list(request, media):
