@@ -209,7 +209,15 @@ def media_get(request, media):
 @require_auth
 @require_id(MediaFile, enabled=True)
 def media_like(request, media):
-    return request.user.profile.likes(media)
+    return request.user.profile.like(media)
+
+
+@serialize
+@require_method("GET")
+@require_auth
+@require_id(MediaFile, enabled=True)
+def media_dislike(request, media):
+    return request.user.profile.dislike(media)
 
 
 @serialize

@@ -27,9 +27,13 @@ class UserProfile(models.Model):
         self.status = 'verified'
         self.save()
 
-    def likes(self, media):
+    def like(self, media):
         _, created = Like.objects.get_or_create(user=self.user, media=media)
         return created
+
+    def dislike(self, media):
+        Like.objects.filter(user=self.user, media=media).delete()
+        return True
 
     def plain_data(self):
         return to_plain_data(self,
