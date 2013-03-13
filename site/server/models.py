@@ -31,7 +31,7 @@ class UserProfile(models.Model):
         _, created = Like.objects.get_or_create(user=self.user, media=media)
         return created
 
-    def dislike(self, media):
+    def unlike(self, media):
         Like.objects.filter(user=self.user, media=media).delete()
         return True
 

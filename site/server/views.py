@@ -216,8 +216,8 @@ def media_like(request, media):
 @require_method("GET")
 @require_auth
 @require_id(MediaFile, enabled=True)
-def media_dislike(request, media):
-    return request.user.profile.dislike(media)
+def media_unlike(request, media):
+    return request.user.profile.unlike(media)
 
 
 @serialize
