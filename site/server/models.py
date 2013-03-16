@@ -182,7 +182,7 @@ class MediaFile(models.Model):
 
     def tag_with(self, tag_names):
         def save_tag(name):
-            return Media.objects.save(name.strip())
+            return MediaTag.objects.get_or_create(name=name.strip())
 
         new_tags = set([tag for tag,_ in [save_tag(name) for name in tag_names]])
         old_tags = set(self.tags.all())
