@@ -190,8 +190,8 @@ class MediaFile(models.Model):
         add_tags = new_tags - old_tags
         del_tags = old_tags - new_tags
 
-        self.tags.remove(del_tags)
-        self.tags.add(add_tags)
+        self.tags.remove(*del_tags)
+        self.tags.add(*add_tags)
 
     favourite = property(get_favourite)
 
