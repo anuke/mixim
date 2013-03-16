@@ -35,7 +35,7 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/media/like/(\d+)/', 'server.views.media_like'),
     url(r'^([^/]+)/media/unlike/(\d+)/', 'server.views.media_unlike'),
     url(r'^([^/]+)/media/upload/', 'server.views.media_upload'),
-    url(r'^([^/]+)/media/save/', 'server.views.media_save'),
+    url(r'^([^/]+)/media/save/(\d+)/', 'server.views.media_save'),
     url(r'^([^/]+)/media/enable/(\d+)/', 'server.views.media_enable'),
     url(r'^([^/]+)/media/disable/(\d+)/', 'server.views.media_disable'),
 
