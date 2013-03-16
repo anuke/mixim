@@ -197,8 +197,9 @@ class MediaFile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'authorId:author.profile.id', 'author:author.profile.display_name', 'pet:pet.name',
-            'created', 'original', 'thumbnail', 'description', 'tags', 'likes', 'favourite',)
+            'id', 'authorId:author.profile.id', 'author:author.profile.display_name',
+            'petId:pet.id', 'pet:pet.name', 'created', 'original', 'thumbnail',
+            'description', 'tags', 'likes', 'favourite',)
 
     def __unicode__(self):
         return self.file.url
