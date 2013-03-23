@@ -281,6 +281,12 @@ def comment_add(request, media):
     Comment.objects.create(author=author, media=media, text=text)
 
 
+@serialize
+@require_method("GET")
+def dict_breed(request):
+    return Breed.objects.order_by('name')
+
+
 def handle404(request):
     request._req.add_common_vars()
     url = request._req.subprocess_env['REDIRECT_URL']
