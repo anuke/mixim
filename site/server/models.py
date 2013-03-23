@@ -131,6 +131,12 @@ class MediaFileQuerySet(QuerySet):
         else:
             return self;
 
+    def with_breed(self, breed):
+        if breed:
+            return self.filter(pet__breed=breed)
+        else:
+            return self;
+
 
 class MediaFileManager(models.Manager):
     def get_query_set(self):
