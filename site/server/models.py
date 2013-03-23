@@ -79,6 +79,21 @@ class Pet(models.Model):
         verbose_name_plural = _("Pets")
 
 
+class Breed(models.Model):
+    name   = models.CharField(name=_("Name"), max_length=150)
+    fci_no = models.IntegerField(name=_("FCI Standard No"), blank=True, null=True)
+
+    def __unicode__(self):
+        return self.name
+
+    def plain_data(self):
+        return to_plain_data(self, 'name', 'fci_no')
+
+    class Meta:
+        verbose_name = _("Breed")
+        verbose_name_plural = _("Breeds")
+
+
 class MediaTagManager(models.Manager):
     # TODO: make it thread safe
     def save(self, name):
