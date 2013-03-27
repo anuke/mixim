@@ -249,6 +249,7 @@ def media_upload(request):
         raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
 
     form.save()
+    return media
 
 
 @serialize
