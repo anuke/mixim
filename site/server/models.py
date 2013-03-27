@@ -148,7 +148,7 @@ class MediaFileQuerySet(QuerySet):
 
     def with_breed(self, breed):
         if breed:
-            return self.filter(pet__breed=breed)
+            return self.filter(pet__breed__iexact=breed)
         else:
             return self;
 
