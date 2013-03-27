@@ -54,7 +54,7 @@ def to_plain_data(data, *props):
 
 class JsonSerializer:
     def __dump(self, data):
-        return HttpResponse(json.dumps(data), 'application/json')
+        return HttpResponse(json.dumps(data), 'text/html') # 'application/json'
 
     def serializeData(self, data):
         dumped = None
