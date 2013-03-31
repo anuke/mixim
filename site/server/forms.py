@@ -21,7 +21,7 @@ class RegistrationForm(forms.ModelForm):
     country  = forms.CharField(label=_("Country"), max_length=50, required=False)
     city     = forms.CharField(label=_("City"), max_length=50, required=False)
     gender   = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
-    birthday = forms.DateField(label=_("Birthday"), required=False)
+    birthday = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
 
     class Meta:
         model = User
@@ -77,7 +77,7 @@ class ProfileForm(forms.ModelForm):
     country  = forms.CharField(label=_("Country"), max_length=50, required=False)
     city     = forms.CharField(label=_("City"), max_length=50, required=False)
     gender   = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
-    birthday = forms.DateField(label=_("Birthday"), required=False)
+    birthday = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
 
     class Meta:
         model = User
@@ -98,6 +98,7 @@ class ProfileForm(forms.ModelForm):
 
 
 class PetForm(forms.ModelForm):
+    birthday = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
 
     class Meta:
         model = Pet
