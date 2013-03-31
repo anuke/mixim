@@ -146,7 +146,7 @@ def pet_save(request, pet):
     if not form.is_valid():
         raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
 
-    form.save()
+    return form.save()
 
 
 @serialize
