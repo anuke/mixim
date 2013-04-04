@@ -59,6 +59,14 @@ class Pet(models.Model):
     about    = models.TextField(name=_("About"), blank=True, null=True)
     enabled  = models.BooleanField(name=_("Enabled"), default=True)
 
+    def get_last_picture(self):
+        files = self.media_files.order_by('-id')[0:1]
+        if len(files):
+            return files[0].thumbnail
+        return None
+
+    last_picture = property(get_last_picture)
+
     def enable(self):
         self.enabled = True
         self.save()
@@ -69,7 +77,7 @@ class Pet(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'name', 'species', 'breed', 'color', 'birthday', 'gender', 'enabled', 'about')
+            'id', 'name', 'species', 'breed', 'color', 'birthday', 'gender', 'enabled', 'about', 'last_picture')
 
     def __unicode__(self):
         return self.name
@@ -170,7 +178,7 @@ class EnabledMediaFileManager(MediaFileManager):
 
 class MediaFile(models.Model):
     author      = models.ForeignKey(User)
-    pet         = models.ForeignKey(Pet, null=True, blank=True)
+    pet         = models.ForeignKey(Pet, null=True, blank=True, related_name='media_files')
     created     = models.DateTimeField(name=_("Created"), auto_now_add=True)
     file        = models.FileField(name=_("File"), upload_to=media_upload_path)
     description = models.TextField(name=_("Description"), null=True, blank=True)
