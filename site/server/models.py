@@ -19,6 +19,7 @@ class UserProfile(models.Model):
     gender   = models.CharField(name=_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
     birthday = models.DateField(name=_("Birthday"), blank=True, null=True)
     status   = models.CharField(name=_("Status"), max_length=50, choices=STATUSES, default='unverified')
+    about    = models.TextField(name=_("About"), blank=True, null=True)
     activation_key = models.CharField(name=_("Activation Key"), max_length=30, default='old-user')
 
     display_name = property(lambda self: self.user.username.partition('@')[0])
@@ -37,7 +38,7 @@ class UserProfile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'username:display_name',
+            'id', 'username:display_name', 'about',
             'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets')
 
     def __unicode__(self):
