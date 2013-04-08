@@ -86,6 +86,25 @@ def auth_reset_password(request):
 
 
 @serialize
+@require_method("POST")
+@require_auth
+def auth_change_password(request):
+    user = request.user
+    password = request.POST['new_password']
+    confirm = request.POST['confirmation']
+    if not password:
+        raise proto_exc(EXC_INVALID_DATA, { "new_password": "Password should not be empty" })
+    if password != confirm:
+        raise proto_exc(EXC_INVALID_DATA, { "confirm": "Confirmation does not match the password." })
+    user.set_password(password)
+    user.save()
+
+    send_mail('Mixim Password Reminder',
+        'Your new password: %s' % password,
+        None, [user.email])
+
+
+@serialize
 @require_method("GET")
 def user_stat(request):
     users = User.objects.count()
