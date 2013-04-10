@@ -38,7 +38,7 @@ class UserProfile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'username:display_name', 'about',
+            'id', 'userId:user.id', 'username:display_name', 'about',
             'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets')
 
     def __unicode__(self):
@@ -175,7 +175,7 @@ class MediaFileManager(models.Manager):
 
 class EnabledMediaFileManager(MediaFileManager):
     def get_query_set(self):
-        return MediaFileQuerySet(self.model).filter(enabled=True)
+        return MediaFileQuerySet(self.model).filter(enabled=True).exclude(pet__enabled=False)
 
 class MediaFile(models.Model):
     author      = models.ForeignKey(User)

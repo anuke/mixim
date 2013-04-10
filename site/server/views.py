@@ -130,7 +130,7 @@ def profile_my(request):
 @require_method("POST")
 @require_auth
 def profile_save(request):
-    form = ProfileForm(request.POST, instance=request.user)
+    form = ProfileForm(request.POST, instance=request.user.profile)
     if not form.is_valid():
         raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
 
