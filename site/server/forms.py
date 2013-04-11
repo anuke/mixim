@@ -69,11 +69,13 @@ class RegistrationForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-    country  = forms.CharField(label=_("Country"), max_length=50, required=False)
-    city     = forms.CharField(label=_("City"), max_length=50, required=False)
-    gender   = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
-    birthday = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
-    about    = forms.CharField(label=_("About"), widget=forms.Textarea, required=False)
+    first_name = forms.CharField(label=_("First name"), max_length=50, required=False)
+    last_name = forms.CharField(label=_("First name"), max_length=50, required=False)
+    country    = forms.CharField(label=_("Country"), max_length=50, required=False)
+    city       = forms.CharField(label=_("City"), max_length=50, required=False)
+    gender     = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
+    birthday   = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
+    about      = forms.CharField(label=_("About"), widget=forms.Textarea, required=False)
 
     class Meta:
         model = UserProfile
@@ -94,6 +96,16 @@ class ProfileForm(forms.ModelForm):
             if self.cleaned_data['about'] is not None:
                 profile.about    = self.cleaned_data['about']
             profile.save()
+
+            user_changed = False
+            if self.cleaned_data['first_name'] is not None:
+                profile.user.first_name = self.cleaned_data['first_name']
+                user_changed = True
+            if self.cleaned_data['last_name'] is not None:
+                profile.user.last_name = self.cleaned_data['last_name']
+                user_changed = True
+            if user_changed:
+                profile.user.save()
 
         return profile
 
