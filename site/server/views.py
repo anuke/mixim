@@ -307,6 +307,20 @@ def dict_breed(request):
     return Breed.objects.order_by('name')
 
 
+@serialize
+@require_method("POST")
+def feedback(request):
+    # TODO: move to form
+    email   = request.POST.get('email')
+    subject = request.POST.get('subject')
+    text    = request.POST.get('text')
+
+    if not email or not text:
+        raise proto_exc(EXC_INVALID_DATA, {"errors": "Check your fields"})
+
+    send_mail('Feedback from %s: %s' % (email, subject), text, None, ['am35a.piston@gmail.com'])
+
+
 def handle404(request):
     request._req.add_common_vars()
     url = request._req.subprocess_env['REDIRECT_URL']

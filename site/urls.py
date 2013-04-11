@@ -44,6 +44,7 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/comment/add/(\d+)/', 'server.views.comment_add'),
 
     url(r'^([^/]+)/dict/breed/', 'server.views.dict_breed'),
+    url(r'^([^/]+)/feedback/', 'server.views.feedback'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
