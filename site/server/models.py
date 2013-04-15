@@ -38,7 +38,8 @@ class UserProfile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'userId:user.id', 'username:display_name', 'about',
+            'id', 'user_id:user.id', 'username:display_name', 'about',
+            'first_name:user.first_name', 'last_name:user.last_name',
             'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets')
 
     def __unicode__(self):
