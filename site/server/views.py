@@ -321,6 +321,13 @@ def feedback(request):
     send_mail('Feedback from %s: %s' % (email, subject), text, None, ['am35a.piston@gmail.com'])
 
 
+@serialize
+@require_method("GET")
+@require_id(MediaFile, enabled=True)
+def bo_media_delete(request, media):
+    media.disable()
+
+
 def handle404(request):
     request._req.add_common_vars()
     url = request._req.subprocess_env['REDIRECT_URL']
