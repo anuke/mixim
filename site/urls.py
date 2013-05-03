@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^activate/([A-Z0-9]+)/$', 'server.views.auth_activate'),
     url(r'^404/$', 'server.views.handle404'),
+    url(r'^id([0-9]+)/$', 'server.views.show_user_page'),
 
     url(r'^([^/]+)/auth/register/', 'server.views.auth_register'),
     url(r'^([^/]+)/auth/login/', 'server.views.auth_login'),
@@ -45,6 +46,8 @@ urlpatterns = patterns('',
 
     url(r'^([^/]+)/dict/breed/', 'server.views.dict_breed'),
     url(r'^([^/]+)/feedback/', 'server.views.feedback'),
+
+    url(r'^([^/]+)/bo/media/delete/(\d+)/', 'server.views.bo_media_delete'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

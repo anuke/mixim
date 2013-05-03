@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
 from django.http import Http404
 from django.shortcuts import redirect, render_to_response
+from django.template import RequestContext
 
 from decorators import *
 from errors import *
@@ -327,7 +328,6 @@ def feedback(request):
 def bo_media_delete(request, media):
     media.disable()
 
-
 def handle404(request):
     request._req.add_common_vars()
     url = request._req.subprocess_env['REDIRECT_URL']
@@ -348,3 +348,17 @@ def handle404(request):
         return redirect(settings.TEMP_MEDIA_URL + '/'.join(splitted[2:]))
     else:
         raise Http404
+
+def show_user_page(request, user_id):
+    profile = UserProfile.objects.get(id=user_id)
+    page = int(request.GET.get('page', 1))
+    per_page = 20
+    start = (page - 1) * per_page
+    end = start + per_page
+    media_list = MediaFile.enabled_objects.with_author(profile.user.id)[start:end]
+    context = RequestContext(request, {
+        'profile': profile,
+        'media_list': media_list
+    })
+
+    return render_to_response('user/user_page.html', context_instance=context)
