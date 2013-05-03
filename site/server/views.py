@@ -304,8 +304,22 @@ def comment_add(request, media):
 
 @serialize
 @require_method("GET")
-def dict_breed(request):
+def breed_dict(request):
     return Breed.objects.order_by('name')
+
+
+@serialize
+@require_method("GET")
+def breed_available(request):
+    term = request.GET.get('term', '')
+    return Pet.objects.filter(breed__icontains=term, enabled=True).order_by('breed').distinct('breed').values('breed')
+
+
+@serialize
+@require_method("GET")
+def tag_available(request):
+    term = request.GET.get('term', '')
+    return MediaTag.objects.filter(name__icontains=term).order_by('name').distinct('name').values('name')
 
 
 @serialize

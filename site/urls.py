@@ -44,7 +44,9 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/comment/list/(\d+)/', 'server.views.comment_list'),
     url(r'^([^/]+)/comment/add/(\d+)/', 'server.views.comment_add'),
 
-    url(r'^([^/]+)/dict/breed/', 'server.views.dict_breed'),
+    url(r'^([^/]+)/dict/breed/', 'server.views.breed_dict'),
+    url(r'^([^/]+)/available/breed/', 'server.views.breed_available'),
+    url(r'^([^/]+)/available/tag/', 'server.views.tag_available'),
     url(r'^([^/]+)/feedback/', 'server.views.feedback'),
 
     url(r'^([^/]+)/bo/media/delete/(\d+)/', 'server.views.bo_media_delete'),
