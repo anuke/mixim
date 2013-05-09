@@ -60,10 +60,21 @@ def auth_activate(request, activation_key):
         profile = UserProfile.objects.get(activation_key=activation_key)
         profile.activate()
 
+        # TODO: do not activate already verified accounts
+
         # need to be upgraded in case of changing auth backends
         profile.user.backend = 'django.contrib.auth.backends.ModelBackend'
 
+        # generate new password
+        password = User.objects.make_random_password(length=8)
+        profile.user.set_password(password)
+        profile.user.save()
+
         login(request, profile.user)
+
+        send_mail('Mixim Activation Complete!',
+            'Your password: %s' % password,
+            None, [profile.user.email])
 
         return render_to_response('auth/activation_done.html')
     except UserProfile.DoesNotExist:

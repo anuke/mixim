@@ -14,9 +14,6 @@ class RegistrationForm(forms.ModelForm):
         help_text=_("Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."),
         error_messages={'invalid': _("This value may contain only letters, numbers and @/./+/-/_ characters.")})
     email = forms.EmailField(label=_("E-mail"), max_length=75)
-    password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
-    password2 = forms.CharField(label=_("Password confirmation"), widget=forms.PasswordInput,
-        help_text=("Enter the same password as above, for verification."))
 
     country  = forms.CharField(label=_("Country"), max_length=50, required=False)
     city     = forms.CharField(label=_("City"), max_length=50, required=False)
@@ -36,20 +33,9 @@ class RegistrationForm(forms.ModelForm):
 
         raise forms.ValidationError(_("A user with that username already exists."))
 
-    def clean_password2(self):
-        password1 = self.cleaned_data.get("password1", "")
-        password2 = self.cleaned_data["password2"]
-
-        if password1 != password2:
-            raise forms.ValidationError(_("The two password fields didn't match."))
-
-        return password2
-
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
-        if not user.email:
-            user.email = user.username
+        user.set_password(User.objects.make_random_password(length=8))
 
         if commit:
             user.save()
