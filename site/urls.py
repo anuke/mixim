@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^activate/([A-Z0-9]+)/$', 'server.views.auth_activate'),
     url(r'^404/$', 'server.views.handle404'),
-    url(r'^id([0-9]+)/$', 'server.views.show_user_page'),
+    url(r'^user/([^/]+)/$', 'server.views.show_user_page'),
 
     url(r'^([^/]+)/auth/register/', 'server.views.auth_register'),
     url(r'^([^/]+)/auth/login/', 'server.views.auth_login'),

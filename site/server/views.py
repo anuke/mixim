@@ -377,15 +377,15 @@ def handle404(request):
     else:
         raise Http404
 
-def show_user_page(request, user_id):
-    profile = UserProfile.objects.get(id=user_id)
+def show_user_page(request, username):
+    user = User.objects.get(username=username)
     page = int(request.GET.get('page', 1))
     per_page = 20
     start = (page - 1) * per_page
     end = start + per_page
-    media_list = MediaFile.enabled_objects.with_author(profile.user.id)[start:end]
+    media_list = MediaFile.enabled_objects.with_author(user.id)[start:end]
     context = RequestContext(request, {
-        'profile': profile,
+        'profile': user.profile,
         'media_list': media_list
     })
 
