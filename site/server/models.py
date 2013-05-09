@@ -162,6 +162,12 @@ class MediaFileQuerySet(QuerySet):
         else:
             return self;
 
+    def with_gender(self, gender):
+        if gender:
+            return self.filter(pet__gender__iexact=gender)
+        else:
+            return self;
+
 
 class MediaFileManager(models.Manager):
     def get_query_set(self):

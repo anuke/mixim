@@ -193,6 +193,7 @@ def media_list(request, start=0, limit=10):
     author_id = request.GET.get('author_id')
     pet_id    = request.GET.get('pet_id')
     breed     = request.GET.get('breed')
+    gender    = request.GET.get('gender')
 
     query = MediaFile.enabled_objects.all()
     if tags:
@@ -205,6 +206,8 @@ def media_list(request, start=0, limit=10):
         query = query.with_pet(pet_id)
     if breed:
         query = query.with_breed(breed)
+    if gender:
+        query = query.with_gender(gender)
 
     start = int(start)
     limit = int(limit)
