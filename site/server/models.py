@@ -22,8 +22,6 @@ class UserProfile(models.Model):
     about    = models.TextField(name=_("About"), blank=True, null=True)
     activation_key = models.CharField(name=_("Activation Key"), max_length=30, default='old-user')
 
-    display_name = property(lambda self: self.user.username.partition('@')[0])
-
     def activate(self):
         self.status = 'verified'
         self.save()
@@ -38,7 +36,7 @@ class UserProfile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'user_id:user.id', 'username:display_name', 'about',
+            'id', 'user_id:user.id', 'username', 'about',
             'first_name:user.first_name', 'last_name:user.last_name',
             'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets')
 
@@ -234,7 +232,7 @@ class MediaFile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'authorId:author.profile.id', 'author:author.profile.display_name',
+            'id', 'authorId:author.profile.id', 'author:author.username',
             'petId:pet.id', 'pet:pet.name', 'created', 'original', 'thumbnail',
             'description', 'tags', 'likes', 'favourite',)
 
@@ -255,7 +253,7 @@ class Comment(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'author:author.profile.display_name', 'created', 'text')
+            'id', 'author:author.username', 'created', 'text')
 
     def __unicode__(self):
         return u"%s: %s" % (self.owner, self.text[0:50])
