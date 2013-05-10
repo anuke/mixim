@@ -37,6 +37,17 @@ class RegistrationForm(forms.ModelForm):
         user = super(RegistrationForm, self).save(commit=False)
         user.set_password(User.objects.make_random_password(length=8))
 
+        try:
+            user = User.objects.get(email=user.email)
+
+            send_mail('Mixim Registration',
+                'There is a user with same email: %s.' % (user.username),
+                None, [user.email])
+
+            return user
+        except User.DoesNotExist:
+            pass
+
         if commit:
             user.save()
 
