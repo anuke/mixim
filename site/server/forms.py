@@ -10,9 +10,9 @@ import settings
 
 
 class RegistrationForm(forms.ModelForm):
-    username = forms.RegexField(label=_("Username"), max_length=30, regex=r'^[\w.@+-]+$',
-        help_text=_("Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."),
-        error_messages={'invalid': _("This value may contain only letters, numbers and @/./+/-/_ characters.")})
+    username = forms.RegexField(label=_("Username"), min_length=4, max_length=30, regex=r'^[\w.-]+$',
+        help_text=_("Required. From 4 to 30 characters. Letters, digits and ./-/_ only."),
+        error_messages={'invalid': _("This value may contain only letters, numbers and ./-/_ characters.")})
     email = forms.EmailField(label=_("E-mail"), max_length=75)
 
     country  = forms.CharField(label=_("Country"), max_length=50, required=False)
