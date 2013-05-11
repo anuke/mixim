@@ -36,7 +36,7 @@ class UserProfile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'user_id:user.id', 'username', 'about',
+            'id', 'user_id:user.id', 'username:user.username', 'about',
             'first_name:user.first_name', 'last_name:user.last_name',
             'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets')
 
