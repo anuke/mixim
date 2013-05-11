@@ -122,6 +122,12 @@ def user_stat(request):
 
 @serialize
 @require_method("GET")
+def user_check(request, username):
+    return User.objects.filter(username=username).exists()
+
+
+@serialize
+@require_method("GET")
 @require_id(User)
 def profile_get(request, user):
     return user.profile
