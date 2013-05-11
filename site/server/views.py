@@ -12,6 +12,8 @@ from errors import *
 from forms import *
 from media import resize_image, resize_thumbnail
 from models import *
+from utils import send_mail_to_user
+
 import settings
 
 
@@ -72,9 +74,7 @@ def auth_activate(request, activation_key):
 
         login(request, profile.user)
 
-        send_mail('Mixim Activation Complete!',
-            'Your password: %s' % password,
-            None, [profile.user.email])
+        send_mail_to_user(profile.user, 'registration_done', { 'password': password })
 
         return render_to_response('auth/activation_done.html')
     except UserProfile.DoesNotExist:
@@ -92,9 +92,7 @@ def auth_reset_password(request):
     user.set_password(password)
     user.save()
 
-    send_mail('Mixim Password Reminder',
-        'Your new password: %s' % password,
-        None, [user.email])
+    send_mail_to_user(user, 'password_remind', { 'password': password })
 
 
 @serialize
@@ -111,9 +109,7 @@ def auth_change_password(request):
     user.set_password(password)
     user.save()
 
-    send_mail('Mixim Password Reminder',
-        'Your new password: %s' % password,
-        None, [user.email])
+    send_mail_to_user(user, 'password_changed', { 'password': password })
 
 
 @serialize

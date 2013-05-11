@@ -1,10 +1,10 @@
 from django import forms
-from django.core.mail import send_mail
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 from models import UserProfile, Pet, MediaFile, MediaTag
 from choices import GENDERS
+from utils import send_mail_to_user
 
 import settings
 
@@ -40,9 +40,7 @@ class RegistrationForm(forms.ModelForm):
         try:
             user = User.objects.get(email=user.email)
 
-            send_mail('Mixim Registration',
-                'There is a user with same email: %s.' % (user.username),
-                None, [user.email])
+            send_mail_to_user(user, 'registration_exist')
 
             return user
         except User.DoesNotExist:
@@ -58,9 +56,8 @@ class RegistrationForm(forms.ModelForm):
             profile.birthday = self.cleaned_data['birthday']
             profile.save()
 
-            send_mail('Mixim Activation Code',
-                'Please visit %s%s to activate your profile.' % (settings.ACTIVATION_URL, profile.activation_key),
-                None, [user.email])
+            activation_url = settings.ACTIVATION_URL + profile.activation_key
+            send_mail_to_user(user, 'activation_code', { 'activation_url': activation_url })
 
         return user
 
