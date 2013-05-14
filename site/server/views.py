@@ -123,7 +123,7 @@ def user_stat(request):
 @serialize
 @require_method("GET")
 def user_check(request, username):
-    return User.objects.filter(username=username).exists()
+    return User.objects.filter(username__iexact=username).exists()
 
 
 @serialize
