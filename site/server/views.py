@@ -33,7 +33,7 @@ def auth_register(request):
 def auth_login(request):
     username = request.POST['username']
     password = request.POST['password']
-    user = authenticate(username=username, password=password)
+    user = authenticate(username=username.lower(), password=password)
 
     if user is None:
         raise proto_exc(EXC_AUTH_FAILED)
