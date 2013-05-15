@@ -8,5 +8,5 @@ def send_mail_to_user(user, template, context = None):
     context['user'] = user
 
     send_mail(render_to_string('mail/%s.subject' % template, context).strip(),
-        render_to_string('mail/%s.subject' % template, context),
+        render_to_string('mail/%s.body' % template, context),
         None, [user.email])
