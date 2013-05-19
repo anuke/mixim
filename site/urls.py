@@ -43,6 +43,7 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/media/disable/(\d+)/', 'server.views.media_disable'),
 
     url(r'^([^/]+)/comment/list/(\d+)/', 'server.views.comment_list'),
+    url(r'^([^/]+)/comment/last/', 'server.views.comment_last'),
     url(r'^([^/]+)/comment/add/(\d+)/', 'server.views.comment_add'),
 
     url(r'^([^/]+)/dict/breed/', 'server.views.breed_dict'),

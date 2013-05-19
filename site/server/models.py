@@ -256,7 +256,7 @@ class Comment(models.Model):
             'id', 'author:author.username', 'created', 'text')
 
     def __unicode__(self):
-        return u"%s: %s" % (self.owner, self.text[0:50])
+        return u"%s: %s" % (self.author, self.text[0:50])
 
     class Meta:
         verbose_name = _("Member")

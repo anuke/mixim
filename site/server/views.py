@@ -308,6 +308,12 @@ def comment_list(request, media):
 
 
 @serialize
+@require_auth
+def comment_last(request):
+    return Comment.objects.filter(media__author=request.user).order_by('-created')
+
+
+@serialize
 @require_method("POST")
 @require_auth
 @require_id(MediaFile, enabled=True)
