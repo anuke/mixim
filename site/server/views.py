@@ -92,7 +92,7 @@ def auth_reset_password(request):
     user.set_password(password)
     user.save()
 
-    send_mail_to_user(user, 'password_remind', { 'password': password })
+    send_mail_to_user(user, 'password_reset', { 'password': password })
 
 
 @serialize
