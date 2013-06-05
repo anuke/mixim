@@ -304,7 +304,7 @@ def media_save(request, media):
 @require_method("GET")
 @require_id(MediaFile, enabled=True)
 def comment_list(request, media):
-    return media.comments
+    return media.comments.filter(deleted=False)
 
 
 @serialize
