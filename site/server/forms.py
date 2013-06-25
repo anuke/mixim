@@ -109,11 +109,11 @@ class PetForm(forms.ModelForm):
 
     class Meta:
         model = Pet
-        fields = ("name", "species", "breed", "color", "birthday", "gender", "about" )
+        fields = ("name", "species", "breed", "color", "birthday", "gender", "about")
 
 
 class MediaForm(forms.ModelForm):
-    tags  = forms.CharField(label=_("Tags"), max_length=100, required=False)
+    tags = forms.CharField(label=_("Tags"), max_length=100, required=False)
 
     class Meta:
         model = MediaFile
