@@ -45,6 +45,7 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/comment/list/(\d+)/', 'server.views.comment_list'),
     url(r'^([^/]+)/comment/last/', 'server.views.comment_last'),
     url(r'^([^/]+)/comment/add/(\d+)/', 'server.views.comment_add'),
+    url(r'^([^/]+)/comment/delete/', 'server.views.comment_delete'),
 
     url(r'^([^/]+)/dict/breed/', 'server.views.breed_dict'),
     url(r'^([^/]+)/available/breed/', 'server.views.breed_available'),

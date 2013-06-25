@@ -324,6 +324,17 @@ def comment_add(request, media):
     Comment.objects.create(author=author, media=media, text=text)
 
 
+#TODO: check owner deleted
+@serialize
+@require_auth
+@require_method("POST")
+def comment_delete(request):
+    comment_id = int(request.POST.get('comment'))
+    comment = Comment.objects.get(id=comment_id)
+    comment.deleted = True
+    comment.save()
+
+
 @serialize
 @require_method("GET")
 def breed_dict(request):

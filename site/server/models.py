@@ -250,10 +250,14 @@ class Comment(models.Model):
     media   = models.ForeignKey(MediaFile, related_name='comments')
     created = models.DateTimeField(name=_("Created"), auto_now_add=True)
     text    = models.TextField(name=_("Text"))
+    deleted = models.BooleanField(name=_("Deleted"))
+
+    def get_query_set(self):
+        return super(Comment, self).get_query_set().filter(deleted=False)
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'author:author.username', 'created', 'text')
+            'id', 'author:author.username', 'created', 'text', 'thumbnail:media.thumbnail', 'photo_id:media.id')
 
     def __unicode__(self):
         return u"%s: %s" % (self.author, self.text[0:50])
