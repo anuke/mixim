@@ -9,7 +9,7 @@ from django.db.models.signals import post_save
 
 from choices import GENDERS, STATUSES
 from serializers import to_plain_data
-from media import media_upload_path, prepare_thumbnail, thumbnail_url
+from media import media_upload_path, avatar_upload_path, prepare_thumbnail, thumbnail_url
 
 
 class UserProfile(models.Model):
@@ -20,6 +20,7 @@ class UserProfile(models.Model):
     birthday = models.DateField(name=_("Birthday"), blank=True, null=True)
     status   = models.CharField(name=_("Status"), max_length=50, choices=STATUSES, default='unverified')
     about    = models.TextField(name=_("About"), blank=True, null=True)
+    avatar   = models.FileField(name=_("Avatar"), upload_to=avatar_upload_path, blank=True, null=True)
     activation_key = models.CharField(name=_("Activation Key"), max_length=30, default='old-user')
 
     def activate(self):
@@ -34,9 +35,20 @@ class UserProfile(models.Model):
         Like.objects.filter(user=self.user, media=media).delete()
         return True
 
+    def get_avatarurl(self):
+        if self.avatar:
+            return self.avatar.url
+        if self.gender == 'M':
+            return '/images/user_male.png'
+        if self.gender == 'F':
+            return '/images/user_female.png'
+        return '/images/user_unisex.png'
+
+    avatarurl = property(get_avatarurl)
+
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'user_id:user.id', 'username:user.username', 'about',
+            'id', 'user_id:user.id', 'username:user.username', 'about', 'avatar:avatarurl',
             'first_name:user.first_name', 'last_name:user.last_name',
             'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets')
 
