@@ -309,8 +309,11 @@ def comment_list(request, media):
 
 @serialize
 @require_auth
-def comment_last(request):
-    return Comment.objects.filter(media__author=request.user).order_by('-created')
+def comment_last(request, type='outbox'):
+    if type == 'inbox':
+        return Comment.objects.filter(media__author=request.user, deleted=False).order_by('-created')
+    elif type == 'outbox':
+        return Comment.objects.filter(author=request.user, deleted=False).order_by('-created')
 
 
 @serialize
