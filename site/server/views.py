@@ -291,6 +291,19 @@ def media_upload(request):
 @serialize
 @require_method("POST")
 @require_auth
+def avatar_upload(request):
+    form = AvatarForm(request.POST, request.FILES, instance=request.user.profile)
+    if form.is_valid():
+        form.save()
+        return request.user.profile.avatar.url
+    else:
+        raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
+
+
+
+@serialize
+@require_method("POST")
+@require_auth
 @require_ownership(MediaFile)
 def media_save(request, media):
     form = MediaForm(request.POST, instance=media)

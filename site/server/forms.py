@@ -112,6 +112,25 @@ class PetForm(forms.ModelForm):
         fields = ("name", "species", "breed", "color", "birthday", "gender", "about")
 
 
+class AvatarForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ("avatar",)
+
+    def save(self, commit=True):
+        profile = super(AvatarForm, self).save(commit=False)
+
+        if commit:
+            profile.save()
+
+            # change avatar size
+            if profile.avatar:
+                from media import resize_avatar
+                resize_avatar(profile.avatar.file.name)
+
+        return profile
+
+
 class MediaForm(forms.ModelForm):
     tags = forms.CharField(label=_("Tags"), max_length=100, required=False)
 

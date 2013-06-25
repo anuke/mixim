@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+size=$1
+src=$2
+dst=$2.tmp
+size_=$(echo ${size} | sed 's/[0-9][0-9]*/\0^/g')
+
+/usr/bin/convert "${src}" -resize ${size_} -quality 75 -gravity center -crop ${size}+0+0 "${dst}"
+mv -f $dst $src

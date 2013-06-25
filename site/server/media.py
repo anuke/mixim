@@ -56,3 +56,7 @@ def resize_thumbnail(path, new_size):
     original_path = settings.MEDIA_ROOT + path
     resized_path = original_path.replace('original', 'thumbnails/' + new_size, 1)
     subprocess.call([settings.RESIZE_THUMBNAIL_SCRIPT, new_size, original_path, resized_path])
+
+
+def resize_avatar(path):
+    subprocess.call([settings.RESIZE_AVATAR_SCRIPT, settings.AVATAR_SIZE, path])

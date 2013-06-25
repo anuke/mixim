@@ -161,6 +161,9 @@ EMAIL_USE_TLS = True
 MAKE_THUMBNAIL_SCRIPT = '/usr/local/bin/make_thumb'
 RESIZE_IMAGE_SCRIPT = '/usr/local/bin/resize_media'
 RESIZE_THUMBNAIL_SCRIPT = '/usr/local/bin/resize_thumb'
+RESIZE_AVATAR_SCRIPT = '/usr/local/bin/resize_avatar'
 TEMP_MEDIA_URL = MEDIA_URL.replace('media', 'temp', 1)
+
+AVATAR_SIZE = '90x90'
 
 ACTIVATION_URL = 'http://mixim.ru/activate/'
