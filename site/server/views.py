@@ -327,6 +327,10 @@ def comment_last(request, type='outbox'):
         return Comment.objects.filter(media__author=request.user, deleted=False).order_by('-created')
     elif type == 'outbox':
         return Comment.objects.filter(author=request.user, deleted=False).order_by('-created')
+    elif type == 'all':
+        return Comment.objects.order_by('-created')[:10]
+    else:
+        return False
 
 
 @serialize
