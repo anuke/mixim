@@ -85,15 +85,30 @@ def auth_activate(request, activation_key):
 @require_method("GET")
 @require_exist(User)
 def auth_reset_password(request):
-    email = request.GET['email']
+    email = request.GET['email']i
     user = User.objects.get(username=email)
+    profile = UserProfile.objects.get(user=User.objects.get(username=email))
+
+    reset_password = ''.join(random.choice(string.letters + string.digits) for n in range(32))
+    profile.reset_password = reset_password
+    profile.save()
+
+    send_mail_to_user(user, 'password_reset', { 'reset_key': reset_password })
+
+
+@serialize
+@require_method("GET")
+@require_exist(User)
+def auth_autocreate_password(request):
+    reset_key = request.GET['key']
+    user = User.objects.get(profile=UserProfile.objects.get(password_reset=reset_key))
 
     password = ''.join(random.choice(string.letters + string.digits) for n in range(8))
     user.set_password(password)
     user.save()
 
-    send_mail_to_user(user, 'password_reset', { 'password': password })
-
+    send_mail_to_user(user, 'password_changed', { 'password': password })
+    redirect('/notify_remail.shtml')
 
 @serialize
 @require_method("POST")
