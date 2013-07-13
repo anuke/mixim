@@ -85,7 +85,7 @@ def auth_activate(request, activation_key):
 @require_method("GET")
 @require_exist(User)
 def auth_reset_password(request):
-    email = request.GET['email']i
+    email = request.GET['email']
     user = User.objects.get(username=email)
     profile = UserProfile.objects.get(user=User.objects.get(username=email))
 
@@ -326,6 +326,22 @@ def media_save(request, media):
         raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
 
     form.save()
+
+
+@serialize
+@require_method("GET")
+@require_auth
+def friend_add(request, username):
+    friend = User.objects.get(username = username)
+    return request.user.profile.add_friend(friend)
+
+
+@serialize
+@require_method("GET")
+@require_auth
+def friend_remove(request, username):
+    friend = User.objects.get(username = username)
+    return request.user.profile.remove_friend(friend)
 
 
 @serialize

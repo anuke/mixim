@@ -43,6 +43,9 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/media/enable/(\d+)/', 'server.views.media_enable'),
     url(r'^([^/]+)/media/disable/(\d+)/', 'server.views.media_disable'),
 
+    url(r'^([^/]+)/friend/add/([^/]+)/', 'server.views.friend_add'),
+    url(r'^([^/]+)/friend/remove/([^/]+)/', 'server.views.friend_remove'),
+
     url(r'^([^/]+)/comment/list/(\d+)/', 'server.views.comment_list'),
     url(r'^([^/]+)/comment/last/all/$', 'server.views.comment_all_last'),
     url(r'^([^/]+)/comment/last/(\w+)/$', 'server.views.comment_last'),
