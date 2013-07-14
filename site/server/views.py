@@ -329,6 +329,22 @@ def media_save(request, media):
 
 @serialize
 @require_method("GET")
+@require_auth
+def friend_add(request, username):
+    friend = User.objects.get(username = username)
+    return request.user.profile.add_friend(friend)
+
+
+@serialize
+@require_method("GET")
+@require_auth
+def friend_remove(request, username):
+    friend = User.objects.get(username = username)
+    return request.user.profile.remove_friend(friend)
+
+
+@serialize
+@require_method("GET")
 @require_id(MediaFile, enabled=True)
 def comment_list(request, media):
     return media.comments.filter(deleted=False)

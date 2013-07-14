@@ -36,6 +36,17 @@ class UserProfile(models.Model):
         Like.objects.filter(user=self.user, media=media).delete()
         return True
 
+    def add_friend(self, friend):
+        rel, created = Friendship.objects.get_or_create(user = self.user, friend = friend)
+        return created
+
+    def remove_friend(self, friend):
+        queryset = Friendship.objects.filter(user = self.user, friend = friend)
+        exists = bool(queryset.count())
+        if exists:
+            queryset.delete()
+        return exists
+
     def get_avatarurl(self):
         if self.avatar:
             return self.avatar.url
@@ -285,6 +296,11 @@ class Like(models.Model):
     user    = models.ForeignKey(User)
     media   = models.ForeignKey(MediaFile)
     created = models.DateTimeField(name=_("Created"), auto_now_add=True)
+
+
+class Friendship(models.Model):
+    user    = models.ForeignKey(User, related_name = 'follows')
+    friend  = models.ForeignKey(User, related_name = 'followed_by')
 
 
 # Signal callbacks
