@@ -214,38 +214,9 @@ def pet_disable(request, pet):
 
 @serialize
 @require_method("GET")
-def media_list(request, start=0, limit=10):
-    tags      = request.GET.get('tags')
-    authors   = request.GET.get('authors')
-    author_id = request.GET.get('author_id')
-    pet_id    = request.GET.get('pet_id')
-    breed     = request.GET.get('breed')
-    gender    = request.GET.get('gender')
-
+def media_list(request, start = 0, limit = 10):
     query = MediaFile.enabled_objects.all()
-    if tags:
-        query = query.tagged_with(tags)
-    if authors:
-        query = query.posted_by(authors)
-    if author_id:
-        query = query.with_author(author_id)
-    if pet_id:
-        query = query.with_pet(pet_id)
-    if breed:
-        query = query.with_breed(breed)
-    if gender:
-        query = query.with_gender(gender)
-
-    start = int(start)
-    limit = int(limit)
-    end = start + limit
-
-    result = list(query[start:end])
-    # TODO: rewrite to left join
-    if request.user.is_authenticated():
-        for media in result:
-            media.aware_of(request.user)
-    return result
+    return __list_media(request, query, start, limit)
 
 
 @serialize
@@ -355,6 +326,14 @@ def friend_list(request):
         'friends':   map_username(profile.friends),
         'friend_of': map_username(profile.friend_of),
     }
+
+
+@serialize
+@require_method("GET")
+@require_auth
+def friend_media(request, start = 0, limit = 10):
+    query = MediaFile.enabled_objects.filter(author__in=request.user.profile.friends)
+    return __list_media(request, query, start, limit)
 
 
 @serialize
@@ -476,3 +455,39 @@ def show_user_page(request, username):
     })
 
     return render_to_response('user/user_page.html', context_instance=context)
+
+
+# util region
+
+def __list_media(request, query, start, limit):
+    tags      = request.GET.get('tags')
+    authors   = request.GET.get('authors')
+    author_id = request.GET.get('author_id')
+    pet_id    = request.GET.get('pet_id')
+    breed     = request.GET.get('breed')
+    gender    = request.GET.get('gender')
+
+    query = query.order_by('-created')
+    if tags:
+        query = query.tagged_with(tags)
+    if authors:
+        query = query.posted_by(authors)
+    if author_id:
+        query = query.with_author(author_id)
+    if pet_id:
+        query = query.with_pet(pet_id)
+    if breed:
+        query = query.with_breed(breed)
+    if gender:
+        query = query.with_gender(gender)
+
+    start = int(start)
+    limit = int(limit)
+    end = start + limit
+
+    result = list(query[start:end])
+    # TODO: rewrite to left join
+    if request.user.is_authenticated():
+        for media in result:
+            media.aware_of(request.user)
+    return result
