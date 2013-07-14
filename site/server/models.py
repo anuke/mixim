@@ -36,6 +36,8 @@ class UserProfile(models.Model):
         Like.objects.filter(user=self.user, media=media).delete()
         return True
 
+    # friends region
+
     def add_friend(self, friend):
         rel, created = Friendship.objects.get_or_create(user = self.user, friend = friend)
         return created
@@ -46,6 +48,17 @@ class UserProfile(models.Model):
         if exists:
             queryset.delete()
         return exists
+
+    def get_friends(self):
+        return map(lambda f: f.friend, self.user.follows.all())
+
+    def get_friend_of(self):
+        return map(lambda f: f.who, self.user.followed_by.all())
+
+    friends   = property(get_friends)
+    friend_of = property(get_friend_of)
+
+    # avatar region
 
     def get_avatarurl(self):
         if self.avatar:

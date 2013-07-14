@@ -345,6 +345,20 @@ def friend_remove(request, username):
 
 @serialize
 @require_method("GET")
+@require_auth
+def friend_list(request):
+    def map_username(users):
+        return map(lambda user: user.username, users)
+
+    profile = request.user.profile
+    return {
+        'friends':   map_username(profile.friends),
+        'friend_of': map_username(profile.friend_of),
+    }
+
+
+@serialize
+@require_method("GET")
 @require_id(MediaFile, enabled=True)
 def comment_list(request, media):
     return media.comments.filter(deleted=False)
