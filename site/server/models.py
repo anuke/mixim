@@ -269,7 +269,7 @@ class MediaFile(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'authorId:author.profile.id', 'author:author.username',
+            'id', 'authorId:author.profile.id', 'author:author.username', 'authorAvatar:author.profile.avatarurl',
             'petId:pet.id', 'pet:pet.name', 'created', 'original', 'thumbnail',
             'description', 'tags', 'likes', 'favourite',)
 
