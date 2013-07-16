@@ -366,8 +366,9 @@ def comment_all_last(request, type='outbox'):
 def comment_add(request, media):
     author = request.user
     text   = request.POST.get('text')
+    if text.strip() != '':
+        Comment.objects.create(author=author, media=media, text=text)
 
-    Comment.objects.create(author=author, media=media, text=text)
 
 
 #TODO: check owner deleted
