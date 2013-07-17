@@ -142,6 +142,18 @@ def user_check(request, username):
 
 @serialize
 @require_method("GET")
+def user_likes(request, start = 0, limit = 10):
+    start = int(start)
+    limit = int(limit)
+    end = start + limit
+
+    query = Like.objects.filter(user = request.user).order_by('-created')
+    #query = Like.objects.filter(media__author = request.user).order_by('-created')
+    return query[start:end]
+
+
+@serialize
+@require_method("GET")
 @require_id(User)
 def profile_get(request, user):
     return user.profile

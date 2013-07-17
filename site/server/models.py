@@ -310,6 +310,9 @@ class Like(models.Model):
     media   = models.ForeignKey(MediaFile)
     created = models.DateTimeField(name=_("Created"), auto_now_add=True)
 
+    def plain_data(self):
+        return to_plain_data(self, 'user:user.username', 'created', 'media')
+
 
 class Friendship(models.Model):
     user    = models.ForeignKey(User, related_name = 'follows')
