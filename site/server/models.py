@@ -235,6 +235,7 @@ class MediaFile(models.Model):
     original  = property(lambda self: self.file.url)
     thumbnail = property(lambda self: thumbnail_url(self.file.url))
     likes     = property(lambda self: self.like_set.count())
+    comments  = property(lambda self: self.comment_set.filter(deleted=False))
 
     def enable(self):
         self.enabled = True
@@ -284,7 +285,7 @@ class MediaFile(models.Model):
 
 class Comment(models.Model):
     author  = models.ForeignKey(User)
-    media   = models.ForeignKey(MediaFile, related_name='comments')
+    media   = models.ForeignKey(MediaFile)
     created = models.DateTimeField(name=_("Created"), auto_now_add=True)
     text    = models.TextField(name=_("Text"))
     deleted = models.BooleanField(name=_("Deleted"))
