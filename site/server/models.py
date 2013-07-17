@@ -311,7 +311,7 @@ class Like(models.Model):
     created = models.DateTimeField(name=_("Created"), auto_now_add=True)
 
     def plain_data(self):
-        return to_plain_data(self, 'user:user.username', 'created', 'media')
+        return to_plain_data(self, 'user:user.username', 'userAvatar:user.profile.avatarurl', 'created', 'media')
 
 
 class Friendship(models.Model):
