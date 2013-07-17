@@ -147,8 +147,7 @@ def user_likes(request, start = 0, limit = 10):
     limit = int(limit)
     end = start + limit
 
-    query = Like.objects.filter(user = request.user).order_by('-created')
-    #query = Like.objects.filter(media__author = request.user).order_by('-created')
+    query = Like.objects.filter(media__author = request.user).order_by('-created')
     return query[start:end]
 
 
