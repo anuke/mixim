@@ -222,6 +222,7 @@ class EnabledMediaFileManager(MediaFileManager):
 class MediaFile(models.Model):
     author      = models.ForeignKey(User)
     pet         = models.ForeignKey(Pet, null=True, blank=True, related_name='media_files')
+    species     = models.CharField(name=_("Species"), max_length=50, blank=True, null=True)
     created     = models.DateTimeField(name=_("Created"), auto_now_add=True)
     file        = models.FileField(name=_("File"), upload_to=media_upload_path)
     description = models.TextField(name=_("Description"), null=True, blank=True)
