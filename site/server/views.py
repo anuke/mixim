@@ -142,6 +142,18 @@ def user_check(request, username):
 
 @serialize
 @require_method("GET")
+def user_species(request, species):
+    if species:
+        request.session['species'] = species
+        request.session.modified = True
+    if not request.session['species']:
+        request.session['species'] = DEFAULT_SPECIES
+        request.session.modified = True
+    return request.session['species']
+
+
+@serialize
+@require_method("GET")
 def user_likes(request, start = 0, limit = 10):
     start = int(start)
     limit = int(limit)
