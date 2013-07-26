@@ -16,7 +16,6 @@ from utils import send_mail_to_user
 
 import settings
 
-
 @serialize
 @require_method("POST")
 def auth_register(request):
@@ -143,13 +142,7 @@ def user_check(request, username):
 @serialize
 @require_method("GET")
 def user_species(request, species):
-    if species:
-        request.session['species'] = species
-        request.session.modified = True
-    if not request.session['species']:
-        request.session['species'] = DEFAULT_SPECIES
-        request.session.modified = True
-    return request.session['species']
+    return current_species(request, species)
 
 
 @serialize
@@ -515,3 +508,13 @@ def __list_media(request, query, start, limit):
         for media in result:
             media.aware_of(request.user)
     return result
+
+def current_species(request, species = None):
+    session = request.session
+    if species:
+        session['species'] = species
+        session.modified = True
+    if not session['species']:
+        session['species'] = DEFAULT_SPECIES
+        session.modified = True
+    return session['species']
