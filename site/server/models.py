@@ -203,6 +203,12 @@ class MediaFileQuerySet(QuerySet):
         else:
             return self;
 
+    def with_species(self, species):
+        if species:
+            return self.filter(species=species)
+        else:
+            return self
+
 
 class MediaFileManager(models.Manager):
     def get_query_set(self):
