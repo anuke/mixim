@@ -136,10 +136,13 @@ class MediaForm(forms.ModelForm):
 
     class Meta:
         model = MediaFile
-        fields = ("pet", "file", "description")
+        fields = ("pet", "file", "description", "species")
 
     def save(self, commit=True):
         media = super(MediaForm, self).save(commit=False)
+
+        if not media.species and media.pet:
+            media.species = media.pet.species
 
         if commit:
             media.save()
