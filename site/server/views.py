@@ -517,7 +517,7 @@ def current_species(request, species = None):
     if species:
         session['species'] = species
         session.modified = True
-    if not session['species']:
-        session['species'] = DEFAULT_SPECIES
+    if not session.get('species'):
+        session['species'] = settings.DEFAULT_SPECIES
         session.modified = True
     return session['species']
