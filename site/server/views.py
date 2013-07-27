@@ -483,7 +483,7 @@ def __list_media(request, query, start, limit):
     pet_id    = request.GET.get('pet_id')
     breed     = request.GET.get('breed')
     gender    = request.GET.get('gender')
-    species   = request.GET.get('species')
+    species   = current_species(request)
 
     query = query.order_by('-created')
     if tags:
