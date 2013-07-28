@@ -372,7 +372,8 @@ def comment_last(request, type='outbox'):
 
 @serialize
 def comment_all_last(request, type='outbox'):
-    return Comment.objects.filter(deleted=False).order_by('-created')[:10]
+    species = current_species(request)
+    return Comment.objects.filter(deleted=False, media__species=species).order_by('-created')[:10]
 
 
 @serialize
