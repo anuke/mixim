@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MIXIM - Мы их любим</title>
+<title>MIXIM - для тех, кто любит и очень любит животных</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 
 <script src="/js/underscore-min.js"></script>
 <script src="/js/backbone-min.js"></script>
 <script src="/js/jquery-1.8.3.min.js"></script>
-<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <script src="/js/jquery.watermark.min.js"></script>
 <script src="/js/vendor/jquery.ui.widget.js"></script>
 <script src="/js/jquery.iframe-transport.js"></script>
@@ -19,32 +19,8 @@
 <script src="/js/app/api.js"></script>
 <script src="/js/app/util.js"></script>
 <script src="/js/app/gallery.js"></script>
-<script type="text/javascript">
-    IMG_PER_ROW = 7;
-    IMG_PER_COL = 4;
-</script>
 <script src="/js/app/media.js"></script>
-<script type="text/javascript"> <!-- !ВАЖНО! перенеси этот код в media.js -->
-function on_logged(logged) {
-    $('#noauto_block').toggle(!logged);
-    $('#auto_block').toggle(logged);
-    $('.s__not_logged').toggle(!logged);
-    $('.s__logged').toggle(logged);
-}
 
-Auth.on("logged", function (logged) {
-    show_window(logged ? 'cabinet' : 'login');
-    on_logged(logged);
-});
-
-Auth.on("login", function () {
-    on_logged(true);
-})
-
-Auth.on("logout", function () {
-    on_logged(false);
-})
-</script>
 </head>
 <body class="user">
 <table width="100%" height="100%" align="center" border="0" cellspacing="0" cellpadding="0">
@@ -76,7 +52,7 @@ Auth.on("logout", function () {
                             </tr>
                                 <td align="center" height="180px">
                                     <h2>{{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
-                                    <p>Я обожаю собак</p>
+                                    <!--p>Я обожаю собак</p-->
                                 </td>
                             </tr>
                         </table>
@@ -87,7 +63,7 @@ Auth.on("logout", function () {
     </tr>
     <tr>
         <td align="center" valign="top">
-            <div style="width:980px;">
+            <div class="user_page_content_box">
                 {% for media in media_list %}
                 <div class="user_grid_box">
                     <a href="#" class="user_grid_photo" onclick="show_photo({{ media.id }})">
@@ -111,9 +87,9 @@ Auth.on("logout", function () {
                 </div>
                 {% endfor %}
             </div>
-            <br>
+            <!--br>
             <a href="#" style="color:#f24f00;"> Показать еще... </a>
-            <br>
+            <br-->
             <br>
         </td>
     </tr>
@@ -152,236 +128,31 @@ Auth.on("logout", function () {
 <!-- Окно сообщений (конец) -->
 
 <!-- Окно фотографии (начало) - по умолчанию скрыто -->
-<!--#include virtual="photo_win.html" -->
-{% include 'include/photo_win.html' %}
+    {% include 'include/photo_win.html' %}
 <!-- Окно фотографии (конец) -->
 
-<!--#include virtual="message_box.html" -->
 {% include 'include/message_box.html' %}
 
 <!-- Блок затенения (начало)-->
     <div id="overlay"></div>
 <!-- Блок затенения (конец)-->
 
-
 <!-- География сообщества (начало) -->
-        <script src="/js/app/geo.js"></script>
-
-        <table class="sitemap_block">
-            <tr>
-                <td class="sitemap_bkg">
-                    <table width="880px" align="center" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td width="120px" align="center" class="sitemap_l">
-                                <!--div class="sitemap_2" onmouseover="show_language('Language_EN')">
-                                    <a>Language</a>
-                                </div-->
-                                <div class="sitemap_2" onmouseover="show_language('Language_RU')">
-                                    <a>Язык</a>
-                                </div>
-                            </td>
-                            <td width="120px" align="center">
-                                <div id="Language_EN" style="display:none;">
-                                    <div class="sitemap_2" onmouseover="show_map_uk();">
-                                        <a href="http://www.mixim.co.uk">United Kingdom</a>
-                                    </div>
-                                    <div class="sitemap_2" onmouseover="show_map_us();">
-                                        <a href="http://www.mixim.us">United States</a>
-                                    </div>
-                                </div>
-                                <div id="Language_RU" style="display:none;">
-                                    <div class="sitemap_2" onmouseover="show_map_by();">
-                                        <a href="http://www.mixim.ru">Беларусь</a>
-                                    </div>
-                                    <div class="sitemap_2" onmouseover="show_map_ru();">
-                                        <a href="http://www.mixim.ru">Россия</a>
-                                    </div>
-                                    <div class="sitemap_2" onmouseover="show_map_ua();">
-                                        <a href="http://www.mixim.ru">Украина</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td align="center">
-                                <div id="country" class="sitemap_country">
-                                    <a href="index.shtml" target="_self">www.mixim.ru</a>
-                                </div>
-                            </td>
-                            <td width="40px" valign="top" align="right">
-                                <a href="#" title="Закрыть окно" class="sitemap_block_off">
-                                    <img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно">
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                    <!--table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
-                        <tr>
-                            <td class="animals_window_caption">География</td>
-                            <td align="right" valign="top"><a href="#" title="Закрыть окно" class="sitemap_block_off"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="text_block">
-                                    География
-                                </div>
-                            </td>
-                        </tr>
-                    </table-->
-                </td>
-            </tr>
-        </table>
+    {% include 'include/geo.html' %}
 <!-- География сообщества (конец) -->
 
-<!--#include virtual="feedback.html" -->
-{% include 'include/feedback.html' %}
+<!-- Пишите письма (начало) -->
+    {% include 'include/feedback.html' %}
+<!-- Пишите письма (конец) -->
 
 <!-- Регламент (начало) -->
-        <script type="text/javascript">
-                $(document).ready(function(){
-                  $('a.rules_block_on').click(function() {
-                        $('body').css('overflow-y', 'hidden'); // убираем скрол
-                        $('#overlay').show(); // заеняем
-                        $('.rules_block').show(); // показываем окно
-                  });
-
-                  $('a.rules_block_off').click(function() {
-                        $('body').css('overflow-y', 'auto'); // возвращаем скрол
-                        $('#overlay').hide(); // освеляем
-                        $('.rules_block').hide(); // скрываем окно
-                  });
-                });
-        </script>
-        <table class="rules_block">
-            <tr>
-                <td>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
-                        <tr>
-                            <td class="animals_window_caption">Регламент</td>
-                            <td align="right" valign="top"><a href="#" title="Закрыть окно" class="rules_block_off"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="text_block">
-                                    <p>Перед началом использования (регистрацией) социальной сети, Вам (как пользователю) необходимо ознакомиться с настоящими правилами, тем самым, принимая и соблюдая условия использования социальной сети.</p>
-                                    <ul style="border:1px solid #333333;">Вкратце:<br>
-                                        <li>-&nbsp;Наш сайт о питомцах и для них, для тех, кто стал нашими домашними любимцами. Человеку на этом праздники жизни выделена роль автобиографа, спецкорреспондента, фотографа. оператора а значит, к публикации будет допущен только собственный контент <i>- фото, видео и т.д.</i></li>
-                                    </ul>
-                                    <ul style="border:1px solid #333333;">
-                                        Важно знать, что:<br>
-                                        <li>-&nbsp;желательно заполнять о себе полную информацию <i>– полезно при поиске</i>;</li>
-                                        <li>-&nbsp;не стесняйтесь рассказывать о себе <i>– сообщество должно знать своих героев</i>;</li>
-                                        <li>-&nbsp;указывайте свое настоящее имя и фамилию <i>– вашим друзьям будет легче вас найти</i>;</li>
-                                        <li>-&nbsp;заполняйте все поля при создании профиля Питомца <i>– для лучшего поиска его фотографий</i>;</li>
-                                        <li>-&nbsp;в качестве аватара лучше загружать свою фотографию или нейтральную картинку</i>;</li>
-                                        <li>-&nbsp;пишите о своих питомцах <i>– это всем интересно</i>;</li>
-                                        <li>-&nbsp;если вы собираетесь продать помет, обязательно укажите это</i>;</li>
-                                        <li>-&nbsp;вступая в полемику, хваля или ругая, аргументируйте свое мнение;</li>
-                                        <li>-&nbsp;комментируйте загружаемые фотографии <i>– их будет легче понять</i>;</li>
-                                        <li>-&nbsp;обязательно вводите ключевые слова-метки (теги) к фотографиям <i>- людям будет проще найти интересующие их фото</i>.</li>
-                                    </ul>
-                                    <ul style="border:1px solid #ff0000;">
-                                        Подробнее о том, что запрещено:<br>
-                                        <li>-&nbsp;употребление ненормативной лексики, даже завуалировано;</li>
-                                        <li style="color:red;">-&nbsp;переходить на личности, оскорблять питомца и клеветать<b>*</b>;</li>
-                                        <li>-&nbsp;употреблять ругательства любых видов, на любом языке и особенно замаскированные;</li>
-                                        <li style="color:red;">-&nbsp;размещать записи аморальные или безнравственные<b>*</b>;</li>
-                                        <li>-&nbsp;попрошайничать или организовывать сборы любых материальных ценностей;</li>
-                                        <li>-&nbsp;одному человеку регистрировать более одно аккаунта;</li>
-                                        <li>-&nbsp;размещать информацию рекламного характера на аватарах, именах питомцев, равно и в своем имени;</li>
-                                        <li>-&nbsp;вносить неверные данные в поля данных, относящихся к географии <i>– город, страна и т.п.</i>;</li>
-                                        <li>-&nbsp;размещать игрушечных питомцев, чужих питомцев или вымышленных;</li>
-                                        <li>-&nbsp;рассказывать о питомце без фотографии;</li>
-                                        <li style="color:red;">-&nbsp;размещать как сам контент эротического и порнографического характера, так и ссылки на него<b>*</b>;</li>
-                                        <li>-&nbsp;вносить информацию рекламного характера в поле дополнительной информации о питомце;</li>
-                                        <li>-&nbsp;плагиат в описании вашего питомца или своем описании, полностью и частично;</li>
-                                        <li>-&nbsp;размещать контент, копирование, которого прямо запрещено правообладателем или его автором;</li>
-                                        <li>-&nbsp;писать о питомце рассказ, в контексте которого невозможно идентифицировать питомца, которому посвящен рассказ;</li>
-                                        <li>-&nbsp;загружать фотографии чужих питомцев, указывая как свои;</li>
-                                        <li>-&nbsp;загружать и создавать питомца в не соответствующие его виду разделах <i>- собаки не кошки, черепахи совсем не лошади, а грызуны далеко не птицы и т.п.</i></li>
-                                        <li>-&nbsp;загружать под видом фотографий текст, схемы, и т.п.;</li>
-                                        <li>-&nbsp;загружать несколько раз одну и ту же фотографию;</li>
-                                        <li>-&nbsp;размещать фотографии с надписями рекламного, оскорбительного характера или с призывами к каким-либо действиям на сайте;</li>
-                                        <li>-&nbsp;помещать на фото элементы дизайна или интерфейса сайтов или операционных систем;</li>
-                                        <li>-&nbsp;оставлять комментарии не по теме;</li>
-                                        <li>-&nbsp;оставлять частые, несодержательные или бессмысленные комментарии, т.е. флудить.</li>
-                                    </ul>
-                                    <p style="color:red;"><b>*</b> - случай, когда аккаунт участника будет заблокирован немедленно, мало того, при обнаружении этой персоны в сообществе под другим акаунтом, будет произведена повторная блокировка персоны – значит вам тут не рады.</p>
-                                    <p>Лучший способ не нарушать правила - всем нам в месте насладиться любовью к себе и нашим питомцам!</p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="button_1_buble">
-                                <div class="button_1">
-                                    <center>
-                                        <a href="#" class="rules_block_off">Закрыть</a>
-                                    </center>
-                                <div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+    {% include 'include/rules.html' %}
 <!-- Регламент (конец) -->
-<!-- О проекте (начало) -->
-        <script type="text/javascript">
-                $(document).ready(function(){
-                  $('a.about_block_on').click(function() {
-                        $('body').css('overflow-y', 'hidden'); // убираем скрол
-                        $('#overlay').show(); // заеняем
-                        $('.about_block').show(); // показываем окно
-                  });
 
-                  $('a.about_block_off').click(function() {
-                        $('body').css('overflow-y', 'auto'); // возвращаем скрол
-                        $('#overlay').hide(); // освеляем
-                        $('.about_block').hide(); // скрываем окно
-                  });
-                });
-        </script>
-        <table class="about_block">
-            <tr>
-                <td>
-                    <table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
-                        <tr>
-                            <td class="animals_window_caption">О проекте</td>
-                            <td align="right" valign="top"><a href="#" title="Закрыть окно" class="about_block_off"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="text_block">
-                                    <p>Мы создали этот ресурс, потому что мы такие же, как и вы.</p>
-                                    <p>Мы - Люди, которые любят и очень любят Животных. Мы разговариваем с ними, любуемся и восхищаемся ими. Мы с вами готовы говорить о них, показывать их, советовать для них - потому что знаем о них все.</p>
-                                    <p>А еще мы готовы спрашивать, узнавать, советоваться, и все потому, что хотим узнать о них еще больше.</p>
-                                    <p>Они шкодят, ревнуют нас и даже кусают, а мы им все прощаем, получая взамен тепло, искренность, любовь и преданности. Многие из них готовы отдать за нас свою жизнь.</p>
-                                    <p>Главные действующие лица нашего сообщества – Животные – наши Любимцы.</p>
-                                    <p>И так – показываем, рассказываем,  спрашиваем, обсуждаем, советуем, восхищаемся, восторгаемся, любуемся...</p>
-                                    <ul style="border:1px solid #333333;">
-                                        Присоединиться к сообществу очень просто.<br>Достаточно загрузить приложение на ваш смартфон или планшет, или же зарегистрироваться на сайте.
-                                        <li>Загружайте фотографии своих любимцев - одну, несколько или сколько угодно.</li>
-                                        <li>Пишите о них рассказы, снимайте видео.</li>
-                                        <li>Пусть ваших героев увидят и оценят другие люди.</li>
-                                        <li>Вы расширите круг знакомых, единомышленников и приобретете новых друзей.</li>
-                                        <li>Участвуйте в конкурсах!</li>
-                                    </ul>
-                                    <p>Неважно, есть у вас питомец или вы его только хотите завести, мы будем рады всем!</p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="button_1_buble">
-                                <div class="button_1">
-                                    <center>
-                                        <a href="#" title="Закрыть окно" class="about_block_off">Закрыть</a>
-                                    </center>
-                                <div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+<!-- О проекте (начало) -->
+    {% include 'include/about.html' %}
 <!-- О проекте (конец) -->
+
 
 <!-- Google Analytic (начало) -->
 <script>
