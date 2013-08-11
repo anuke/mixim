@@ -127,6 +127,7 @@ class Pet(models.Model):
 class Breed(models.Model):
     name   = models.CharField(name=_("Name"), max_length=150)
     fci_no = models.IntegerField(name=_("FCI Standard No"), blank=True, null=True)
+    species  = models.CharField(name=_("Species"), max_length=50, blank=True, null=True)
 
     def __unicode__(self):
         return self.name
