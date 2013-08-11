@@ -402,14 +402,16 @@ def comment_delete(request):
 @serialize
 @require_method("GET")
 def breed_dict(request):
-    return Breed.objects.order_by('name')
+    species = request.GET.get('species', current_species(request))
+    return Breed.objects.filter(species=species).order_by('name')
 
 
 @serialize
 @require_method("GET")
 def breed_available(request):
     term = request.GET.get('term', '')
-    return Pet.objects.filter(breed__icontains=term, enabled=True).order_by('breed').distinct('breed').values('breed')
+    species = request.GET.get('species', current_species(request))
+    return Pet.objects.filter(species=species, breed__icontains=term, enabled=True).order_by('breed').distinct('breed').values('breed')
 
 
 @serialize
