@@ -53,7 +53,7 @@ class UserProfile(models.Model):
         return map(lambda f: f.friend, self.user.follows.all())
 
     def get_friend_of(self):
-        return map(lambda f: f.who, self.user.followed_by.all())
+        return map(lambda f: f.user, self.user.followed_by.all())
 
     friends   = property(get_friends)
     friend_of = property(get_friend_of)
