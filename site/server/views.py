@@ -465,7 +465,7 @@ def handle404(request):
 def show_user_page(request, username):
     user = User.objects.get(username=username)
     page = int(request.GET.get('page', 1))
-    per_page = 20
+    per_page = 40
     start = (page - 1) * per_page
     end = start + per_page
     media_list = MediaFile.enabled_objects.with_author(user.id)[start:end]
