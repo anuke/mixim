@@ -92,8 +92,23 @@
             <br-->
             <br>
         </td>
-    </tr>
+    </tr>1
 </table>
+
+<script>                                                                       
+    var user_avatar = '../images/user_unisex.png';                             
+    if ( '{{ profile.gender }}' == 'M' ) {                                     
+        user_avatar = '../images/user_male.png'                                
+    }                                                                          
+    if ( '{{ profile.gender }}' == 'F') {                                      
+        user_avatar = '../images/user_female.png'                              
+    }                                                                          
+    if ( '{{ profile.avatar}}' !== '' ) {                                      
+        user_avatar = '/media/{{ profile.avatar}}'                             
+    }                                                                          
+    $('#userpage_avatar').attr('src', user_avatar);                            
+</script>
+
 <table class="footer" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td>&nbsp;</td>
