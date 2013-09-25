@@ -1,0 +1,3 @@
+#!/bin/bash
+
+PYTHONPATH=..:/usr/lib/python2.7:/usr/lib/python2.7/plat-linux2:/usr/local/lib/python2.7/dist-packages:/usr/lib/python2.7/dist-packages:/usr/lib/pymodules/python2.7 DJANGO_SETTINGS_MODULE=settings ./manage.py shell

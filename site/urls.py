@@ -51,6 +51,8 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/friend/list/', 'server.views.friend_list'),
     url(r'^([^/]+)/friend/media/', 'server.views.friend_media'),
 
+    url(r'^([^/]+)/discussion/list/', 'server.views.discussions'),
+
     url(r'^([^/]+)/comment/list/(\d+)/', 'server.views.comment_list'),
     url(r'^([^/]+)/comment/last/all/$', 'server.views.comment_all_last'),
     url(r'^([^/]+)/comment/last/(\w+)/$', 'server.views.comment_last'),

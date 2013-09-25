@@ -353,6 +353,11 @@ def friend_media(request, start = 0, limit = 10):
 
 
 @serialize
+@require_auth
+def discussions(request):
+    return MediaFile.objects.filter(comment__author=request.user).distinct()
+
+@serialize
 @require_method("GET")
 @require_id(MediaFile, enabled=True)
 def comment_list(request, media):
