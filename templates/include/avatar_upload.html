@@ -1,0 +1,63 @@
+<!-- Добавление аватарки (начало) -->
+    <script>
+        function open_uploadavatar() {
+            if (!is_logged()) {
+                my_alert('', 'Создание аватарки доступно только зарегистрированным пользователям.');
+                return;
+            }
+
+            $('body').css('overflow-y', 'hidden');
+            $('#overlay').show();
+            $('.set_avatar_block').show();
+        }
+
+        jQuery(document).ready(function () {
+            $('#avatar_file').fileupload({
+                dataType: 'json',
+                done: function (e, data) {
+                    $('a.s__avatar_upload_win_close').click();
+                    var response = data.result;
+                    if (response.success) {
+                        $('#avatar').attr('src', response.result);
+                    }
+                }
+            });
+
+            $('a.s__avatar_upload_win_open').click(open_upload(null));
+
+            $('a.s__avatar_upload_win_close').click(function() {
+                $('body').css('overflow-y', 'auto');
+                $('#overlay').hide();
+                $('.set_avatar_block').hide();
+            });
+                });
+    </script>
+        <!-- Окно выбора файла (начало)-->
+                <table class="set_avatar_block">
+                        <tr>
+                <td>
+                    <table width="460" align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
+                        <tr>
+                            <td class="set_avatar_window_caption"><span>Загрузка изображения</span><br><span class="animals_window_tooltip">&nbsp;</span></td>
+                            <td align="right" valign="top"><a href="#" title="Закрыть окно" class="s__avatar_upload_win_close"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td>
+                                            <div class="set_avatar_box">
+                                                <div style="margin-bottom:10px; font-size:12px;">Выберите файл для загрузки на сервер</div>
+                                                <span><input id="avatar_file" name="avatar" type="file" accept="image/jpeg" data-url="/json/media/avatarupload/"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+                </table>
+        <!-- Окно выбора файла (конец) -->
+<!-- Добавление аватарки (конец) -->

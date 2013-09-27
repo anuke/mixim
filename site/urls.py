@@ -9,8 +9,10 @@ urlpatterns = patterns('',
     # url(r'^$', 'idrop.views.home', name='home'),
     # url(r'^idrop/', include('idrop.foo.urls')),
 
+    url(r'^$', 'server.views.show_static_page'),
     url(r'^activate/([A-Z0-9]+)/$', 'server.views.auth_activate'),
     url(r'^404/$', 'server.views.handle404'),
+    url(r'(.*?).shtml$', 'server.views.show_static_page'),
     url(r'^@([^/]+)/$', 'server.views.show_user_page'),
 
     url(r'^([^/]+)/auth/register/', 'server.views.auth_register'),

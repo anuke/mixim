@@ -1,0 +1,90 @@
+	<!-- Окно создания и редактирования питомца (начало)-->
+		<table id="pet_window" class="add_pet_block">
+			<tr>
+                <td>
+                    <table width="460" align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
+                        <tr>
+                            <td class="add_photo_window_caption"><span id="w1">Данные питомца</span><br><span class="animals_window_tooltip" id="w2">&nbsp;</span></td>
+                            <td align="right" valign="top"><a href="#" title="Закрыть окно" id="pet_window_close_link"><img src="images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" class="add_photo_cluster_buttons">
+                                <font style="color:#f24f00; font-size:10px;">Выбирете класс животного, к которому относиться ваш питомец ▼</font>
+                                <br>
+                                <img id="pw_cluster_button_img_dog" src="images/cluster_1.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('dog');" title="Собаки">
+                                <img id="pw_cluster_button_img_insect" src="images/cluster_2.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('insect');" title="Насекомые">
+                                <img id="pw_cluster_button_img_bird" src="images/cluster_3.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('bird');" title="Птицы">
+                                <img id="pw_cluster_button_img_cat" src="images/cluster_4.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('cat');" title="Кошки">
+                                <img id="pw_cluster_button_img_rodent" src="images/cluster_5.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('rodent');" title="Грызуны и кролики">
+                                <img id="pw_cluster_button_img_fish" src="images/cluster_6.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('fish');" title="Рыбы и моллюски">
+                                <img id="pw_cluster_button_img_reptile" src="images/cluster_7.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('reptile');" title="Земноводные и рептилии">
+                                <img id="pw_cluster_button_img_horse" src="images/cluster_8.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('horse');" title="Лошади и пони">
+                                <img id="pw_cluster_button_img_other" src="images/cluster_9.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('other');" title="Другие виды животных">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="300px" colspan="2" align="center" valign="top" style="background:url(/images/question_200.png) no-repeat; background-attachment:fixed; background-position:center center;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td id="pw_id_pets_list" class="pw_pets_list" align="center" valign="top" width="100px">
+                                        </td>
+                                        <td align="center" valign="top">
+                                            <div id="pw_pet_data" class="hidden" style="text-align:left; width:300px; height:292px; background-color:#ffff99;display:none;">
+                                                <input type="hidden" id="pet_id" value="">
+                                                <div id="pw_name" style="margin-bottom:10px;">
+                                                    <span class="redit_caption">Кличка:</span><br>
+                                                    <input id="pet_name" class="redit_body" type="text" value="" maxlength="256" style="width:300px;">
+                                                </div>
+                                                <div id="pw_breed" style="margin-bottom:10px;">
+                                                    <span class="redit_caption">Порода:</span><br>
+                                                    <select id="pet_breed" class="redit_body" style="width:301px;">
+                                                    </select>
+                                                </div>
+                                                <div id="pw_gender" style="margin-bottom:10px;">
+                                                    <span class="redit_caption">Пол:</span><br>
+                                                    <select id="pet_gender" class="redit_body" style="width:301px;">
+                                                        <option value="M" selected>Мальчик (самец)</option>
+                                                        <option value="F">Девочка (самка)</option>
+                                                    </select>
+                                                </div>
+                                                <div id="pw_color"style="margin-bottom:10px;">
+                                                    <span class="redit_caption">Окрас:</span><br>
+                                                    <input id="pet_color" class="redit_body" type="text" value="" maxlength="256" style="width:300px;">
+                                                </div>
+                                                <div id="pw_birthday" style="margin-bottom:10px;">
+                                                    <span class="redit_caption">Дата рождения:</span><br>
+                                                    <input id="pet_birthday" class="redit_body" type="text" value="" maxlength="256" style="width:300px;">
+                                                </div>
+                                                <div id="pw_about">
+                                                    <span class="redit_caption">Дополнительная информация:</span><br>
+                                                    <textarea id="pet_about" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:300px; height:54px;"></textarea>
+                                                    <input type="hidden" id="pet_species">
+                                                </div>
+                                                <br>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="button_1_buble">
+                                <div class="button_1">
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td id="pw_save_button" class="hidden">
+                                                <a href="#" id="pet_save_btn">Сохранить</a>
+                                            </td>
+                                            <td>
+                                                <a href="#" id="pet_close_btn">Закрыть</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                <div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+		</table>
+	<!-- Окно создания и редактирования питомца (конец) -->

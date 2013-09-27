@@ -1,0 +1,250 @@
+<div id="photo_window" style="display:none">
+    <div class="photo_close"><a href="#" id="photo_win_close_btn" title="Закрыть окно"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></div>
+    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="20" height="20" background="/images/corner_circle.png" style="background-position: 0px 0px;"></td>
+        <td background="/images/corner_top.png"></td>
+        <td background="/images/corner_circle.png" style="background-position: -20px 0px;"></td>
+      </tr>
+      <tr>
+        <td background="/images/corner_left.png"></td>
+        <td bgcolor="#ffff99">
+            <div id="image_window">
+                <!-- эти дивы будут прозначными на 75%, когда курсор будет в пределах класса photo, то прозрачность будет 0%,
+                если курсор покинет пространство класса photo, значение прозрачности будет 25|.25 тоесть сново 75% -->
+                <div class="info_image opa25 opacible">
+                    <table class="comments_image" width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="image_h1">Автор:</td>
+                            <td valign="top" style="text-transform:uppercase;"><a href="#" id="photo_author" target="_blank" title="к профилю пользователя">&nbsp;</a>&nbsp;</td>
+                            <td valign="bottom"><span class="image_h2">Коментарий:</span></td>
+                            <td align="right" valign="top"><span id="photo_created">&nbsp;</span></td>
+                        </tr>
+                        <tr>
+                            <td class="image_h1">Питомец:</td>
+                            <td valign="top" style="text-transform:capitalize;"><a id="photo_pet">&nbsp;</a>&nbsp;</td>
+                            <td colspan="2" rowspan="2" align="center" class="image_text" id="photo_description">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="image_h1">Теги:</td>
+                            <td valign="top" id="photo_tags">один, два, три</td>
+                        </tr>
+                    </table>
+                </div>
+                    <table class="photo_actions opa25 opacible" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="40px" align="center"> <!-- к предыдущему фото -->
+                                <!--a href="" title="К предыдущему фото">
+                                    <img src="/images/photo_previous.gif" width="30" height="60" border="0" alt="К предыдущему фото">
+                                </a-->
+                            </td>
+                            <td width="520px" align="center"> <!-- фото на полный экран -->
+                                <a href="javascript:full_screen()" rel="prettyPhoto">
+                                    <img src="/images/transparent_image.gif" width="500" height="400" title="Увеличить на полный экран" border="0">
+                                </a>
+                            </td>
+                            <td width="40px" align="center"> <!-- к следующему фото -->
+                                <!--a href="" title="К следующему фото">
+                                    <img src="/images/photo_next.gif" width="30" height="60" border="0" alt="К следующему фото">
+                                </a-->
+                            </td>
+                        </tr>
+                    </table>
+                <div class="pull_box opa25 opacible"> <!-- кнопка лайка -->
+                    <table align="center" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <div id="media_likes" class="pull_image">Мне нравится!</div>
+                            </td>
+                            <td>
+                                <div class="viewer_photo_bar">
+                                    <a id="media_like_btn" href="javascript:media_like()" class="pull_like" title="Мне нравится!">
+                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="Лайк">
+                                    </a>
+                                    <a id="media_unlike_btn" href="javascript:media_unlike()" class="pull_unlike" title="Уже не нравится">
+                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="Лайк">
+                                    </a>
+                                </div>
+                                <div class="author_photo_bar">
+                                    <a id="media_like_logo" class="pull_like" title="Ваши лайки">
+                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="Лайк">
+                                    </a>
+                                </div>
+                                <div class="guest_photo_bar">
+                                    <a id="media_like_logo" class="pull_like" title="Необходимо зарегестрироваться!">
+                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="Лайк">
+                                    </a>
+                                </div>
+                            </td>
+                            <!-- Этот кусок видят только авторы просматриваемого фото (начало)-->
+                            <td>
+                                <div class="author_photo_bar">
+                                    <a href="#" class="pull_public" title="Показывать фото всем!">
+                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="Открыть фото">
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="author_photo_bar">
+                                    <a href="#" class="pull_delete media_disable" title="Удалить безвозвратно">
+                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="Удалить фото">
+                                    </a>
+                                </div>
+                            </td>
+                            <!-- Этот кусок видят только авторы просматриваемого фото (конец)-->
+                        </tr>
+                    </table>
+                </div>
+                <!-- конец прозрачных дивов -->
+                <div class="photo">
+                    <img id="photo_image" src="/images/transparent_image.gif" width="600" height="600">
+                </div>
+            </div>
+            <div class="chat">
+                <!-- Эту часть показывать если фото просматривает сам автор (начало) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                <div style="padding-left:10px;" class="author_photo_bar">
+                    Данные фото:<br>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
+                        <tr>
+                            <td class="sand_box_top" style="pading-top:5px; height:150px;">
+                                <table width="238px" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px; margin-left:5px;">
+                                    <tr>
+                                        <td width="125px">
+                                            <span class="redit_caption">Раздел:</span><br>
+                                            <select class="redit_body" id="f_photo_species" style="width:113px;">
+                                                <option value="dog" selected>Собаки</option>
+                                                <option value="insect">Насекомые</option>
+                                                <option value="bird">Птицы</option>
+                                                <option value="cat">Кошки</option>
+                                                <option value="rodent">Грызуны и кролики</option>
+                                                <option value="fish">Рыбы и моллюски</option>
+                                                <option value="reptile">Земноводные и рептилии</option>
+                                                <option value="horse">Лошади и пони</option>
+                                                <option value="other">Другие виды животных</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <span class="redit_caption">Питомец:</span><br>
+                                            <select class="redit_body" id="f_photo_pet" style="width:113px;">
+                                                <option value="">-</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="margin-top:5px; margin-left:5px;">
+                                    <span class="redit_caption">Коментарий:</span><br>
+                                    <textarea id="f_photo_description" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:234px; height:54px;"></textarea>
+                                </div>
+                                <div style="margin-top:5px; margin-left:5px;">
+                                    <span class="redit_caption">Теги:</span><br>
+                                    <input type="text" id="f_photo_tags" class="redit_body" style="width:234px;">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="bottom" class="sand_box_bottom">
+                                <input name="button" type="button" class="button_sand" onclick="media_save()" value="Сохранить">
+                            </td>
+                        </tr>
+                    </table>
+                    Комментарии пользователей:<br>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
+                        <tr>
+                            <td class="print_box_top">
+                                <div class="print_box comment_container" style="height:245px;"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="bottom" class="print_box_bottom">
+                                <input name="button" type="button" class="button_sand" onclick="" value="Запретить комментарии">
+                            </td>
+                        </tr>
+                    </table>
+                    Ваш комментарий:
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
+                        <tr>
+                            <td class="sand_box_top">
+                                <textarea name="textarea" class="sand" style="height:48px;" id="author_comment_text"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="bottom" class="sand_box_bottom">
+                                <input id="author_comment_add_btn" type="button" class="button_sand" value="Отправить">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- Эту часть показывать если фото просматривает сам автор (конец) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                <!-- показывать этот DIV если пользователь авторизирован -->
+                <div style="padding-left:10px;" class="viewer_photo_bar">
+                    Комментарии:
+                    <div class="print">
+                        <!-- Если пользователь разрешил коментировать -->
+                        <div style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">Комментариев нет.<br>Ваш комментарий может быть первым.</div>
+                        <!-- Если пользователь не разрешил коментировать -->
+                        <div style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">Комментариев нет.</div>
+                        <!-- Коментарии -->
+                        <div class="comment_container"></div>
+                    </div>
+                    <div id="send_message_auth">
+                        Ваш комментарий:
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
+                            <tr>
+                                <td class="sand_box_top">
+                                    <textarea name="textarea" class="sand" id="viewer_comment_text"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" valign="bottom" class="sand_box_bottom">
+                                    <input id="viewer_comment_add_btn" type="button" class="button_sand" value="Отправить">
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="like_box1">
+                            <tr>
+                                <td class="favorite_add">
+                                    <a id="photo_add_friend" href="#" title="Подписаться"><img src="/images/favorite_person_add.png" width="64px" height="54" alt="Подписаться" border="0"></a>
+                                </td>
+                                <!--td class="favorite_add">
+                                    <a href="#" title="Добавить питомца в избранное"><img src="/images/favorite_pet.png" width="64px" height="54" alt="Добавить питомца в избранное" border="0"></a>
+                                </td-->
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- показывать этот DIV если пользователь НЕавторизирован -->
+                <div style="padding-left:10px;" class="guest_photo_bar">
+                    Комментарии:
+                    <div class="print">
+                        <div style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">Комментариев нет.</div>
+                        <!-- Коментарии -->
+                        <div class="comment_container"></div>
+                    </div>
+                    <div id="send_message_noauth" align="center">
+                        <table width="250" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="send_message_td">
+                                    <div id="send_message_needauth">
+                                        Оставлять комментарии могут только зарегистрированные пользователи!
+                                        <br><br>
+                                        Если вы уже зарегистрированны, вам достаточно <a href="#" title="Вход..." class="la_login">ВОЙТИ</a>.
+                                        <br><br>
+                                        Если вы еще не зарегистрированы, мы будем рады вас видеть в нашем сообществе. <a href="#" title="Регистрация" class="la_add">РЕГИСТРИРУЙТЕСЬ</a>!
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td background="/images/corner_right.png"></td>
+      </tr>
+      <tr>
+        <td background="/images/corner_circle.png" style="background-position: 0px -20px;"></td>
+        <td background="/images/corner_bottom.png"></td>
+        <td width="20" height="20" background="/images/corner_circle.png" style="background-position: -20px -20px;"></td>
+      </tr>
+    </table>
+</div>

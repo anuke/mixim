@@ -1,0 +1,148 @@
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.la_login').click(function() {
+                    $('body').css('overflow-y', 'hidden');
+                    $('#overlay').show();
+                    $('.login_add_block').show();
+                    show_login_window();
+                });
+
+                $('.la_add').click(function() {
+                    $('body').css('overflow-y', 'hidden');
+                    $('#overlay').show();
+                    $('.login_add_block').show();
+                    show_register_window();
+                });
+
+                $('.la_reset').click(function() {
+                    $('body').css('overflow-y', 'hidden');
+                    $('#overlay').show();
+                    $('.login_add_block').show();
+                    show_resetpassword_window();
+                });
+
+                $('a.login_add_block_off').click(function() {
+                    $('body').css('overflow-y', 'auto');
+                    $('#overlay').hide();
+                    $('.login_add_block').hide();
+                });
+            });
+
+        </script>
+        
+        <!--table class="login_add s__not_logged" border="0" cellspacing="1px" cellpadding="0">
+            <tr>
+                <td class="la_login">
+                    ВОЙТИ
+                </td>
+                <td class="la_add">
+                    РЕГИСТРАЦИЯ
+                </td>
+                <td class="la_reset">
+                    ЗАБЫЛИ ПАРОЛЬ?
+                </td>
+            </tr>
+        </table-->
+        
+    <table class="login_add_block">
+        <tr>
+            <td>
+                <table align="center" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="40px">
+                        </td>                    
+                        <td id="la_block"> <!-- !!!!!!!!!!!!!!!!!!!!!!! удалить старый #block и сопутствующие классы -->
+                            <!-- Начало окна авторизации с кнопкой ВОЙТИ -->
+                            <div id="login_window" style="display:none">
+                                <div id="login_form" style="margin-left:5px;"> <!-- !!!!!!!!!!!!!!!!!!!! вынести margin-left:5px; в login_form -->
+                                    <div style="width:214px; height:134px;">
+                                        &nbsp;Логин (никнейм):
+                                        <center>
+                                            <input type="text" id="login_username" class="text_input">
+                                        </center>
+                                        &nbsp;Пароль:
+                                        <center>
+                                            <input type="password" id="login_password" class="text_input">
+                                            <br>
+                                            <div class="radio_remember" style="margin-top:4px;">
+                                                <label>
+                                                    <div class="radio_div"><input type="checkbox" name="checkbox" value="checkbox" checked></div>- запомнить меня
+                                                </label>
+                                            </div>
+                                            <div class="out_of_head"><a href="javascript:show_resetpassword_window()">Забыли пароль?</a></div>
+                                        </center>
+                                    </div>
+                                    <center>
+                                        <input type="button" value="ВОЙТИ" class="button_input auth_login_btn">
+                                    </center>
+                                </div>
+                            </div>
+                            <!-- Конец окна авторизации -->
+
+                            <!-- Начало окна регистрации с кнопкой ЗАРЕГЕСТРИРОВАТЬСЯ -->
+                            <div id="register_window" style="display:none">
+                                <div id="add_window" style="margin-left:5px;"> <!-- !!!!!!!!!!!!!!!!!!!! вынести margin-left:5px; в login_form -->
+                                    <div style="width:214px; height:134px;">
+                                        &nbsp;E-Mail (адрес почты):
+                                        <center>
+                                            <input type="text" id="reg_email" class="text_input">
+                                        </center>
+                                        &nbsp;Логин (никнейм):
+                                        <center>
+                                            <input type="text" id="reg_username" class="text_input">
+                                            <div id="err_reg_username_too_short" class="add_wrongnic reg_form_err_container" style="display:none;">
+                                                &nbsp;Слишком короткий логин/никнейм.
+                                            </div>
+                                            <div id="err_reg_username_unallowed" class="add_wrongnic reg_form_err_container" style="display:none;">
+                                                &nbsp;Логин/никнейм содержит недопустимые символы.
+                                            </div>
+                                            <div id="err_reg_username_exists" class="add_wrongnic reg_form_err_container" style="display:none;">
+                                                &nbsp;Такой логин/никнейм уже занят. Попробуйте подобрать другой.
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <center>
+                                        <input type="button" value="ПРОДОЛЖИТЬ" class="button_input auth_register_btn">
+                                    </center>
+                                </div>
+                            </div>
+                            <!-- Конец окна регистрации -->
+
+                            <!-- Начало окна регистрации с кнопкой ВОСТАНОВИТЬ ДОСТУП -->
+                            <div id="resetpassword_window" style="display:none">
+                                <div id="remail_window" style="margin-left:5px;"> <!-- !!!!!!!!!!!!!!!!!!!! вынести margin-left:5px; в login_form -->
+                                    <div style="width:214px; height:134px;">
+                                        &nbsp;Ваш логин (никнейм):
+                                        <center>
+                                            <input type="text" id="resetpassword_email" class="text_input">
+                                            <div style="width:194px; text-align:justify; margin-top:8px;">
+                                                &nbsp;На указанный вами при регистрации E-Mail (адрес электронной почты), будет отправленна инструкция по восстановлению пароля.
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <center>
+                                        <input type="button" value="ВОССТАНОВИТЬ" class="button_input" onclick="auth_resetpassword()">
+                                    </center>
+                                </div>
+                            </div>
+                            <!-- Конец окна востановления доступа -->
+
+                            <!-- Начало - окно ошибки -->
+                            <div id="error_window" class="la_error_window"> <!-- !!!!!!!!!!!!!!!!! удалить из #error_window после замены все -->
+                                <img src="../images/error_window_corner.png" width="42" height="47">
+                                <div class="error-popup">
+                                	<font id="error_text" color="#ffffbb"></font>
+                                </div>
+                            </div>
+                            <!-- Конечц - окно ошибки -->
+                        </td>
+                        <td width="40px" valign="top" align="right">
+                            <a href="#" title="Закрыть окно" class="login_add_block_off">
+                                <img src="../images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>

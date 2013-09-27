@@ -446,6 +446,13 @@ def feedback(request):
 def bo_media_delete(request, media):
     media.disable()
 
+#
+# Non-API views
+#
+
+def show_static_page(request, page_name = 'index'):
+    return render_to_response('static/' + page_name + '.html')
+
 def handle404(request):
     request._req.add_common_vars()
     url = request._req.subprocess_env['REDIRECT_URL']

@@ -1,0 +1,90 @@
+<script type="text/javascript">
+    jQuery(document).ready(
+        function($) {
+            hideClusterElement();
+            $(".cluster").hover(showClusterElement, hideClusterElement);
+        }
+    );
+
+    function hideClusterElement() {
+        $('.__cluster_switcher, .cluster_element_text').hide();
+        $('#cluster_' + current_species).show();
+    };
+
+    function showClusterElement() {
+        $('.__cluster_switcher, .cluster_element_text').show();
+    };
+
+jQuery(document).ready(function ($) {
+    $('div.__cluster_switcher a').click(function() {
+        var id = $(this).parents('div.__cluster_switcher').attr('id');
+        var cluster = /cluster_(\w+)/.exec(id)[1];
+
+        var view = {}
+        _.extend(view, Backbone.Events);
+
+        view.on('set:species', function () {
+            document.location.reload(false);
+        });
+
+        user_species(view, cluster);
+    })
+});
+</script>
+
+    <div class="cluster">
+        <div class="cluster_element __cluster_switcher" id="cluster_dog">
+            <div class="cluster_element_text">
+                <a href="#">Собаки</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_1.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+        <div class="cluster_element __cluster_switcher" id="cluster_insect">
+            <div class="cluster_element_text">
+                <a href="#">Насекомые</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_2.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+        <div class="cluster_element __cluster_switcher" id="cluster_bird">
+            <div class="cluster_element_text">
+                <a href="#">Птицы</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_3.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+        <div class="cluster_element __cluster_switcher" id="cluster_cat">
+            <div class="cluster_element_text">
+                <a href="#">Кошки</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_4.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+        <div class="cluster_element __cluster_switcher" id="cluster_rodent">
+            <div class="cluster_element_text">
+                <a href="#">Грызуны&nbsp;и&nbsp;кролики</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_5.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+        <div class="cluster_element __cluster_switcher" id="cluster_fish">
+            <div class="cluster_element_text">
+                <a href="#">Рыбы&nbsp;и&nbsp;моллюски</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_6.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+        <div class="cluster_element __cluster_switcher" id="cluster_reptile">
+            <div class="cluster_element_text">
+                <a href="#">Земноводные&nbsp;и&nbsp;рептилии</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_7.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+        <div class="cluster_element __cluster_switcher" id="cluster_horse">
+            <div class="cluster_element_text">
+                <a href="#">Лошади&nbsp;и&nbsp;пони</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_8.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+        <div class="cluster_element __cluster_switcher" id="cluster_other">
+            <div class="cluster_element_text">
+                <a href="#">Другие&nbsp;виды&nbsp;животных</a>
+            </div>
+            <a href="#" class="cluster_element_a_to_block"><img src="images/cluster_9.png" width="40" height="40" border="0" alt=""></a>
+        </div>
+    </div>

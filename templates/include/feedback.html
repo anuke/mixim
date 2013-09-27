@@ -1,0 +1,81 @@
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('a.feedback_block_on').click(function() {
+                    $('body').css('overflow-y', 'hidden');
+                    $('#overlay').show();
+                    $('.feedback_block').show();
+                });
+
+                $('a.feedback_block_off').click(function() {
+                    $('body').css('overflow-y', 'auto');
+                    $('#overlay').hide();
+                    $('.feedback_block').hide();
+                });
+
+                $('#feedback_send_link').click(function () {
+                    $.post('/json/feedback/', {
+                            email: $('#f_feedback_email').val(),
+                            subject: $('#f_feedback_subject').val(),
+                            text: $('#f_feedback_text').val()
+                        }, function (data) {
+                            if (data.success) {
+                                alert('Ваше сообщение отправлено');
+                            }
+                            else {
+                                alert('Ошибка при отправке сообщения');
+                            }
+                        }, 'json');
+                });
+            });
+        </script>
+        <table class="feedback_block">
+            <tr>
+                <td>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
+                        <tr>
+                            <td class="animals_window_caption">Обратная связь</td>
+                            <td align="right" valign="top"><a href="#" title="Закрыть окно" class="feedback_block_off"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" height="240px" align="center">
+                                <font size="2" color="red">Внимание! Для корректной отправки,<br>все поля обязательны к заполнению.</font>
+                                <table border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="feedback_box_left">
+                                            <div style="margin-bottom:5px;">
+                                                <span class="redit_caption">Ваш e-Mail:</span><br>
+                                                <input type="text" id="f_feedback_email" class="redit_body" style="width:305px;">
+                                            </div>
+                                            <div style="margin-bottom:5px;">
+                                                <span class="redit_caption">Тема сообщения:</span><br>
+                                                <input type="text" id="f_feedback_subject" class="redit_body" style="width:305px">
+                                            </div>
+                                            <div>
+                                                <span class="redit_caption">Текст сообщения:</span><br>
+                                                <textarea id="f_feedback_text" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:305px; height:160px;"></textarea>
+                                            </div>
+                                        </td>
+                                        <td valign="top" class="feedback_box_right">
+                                            <img src="/images/feedback_1.png" onclick="document.getElementById('f_feedback_subject').value='Задать вопрос';" width="48px" height="48px" border="0px" title="Задать вопрос">
+                                            <img src="/images/feedback_2.png" onclick="document.getElementById('f_feedback_subject').value='Предложить идею';" width="48px" height="48px" border="0px" title="Предложить идею">
+                                            <img src="/images/feedback_3.png" onclick="document.getElementById('f_feedback_subject').value='Возникли проблемы';" width="48px" height="48px" border="0px" title="Возникли проблемы">
+                                            <img src="/images/feedback_4.png" onclick="document.getElementById('f_feedback_subject').value='Выразить благодарность';" width="48px" height="48px" border="0px" title="Выразить благодарность">
+                                            <img src="/images/feedback_5.png" onclick="document.getElementById('f_feedback_subject').value='Предложение сутрудничать';" width="48px" height="48px" border="0px" title="Предложение сутрудничать">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="button_1_buble">
+                                <div class="button_1">
+                                    <center>
+                                        <a href="#" id="feedback_send_link">Отправить</a>
+                                    </center>
+                                <div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
