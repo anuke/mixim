@@ -373,7 +373,7 @@ def discussions(request):
         discussion = paginator.page(1)
     except EmptyPage:
         discussion = paginator.page(paginator.num_pages)
-    
+
     pager = {'current_page':page, 'pages':paginator.num_pages, 'has_previous':page > 1, 'has_next':page < paginator.num_pages}
 
     return {'paginator':pager, 'results':discussion.object_list}
@@ -404,7 +404,13 @@ def comment_add(request, media):
     author = request.user
     text   = request.POST.get('text')
     if text.strip() != '':
-        Comment.objects.create(author=author, media=media, text=text)
+        comment = Comment.objects.create(author=author, media=media, text=text)
+
+        try:
+            send_mail_to_user(media.author, 'new_comment', { 'comment': comment })
+        except:
+            # TODO: log send mail error
+            pass
 
 
 
@@ -495,7 +501,7 @@ def show_user_page(request, username):
     per_page = 40
     start = (page - 1) * per_page
     end = start + per_page
-    
+
     paginator = Paginator(MediaFile.enabled_objects.with_author(user.id), settings.PETS_PER_USERPAGE)
     try:
       media_list = paginator.page(page)
@@ -505,7 +511,7 @@ def show_user_page(request, username):
       medi_list = paginator.page(paginator.num_pages)
 
     #media_list = MediaFile.enabled_objects.with_author(user.id)[start:end]
-    
+
     context = RequestContext(request, {
         'user_profile': user,
         'media_list': media_list
