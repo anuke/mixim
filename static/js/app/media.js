@@ -144,6 +144,8 @@ jQuery(document).ready(function ($) {
         $('#id_media_body_photo').hide();
         $('#id_media_body_speech').show();
         
+        $('#id_media_photo_tab').removeClass('media_tab_off').addClass('media_tab_on');
+        $('#id_media_speech_tab').removeClass('media_tab_on').addClass('media_tab_off');
     });
     
     $('#id_media_photo_tab').click(function() {
@@ -151,6 +153,9 @@ jQuery(document).ready(function ($) {
         $('#id_media_status_photo').show();
         $('#id_media_body_speech').hide();
         $('#id_media_body_photo').show();
+
+        $('#id_media_speech_tab').removeClass('media_tab_off').addClass('media_tab_on');
+        $('#id_media_photo_tab').removeClass('media_tab_on').addClass('media_tab_off');
     });
 });
 
