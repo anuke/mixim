@@ -171,3 +171,4 @@ AVATAR_SIZE = '90x90'
 ACTIVATION_URL = 'http://mixim.ru/activate/'
 
 DEFAULT_SPECIES = 'dog'
+DISCUSSION_PER_PAGE = 10

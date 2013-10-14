@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from django.http import Http404
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from decorators import *
 from errors import *
@@ -353,15 +354,20 @@ def friend_media(request, start = 0, limit = 10):
 
 
 @serialize
+@require_method("GET")
 @require_auth
 def discussions(request):
-    return MediaFile.objects.filter(comment__author=request.user).distinct()
+    paginator = Paginator(MediaFile.objects.filter(comment__author=request.user).distinct(), settings.DISCUSSION_PER_PAGE)
+    page = request.GET.get('page', 1)
 
-@serialize
-@require_method("GET")
-@require_id(MediaFile, enabled=True)
-def comment_list(request, media):
-    return media.comments.filter(deleted=False)
+    try:
+        discussion = paginator.page(page)
+    except PageNotAnInteger:
+        discussion = paginator.page(1)
+    except EmptyPage:
+        discussion = paginator.page(paginator.num_pages)
+
+    return discussion.object_list
 
 
 @serialize
