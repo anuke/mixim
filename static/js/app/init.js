@@ -6,6 +6,8 @@ var current_photo = null;
 var current_user = null;
 var current_species = null;
 
+var discussion_page = 1;
+
 var Auth = {};
 _.extend(Auth, Backbone.Events);
 

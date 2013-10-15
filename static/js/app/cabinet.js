@@ -400,25 +400,52 @@ function my_likes_load() {
     user_likes(view);
 }
 
+function load_discussions() {                                                      
+    $('#cabinet_discussion > div').empty();                                        
 
-function load_discussions() {
-    $('#cabinet_discussion > div').empty();
+    var view = {};                                                                 
+    _.extend(view, Backbone.Events);                                               
 
-    var view = {};
-    _.extend(view, Backbone.Events);
+    view.on('load:discussions', function (discussions) {                           
+        pager =                                                                      
+        '<div class="pagination">' +                                           
+        '<span class="step-links">';                                           
+    if (discussions.paginator.has_previous) {                                    
+        pager += '<a id="discussion_previous_page" href="#page=' + ( discussions.paginator.current_page - 1 ) + '">previous</a>';
+    }                                                                            
+    pager += '<span class="current">' +                                          
+        'Page ' + discussions.paginator.current_page + ' of '+ discussions.paginator.pages + 
+        '</span>';                                                          
+    if (discussions.paginator.has_next ) {                                       
+        pager += '<a id="discussion_next_page" href="#page=' + (discussions.paginator.current_page + 1) + '">next</a>';
+    }                                                                            
+    pager += '</span></div>';                                                    
 
-    view.on('load:discussions', function (discussions) {
-        _.each(discussions, function (discussion, index) {
-            $('#cabinet_discussion > div').append(
-              '<a id="last_photo_' + discussion.id + '" class="cabinet_discussion_box_photo">' +
-              '<div class="cabinet_discussion_box_photo_info_bkg opa50"></div>' +
-              '<div class="cabinet_discussion_box_photo_info">' + discussion.created.replace(/\//g, '.').substr(0, 10) + '</div>' +
-              '<img src="' + discussion.thumbnail + '" height="75px" border="0" width="100px"></a>');
-              $('#last_photo_' + discussion.id).click(function() { show_photo(discussion.id) } );
-        });
-    });
-    discussions(view);
+    $('#cabinet_discussion > div').append(pager);                                
+
+    $('#discussion_next_page').click(function() {                                
+        discussion_page += 1;                                                    
+        load_discussions();                                                      
+    });                                                                          
+
+    $('#discussion_previous_page').click(function() {                            
+        discussion_page -= 1;                                                    
+        load_discussions();                                                      
+    });                                                                          
+
+    _.each(discussions.results, function (discussion, index) {                   
+        $('#cabinet_discussion > div').append(                                 
+            '<a id="last_photo_' + discussion.id + '" class="cabinet_discussion_box_photo">' +
+            '<div class="cabinet_discussion_box_photo_info_bkg opa50"></div>' +
+            '<div class="cabinet_discussion_box_photo_info">' + discussion.created.replace(/\//g, '.').substr(0, 10) + '</div>' +
+            '<img src="' + discussion.thumbnail + '" height="75px" border="0" width="100px"></a>');
+        $('#last_photo_' + discussion.id).click(function() { show_photo(discussion.id) } );
+    });                                                                        
+    });                                                                            
+    discussions(view);                                                             
 }
+
+
 //
 // onload
 //

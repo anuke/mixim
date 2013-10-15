@@ -251,7 +251,7 @@ function user_stat(stat) {
 
 
 function discussions(model) {
-    $.getJSON("/json/discussion/list/", {},
+    $.getJSON("/json/discussion/list/", {'page':discussion_page},
         function (data) {
             if (data.success) {
                 model.trigger('load:discussions', data.result);
