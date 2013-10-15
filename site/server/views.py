@@ -367,10 +367,9 @@ def discussions(request):
     except EmptyPage:
         discussion = paginator.page(paginator.num_pages)
     
-    pager = {'current_page':page, 'pages':paginator.num_pages, 'has_previous':True if page > 1 else False, 'has_next':True if page < paginator.num_pages else False}
+    pager = {'current_page':page, 'pages':paginator.num_pages, 'has_previous':page > 1, 'has_next':page < paginator.num_pages}
 
-    returns = {'paginator':pager, 'results':discussion.object_list}
-    return returns
+    return {'paginator':pager, 'results':discussion.object_list}
 
 
 @serialize
