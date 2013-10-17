@@ -2737,3 +2737,10 @@ form {
 	border-radius:20px;
     background-color:#ffff99;
 }
+
+.pagination {                                                                       
+    width:598px;                                                                    
+    text-align:center;                                                              
+    border-bottom:1px solid #f24f00;                                                
+    clear:both;                                                                     
+}
