@@ -400,54 +400,60 @@ function my_likes_load() {
     user_likes(view);
 }
 
-function load_discussions() {                                                      
-    $('#cabinet_discussion > div').empty();                                        
 
-    var view = {};                                                                 
-    _.extend(view, Backbone.Events);                                               
+function load_discussions() {
+    $('#cabinet_discussion > div').empty();
+    
+    var view = {};
+    _.extend(view, Backbone.Events);
 
-    view.on('load:discussions', function (discussions) {                           
-        pager =                                                                      
-            '<div class="pagination">' +                                           
-            '<span class="step-links">';                                           
-        if (discussions.paginator.has_previous) {                                    
-            pager += '<a class="discussion_previous_page" href="#page=' + ( discussions.paginator.current_page - 1 ) + '">previous</a>';
-        }                                                                            
-        pager += '<span class="current">' +                                          
-            'Page ' + discussions.paginator.current_page + ' of '+ discussions.paginator.pages + 
-            '</span>';                                                          
-        if (discussions.paginator.has_next ) {                                       
-            pager += '<a class="discussion_next_page" href="#page=' + (discussions.paginator.current_page + 1) + '">next</a>';
-        }                                                                            
-        pager += '</span></div>';                                                    
-
-        $('#cabinet_discussion > div').append(pager);                                
-
-        _.each(discussions.results, function (discussion, index) {                   
-            $('#cabinet_discussion > div').append(                                 
-                '<a id="last_photo_' + discussion.id + '" class="cabinet_discussion_box_photo">' +
-                '<div class="cabinet_discussion_box_photo_info_bkg opa50"></div>' +
-                '<div class="cabinet_discussion_box_photo_info">' + discussion.created.replace(/\//g, '.').substr(0, 10) + '</div>' +
-                '<img src="' + discussion.thumbnail + '" height="75px" border="0" width="100px"></a>');
-            $('#last_photo_' + discussion.id).click(function() { show_photo(discussion.id) } );
-        });                                                                        
-
-        $('#cabinet_discussion > div').append(pager);                                
-        
-        $('.discussion_next_page').click(function() {                                
-            discussion_page += 1;                                                    
-            load_discussions();                                                      
-        });                                                                          
-
-        $('.discussion_previous_page').click(function() {                            
-            discussion_page -= 1;                                                    
-            load_discussions();                                                      
+    view.on('load:discussions', function (discussions) {
+      pager =             
+            '<div class="pagination">' +
+            '<div class="step-links">';
+      if (discussions.paginator.has_previous) {
+          pager += '<a class="discussion_previous_page pagination_left_page" href="#page=' + ( discussions.paginator.current_page - 1 ) + '">« Туда</a>';
+      }
+      else {
+          pager += '<a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>';
+      }
+      pager += '<a class="pagination_current_page">' +
+                   'Страница ' + discussions.paginator.current_page + ' из '+ discussions.paginator.pages + 
+               '</a>';
+      if (discussions.paginator.has_next ) {
+          pager += '<a class="discussion_next_page pagination_right_page" href="#page=' + (discussions.paginator.current_page + 1) + '">Сюда »</a>';
+      }
+      else {
+          pager += '<a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>';
+      }
+      pager += '</div></div>';
+      
+      $('#cabinet_discussion > div').append(pager);
+      
+      _.each(discussions.results, function (discussion, index) {
+            $('#cabinet_discussion > div').append(
+              '<a id="last_photo_' + discussion.id + '" class="cabinet_discussion_box_photo">' +
+              '<div class="cabinet_discussion_box_photo_info_bkg opa50"></div>' +
+              '<div class="cabinet_discussion_box_photo_info">' + discussion.created.replace(/\//g, '.').substr(0, 10) + '</div>' +
+              '<img src="' + discussion.thumbnail + '" height="75px" border="0" width="100px"></a>');
+              $('#last_photo_' + discussion.id).click(function() { show_photo(discussion.id) } );
         });
-    });                                                                            
-    discussions(view);                                                             
+      
+      $('#cabinet_discussion > div').append(pager);
+      
+      $('.discussion_next_page').click(function() {
+          discussion_page += 1;
+          load_discussions();
+      });
+      
+      $('.discussion_previous_page').click(function() {
+          discussion_page -= 1;
+          load_discussions();
+      });
+
+    });
+    discussions(view);
 }
-
-
 //
 // onload
 //
