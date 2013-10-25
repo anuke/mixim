@@ -29,30 +29,37 @@
 </head>
 <body class="media">
 
+   
 <table width="980px" height="100%" align="center" border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td height="90px">
+        <td height="94px">
             <div class="user_avatar">
                 <!--a href="#" title=""-->
                     <img id="userpage_avatar" src="" border="0" alt="" style="background-color:#000;">
                 <!--/a-->
             </div>
-            <span class="user_name">{{ profile.user.nic_name }}{{ profile.user.first_name }} {{ profile.user.last_name }} {{ profile.user.username}}</span>
+            <div class="user_about">
+                <!--div class="user_about_bkg opa25"></div-->
+                Пользователь решил о себе не рассказывать.
+            </div>
+            <div class="user_about_plus opa75">Питомцев 0 | Подписался на 0 | В избранном у 0 | Сообщений 0</div>
+            <div class="user_name">{{ profile.user.first_name }} {{ profile.user.last_name }}</div>
+            <div class="user_about_plus opa75">{{ profile.user.username}} | на сайте с 10.12.2013</div>
         </td>
     </tr>
     <tr>
-        <td height="90px">
-            <!--div class="user_cluster">
-                <a href="#" class="user_cluster_a"><img src="../images/cluster_1.png" width="40" height="40" border="0"></a>
-                <a href="#" class="user_cluster_a"><img src="../images/cluster_2.png" width="40" height="40" border="0"></a>
-                <a href="#" class="user_cluster_a"><img src="../images/cluster_3.png" width="40" height="40" border="0"></a>
-                <img class="up_pets" alt="собаки" src="../images/cluster_4.png">
-                <img class="up_pets" alt="собаки" src="../images/cluster_5.png">
-                <img class="up_pets" alt="собаки" src="../images/cluster_6.png">
-                <img class="up_pets" alt="собаки" src="../images/cluster_7.png">
-                <img class="up_pets" alt="собаки" src="../images/cluster_8.png">
-                <img class="up_pets" alt="собаки" src="../images/cluster_9.png">
-            </div-->
+        <td height="86px">            
+        	<!--div class="user_cluster">
+        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_1.png" width="40" height="40" border="0"></a>
+        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_2.png" width="40" height="40" border="0"></a>
+        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_3.png" width="40" height="40" border="0"></a>
+				<img class="up_pets" alt="собаки" src="../images/cluster_4.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_5.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_6.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_7.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_8.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_9.png">
+			</div-->
         </td>
     </tr>
     <tr>
@@ -89,19 +96,20 @@
     </tr>
 </table>
 
-<script>
-    var user_avatar = '../images/user_unisex.png';
-    if ( '{{ profile.gender }}' == 'M' ) {
-        user_avatar = '../images/user_male.png'
-    }
-    if ( '{{ profile.gender }}' == 'F') {
-        user_avatar = '../images/user_female.png'
-    }
-    if ( '{{ profile.avatar}}' !== '' ) {
-        user_avatar = '/media/{{ profile.avatar}}'
-    }
-    $('#userpage_avatar').attr('src', user_avatar);
-</script>
+    <script>
+        var user_avatar = '../images/user_unisex.png';
+        if ( '{{ profile.gender }}' == 'M' ) {
+            user_avatar = '../images/user_male.png'
+        }
+        if ( '{{ profile.gender }}' == 'F') {
+            user_avatar = '../images/user_female.png'
+        }
+        if ( '{{ profile.avatar}}' !== '' ) {
+            user_avatar = '/media/{{ profile.avatar}}'
+        }
+        $('#userpage_avatar').attr('src', user_avatar);
+    </script>
+ 
 
 <table class="footer" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -123,11 +131,11 @@
 </table>
 <!-- Окно сообщений (начало) - по умолчанию скрыто -->
 <div id="info_window" style="visibility:hidden;">
-    <table class="info_table" border="0" cellspacing="0" cellpadding="0">
+	<table class="info_table" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td align="center">
-            <div id="message1" class="info_message">Текст</div>
-        </td>
+			<div id="message1" class="info_message">Текст</div>
+		</td>
       </tr>
       <tr>
         <td height="30" align="center"><input type="submit" name="Submit2" value="Закрыть" style="background-color:#f24f00; color:#ffff99; cursor:hand;"></td>
@@ -137,13 +145,16 @@
 <!-- Окно сообщений (конец) -->
 
 <!-- Окно фотографии (начало) - по умолчанию скрыто -->
+    <!--#include virtual="photo_win.html" -->
     {% include 'include/photo_win.html' %}
 <!-- Окно фотографии (конец) -->
 
 <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
+    <!--#include virtual="login.html"-->
     {% include 'include/login.html' %}
 <!-- Блок авторизации, регистрации и востановления пароля (конец) -->
 
+<!--#include virtual="message_box.html" -->
     {% include 'include/message_box.html' %}
 
 <!-- Блок затенения (начало)-->
