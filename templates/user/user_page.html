@@ -66,19 +66,21 @@
         <td align="center" valign="top">
             <div class="user_page_content_box">
                 <div class="pagination">
-                    <span class="step-links">
+                    <div class="step-links">
                         {% if media_list.has_previous %}
-                            <a href="?page={{ media_list.previous_page_number }}">previous</a>
+                            <a class="discussion_previous_page pagination_left_page" href="?page={{ media_list.previous_page_number }}"><< Туда</a>
+                        {% else %}
+                            <a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>
                         {% endif %}
 
-                        <span class="current">
-                            Page {{ media_list.number }} of {{ media_list.paginator.num_pages }}.
-                        </span>
+                        <a class="pagination_current_page">Страница {{ media_list.number }} из {{ media_list.paginator.num_pages }}</a>
 
                         {% if media_list.has_next %}
-                            <a href="?page={{ media_list.next_page_number }}">next</a>
+                            <a class="discussion_next_page pagination_right_page" href="?page={{ media_list.next_page_number }}">Сюда >></a>
+                        {% else %}
+                            <a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>
                         {% endif %}
-                    </span>
+                    </div>
                 </div>
                 {% for media in media_list.object_list %}
                 <div class="user_grid_box">
