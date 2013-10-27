@@ -172,3 +172,4 @@ ACTIVATION_URL = 'http://mixim.ru/activate/'
 
 DEFAULT_SPECIES = 'dog'
 DISCUSSION_PER_PAGE = 10
+PETS_PER_USERPAGE = 20

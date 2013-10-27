@@ -40,11 +40,11 @@
             </div>
             <div class="user_about">
                 <!--div class="user_about_bkg opa25"></div-->
-                Пользователь решил о себе не рассказывать.
+                {{ user_profile.profile.about}}
             </div>
-            <div class="user_about_plus opa75">Питомцев 0 | Подписался на 0 | В избранном у 0 | Сообщений 0</div>
-            <div class="user_name">{{ profile.user.first_name }} {{ profile.user.last_name }}</div>
-            <div class="user_about_plus opa75">{{ profile.user.username}} | на сайте с 10.12.2013</div>
+            <div class="user_about_plus opa75">Питомцев {{ user_profile.pets.count }} | Подписался на {{ user_profile.follows.count}} | В избранном у {{ user_profile.followed_by.count}} | Сообщений {{ user_profile.comment_set.count }}</div>
+            <div class="user_name">{{ user_profile.first_name }} {{ user_profile.last_name }}</div>
+            <div class="user_about_plus opa75">{{ user_profile.username}} | на сайте с {{ user_profile.date_joined }}</div>
         </td>
     </tr>
     <tr>
@@ -65,7 +65,22 @@
     <tr>
         <td align="center" valign="top">
             <div class="user_page_content_box">
-                {% for media in media_list %}
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if media_list.has_previous %}
+                            <a href="?page={{ media_list.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ media_list.number }} of {{ media_list.paginator.num_pages }}.
+                        </span>
+
+                        {% if media_list.has_next %}
+                            <a href="?page={{ media_list.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+                {% for media in media_list.object_list %}
                 <div class="user_grid_box">
                     <a href="#" class="user_grid_photo" onclick="show_photo({{ media.id }})">
                         <img src="{{ media|resized:'176x176' }}">
@@ -98,14 +113,14 @@
 
     <script>
         var user_avatar = '../images/user_unisex.png';
-        if ( '{{ profile.gender }}' == 'M' ) {
+        if ( '{{ user_profile.profile.gender }}' == 'M' ) {
             user_avatar = '../images/user_male.png'
         }
-        if ( '{{ profile.gender }}' == 'F') {
+        if ( '{{ user_profile.profile.gender }}' == 'F') {
             user_avatar = '../images/user_female.png'
         }
-        if ( '{{ profile.avatar}}' !== '' ) {
-            user_avatar = '/media/{{ profile.avatar}}'
+        if ( '{{ user_profile.profile.avatar}}' !== '' ) {
+            user_avatar = '/media/{{ user_profile.profile.avatar}}'
         }
         $('#userpage_avatar').attr('src', user_avatar);
     </script>

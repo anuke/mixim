@@ -488,9 +488,19 @@ def show_user_page(request, username):
     per_page = 40
     start = (page - 1) * per_page
     end = start + per_page
-    media_list = MediaFile.enabled_objects.with_author(user.id)[start:end]
+    
+    paginator = Paginator(MediaFile.enabled_objects.with_author(user.id), settings.PETS_PER_USERPAGE)
+    try:
+      media_list = paginator.page(page)
+    except PageNotAnInteger:
+      media_list = paginator.page(1)
+    except EmptyPage:
+      medi_list = paginator.page(paginator.num_pages)
+
+    #media_list = MediaFile.enabled_objects.with_author(user.id)[start:end]
+    
     context = RequestContext(request, {
-        'profile': user.profile,
+        'user_profile': user,
         'media_list': media_list
     })
 
