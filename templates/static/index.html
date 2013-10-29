@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+{% load i18n %}<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MIXIM - для тех, кто любит и очень любит животных</title>
+<title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 
@@ -51,9 +51,7 @@
 <div id="show_qr" class="show_qr_window" style="width:372px; left:280px; top:267px;">
     <table border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="show_qr_box" style="padding-top:8px;">
-                Запустите программу считывания QR-кодов.<br>Наводите камеру смартфона или планшета<br>на QR-код и скачайте Android приложение.
-                <br>
+            <td class="show_qr_box">
                 <img src="images/qr_android_ru.png" width="300" height="300" border="0">
             </td>
             <td width="68px" align="right" valign="top">
@@ -81,25 +79,25 @@
     <td height="75px">
         <img src="../images/bubble_smoke.gif" width="80" height="57" style="position:absolute; margin-left:70px; top:0;">
         <a class="glory_medal_index">
-            <img src="../images/glory_soon.png" width="120" height="48" style="margin:36px 0 0 7px;">
+            <img src="../images/{% trans "glory_soon.png" %}" width="120" height="48" style="margin:36px 0 0 7px;">
         </a>
-        <a href="../media.shtml" title="На главную страницу" target="_self" class="logo_new">
-            <img src="../images/logo.png" width="156" height="46" border="0" alt="На главную страницу">
+        <a href="../media.shtml" title="{% trans "On the main page" %}" target="_self" class="logo_new">
+            <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "On the main page" %}">
         </a>
     </td>
   </tr>
   <tr>
     <td height="141px" valign="top">
         <a href="media.shtml" class="media_1_openscreen">
-            <img src="../images/media.png" width="40" height="40" border="0" alt="Медиалента">
-            Развернуть
+            <img src="../images/media.png" width="40" height="40" border="0" alt="{% trans "Expand to gallery" %}">
+            {% trans "&nbsp;&nbsp;&nbsp;&nbsp;Expand&nbsp;&nbsp;&nbsp;&nbsp;" %}
         </a>
         <div class="media_1_pagelist">
-            <a href="javascript:nextPage()" title="Сюда" class="media_1_nextpage">Сюда &#187;</a>
-            <a href="javascript:prevPage()" title="Туда" class="media_1_prevpage">&#171 Туда</a>
+            <a href="javascript:nextPage()" class="media_1_nextpage">{% trans "Forward" %} &#187;</a>
+            <a href="javascript:prevPage()" class="media_1_prevpage">&#171; {% trans "Back" %}</a>
         </div>
         <div style="width:842px; height:121px;"> <!-- вынести в перед над всеми - position:relative; z-index:10;-->
-            <span class="media_1_row_line_name">Новые фотографии</span>
+            <span class="media_1_row_line_name">{% trans "New photos"%}</span>
             <table class="media_1_row_line" style="width:100%; height:100%;">
                 <tr>
                     <td align="center">
@@ -126,47 +124,47 @@
   <tr>
     <td height="428px" valign="top"> <!--class="slides"-->
         <div id="slide_1">
-            <span class="last_comments_block_name">Актуальные комментарии</span>
+            <span class="last_comments_block_name">{% trans "Actual comments" %}</span>
             <div class="last_comments_block">
                 <div id="sid__my_comments" class="last_comments_hide_scroll">
                 </div>
             </div>
-            <img src="../images/slogan_2_ru.png" class="slides_slogan_1">
+            <img src="../images/{% trans "slogan_2_en.png" %}" class="slides_slogan_1">
             <a class="slides_slogan_2">
                 <img src="../images/1.png">
-                Первое сообщество<br>животных и людей!
+                {% trans "The number One community<br>of people and their pets!" %}
             </a>
             <a class="slides_slogan_3">
                 <img src="../images/2.png">
-                Уникальный сервис<br>обмена фотографиями!
+                {% trans "A unique and original<br>picture exchange service!" %}
             </a>
             <a class="slides_slogan_4">
                 <img src="../images/3.png">
-                Конкурсы, выставки<br>и другие мероприятия!
+                {% trans "Pageants, exhibitions<br>and other events!" %}
             </a>
             <a class="slides_slogan_5">
                 <img src="../images/4.png">
-                Уникальная система поиска<br>и ранжирования фотографий!
+                {% trans "A unique way to search for<br>and rank awesome pictures!" %}
             </a>
         </div>
         <div id="slide_2" style="display:none;">
-            <img src="../images/slogan_ru.png" class="slides_slogan_6">
+            <img src="../images/{% trans "slogan_en.png" %}" class="slides_slogan_6">
             <a class="slides_slogan_7">
                 <img src="../images/5.png">
-                Мобильное приложение<br>совершенно бесплатно!
+                {% trans "A new mobile app:<br><b>absolutely free!</b>" %}
             </a>
             <a class="slides_slogan_8">
                 <img src="../images/6.png">
-                Публикация фоторепортажей<br>в реальном времени!
+                {% trans "Publish your photo<br>reports in real time!" %}
             </a>
             <a class="slides_slogan_9">
                 <img src="../images/7.png">
-                Всегда быть на связи -<br>онлайн чаты и блоги!
+                {% trans "Here you can always be in<br>touch: online blogs & chats!" %}
             </a>
             <table align="right" width="465" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td width="158" valign="top" class="markets_links">
-                        <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="Скачать из Google play"><img src="images/app_google_play_ru.png" width="141" height="46" border="0" alt="Скачать из Google play"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
+                        <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans "Available on Google play" %}"><img src="images/{% trans "app_google_play_en.png" %}" width="141" height="46" border="0" alt="{% trans "Available on Google play" %}" onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
                     </td>
                     <td id="bubble_phone_login" width="207" valign="top" class="phone"><!-- работать с контентом отдельным классом, центрировать маргином-->
                         <div style="margin-left:12px; margin-top:66px;">
@@ -174,73 +172,39 @@
                         </div>
                     </td>
                     <td width="100" align="right">
-                        <img id="bubble_android_login" src="/images/android_bubble.png" onmouseover="changeOsBubble('android','1','0');" alt="Android приложение" title="Android приложение" width="84" height="84">
+                        <img id="bubble_android_login" src="/images/android_bubble.png" onmouseover="changeOsBubble('android','1','0');" alt="{% trans "Android app" %}" title="{% trans "Android app" %}" width="84" height="84">
                         <br>
                         <br>
                         <br>
-                        <img id="bubble_windows_login" src="/images/transparent_image.gif" onmouseover="changeOsBubble('windows','1','-207');" onmouseout="document.getElementById('bubble_windows_login').src='/images/transparent_image.gif';" alt="Windows8 приложение" title="СКОРО! Windows8 приложение" width="84" height="84">
+                        <img id="bubble_windows_login" src="/images/transparent_image.gif" onmouseover="changeOsBubble('windows','1','-207');" onmouseout="document.getElementById('bubble_windows_login').src='/images/transparent_image.gif';" alt="{% trans "Windows8 app" %}" title="{% trans "Windows8 app" %}" width="84" height="84">
                         <br>
                         <br>
                         <br>
-                        <img id="bubble_apple_login" src="/images/transparent_image.gif" onmouseover="changeOsBubble('apple','1','-414');" onmouseout="document.getElementById('bubble_apple_login').src='/images/transparent_image.gif';" alt="iOS приложение" title="СКОРО! iOS приложение" width="84" height="84">
+                        <img id="bubble_apple_login" src="/images/transparent_image.gif" onmouseover="changeOsBubble('apple','1','-414');" onmouseout="document.getElementById('bubble_apple_login').src='/images/transparent_image.gif';" alt="{% trans "iOS app" %}" title="{% trans "iOS app" %}" width="84" height="84">
                     </td>
                 </tr>
             </table>
         </div>
         <div id="slide_3" style="display:none;">
             <img src="../images/id_slide_1_bkg.png" style="position:absolute;">
-            <img src="../images/slogan_3_ru.png" class="slides_slogan_10">
+            <img src="../images/{% trans "slogan_3_en.png" %}" class="slides_slogan_10">
             <a class="slides_slogan_11">
                 <img src="../images/8.png">
-                Личные страницы<br>для питомцев!
+                {% trans "User Profiles<br>for Pets!" %}
             </a>
             <a class="slides_slogan_12">
                 <img src="../images/9.png">
-                Собственные разделы,<br>клубов и питомников!
+                {% trans "Personal pages for<br>groups & individuals!" %}
             </a>
             <a class="slides_slogan_13">
                 <img src="../images/10.png">
-                <b>Вы еще не с нами?</b><br>ПРИСОЕДИНЯЙТЕСЬ!
+                {% trans "Join us now:<br><b>IT’S FREE!</b>" %}
             </a>
         </div>
         <!--div id="slide_4" style="display:none;">
             А вот третий бокс.
         </div-->
     </td>
-  </tr>
-  <tr style="display:none;"> <!-- УДЛИТЬ -->
-    <td height="100px" class="filter_bubble">
-        <a href="media.shtml" target="_self" title="Развернуть медиаленту" style="margin-left:296px;">
-            <img src="images/media_bubble.gif" alt="Развернуть медиаленту" width="80" height="100" border="0" title="Развернуть медиаленту">
-        </a>
-    </td>
-  </tr>
-  <tr style="display:none;"> <!-- УДЛИТЬ -->
-    <td height="100px" class="media_body">
-        <!--div style="width:960px;">
-            <script>
-                var IDROP_AUTHOR = '';
-                var IDROP_TAG = '';
-            </script>
-            <!-- script src="http://www.mixim.ru/widget/strip_mixim.js"></script -->
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="48" align="right" valign="middle" class="media_list_opa">
-                        <a href="javascript:prevPage()" title="Следующая сраница"><img src="images/page_next.png" width="32" height="64" border="0" alt="Следующая сраница" title="Следующая сраница"></a>
-                    </td>
-                    <td align="center" valign="middle">
-                        <table cellpadding="0" cellspacing="6" id="image_container"></table>
-                    </td>
-                    <td width="48" align="left" valign="middle" class="media_list_opa">
-                        <a href="javascript:nextPage()" title="Предыдущая сраница"><img src="images/page_previous.png" width="32" height="64" border="0" alt="Предыдущая сраница" title="Предыдущая сраница"></a>
-                    </td>
-                </tr>
-            </table>
-        <!--/div-->
-    </td>
-  </tr>
-  <tr style="display:none;"> <!-- УДЛИТЬ -->
-    <td class="media_close">&nbsp;</td>
   </tr>
   <tr>
     <td height="50px">&nbsp;</td>
@@ -266,158 +230,19 @@
         <td class="footer_text">
             <table align="center" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><a href="#" class="sitemap_block_on">География</a></td>
-                    <td><a href="#" class="feedback_block_on">Пишие письма</a></td>
+                    <td><a href="#" class="sitemap_block_on">{% trans "World wide" %}</a></td>
+                    <td><a href="#" class="feedback_block_on">{% trans "Contact us" %}</a></td>
                     <td width="400px" align="center">&copy;2006-2013 &nbsp; www.mixim.ru &nbsp; ООО &quot;Мобитун&quot;</td>
-                    <td><a href="#" class="rules_block_on">Регламент</a></td>
-                    <td><a href="#" class="about_block_on">О проекте</a></td>
+                    <td><a href="#" class="rules_block_on">{% trans "Rules" %}</a></td>
+                    <td><a href="#" class="about_block_on">{% trans "About us" %}</a></td>
                 </tr>
             </table>
         </td>
     </tr>
 </table>
+
 <!-- Окно сообщений (начало) - по умолчанию скрыто -->
 {% include 'include/message_box.html' %}
-
-<div id="info_window" style="display:none">
-    <table class="info_table" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td>
-            <div id="message_auth_login" class="info_message" style="display:none">
-                <center><b>Не удается войти?!</b></center>
-                <br>Пожалуйста, проверьте правильность написания <b>E-Mail</b> и <b>пароля</b>.
-                <ul style="color: #333333;">
-                <li>Возможно, нажата клавиша CAPS-lock?</li>
-                <li style="padding-top:5px;">Может быть у Вас включена неправильная <b>раскладка</b>? (русская, английская или другая)</li>
-                <li style="padding-top:5px;">Попробуйте набрать свой пароль в любом текстовом редакторе и <b>скопировать</b> в графу "Пароль"</li>
-                </ul>
-                Если Вы всё внимательно проверили, но войти всё равно не удается, Вы можете <b><a href="/restore">востановить доступ</a></b>.
-            </div>
-            <div id="message2" class="info_message" style="display:none">
-                <center><b>Хотите зарегестрировася?!</b></center>
-                <br>Для того, чтобы присоедениться к нашему сообществу, вам надо выполнить следующие простые действия:
-                <ul style="color: #333333;">
-                <li>Заполнить две формы, указав электронный адрес и удобрый для вас пароль</li>
-                <li style="padding-top:5px;">Нажать анимированную кнопку "Зарегистрироваться"</li>
-                </ul>
-                <center>Добро пожаловать в сообщество любителей домашних животных!</center>
-                <hr>
-                <font style="text-align:justify; font-size:9px;">
-                <font style="font-size:11px; font-weight:bold;">Е-Mail и пароль:</font>
-                <br>
-                Е-Mail - электронный почтовый ящик с уникальным именем. Если у вас нет его, то выберите сервис, на котором вы хотите создать свою электронную почту (google.com, yandex.ru, rambler.ru, mail.ru и так далее).<br>
-                Пароль – кодовое слово, известное только вам, которое также необходимо для входа на сайт. Не сообщайте ваш пароль никому. Посторайтесь подобрать надёжный пароль. Не выбирайте пароль, аналогичный паролю вашей электронной почты! Пароль не может быть короче 6 символов и не длиннее - 12 символов. В пароле можно использовать как прописные, так и строчные буквы, а также числа и специальные символы (.!#$%^&*()_-+).
-                </font>
-                <br><br>
-                Если Вы всё внимательно проверили, но войти всё равно не удается, Вы можете <b><a href="/restore">востановить доступ</a></b>.
-            </div>
-            <div id="message3" class="info_message" style="display:none">
-                <center><b>Поздравляем!</b></center>
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Вы решили присоединиться к нашему сообществу. Предварительная регистрация, пройденная вами, на протяжении 7-ми дней открывает доступ ко всем услугам нашего сообщества.
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Для окончания регистрации, вам необходимо подтвердить вашу личность. Для этого, вам на почтовый ящик (указанный при регистрации) были высланы регистрационные данные и ссылка, по которой вам необходимо будет перейти для активации вашего профиля.
-                <br>
-                <br>
-                <center>Спасибо за понимание.</center>
-            </div>
-            <div id="message4" class="info_message" style="display:none">
-                <center><b>Внимание!</b></center>
-                <br>
-                &nbsp;&nbsp;&nbsp;При попытке зарегистрироваться, вами был введен уже существующий адрес электронной почты.
-            </div>
-            <div id="message5" class="info_message" style="display:none">
-                <center><b>Внимание!</b></center>
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;При попытке зарегистрироваться, вами был введен уже существующий адрес электронной почты.
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Для окончания регистрации, вам необходимо подтвердить вашу личность. Для этого, вам на почтовый ящик (указанный при регистрации) были высланы регистрационные данные и ссылка, по которой вам необходимо будет перейти для активации вашего профиля.
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Если вами было утеряно письмо с регистрационными данными, вы сможете повторно его получить, нажав на кнопку "Отправить заново". Следуйте инструкциям указанным в письме.
-                <form style="text-align:center;">
-                    <input type="submit" name="Submit2" value="Отправить заново" style="background-color:#f24f00; color:#ffff99; cursor:hand; width: 194px;">
-                </form>
-                <center>Спасибо за понимание.</center>
-            </div>
-            <div id="message6" class="info_message" style="display:none">
-                <center><b>Ошибка!</b></center>
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Слишком короткий пароль.
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Посторайтесь подобрать надёжный пароль. Пароль не может быть короче 6 символов и не длиннее - 12 символов. В пароле можно использовать как прописные, так и строчные буквы, а также числа и специальные символы (.!#$%^&*()_-+).
-            </div>
-            <div id="message7" class="info_message" style="display:none">
-                <center><b>Ошибка!</b></center>
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Неверный E-Mail. Проверте правильность его написания.
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Е-Mail - электронный почтовый ящик с уникальным именем. Если у вас нет его, то выберите сервис, на котором вы хотите создать свою электронную почту (google.com, yandex.ru, rambler.ru, mail.ru и так далее).
-            </div>
-            <div id="message8" class="info_message" style="display:none">
-                <center><b>Внимание!</b></center>
-                <br>
-                <br>
-                &nbsp;&nbsp;&nbsp;Для окончания регистрации, вам необходимо подтвердить вашу личность. Для этого, вам на почтовый ящик (указанный при регистрации) были высланы регистрационные данные и ссылка, по которой вам необходимо будет перейти для активации вашего профиля.
-                <br>
-                <br>
-                <center>Спасибо за понимание.</center>
-            </div>
-            <div id="edit1" class="info_message" style="display:none">
-                <form>
-                    <label>Ваш комментарий:<br>
-                        <textarea name="textfield" class="comment_sand">текст комментария оставленого автором</textarea>
-                    </label>
-                    <br>
-                    <br>
-                    <br>
-                    <label>Теги: <i>(не больше 6-ти и разделяются запятой - пример "собака, раптор")</i><br>
-                        <textarea name="textfield" class="tags_sand">список, тегов, если, они, есть</textarea>
-                    </label>
-                    <br>
-                    <br>
-                    <br>
-                    <div style="width:100%; text-align:center;">
-                        <label>Питомец:
-                            <select name="select" class="animal_sand">
-                                <option selected> - </option>
-                                <option>Питомец 1</option>
-                                <option>Питомец 2</option>
-                                <option>Питомец 3</option>
-                            </select>
-                        </label>
-                    </div>
-                </form>
-                <br>
-                <br>
-            </div>
-        </td>
-      </tr>
-      <tr>
-        <td height="30" align="center">
-            <!-- показывать этот DIV только с DIV-ами messageХ -->
-            <div id="message">
-                <form>
-                    <input type="button" value="Закрыть" style="background-color:#f24f00; color:#ffff99; cursor:hand;">
-                </form>
-            </div>
-            <!--div id="edit">
-                <form>
-                    <input type="submit" name="Submit2" value="Сохранить" style="background-color:#f24f00; color:#ffff99; cursor:hand;">
-                </form>
-            </div-->
-        </td>
-      </tr>
-    </table>
-</div>
 <!-- Окно сообщений (конец) -->
 
 <!-- Окно фотографии (начало) - по умолчанию скрыто -->
