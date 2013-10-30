@@ -33,6 +33,11 @@ TIME_ZONE = 'America/Chicago'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
+LANGUAGES = (
+    ('en', 'English'),
+    ('ru', 'Russian'),
+)
+
 SITE_ID = 1
 
 SITE_DIR = '/var/www/html/mixim.ru/'
@@ -97,6 +102,8 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'server.middleware.LanguageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 #    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -111,6 +118,11 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     SITE_DIR + 'templates/',
+)
+
+LOCALE_PATHS = (
+    SITE_DIR + 'templates/locale',
+#    SITE_DIR + 'site/locale',
 )
 
 INSTALLED_APPS = (
