@@ -1,3 +1,4 @@
+{% load i18n %}
 <script type="text/javascript">
     function showNavigationElementText(visible) {
         $(".navigation_element_text").css("visibility", visible ? "visible" : "hidden");
@@ -12,38 +13,38 @@
 <div class="navigation" onmouseover="showNavigationElementText(true)" onmouseout="showNavigationElementText(false)">
     <div class="navigation_element s__not_logged la_login" style="display:none;">
         <div class="navigation_element_text" style="visibility:visible;">
-            <a href="#" class="media_block_on">Войти</a>
+            <a href="#" class="media_block_on">{% trans "Sign&nbsp;in" %}</a>
         </div>
         <a href="#" class="media_block_on navigation_element_a_to_block"><img src="images/login.png" width="40" height="40" border="0" alt="Медиалента"></a>
     </div>
     <div class="navigation_element s__not_logged la_add" style="display:none;">
         <div class="navigation_element_text">
-            <a href="#" class="media_block_on">Регистрация</a>
+            <a href="#" class="media_block_on">{% trans "Create&nbsp;an&nbsp;account" %}</a>
         </div>
         <a href="#" class="media_block_on navigation_element_a_to_block"><img src="images/register.png" width="40" height="40" border="0" alt="Медиалента"></a>
     </div>
     <div class="navigation_element s__not_logged la_reset" style="display:none;">
         <div class="navigation_element_text">
-            <a href="#" class="media_block_on">Забыли&nbsp;пароль!?</a>
+            <a href="#" class="media_block_on">{% trans "Forgot&nbsp;your&nbsp;password?" %}</a>
         </div>
         <a href="#" class="media_block_on navigation_element_a_to_block"><img src="images/reset.png" width="40" height="40" border="0" alt="Медиалента"></a>
     </div>
     <div class="s__logged" style="width:40px; height:50px; display:none;"><!--дельта--></div>
     <div class="navigation_element s__logged" style="display:none;">
         <div class="navigation_element_text">
-            <a href="#" class="s__media_upload_win_open">Добавить&nbsp;фото</a>
+            <a href="#" class="s__media_upload_win_open">{% trans "Add&nbsp;picture" %}</a>
         </div>
         <a href="#" class="navigation_element_a_to_block s__media_upload_win_open"><img src="images/photo.png" width="40" height="40" border="0" alt="Личный кабинет"></a>
     </div>
     <div class="navigation_element s__logged" style="display:none;">
         <div class="navigation_element_text">
-            <a href="cabinet.shtml" class="cabinet_block_on">Личный&nbsp;кабинет</a>
+            <a href="cabinet.shtml" class="cabinet_block_on">{% trans "My&nbsp;account" %}</a>
         </div>
         <a href="cabinet.shtml" class="cabinet_block_on navigation_element_a_to_block"><img src="images/cabinet.png" width="40" height="40" border="0" alt="Личный кабинет"></a>
     </div>
     <div class="navigation_element s__logged" style="display:none;">
         <div class="navigation_element_text">
-            <a href="javascript:auth_logout()" class="exit_block_on">Выход</a>
+            <a href="javascript:auth_logout()" class="exit_block_on">{% trans "Exit" %}</a>
         </div>
         <a href="javascript:auth_logout()" class="exit_block_on navigation_element_a_to_block"><img src="images/exit.png" width="40" height="40" border="0" alt="Выход"></a>
     </div>
