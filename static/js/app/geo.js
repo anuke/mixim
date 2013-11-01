@@ -1,14 +1,14 @@
 $(document).ready(function(){
     $('a.sitemap_block_on').click(function() {
-        $('body').css('overflow-y', 'hidden'); // убираем скрол
-        $('#overlay').show(); // заеняем
-        $('.sitemap_block').show(); // показываем окно
+        $('body').css('overflow-y', 'hidden'); // СѓР±РёСЂР°РµРј СЃРєСЂРѕР»
+        $('#overlay').show(); // Р·Р°РµРЅСЏРµРј
+        $('.sitemap_block').show(); // РїРѕРєР°Р·С‹РІР°РµРј РѕРєРЅРѕ
     });
 
     $('a.sitemap_block_off').click(function() {
-        $('body').css('overflow-y', 'auto'); // возвращаем скрол
-        $('#overlay').hide(); // освеляем
-        $('.sitemap_block').hide(); // скрываем окно
+        $('body').css('overflow-y', 'auto'); // РІРѕР·РІСЂР°С‰Р°РµРј СЃРєСЂРѕР»
+        $('#overlay').hide(); // РѕСЃРІРµР»СЏРµРј
+        $('.sitemap_block').hide(); // СЃРєСЂС‹РІР°РµРј РѕРєРЅРѕ
     });
 });
 
@@ -19,23 +19,27 @@ function show_language(sitemap_language) {
     sitemap_language_last = sitemap_language;
 };
 
+function show_map_ca() {
+    document.getElementById('country').innerHTML = "<a href='http://www.mixim.us' target='_self'>www.mixim.us</a>";
+    document.getElementById('country').style.backgroundImage="url(../images/flag-map_ca.png)";
+};
 function show_map_uk() {
     document.getElementById('country').innerHTML = "<a href='http://www.mixim.co.uk' target='_self'>www.mixim.co.uk</a>";
-    document.getElementById('country').style.backgroundImage="url(/images/flag-map_uk.png)";
+    document.getElementById('country').style.backgroundImage="url(../images/flag-map_uk.png)";
 };
 function show_map_us() {
     document.getElementById('country').innerHTML = "<a href='http://www.mixim.us' target='_self'>www.mixim.us</a>";
-    document.getElementById('country').style.backgroundImage="url(/images/flag-map_us.png)";
+    document.getElementById('country').style.backgroundImage="url(../images/flag-map_us.png)";
 };
 function show_map_by() {
     document.getElementById('country').innerHTML = "<a href='http://www.mixim.ru' target='_self'>www.mixim.ru</a>";
-    document.getElementById('country').style.backgroundImage="url(/images/flag-map_by.png)";
+    document.getElementById('country').style.backgroundImage="url(../images/flag-map_by.png)";
 };
 function show_map_ru() {
     document.getElementById('country').innerHTML = "<a href='http://www.mixim.ru' target='_self'>www.mixim.ru</a>";
-    document.getElementById('country').style.backgroundImage="url(/images/flag-map_ru.png)";
+    document.getElementById('country').style.backgroundImage="url(../images/flag-map_ru.png)";
 };
 function show_map_ua() {
     document.getElementById('country').innerHTML = "<a href='http://www.mixim.ru' target='_self'>www.mixim.ru</a>";
-    document.getElementById('country').style.backgroundImage="url(/images/flag-map_ua.png)";
+    document.getElementById('country').style.backgroundImage="url(../images/flag-map_ua.png)";
 };            
