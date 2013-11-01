@@ -355,6 +355,13 @@ def friend_media(request, start = 0, limit = 10):
 
 @serialize
 @require_method("GET")
+@require_id(MediaFile, enabled=True)
+def comment_list(request, media):
+    return media.comments.filter(deleted=False)
+
+
+@serialize
+@require_method("GET")
 @require_auth
 def discussions(request):
     paginator = Paginator(MediaFile.objects.filter(comment__author=request.user).distinct(), settings.DISCUSSION_PER_PAGE)
