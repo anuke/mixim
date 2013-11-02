@@ -1,9 +1,8 @@
-{% load extra %}
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+{% load extra %}{% load i18n %}<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MIXIM - для тех, кто любит и очень любит животных</title>
+<title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 
@@ -42,9 +41,9 @@
                 <!--div class="user_about_bkg opa25"></div-->
                 {{ user_profile.profile.about}}
             </div>
-            <div class="user_about_plus opa75">Питомцев {{ user_profile.pets.count }} | Подписался на {{ user_profile.follows.count}} | В избранном у {{ user_profile.followed_by.count}} | Сообщений {{ user_profile.comment_set.count }}</div>
+            <div class="user_about_plus opa75">{% trans "Pets:" %} {{ user_profile.pets.count }} | {% trans "Subscribe to:" %} {{ user_profile.follows.count}} | {% trans "Favorited:" %} {{ user_profile.followed_by.count}} | {% trans "Posts:" %} {{ user_profile.comment_set.count }}</div>
             <div class="user_name">{{ user_profile.first_name }} {{ user_profile.last_name }}</div>
-            <div class="user_about_plus opa75">{{ user_profile.username}} | на сайте с {{ user_profile.date_joined }}</div>
+            <div class="user_about_plus opa75">{{ user_profile.username}} - {% trans "on the site from:" %} {{ user_profile.date_joined }}</div>
         </td>
     </tr>
     <tr>
@@ -65,23 +64,23 @@
     <tr>
         <td align="center" valign="top">
             <div class="user_page_content_box">
-                <div class="pagination">
+                {% spaceless %}
+                <div class="pagination" style="padding: 0 0 10px;">
                     <div class="step-links">
                         {% if media_list.has_previous %}
-                            <a class="discussion_previous_page pagination_left_page" href="?page={{ media_list.previous_page_number }}"><< Туда</a>
+                            <a class="discussion_previous_page pagination_left_page" href="?page={{ media_list.previous_page_number }}">&#171; {% trans "Back" %}</a>
                         {% else %}
                             <a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>
                         {% endif %}
-
-                        <a class="pagination_current_page">Страница {{ media_list.number }} из {{ media_list.paginator.num_pages }}</a>
-
+                        <a class="pagination_current_page">{% trans "Page" %} {{ media_list.number }} {% trans "of" %} {{ media_list.paginator.num_pages }}</a>
                         {% if media_list.has_next %}
-                            <a class="discussion_next_page pagination_right_page" href="?page={{ media_list.next_page_number }}">Сюда >></a>
+                            <a class="discussion_next_page pagination_right_page" href="?page={{ media_list.next_page_number }}">{% trans "Forward" %} &#187;</a>
                         {% else %}
                             <a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>
                         {% endif %}
                     </div>
                 </div>
+                {% endspaceless %}
                 {% for media in media_list.object_list %}
                 <div class="user_grid_box">
                     <a href="#" class="user_grid_photo" onclick="show_photo({{ media.id }})">
@@ -104,6 +103,23 @@
                     </table>
                 </div>
                 {% endfor %}
+                {% spaceless %}
+                <div class="pagination" style="padding: 0 0 11px;">
+                    <div class="step-links">
+                        {% if media_list.has_previous %}
+                            <a class="discussion_previous_page pagination_left_page" href="?page={{ media_list.previous_page_number }}">&#171; {% trans "Back" %}</a>
+                        {% else %}
+                            <a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>
+                        {% endif %}
+                        <a class="pagination_current_page">{% trans "Page" %} {{ media_list.number }} {% trans "of" %} {{ media_list.paginator.num_pages }}</a>
+                        {% if media_list.has_next %}
+                            <a class="discussion_next_page pagination_right_page" href="?page={{ media_list.next_page_number }}">{% trans "Forward" %} &#187;</a>
+                        {% else %}
+                            <a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endspaceless %}
             </div>
             <!--br>
             <a href="#" style="color:#f24f00;"> Показать еще... </a>
@@ -136,11 +152,11 @@
         <td class="footer_text">
             <table align="center" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><a href="#" class="sitemap_block_on">География</a></td>
-                    <td><a href="#" class="feedback_block_on">Пишие письма</a></td>
+                    <td><a href="#" class="sitemap_block_on">{% trans "World wide" %}</a></td>
+                    <td><a href="#" class="feedback_block_on">{% trans "Contact us" %}</a></td>
                     <td width="400px" align="center">&copy;2006-2013 &nbsp; www.mixim.ru &nbsp; ООО &quot;Мобитун&quot;</td>
-                    <td><a href="#" class="rules_block_on">Регламент</a></td>
-                    <td><a href="#" class="about_block_on">О проекте</a></td>
+                    <td><a href="#" class="rules_block_on">{% trans "Rules" %}</a></td>
+                    <td><a href="#" class="about_block_on">{% trans "About us" %}</a></td>
                 </tr>
             </table>
         </td>

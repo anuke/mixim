@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+{% load i18n %}<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MIXIM - Мы их любим</title>
+<title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -11,20 +11,20 @@
     <tr>
         <td height="98px" valign="top">
             <div class="logo_media">
-                <a href="index.shtml" title="На главную страницу" target="_self">
-                    <img src="images/logo.png" width="156" height="46" border="0" alt="На главную страницу">
+                <a href="../" title="{% trans "On the main page" %}" target="_self">
+                    <img src="images/logo.png" width="156" height="46" border="0" alt="{% trans "On the main page" %}">
                 </a>
             </div>
             <div class="div_404">
-                Поздравляем!
+                {% trans "Congratulations!
             </div>
         </td>
     </tr>
     <tr>
         <td align="center" class="text_404">
-            <h2>Регистрация прошла успешно!</h2>
-            <ul>Вы присоединились к сообществу MiXiM.<br>
-            	<li> Активируйте свой профиля, перейдя по ссылке, отправленой на ваш почтовый адрес</li>
+            <h2>{% trans "Registration was successful!" %}</h2>
+            <ul>{% trans "You have joined the community MiXiM." %}<br>
+            	<li> {% trans "Activate your profile by clicking on the link sent to your e-mail address." %}</li>
             </ul>
         </td>
     </tr>

@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+{% load i18n %}<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MIXIM - для тех, кто любит и очень любит животных</title>
+<title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -11,21 +11,21 @@
     <tr>
         <td height="98px" valign="top">
             <div class="logo_media">
-                <a href="index.shtml" title="На главную страницу" target="_self">
-                    <img src="images/logo.png" width="156" height="46" border="0" alt="На главную страницу">
+                <a href="../" title="{% trans "On the main page" %}" target="_self">
+                    <img src="images/logo.png" width="156" height="46" border="0" alt="{% trans "On the main page" %}">
                 </a>
             </div>
             <div class="div_404">
-                Сброс пароля осуществлен!
+                {% trans "Password Reset done!" %}
             </div>
         </td>
     </tr>
     <tr>
         <td align="center" class="text_404">
-            <h2>ВНИМАНИЕ!</h2>
-            <ul>Новый пароль выслан на ваш почтовый адрес<br>
-                <li> для входа на сайт пользуйтесь <a href="http://www.mixim.ru">домашней страницей</a></li>
-                <li> сменить пароль можно в личных настройках</li>
+            <h2>{% trans "ATTENTION!" %}</h2>
+            <ul>{% trans "New password sent to your e-mail address" %}<br>
+                <li> {% trans "to access the site use <a href="../">{% trans "Homepage" %}</a></li>
+                <li> {% trans "you can change the password in the user settings." %}</li>
             </ul>
         </td>
     </tr>
