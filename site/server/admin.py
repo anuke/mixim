@@ -13,7 +13,7 @@ class UserProfileInline(admin.StackedInline):
 class UserAdmin(UserAdmin):
     inlines = (UserProfileInline, )
     ordering = ('-id',)
-
+    list_display = ('id', 'username', 'first_name', 'last_name', 'email')
 
 class PetAdmin(admin.ModelAdmin):
     model = Pet
