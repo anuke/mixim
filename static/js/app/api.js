@@ -512,6 +512,9 @@ function comment_list() {
                         '</div>\n';
                 });
                 $('.comment_container').html(html);
+                if (html == "") {
+                    $('#ss__nocomment_div').css('display','block');
+                }
             }
         },
         "json")
