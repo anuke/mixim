@@ -1,1 +1,1 @@
-MiXiM — Регистрация
+{% load i18n %}MiXiM – {% trans "Registration" %}

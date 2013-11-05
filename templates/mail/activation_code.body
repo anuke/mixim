@@ -1,7 +1,7 @@
-Поздравляем Вас с регистрацией в сообществе MiXiM!
+{% load i18n %}{% trans "Congratulations on your enrollment in the community MiXiM!" %}
 
-Для завершения регистрации, пожалуйста, перейдите по следующей ссылке для активации Вашего аккаунта:
+{% trans "To complete the registration please click on the following link to activate your account:" %}
 {{ activation_url }}
 
-С уважением,
-Служба поддержки MiXiM
+{% trans "With best regards," %}
+{% trans "Support MiXiM" %}

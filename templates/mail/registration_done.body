@@ -1,6 +1,7 @@
-Ваш пароль: {{ password }}
-Вы можете изменить пароль в личном кабинете:
-http://mixim.ru/cabinet.shtml
+{% load i18n %}{% trans "Your password:" %} {{ password }}
 
-С уважением,
-Служба поддержки MiXiM
+{% trans "You can change the password to your account:" %}
+{% trans "http://mixim.us/cabinet.shtml" %}
+
+{% trans "With best regards," %}
+{% trans "Support MiXiM" %}
