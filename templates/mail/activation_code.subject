@@ -1,1 +1,1 @@
-MiXiM – Регистрация: Ваш код активации
+{% load i18n %}MiXiM – {% trans "Registration: Your activation code" %}

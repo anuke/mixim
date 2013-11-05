@@ -1,7 +1,7 @@
-У Вашей фотографии новый комментарий от {{ comment.author.username }}.
+{% load i18n %}{% trans "You have a new comment to a pet's picture from" %} {{ comment.author.username }}.
 
-Прочесть комментарии, ответить или удалить Вы сможете в личном кабинете:
-http://www.mixim.ru/cabinet.shtml
+{% trans "Read the comments, reply to, or you can delete in your account:" %}
+{% trans "http://www.mixim.us/cabinet.shtml" %}
 
-С уважением,
-Служба поддержки MiXiM
+{% trans "With best regards," %}
+{% trans "Support MiXiM" %}

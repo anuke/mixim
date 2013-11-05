@@ -1,5 +1,6 @@
-Пользователь {{ user.username }} уже привязан к электронному адресу {{ user.email }}!
-Используйте {{ user.username }} для входа на сайт.
+{% load i18n %}{% trans "User {{user.username}} already attached to the email address {{user.email}}!" %}
 
-С уважением,
-Служба поддержки MiXiM
+{% trans "Use the {{user.username}} to sign in." %}
+
+{% trans "With best regards," %}
+{% trans "Support MiXiM" %}

@@ -1,1 +1,1 @@
-MiXiM - Новый комментарий
+{% load i18n %}MiXiM – {% trans "New comment" %}
