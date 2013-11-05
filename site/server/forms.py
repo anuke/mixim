@@ -20,6 +20,10 @@ class RegistrationForm(forms.ModelForm):
     gender   = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
     birthday = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
 
+    def __init__(self, request):
+        super(RegistrationForm, self).__init__(request.POST)
+        self.hostname = request.META['HTTP_HOST']
+
     class Meta:
         model = User
         fields = ("username","email",)
@@ -56,7 +60,7 @@ class RegistrationForm(forms.ModelForm):
             profile.birthday = self.cleaned_data['birthday']
             profile.save()
 
-            activation_url = settings.ACTIVATION_URL + profile.activation_key
+            activation_url = settings.ACTIVATION_URL % (self.hostname, profile.activation_key)
             send_mail_to_user(user, 'activation_code', { 'activation_url': activation_url })
 
         return user

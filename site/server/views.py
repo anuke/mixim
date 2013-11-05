@@ -20,7 +20,7 @@ import settings
 @serialize
 @require_method("POST")
 def auth_register(request):
-    form = RegistrationForm(request.POST)
+    form = RegistrationForm(request)
     if not form.is_valid():
         raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
 

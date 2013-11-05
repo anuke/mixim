@@ -180,7 +180,7 @@ TEMP_MEDIA_URL = MEDIA_URL.replace('media', 'temp', 1)
 
 AVATAR_SIZE = '90x90'
 
-ACTIVATION_URL = 'http://mixim.ru/activate/'
+ACTIVATION_URL = 'http://%s/activate/%s'
 
 DEFAULT_SPECIES = 'dog'
 DISCUSSION_PER_PAGE = 10
