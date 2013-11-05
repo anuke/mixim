@@ -1,4 +1,5 @@
 # Django settings for idrop2 project.
+from django.conf import global_settings
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -118,6 +119,10 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     SITE_DIR + 'templates/',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'server.processor.hostname',
 )
 
 LOCALE_PATHS = (

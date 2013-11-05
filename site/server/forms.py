@@ -44,7 +44,7 @@ class RegistrationForm(forms.ModelForm):
         try:
             user = User.objects.get(email=user.email)
 
-            send_mail_to_user(user, 'registration_exist')
+            send_mail_to_user(request, user, 'registration_exist')
 
             return user
         except User.DoesNotExist:
@@ -61,7 +61,7 @@ class RegistrationForm(forms.ModelForm):
             profile.save()
 
             activation_url = settings.ACTIVATION_URL % (self.hostname, profile.activation_key)
-            send_mail_to_user(user, 'activation_code', { 'activation_url': activation_url })
+            send_mail_to_user(request, user, 'activation_code', { 'activation_url': activation_url })
 
         return user
 

@@ -74,11 +74,11 @@ def auth_activate(request, activation_key):
 
         login(request, profile.user)
 
-        send_mail_to_user(profile.user, 'registration_done', { 'password': password })
+        send_mail_to_user(request, profile.user, 'registration_done', { 'password': password })
 
-        return render_to_response('auth/activation_done.html')
+        return render_to_response('auth/activation_done.html', context_instance=RequestContext(request))
     except UserProfile.DoesNotExist:
-        return render_to_response('auth/activation_failed.html')
+        return render_to_response('auth/activation_failed.html', context_instance=RequestContext(request))
 
 
 @serialize
@@ -93,7 +93,7 @@ def auth_reset_password(request):
     profile.password_reset = reset_password
     profile.save()
 
-    send_mail_to_user(user, 'password_reset', { 'reset_key': reset_password })
+    send_mail_to_user(request, user, 'password_reset', { 'reset_key': reset_password })
 
 
 @require_method("GET")
@@ -105,7 +105,7 @@ def auth_autocreate_password(request):
     user.set_password(password)
     user.save()
 
-    send_mail_to_user(user, 'password_changed', { 'password': password })
+    send_mail_to_user(request, user, 'password_changed', { 'password': password })
     return redirect('/notify_remail.shtml')
 
 
@@ -123,7 +123,7 @@ def auth_change_password(request):
     user.set_password(password)
     user.save()
 
-    send_mail_to_user(user, 'password_changed', { 'password': password })
+    send_mail_to_user(request, user, 'password_changed', { 'password': password })
 
 
 @serialize
@@ -407,7 +407,7 @@ def comment_add(request, media):
         comment = Comment.objects.create(author=author, media=media, text=text)
 
         try:
-            send_mail_to_user(media.author, 'new_comment', { 'comment': comment })
+            send_mail_to_user(request, media.author, 'new_comment', { 'comment': comment })
         except:
             # TODO: log send mail error
             pass
@@ -472,7 +472,7 @@ def bo_media_delete(request, media):
 #
 
 def show_static_page(request, page_name = 'index'):
-    return render_to_response('static/' + page_name + '.html')
+    return render_to_response('static/' + page_name + '.html', context_instance=RequestContext(request))
 
 def handle404(request):
     request._req.add_common_vars()
@@ -517,7 +517,7 @@ def show_user_page(request, username):
         'media_list': media_list
     })
 
-    return render_to_response('user/user_page.html', context_instance=context)
+    return render_to_response('user/user_page.html', context_instance=RequestContext(request, context))
 
 
 # util region
