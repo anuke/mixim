@@ -373,7 +373,8 @@ def discussions(request):
         discussion = paginator.page(1)
     except EmptyPage:
         discussion = paginator.page(paginator.num_pages)
-
+ 
+    page = int(page)
     pager = {'current_page':page, 'pages':paginator.num_pages, 'has_previous':page > 1, 'has_next':page < paginator.num_pages}
 
     return {'paginator':pager, 'results':discussion.object_list}
