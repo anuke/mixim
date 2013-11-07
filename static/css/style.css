@@ -990,7 +990,7 @@ form {
 }
 #bodyes {
 	height:60px;
-	background-image:url(/images/bodyes1.gif);
+	/*background-image:url(../images/bodyes1.gif);*/
 	background-repeat:no-repeat;
 	background-position:left top;
 	margin-bottom:10px;
@@ -1444,7 +1444,7 @@ form {
 
 .add_slogan {
     position:absolute;
-	background-image:url(/images/add_slogan_1.png);
+	/* background-image:url(/images/add_slogan_1.png); */
 	background-repeat:no-repeat;
 	background-position:86px 11px;
 }
@@ -2690,7 +2690,7 @@ form {
     margin-left:18px;
     margin-top:4px;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
-    font-size:9px;
+    font-size:10px;
     color:#f24f00;
     text-transform:uppercase;
 }

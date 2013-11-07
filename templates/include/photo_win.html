@@ -1,14 +1,14 @@
 {% load i18n %}
 <div id="photo_window" style="display:none">
-    <div class="photo_close"><a href="#" id="photo_win_close_btn" title="{% trans "Close window" %}"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}" title="{% trans "Close window" %}"></a></div>
+    <div class="photo_close"><a href="#" id="photo_win_close_btn" title="{% trans "Close window" %}"><img src="../images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}" title="{% trans "Close window" %}"></a></div>
     <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="20" height="20" background="/images/corner_circle.png" style="background-position: 0px 0px;"></td>
-        <td background="/images/corner_top.png"></td>
-        <td background="/images/corner_circle.png" style="background-position: -20px 0px;"></td>
+        <td width="20" height="20" background="../images/corner_circle.png" style="background-position: 0px 0px;"></td>
+        <td background="../images/corner_top.png"></td>
+        <td background="../images/corner_circle.png" style="background-position: -20px 0px;"></td>
       </tr>
       <tr>
-        <td background="/images/corner_left.png"></td>
+        <td background="../images/corner_left.png"></td>
         <td bgcolor="#ffff99">
             <div id="image_window">
                 <!-- эти дивы будут прозначными на 75%, когда курсор будет в пределах класса photo, то прозрачность будет 0%,
@@ -36,17 +36,17 @@
                         <tr>
                             <td width="40px" align="center"> <!-- к предыдущему фото -->
                                 <!--a href="" title="К предыдущему фото">
-                                    <img src="/images/photo_previous.gif" width="30" height="60" border="0" alt="К предыдущему фото">
+                                    <img src="../images/photo_previous.gif" width="30" height="60" border="0" alt="К предыдущему фото">
                                 </a-->
                             </td>
                             <td width="520px" align="center"> <!-- фото на полный экран -->
                                 <a href="javascript:full_screen()" rel="prettyPhoto">
-                                    <img src="/images/transparent_image.gif" width="500" height="400" title="{% trans "Fullscreen" %}" border="0">
+                                    <img src="../images/transparent_image.gif" width="500" height="400" title="{% trans "Fullscreen" %}" border="0">
                                 </a>
                             </td>
                             <td width="40px" align="center"> <!-- к следующему фото -->
                                 <!--a href="" title="К следующему фото">
-                                    <img src="/images/photo_next.gif" width="30" height="60" border="0" alt="К следующему фото">
+                                    <img src="../images/photo_next.gif" width="30" height="60" border="0" alt="К следующему фото">
                                 </a-->
                             </td>
                         </tr>
@@ -60,20 +60,20 @@
                             <td>
                                 <div class="viewer_photo_bar">
                                     <a id="media_like_btn" href="javascript:media_like()" class="pull_like" title="{% trans "I like it!" %}">
-                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
+                                        <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
                                     </a>
                                     <a id="media_unlike_btn" href="javascript:media_unlike()" class="pull_unlike" title="{% trans "It is not like" %}">
-                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
+                                        <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
                                     </a>
                                 </div>
                                 <div class="author_photo_bar">
                                     <a id="media_like_logo" class="pull_like" title="{% trans "Your likes" %}">
-                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
+                                        <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
                                     </a>
                                 </div>
                                 <div class="guest_photo_bar">
                                     <a id="media_like_logo" class="pull_like" title="{% trans "To like, you should register!" %}">
-                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
+                                        <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
                                     </a>
                                 </div>
                             </td>
@@ -81,14 +81,14 @@
                             <!--td>
                                 <div class="author_photo_bar">
                                     <a href="#" class="pull_public" title="Показывать фото всем!">
-                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="Открыть фото">
+                                        <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="Открыть фото">
                                     </a>
                                 </div>
                             </td-->
                             <td>
                                 <div class="author_photo_bar">
                                     <a href="#" class="pull_delete media_disable" title="{% trans "Delete this image" %}">
-                                        <img src="/images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Delete this image" %}">
+                                        <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Delete this image" %}">
                                     </a>
                                 </div>
                             </td>
@@ -98,13 +98,13 @@
                 </div>
                 <!-- конец прозрачных дивов -->
                 <div class="photo">
-                    <img id="photo_image" src="/images/transparent_image.gif" width="600" height="600">
+                    <img id="photo_image" src="../images/transparent_image.gif" width="600" height="600">
                 </div>
             </div>
             <div class="chat">
                 <!-- Эту часть показывать если фото просматривает сам автор (начало) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
                 <div style="padding-left:10px;" class="author_photo_bar">
-                    {% trans "Data for this image:" %}<br>
+                    {% trans "Image data:" %}<br>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
                         <tr>
                             <td class="sand_box_top" style="pading-top:5px; height:150px;">
@@ -204,10 +204,10 @@
                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="like_box1">
                             <tr>
                                 <td class="favorite_add">
-                                    <a id="photo_add_friend" href="#" title="{% trans "Follow" %}"><img src="/images/favorite_person_add.png" width="64px" height="54" alt="{% trans "Follow" %}" border="0"></a>
+                                    <a id="photo_add_friend" href="#" title="{% trans "Follow" %}"><img src="../images/favorite_person_add.png" width="64px" height="54" alt="{% trans "Follow" %}" border="0"></a>
                                 </td>
                                 <!--td class="favorite_add">
-                                    <a href="#" title="Добавить питомца в избранное"><img src="/images/favorite_pet.png" width="64px" height="54" alt="Добавить питомца в избранное" border="0"></a>
+                                    <a href="#" title="Добавить питомца в избранное"><img src="../images/favorite_pet.png" width="64px" height="54" alt="Добавить питомца в избранное" border="0"></a>
                                 </td-->
                                 <td></td>
                             </tr>
@@ -240,12 +240,12 @@
                 </div>
             </div>
         </td>
-        <td background="/images/corner_right.png"></td>
+        <td background="../images/corner_right.png"></td>
       </tr>
       <tr>
-        <td background="/images/corner_circle.png" style="background-position: 0px -20px;"></td>
-        <td background="/images/corner_bottom.png"></td>
-        <td width="20" height="20" background="/images/corner_circle.png" style="background-position: -20px -20px;"></td>
+        <td background="../images/corner_circle.png" style="background-position: 0px -20px;"></td>
+        <td background="../images/corner_bottom.png"></td>
+        <td width="20" height="20" background="../images/corner_circle.png" style="background-position: -20px -20px;"></td>
       </tr>
     </table>
 </div>

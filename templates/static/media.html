@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+{% load i18n %}<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MIXIM - для тех, кто любит и очень любит животных</title>
+<title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
@@ -30,14 +30,12 @@
     <table border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td height="68px" align="right" valign="top">
-                <img src="images/qr_window_arrow.png" width="53" height="62" border="0">
+                <img src="../images/qr_window_arrow.png" width="53" height="62" border="0">
             </td>
         </tr>
         <tr>
             <td class="show_qr_box" style="padding-top:8px;">
-                Запустите программу считывания QR-кодов.<br>Наводите камеру смартфона или планшета<br>на QR-код и скачайте Android приложение.
-                <br>
-                <img src="images/qr_android_ru.png" width="300" height="300" border="0">
+                <img src="../images/qr_android_ru.png" width="300" height="300" border="0">
             </td>
         </tr>
     </table>
@@ -59,27 +57,27 @@
     <tr>
         <td height="98px" valign="top">
             <div class="logo_media s__logged">
-                <a title="Вы на главной странице" target="_self">
-                    <img src="images/logo.png" width="156" height="46" border="0" alt="Вы на главной странице">
+                <a title="{% trans "You are on the main page" %}" target="_self">
+                    <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "You are on the main page" %}">
                 </a>
             </div>
             <div class="logo_media s__not_logged">
-                <a href="../index.shtml" title="В начало" target="_self">
-                    <img src="images/logo.png" width="156" height="46" border="0" alt="В начало">
+                <a href="../index.shtml" title="{% trans "To home page" %}" target="_self">
+                    <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "To home page" %}">
                 </a>
             </div>
             <div class="app_div">
                 <table border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td width="141">
-                            <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="Скачать из Google play"><img src="images/app_google_play_ru.png" width="141" height="46" border="0" alt="Скачать из Google play"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
-                            <!--a href="#" title="Скачать из App store"><img src="images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
+                            <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans "Available on Google play" %}"><img src="{% trans "../images/app_google_play_en.png" %}" width="141" height="46" border="0" alt="{% trans "Available on Google play" %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
+                            <!--a href="#" title="Скачать из App store"><img src="../images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
                         </td>
                         <td align="center" width="90px;">
-                            <!--a href="#" title="Pets!"--><img src="images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
+                            <!--a href="#" title="Pets!"--><img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
                         </td>
                         <td width="164">
-                            <img src="images/app_stamp_ru.png" width="164" height="98" border="0" alt="Мобильное приложение Pets! - совершенно бесплатно">
+                            <img src="../images/{% trans "app_stamp_en.png" %}" width="164" height="98" border="0" alt="{% trans "The mobile app Pets! - absolutely free!" %}">
                         </td>
                     </tr>
                 </table>
@@ -88,9 +86,9 @@
     </tr>
     <tr>
         <td class="filter_bubble">
-            <div class="add_slogan">
-                <a href="#" class="s__media_upload_win_open" target="_self" title="Добавить фото" style="margin-left:296px;">
-                    <img src="images/photo_bubble.gif" width="80" height="100" border="0" alt="Добавить фото">
+            <div class="add_slogan" style="background-image:url(../images/{% trans "add_slogan_1_en.png" %});">
+                <a href="#" class="s__media_upload_win_open" target="_self" title="{% trans "Add picture" %}" style="margin-left:296px;">
+                    <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="{% trans "Add picture" %}">
                 </a>
             </div>
         </td>
@@ -120,10 +118,10 @@
                                         <div style="width:100%;"></div>
                                     </td>
                                     <td align="right" width="36px" style="">
-                                        <a href="#" id="male_filter" class="search_button search_sex_m opa50" title="Мальчики"><img src="images/transparent_image.gif" width="30" height="30" border="0"></a>
+                                        <a href="#" id="male_filter" class="search_button search_sex_m opa50" title="{% trans "Boys" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
                                     </td>
                                     <td align="right" width="36px" style="">
-                                        <a href="#" id="female_filter" class="search_button search_sex_f opa50" title="Девочки"><img src="images/transparent_image.gif" width="30" height="30" border="0"></a>
+                                        <a href="#" id="female_filter" class="search_button search_sex_f opa50" title="{% trans "Girls" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
                                     </td>
                                     <!--td align="right" width="36px" style="" class="opa25">
                                         <a class="search_button search_readytolove opa50" title="Ищут партнера"><img src="images/transparent_image.gif" width="30" height="30" border="0"></a>

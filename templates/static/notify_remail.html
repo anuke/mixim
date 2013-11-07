@@ -12,7 +12,7 @@
         <td height="98px" valign="top">
             <div class="logo_media">
                 <a href="../" title="{% trans "On the main page" %}" target="_self">
-                    <img src="images/logo.png" width="156" height="46" border="0" alt="{% trans "On the main page" %}">
+                    <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "On the main page" %}">
                 </a>
             </div>
             <div class="div_404">
@@ -24,26 +24,15 @@
         <td align="center" class="text_404">
             <h2>{% trans "ATTENTION!" %}</h2>
             <ul>{% trans "New password sent to your e-mail address" %}<br>
-                <li> {% trans "to access the site use <a href="../">{% trans "Homepage" %}</a></li>
+                <li> {% trans "to access the site use" %} <a href="../">{% trans "Homepage" %}</a></li>
                 <li> {% trans "you can change the password in the user settings." %}</li>
             </ul>
         </td>
     </tr>
 </table>
-<table class="footer" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td class="footer_text">
-            <table align="center" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="400px" align="center">&copy;2006-2013 &nbsp; www.mixim.ru &nbsp; ООО &quot;Мобитун&quot;</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+<!-- Окно сообщений (начало) - по умолчанию скрыто -->
+{% include 'include/footer.html' %}
+<!-- Окно сообщений (конец) -->
 
 <!-- Google Analytic (начало) -->
 <script>
