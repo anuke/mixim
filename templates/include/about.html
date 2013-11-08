@@ -1,15 +1,20 @@
+{% load i18n %}
         <script type="text/javascript">
                 $(document).ready(function(){
                   $('a.about_block_on').click(function() {
                         $('body').css('overflow-y', 'hidden'); // убираем скрол
                         $('#overlay').show(); // заеняем
                         $('.about_block').show(); // показываем окно
+
+                        $('.{% trans "text_block_en" %}').show(); // показываем локаизацию
                   });
 
                   $('a.about_block_off').click(function() {
                         $('body').css('overflow-y', 'auto'); // возвращаем скрол
                         $('#overlay').hide(); // освеляем
                         $('.about_block').hide(); // скрываем окно
+
+                        $('.{% trans "text_block_en" %}').hide(); // скрываем локаизацию
                   });
                 });
         </script>
@@ -18,52 +23,48 @@
                 <td>
                     <table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
                         <tr>
-                            <td class="animals_window_caption">О проекте</td>
+                            <td class="animals_window_caption">{% trans "About us" %}</td>
                             <td align="right" valign="top"><a href="#" title="Закрыть окно" class="about_block_off"><img src="../images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
                         </tr>
                         <tr>
                             <td colspan="2">
                                 <div class="text_block">
-                                    <center>
-                                        <div class="hr_caption" style="width:60px;">О нас</div>
-                                    </center>
-                                    <div style="background-color:#F24F00; height:1px; margin:0px;"></div>
-                                    <p>Мы создали этот ресурс, потому что мы такие же, как и вы.</p>
-                                    <p>Мы - Люди, которые любят и очень любят Животных. Мы разговариваем с ними, любуемся и восхищаемся ими. Мы с вами готовы говорить о них, показывать их, советовать для них - потому что знаем о них все.</p>
-                                    <p>А еще мы готовы спрашивать, узнавать, советоваться, и все потому, что хотим узнать о них еще больше.</p>
-                                    <p>Они шкодят, ревнуют нас и даже кусают, а мы им все прощаем, получая взамен тепло, искренность, любовь и преданности. Многие из них готовы отдать за нас свою жизнь.</p>
-                                    <p>Главные действующие лица нашего сообщества – Животные – наши Любимцы.</p>
-                                    <p>И так – показываем, рассказываем,  спрашиваем, обсуждаем, советуем, восхищаемся, восторгаемся, любуемся...</p>
-                                    <ul style="border:1px solid #333333;">
-                                        Присоединиться к сообществу очень просто.<br>Достаточно загрузить приложение на ваш смартфон или планшет, или же зарегистрироваться на сайте.
-                                        <li>Загружайте фотографии своих любимцев - одну, несколько или сколько угодно.</li>
-                                        <li>Пишите о них рассказы, снимайте видео.</li>
-                                        <li>Пусть ваших героев увидят и оценят другие люди.</li>
-                                        <li>Вы расширите круг знакомых, единомышленников и приобретете новых друзей.</li>
-                                        <li>Участвуйте в конкурсах!</li>
-                                    </ul>
-                                    <p>Неважно, есть у вас питомец или вы его только хотите завести, мы будем рады всем!</p>
-                                    <!--br>
-                                    <br>
-                                    <center>
-                                        <div class="hr_caption" style="width:226px;">Департамент внешних связей</div>
-                                    </center>
-                                    <div style="background-color:#F24F00; height:1px; margin:0px;"></div>
-                                    <p>Уважаемые коллеги!</p>
-                                    <p>Нашей пресс-службой на территории России является <b>"Агентство Информации и Деловых Коммуникаций"</b>, которое всегда готово предоставить оперативные комментарии по актуальным событиям, аналитике и любым другим вопросам проекта MiXiM, а так же организовать встречу с создателями проекта.</p>
-                                    <p>Кроме того, "А.И.Д.К." всегда открыты к предложениям о совместных проектах со СМИ.</p>
-                                    <ul style="border:1px solid #333333;">
-                                        Контакты пресс-службы:
-                                        <li>Телефон для связи: +7 (987) 222-45-71</li>
-                                        <li>Контактное лицо: Шакирзянов Марат</li>
-                                    </ul-->
-                                    <!--br>
-                                    <br>
-                                    <center>
-                                        <div class="hr_caption" style="width:90px;">Контакты</div>
-                                    </center>
-                                    <div style="background-color:#F24F00; height:1px; margin:0px;"></div>
-                                    <p></p-->
+                                    <div class="text_block_en" style="display:none;">
+                                        <center>
+                                            <a class="hr_caption">&nbsp;From&nbsp;the&nbsp;developers&nbsp;of&nbsp;MiXiM:&nbsp;</a>
+                                        </center>
+                                        <div style="background-color:#F24F00; height:1px; margin:0px;"></div>
+                                        <p>We created this site and the mobile app for Android (the version for iPhone is forthcoming soon) because we love love animals.</p>
+                                        <p>We have pets and we love them and want to share our photos, comments, ideas and knowledge with other people like us.</p>
+                                        <p>At this point MiXiM is the easiest and the fastest way available to socially promote your pet and to participate in the wast community of people who love and care for animals.</p>
+                                        <ul style="border:1px solid #333333;">
+                                            It is very easy to join :<br>either download the mobile application on your Android phone or Tablet, or register online.
+                                            <li>If you have a “Kodak” moment, you should share it here!</li>
+                                            <li>Lets share our stories, ask each other questions and advice, lets build this community by using this wonderful free web resource and app.</li>
+                                            <li>Let your pets will be seen and appreciated by others.</li>
+                                        </ul>                                        
+                                    </div>
+                                    <div class="text_block_ru" style="display:none;">
+                                        <center>
+                                            <a class="hr_caption">&nbsp;От&nbsp;разработчиков&nbsp;MiXiM:&nbsp;</a>
+                                        </center>
+                                        <div style="background-color:#F24F00; height:1px; margin:0px;"></div>
+                                        <p>Мы создали этот ресурс, потому что мы такие же, как и вы.</p>
+                                        <p>Мы - Люди, которые любят и очень любят Животных. Мы разговариваем с ними, любуемся и восхищаемся ими. Мы с вами готовы говорить о них, показывать их, советовать для них - потому что знаем о них все.</p>
+                                        <p>А еще мы готовы спрашивать, узнавать, советоваться, и все потому, что хотим узнать о них еще больше.</p>
+                                        <p>Они шкодят, ревнуют нас и даже кусают, а мы им все прощаем, получая взамен тепло, искренность, любовь и преданности. Многие из них готовы отдать за нас свою жизнь.</p>
+                                        <p>Главные действующие лица нашего сообщества – Животные – наши Любимцы.</p>
+                                        <p>И так – показываем, рассказываем,  спрашиваем, обсуждаем, советуем, восхищаемся, восторгаемся, любуемся...</p>
+                                        <ul style="border:1px solid #333333;">
+                                            Присоединиться к сообществу очень просто.<br>Достаточно загрузить приложение на ваш смартфон или планшет, или же зарегистрироваться на сайте.
+                                            <li>Загружайте фотографии своих любимцев - одну, несколько или сколько угодно.</li>
+                                            <li>Пишите о них рассказы, снимайте видео.</li>
+                                            <li>Пусть ваших героев увидят и оценят другие люди.</li>
+                                            <li>Вы расширите круг знакомых, единомышленников и приобретете новых друзей.</li>
+                                            <li>Участвуйте в конкурсах!</li>
+                                        </ul>
+                                        <p>Неважно, есть у вас питомец или вы его только хотите завести, мы будем рады всем!</p>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -71,7 +72,7 @@
                             <td colspan="2" class="button_1_buble">
                                 <div class="button_1">
                                     <center>
-                                        <a href="#" title="Закрыть окно" class="about_block_off">Закрыть</a>
+                                        <a href="#" title="{% trans "Close window" %}" class="about_block_off">{% trans "Close" %}</a>
                                     </center>
                                 <div>
                             </td>

@@ -1,13 +1,14 @@
-{% load i18n %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <html>
 <head>
-<title>MIXIM - для тех, кто любит и очень любит животных</title>
+<title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
-</head>
+
 <script src="/js/underscore-min.js"></script>
 <script src="/js/backbone-min.js"></script>
 <script src="/js/jquery-1.8.3.min.js"></script>
@@ -16,6 +17,8 @@
 <script src="/js/jquery.iframe-transport.js"></script>
 <script src="/js/jquery.fileupload.js"></script>
 <script src="/js/jquery.populate.js"></script>
+<script src="/js/sprintf.min.js"></script>
+<script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
 <script src="/js/app/init.js"></script>
 <script src="/js/app/api.js"></script>
 <script src="/js/app/util.js"></script>
@@ -24,21 +27,19 @@
 <script src="/js/app/ui.js"></script>
 <script src="/js/app/cabinet.js"></script>
 <script src="/js/app/auth.js"></script>
-
+</head>
 
 <body class="media">
 <div id="show_qr" class="show_qr_window">
     <table border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td height="68px" align="right" valign="top">
-                <img src="images/qr_window_arrow.png" width="53" height="62" border="0">
+                <img src="../images/qr_window_arrow.png" width="53" height="62" border="0">
             </td>
         </tr>
         <tr>
-            <td class="show_qr_box" style="padding-top:8px;">
-                Запустите программу считывания QR-кодов.<br>Наводите камеру смартфона или планшета<br>на QR-код и скачайте Android приложение.
-                <br>
-                <img src="images/qr_android_ru.png" width="300" height="300" border="0">
+            <td class="show_qr_box">
+                <img src="../images/qr_android_ru.png" width="300" height="300" border="0">
             </td>
         </tr>
     </table>
@@ -48,22 +49,22 @@
     <tr>
         <td height="98px" valign="top">
             <div class="logo_media">
-                <a href="../media.shtml" title="На главную страницу" target="_self">
-                    <img src="images/logo.png" width="156" height="46" border="0" alt="На главную страницу">
+                <a href="../media.shtml" title="{% trans "On the main page" %}" target="_self">
+                    <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "On the main page" %}">
                 </a>
             </div>
             <div class="app_div">
                 <table border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td width="141">
-                            <a href="https://play.google.com/store/apps/details?id=ru.idrop.app" title="Скачать из Google play"><img src="images/app_google_play_ru.png" width="141" height="46" border="0" alt="Скачать из Google play"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
-                            <!--a href="#" title="Скачать из App store"><img src="images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
+                            <a href="https://play.google.com/store/apps/details?id=ru.idrop.app" title="{% trans "Available on Google play" %}"><img src="../images/{% trans "app_google_play_en.png" %}" width="141" height="46" border="0" alt="{% trans "Available on Google play" %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
+                            <!--a href="#" title="Скачать из App store"><img src="../images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
                         </td>
                         <td align="center" width="90px;">
-                            <!--a href="#" title="Pets!"--><img src="images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
+                            <!--a href="#" title="Pets!"--><img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
                         </td>
                         <td width="164">
-                            <img src="images/app_stamp_ru.png" width="164" height="98" border="0" alt="Мобильное приложение Pets! - совершенно бесплатно">
+                            <img src="../images/{% trans "app_stamp_en.png" %}" width="164" height="98" border="0" alt="{% trans "The mobile app Pets! - absolutely free!" %}">
                         </td>
                     </tr>
                 </table>
@@ -73,7 +74,7 @@
     <!--tr>
         <td class="filter_bubble">
             <a href="#" title="Добавить фото" class="s__media_upload_win_open" style="margin-left:296px;">
-                <img src="images/photo_bubble.gif" width="80" height="100" border="0" alt="Добавить фото">
+                <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="Добавить фото">
             </a>
         </td>
     </tr>
@@ -82,13 +83,13 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td width="48" align="right" valign="middle" class="media_list_opa">
-                        <a href="javascript:prevPage()" title="Следующая сраница"><img src="images/page_next.png" width="32" height="64" border="0" alt="Следующая сраница" title="Следующая сраница"></a>
+                        <a href="javascript:prevPage()" title="Следующая сраница"><img src="../images/page_next.png" width="32" height="64" border="0" alt="Следующая сраница" title="Следующая сраница"></a>
                     </td>
                     <td align="center" valign="middle">
                         <table cellpadding="0" cellspacing="6" id="image_container"></table>
                     </td>
                     <td width="48" align="left" valign="middle" class="media_list_opa">
-                        <a href="javascript:nextPage()" title="Предыдущая сраница"><img src="images/page_previous.png" width="32" height="64" border="0" alt="Предыдущая сраница" title="Предыдущая сраница"></a>
+                        <a href="javascript:nextPage()" title="Предыдущая сраница"><img src="../images/page_previous.png" width="32" height="64" border="0" alt="Предыдущая сраница" title="Предыдущая сраница"></a>
                     </td>
                 </tr>
             </table>
@@ -101,24 +102,24 @@
         <td height="141px" valign="top" style="padding-top:92px;">
             <img src="../images/bubble_smoke.gif" width="80" height="57" style="position:absolute; margin-left:78px; top:138px; z-index:-1;">
             <a href="#" class="media_1_openscreen f_goto_userpage">
-                <img src="images/media.png" width="40" height="40" border="0" alt="Медиалента">
+                <img src="../images/media.png" width="40" height="40" border="0" alt="Медиалента">
                 Моя страница
             </a>
             <a href="#" title="Добавить фото" class="media_1_row_line_add_photo s__media_upload_win_open">
-                <img src="images/photo_bubble.gif" width="80" height="100" border="0" alt="Добавить фото">
+                <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="Добавить фото">
             </a>
             <div style="width:980px; height:121px;"> <!-- вынести в перед над всеми - position:relative; z-index:10;-->
                 <span class="media_1_row_line_name_cabinet">Мои фотографии</span>
                 <table class="media_1_row_line" style="width:100%; height:100%;">
                     <tr>
                         <td width="48" align="right" valign="middle" class="media_list_opa">
-                            <a href="javascript:prevPage()" title="Следующая сраница"><img src="images/page_next.png" width="32" height="64" border="0" alt="Следующая сраница" title="Следующая сраница"></a>
+                            <a href="javascript:prevPage()" title="Следующая сраница"><img src="../images/page_next.png" width="32" height="64" border="0" alt="Следующая сраница" title="Следующая сраница"></a>
                         </td>
                         <td align="center">
                             <table cellpadding="0" cellspacing="6" id="image_container"></table>
                         </td>
                         <td width="48" align="left" valign="middle" class="media_list_opa">
-                            <a href="javascript:nextPage()" title="Предыдущая сраница"><img src="images/page_previous.png" width="32" height="64" border="0" alt="Предыдущая сраница" title="Предыдущая сраница"></a>
+                            <a href="javascript:nextPage()" title="Предыдущая сраница"><img src="../images/page_previous.png" width="32" height="64" border="0" alt="Предыдущая сраница" title="Предыдущая сраница"></a>
                         </td>
                     </tr>
                 </table>
@@ -604,8 +605,9 @@
                                 </table>
                             </div>
                         </div>
+                        <!-- Глобальные новости, Анонсы мероприятий и т.п. (начало)-->
                         <div class="cabinet_column" style="width:182px; background-color:#ffffcc;">
-                            <div style="margin-top:10px;">
+                            <!--div style="margin-top:10px;">
                                 <div style="font-size:8px; text-align:right;">9/09/2013</div>
                                 <div style="font-size:12px; text-align:center; font-weight:bold; color:#f24f00;">Дорогие друзья!</div>
                                 <div style="font-size:10px; text-align:justify; word-wrap:break-word; margin-top:4px; color:#f24f00;">&nbsp;&nbsp;Мы рады сообщить об окончании работ над пилотным проектом MiXiM.<br>&nbsp;&nbsp;Учитывая Ваши пожелания, мы улучшили интерфейс программных продуктов, внесли ряд изменений в систему поиска, открыли доступ к личным страницам пользователя и добавили ряд интересных функций, с которые не останутся вами не замеченными.</div>
@@ -620,7 +622,7 @@
                                 <div style="font-size:8px; text-align:right;">12/05/2013</div>
                                 <div style="font-size:12px; text-align:center; font-weight:bold; color:#f24f00;">Мы открылись!</div>
                                 <div style="font-size:10px; text-align:justify; word-wrap:break-word; margin-top:4px; color:#f24f00;">&nbsp;&nbsp;Сегодня мы открываем проект «MiXiM» для посетителей. Этот проект будет полезен всем тем, кто хочет разделиться счастье общения и дружбы с животными, с окружающими. Мы так же надеемся помочь в духовном росте, желающим завести питомцев, а так же самим животным, найти защиту в дружбе с человеком.</div>
-                            </div>
+                            </div-->
                         </div>
                         <!-- Глобальные новости, Анонсы мероприятий и т.п. (конец)-->
                     </td>
@@ -630,24 +632,9 @@
         </td>
     </tr>
 </table>
-<table class="footer" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td class="footer_text">
-            <table align="center" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td><a href="#" class="sitemap_block_on">География</a></td>
-                    <td><a href="#" class="feedback_block_on">Пишите письма</a></td>
-                    <td width="400px" align="center">&copy;2006-2013 &nbsp; www.mixim.ru &nbsp; ООО &quot;Мобитун&quot;</td>
-                    <td><a href="#" class="rules_block_on">Регламент</a></td>
-                    <td><a href="#" class="about_block_on">О проекте</a></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+<!-- Окно сообщений (начало) - по умолчанию скрыто -->
+{% include 'include/footer.html' %}
+<!-- Окно сообщений (конец) -->
 
 <!-- Окно сообщений (начало) - по умолчанию скрыто -->
 <div id="info_window" style="display:none">

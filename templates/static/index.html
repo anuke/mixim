@@ -1,5 +1,7 @@
-{% load i18n %}<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <html>
 <head>
 <title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
@@ -14,6 +16,8 @@
 <script src="/js/jquery.iframe-transport.js"></script>
 <script src="/js/jquery.fileupload.js"></script>
 <script src="/js/jquery.populate.js"></script>
+<script src="/js/sprintf.min.js"></script>
+<script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
 <script src="/js/app/init.js"></script>
 <script src="/js/app/api.js"></script>
 <script src="/js/app/util.js"></script>

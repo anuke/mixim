@@ -1,3 +1,4 @@
+{% load i18n %}
         <script type="text/javascript">
             $(document).ready(function() {
                 $('a.feedback_block_on').click(function() {
@@ -19,10 +20,10 @@
                             text: $('#f_feedback_text').val()
                         }, function (data) {
                             if (data.success) {
-                                alert('Ваше сообщение отправлено');
+                                alert('{% trans "Your message has been sent" %}');
                             }
                             else {
-                                alert('Ошибка при отправке сообщения');
+                                alert('{% trans "Error sending message" %}');
                             }
                         }, 'json');
                 });
@@ -33,34 +34,34 @@
                 <td>
                     <table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
                         <tr>
-                            <td class="animals_window_caption">Обратная связь</td>
+                            <td class="animals_window_caption">{% trans "Feedback" %}</td>
                             <td align="right" valign="top"><a href="#" title="Закрыть окно" class="feedback_block_off"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
                         </tr>
                         <tr>
                             <td colspan="2" height="240px" align="center">
-                                <font size="2" color="red">Внимание! Для корректной отправки,<br>все поля обязательны к заполнению.</font>
+                                <font size="2" color="red">{% trans "<b>Attention!</b><br>For the correct delivery, all fields are required." %}</font>
                                 <table border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td class="feedback_box_left">
                                             <div style="margin-bottom:5px;">
-                                                <span class="redit_caption">Ваш e-Mail:</span><br>
+                                                <span class="redit_caption">{% trans "Your e-Mail:" %}</span><br>
                                                 <input type="text" id="f_feedback_email" class="redit_body" style="width:305px;">
                                             </div>
                                             <div style="margin-bottom:5px;">
-                                                <span class="redit_caption">Тема сообщения:</span><br>
+                                                <span class="redit_caption">{% trans "Message subject:" %}</span><br>
                                                 <input type="text" id="f_feedback_subject" class="redit_body" style="width:305px">
                                             </div>
                                             <div>
-                                                <span class="redit_caption">Текст сообщения:</span><br>
+                                                <span class="redit_caption">{% trans "Your message:" %}</span><br>
                                                 <textarea id="f_feedback_text" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:305px; height:160px;"></textarea>
                                             </div>
                                         </td>
                                         <td valign="top" class="feedback_box_right">
-                                            <img src="/images/feedback_1.png" onclick="document.getElementById('f_feedback_subject').value='Задать вопрос';" width="48px" height="48px" border="0px" title="Задать вопрос">
-                                            <img src="/images/feedback_2.png" onclick="document.getElementById('f_feedback_subject').value='Предложить идею';" width="48px" height="48px" border="0px" title="Предложить идею">
-                                            <img src="/images/feedback_3.png" onclick="document.getElementById('f_feedback_subject').value='Возникли проблемы';" width="48px" height="48px" border="0px" title="Возникли проблемы">
-                                            <img src="/images/feedback_4.png" onclick="document.getElementById('f_feedback_subject').value='Выразить благодарность';" width="48px" height="48px" border="0px" title="Выразить благодарность">
-                                            <img src="/images/feedback_5.png" onclick="document.getElementById('f_feedback_subject').value='Предложение сутрудничать';" width="48px" height="48px" border="0px" title="Предложение сутрудничать">
+                                            <img src="/images/feedback_1.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Ask a question" %}';" width="48px" height="48px" border="0px" title="{% trans "Ask a question" %}">
+                                            <img src="/images/feedback_2.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Suggest a feature" %}';" width="48px" height="48px" border="0px" title="{% trans "Suggest a feature" %}">
+                                            <img src="/images/feedback_3.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Having problems?" %}';" width="48px" height="48px" border="0px" title="{% trans "Having problems?" %}">
+                                            <img src="/images/feedback_4.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "To express gratitude" %}';" width="48px" height="48px" border="0px" title="{% trans "To express gratitude" %}">
+                                            <img src="/images/feedback_5.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "The proposal to cooperate" %}';" width="48px" height="48px" border="0px" title="{% trans "The proposal to cooperate" %}">
                                         </td>
                                     </tr>
                                 </table>
@@ -70,7 +71,7 @@
                             <td colspan="2" class="button_1_buble">
                                 <div class="button_1">
                                     <center>
-                                        <a href="#" id="feedback_send_link">Отправить</a>
+                                        <a href="#" id="feedback_send_link">{% trans "Send" %}</a>
                                     </center>
                                 <div>
                             </td>
