@@ -212,7 +212,7 @@
                                             <div class="cabinet_body_in">
                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                        <td width="190px" align="right"><b>{% trans "Дата рождения:" %}</b></td>
+                                                        <td width="190px" align="right"><b>{% trans "Date of Birth:" %}</b></td>
                                                         <td width="6px"></td>
                                                         <td width="190px" align="left" id="pet_birthday_{id}">{birthday}</td>
                                                     </tr>
@@ -261,9 +261,9 @@
                                             </div>
                                         </td>
                                         <td class="modify_pet_button">
-                                            <a href="#" id="pet_edit_window_link_{id}">Изменить</a>
-                                            <a href="#" id="pet_enable_link_{id}">Включить</a>
-                                            <a href="#" id="pet_disable_link_{id}">Отключить</a>
+                                            <a href="#" id="pet_edit_window_link_{id}">{% trans "Change" %}</a>
+                                            <a href="#" id="pet_enable_link_{id}">{% trans "Enable" %}</a>
+                                            <a href="#" id="pet_disable_link_{id}">{% trans "Disable" %}</a>
                                         </td>
                                     </tr>
                                 </table>
@@ -294,27 +294,27 @@
                                                 <input type="text" id="f_user_nic" class="redit_body" style="width:234px;">
                                             </div-->
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Мое Имя:</span><br>
+                                                <span class="redit_caption">{% trans "First Name:" %}</span><br>
                                                 <input type="text" id="f_user_firstname" class="redit_body" style="width:234px;">
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Моя Фамилия:</span><br>
+                                                <span class="redit_caption">{% trans "Last Name:" %}</span><br>
                                                 <input type="text" id="f_user_lastname" class="redit_body" style="width:234px;">
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Мой пол:</span><br>
+                                                <span class="redit_caption">{% trans "Gender:" %}</span><br>
                                                 <select class="redit_body" id="f_user_gender" style="width:238px;">
                                                     <option value=""></option>
-                                                    <option value="M">Мужской</option>
-                                                    <option value="F">Женский</option>
+                                                    <option value="M">{% trans "Male" %}</option>
+                                                    <option value="F">{% trans "Female" %}</option>
                                                 </select>
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Мой день рожденья:</span><br>
+                                                <span class="redit_caption">{% trans "Date of Birth:" %}</span><br>
                                                 <input type="text" id="f_user_birthday" class="redit_body" style="width:234px;">
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Моя страна:</span><br>
+                                                <span class="redit_caption">{% trans "Country:" %}</span><br>
                                                 <select class="redit_body" id="f_user_country" style="width:238px;">
                                                     <option value=""></option>
                                                     <option value="AU">Австралия</option>
@@ -553,18 +553,18 @@
                                                 </select>
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Мой город:</span><br>
+                                                <span class="redit_caption">{% trans "City:" %}</span><br>
                                                 <input type="text" id="f_user_city" class="redit_body" style="width:234px;">
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Немного о себе:</span><br>
+                                                <span class="redit_caption">{% trans "A little bit about yourself:" %}</span><br>
                                                 <textarea id="f_user_about" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:234px; height:250px;"></textarea>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td align="right" valign="bottom" class="user_data_box_bottom">
-                                            <input name="button" type="button" class="button_sand" onclick="cabinet_update_profile()" value="Сохранить">
+                                            <input name="button" type="button" class="button_sand" onclick="cabinet_update_profile()" value="{% trans "Save" %}">
                                         </td>
                                     </tr>
                                 </table>
@@ -577,17 +577,17 @@
                                     <tr>
                                         <td class="user_data_box_top" style="pading-top:5px;">
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Наблюдать за:</span><br>
+                                                <span class="redit_caption">{% trans "I want to watch for:" %}</span><br>
                                                 <select class="redit_body" id="f_show_country" style="width:238px;">
-                                                    <option value="MYC">Питомцами моей страны</option>
-                                                    <option value="ALL">Питомцами со всего мира</option>
+                                                    <option value="MYC">{% trans "Pets of my country" %}</option>
+                                                    <option value="ALL">{% trans "Pets from around the world" %}</option>
                                                 </select>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td align="right" valign="bottom" class="user_data_box_bottom">
-                                            <input name="button" type="button" class="button_sand" onclick="cabinet_change_password()" value="Сохранить">
+                                            <input name="button" type="button" class="button_sand" onclick="cabinet_change_password()" value="{% trans "Save" %}">
                                         </td>
                                     </tr>
                                 </table>
@@ -604,7 +604,7 @@
                                                 <input type="text" id="f_user_nic" class="redit_body" style="width:234px;">
                                             </div-->
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Новый пароль:</span><br>
+                                                <span class="redit_caption">{% trans "You new password:" %}</span><br>
                                                 <input type="password" id="f_new_password" class="redit_body" style="width:234px;">
                                             </div>
                                             <!--center><div style="width:234px; height:1px; background-color:#f24f00; margin:10px 0px;"></div></center>
@@ -613,14 +613,14 @@
                                                 <input type="text" id="f_user_town" class="redit_body" style="width:234px;">
                                             </div-->
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Подвердите новый пароль:</span><br>
+                                                <span class="redit_caption">{% trans "Confirm new password:" %}</span><br>
                                                 <input type="password" id="f_confirmation" class="redit_body" style="width:234px;">
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td align="right" valign="bottom" class="user_data_box_bottom radius_0006">
-                                            <input name="button" type="button" class="button_sand" onclick="cabinet_change_password()" value="Сохранить">
+                                            <input name="button" type="button" class="button_sand" onclick="cabinet_change_password()" value="{% trans "Save" %}">
                                         </td>
                                     </tr>
                                 </table>
