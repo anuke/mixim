@@ -232,7 +232,19 @@ def pet_disable(request, pet):
 @serialize
 @require_method("GET")
 def media_list(request, start = 0, limit = 10):
-    query = MediaFile.enabled_objects.all()
+    user = request.user
+    media = MediaFile.enabled_objects
+    query = media.all() # by default
+
+    if user.is_authenticated():
+        # filter by country filter
+        if user.filter_country:
+            query = media.filter(author__profile__country = user.filter_country)
+    else:
+        # filter by domain
+        if hasattr(request, 'domain_country'):
+            query = media.filter(author__profile__country = request.domain_country)
+
     return __list_media(request, query, start, limit)
 
 
