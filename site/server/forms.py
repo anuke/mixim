@@ -22,7 +22,7 @@ class RegistrationForm(forms.ModelForm):
 
     def __init__(self, request):
         super(RegistrationForm, self).__init__(request.POST)
-        self.hostname = request.META['HTTP_HOST']
+        self.hostname = request.hostname
 
     class Meta:
         model = User

@@ -1,2 +1,2 @@
 def hostname(request):
-    return { 'hostname': request.META['HTTP_HOST'] }
+    return { 'hostname': request.hostname }
