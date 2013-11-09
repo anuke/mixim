@@ -23,6 +23,7 @@ class UserProfile(models.Model):
     avatar   = models.FileField(name=_("Avatar"), upload_to=avatar_upload_path, blank=True, null=True)
     activation_key = models.CharField(name=_("Activation Key"), max_length=30, default='old-user')
     password_reset = models.CharField(name=_("Reset password key"), max_length=32, blank=True, null=True)
+    filter_country  = models.CharField(name=_("Filter Country"), max_length=50, blank=True, null=True)
 
     def activate(self):
         self.status = 'verified'
