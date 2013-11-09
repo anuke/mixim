@@ -119,7 +119,14 @@ function auth_login(prefix) {
             document.location.href = 'media.shtml';
             return;
         }
+        
+        try {
+            $('#sid__gender_image').attr('src', current_user.avatar);
+        }
+        catch(e) {
 
+        }
+        
         $('#noauto_block').hide();
         $('#auto_block').show();
 
