@@ -1,25 +1,26 @@
+{% load i18n %}
 	<!-- Окно создания и редактирования питомца (начало)-->
 		<table id="pet_window" class="add_pet_block">
 			<tr>
                 <td>
                     <table width="460" align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
                         <tr>
-                            <td class="add_photo_window_caption"><span id="w1">Данные питомца</span><br><span class="animals_window_tooltip" id="w2">&nbsp;</span></td>
-                            <td align="right" valign="top"><a href="#" title="Закрыть окно" id="pet_window_close_link"><img src="images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
+                            <td class="add_photo_window_caption"><span id="w1">{% trans "Pets details" %}</span><br><span class="animals_window_tooltip" id="w2">&nbsp;</span></td>
+                            <td align="right" valign="top"><a href="#" title="{% trans "Close window" %}" id="pet_window_close_link"><img src="images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}" title="{% trans "Close window" %}"></a></td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center" class="add_photo_cluster_buttons">
-                                <font style="color:#f24f00; font-size:10px;">Выбирете класс животного, к которому относиться ваш питомец ▼</font>
+                                <font style="color:#f24f00; font-size:10px;">{% trans "Specify the type of animal to which treat your pet" %} ▼</font>
                                 <br>
-                                <img id="pw_cluster_button_img_dog" src="images/cluster_1.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('dog');" title="Собаки">
-                                <img id="pw_cluster_button_img_insect" src="images/cluster_2.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('insect');" title="Насекомые">
-                                <img id="pw_cluster_button_img_bird" src="images/cluster_3.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('bird');" title="Птицы">
-                                <img id="pw_cluster_button_img_cat" src="images/cluster_4.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('cat');" title="Кошки">
-                                <img id="pw_cluster_button_img_rodent" src="images/cluster_5.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('rodent');" title="Грызуны и кролики">
-                                <img id="pw_cluster_button_img_fish" src="images/cluster_6.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('fish');" title="Рыбы и моллюски">
-                                <img id="pw_cluster_button_img_reptile" src="images/cluster_7.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('reptile');" title="Земноводные и рептилии">
-                                <img id="pw_cluster_button_img_horse" src="images/cluster_8.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('horse');" title="Лошади и пони">
-                                <img id="pw_cluster_button_img_other" src="images/cluster_9.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('other');" title="Другие виды животных">
+                                <img id="pw_cluster_button_img_dog" src="images/cluster_1.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('dog');" title="{% trans "Dogs" %}">
+                                <img id="pw_cluster_button_img_insect" src="images/cluster_2.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('insect');" title="{% trans "Insects" %}">
+                                <img id="pw_cluster_button_img_bird" src="images/cluster_3.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('bird');" title="{% trans "Birds" %}">
+                                <img id="pw_cluster_button_img_cat" src="images/cluster_4.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('cat');" title="{% trans "Cats" %}">
+                                <img id="pw_cluster_button_img_rodent" src="images/cluster_5.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('rodent');" title="{% trans "Rodents&nbsp;&&nbsp;rabbits" %}">
+                                <img id="pw_cluster_button_img_fish" src="images/cluster_6.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('fish');" title="{% trans "Fish&nbsp;&&nbsp;shellfish" %}">
+                                <img id="pw_cluster_button_img_reptile" src="images/cluster_7.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('reptile');" title="{% trans "Amphibious&nbsp;&&nbsp;reptiles" %}">
+                                <img id="pw_cluster_button_img_horse" src="images/cluster_8.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('horse');" title="{% trans "Horses&nbsp;&&nbsp;pony" %}">
+                                <img id="pw_cluster_button_img_other" src="images/cluster_9.png" width="40" height="40" border="0" onclick="pw_showClusterPetData('other');" title="{% trans "Other&nbsp;types&nbsp;of&nbsp;animals" %}">
                             </td>
                         </tr>
                         <tr>
@@ -32,31 +33,31 @@
                                             <div id="pw_pet_data" class="hidden" style="text-align:left; width:300px; height:292px; background-color:#ffff99;display:none;">
                                                 <input type="hidden" id="pet_id" value="">
                                                 <div id="pw_name" style="margin-bottom:10px;">
-                                                    <span class="redit_caption">Кличка:</span><br>
+                                                    <span class="redit_caption">{% trans "Pets name:" %}</span><br>
                                                     <input id="pet_name" class="redit_body" type="text" value="" maxlength="256" style="width:300px;">
                                                 </div>
                                                 <div id="pw_breed" style="margin-bottom:10px;">
-                                                    <span class="redit_caption">Порода:</span><br>
+                                                    <span class="redit_caption">{% trans "Breed:" %}</span><br>
                                                     <select id="pet_breed" class="redit_body" style="width:301px;">
                                                     </select>
                                                 </div>
                                                 <div id="pw_gender" style="margin-bottom:10px;">
-                                                    <span class="redit_caption">Пол:</span><br>
+                                                    <span class="redit_caption">{% trans "Gender:" %}</span><br>
                                                     <select id="pet_gender" class="redit_body" style="width:301px;">
-                                                        <option value="M" selected>Мальчик (самец)</option>
-                                                        <option value="F">Девочка (самка)</option>
+                                                        <option value="M" selected>{% trans "Boy (male)" %}</option>
+                                                        <option value="F">{% trans "Girl (female)" %}</option>
                                                     </select>
                                                 </div>
                                                 <div id="pw_color"style="margin-bottom:10px;">
-                                                    <span class="redit_caption">Окрас:</span><br>
+                                                    <span class="redit_caption">{% trans "Color:" %}</span><br>
                                                     <input id="pet_color" class="redit_body" type="text" value="" maxlength="256" style="width:300px;">
                                                 </div>
                                                 <div id="pw_birthday" style="margin-bottom:10px;">
-                                                    <span class="redit_caption">Дата рождения:</span><br>
+                                                    <span class="redit_caption">{% trans "Date of Birth:" %}</span><br>
                                                     <input id="pet_birthday" class="redit_body" type="text" value="" maxlength="256" style="width:300px;">
                                                 </div>
                                                 <div id="pw_about">
-                                                    <span class="redit_caption">Дополнительная информация:</span><br>
+                                                    <span class="redit_caption">{% trans "Additional Information:" %}</span><br>
                                                     <textarea id="pet_about" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:300px; height:54px;"></textarea>
                                                     <input type="hidden" id="pet_species">
                                                 </div>
@@ -73,10 +74,10 @@
                                     <table align="center" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td id="pw_save_button" class="hidden">
-                                                <a href="#" id="pet_save_btn">Сохранить</a>
+                                                <a href="#" title="{% trans "Save" %}" id="pet_save_btn">{% trans "Save" %}</a>
                                             </td>
                                             <td>
-                                                <a href="#" id="pet_close_btn">Закрыть</a>
+                                                <a href="#" title="{% trans "Close window" %}" id="pet_close_btn">{% trans "Close" %}</a>
                                             </td>
                                         </tr>
                                     </table>

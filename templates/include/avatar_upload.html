@@ -1,8 +1,8 @@
-<!-- Добавление аватарки (начало) -->
+{% load i18n %}<!-- Добавление аватарки (начало) -->
     <script>
         function open_uploadavatar() {
             if (!is_logged()) {
-                my_alert('', 'Создание аватарки доступно только зарегистрированным пользователям.');
+                my_alert('', '{% trans "Only registered users can create avatars!" %}');
                 return;
             }
 
@@ -38,8 +38,8 @@
                 <td>
                     <table width="460" align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
                         <tr>
-                            <td class="set_avatar_window_caption"><span>Загрузка изображения</span><br><span class="animals_window_tooltip">&nbsp;</span></td>
-                            <td align="right" valign="top"><a href="#" title="Закрыть окно" class="s__avatar_upload_win_close"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
+                            <td class="set_avatar_window_caption"><span>{% trans "Uploading image" %}</span><br><span class="animals_window_tooltip">&nbsp;</span></td>
+                            <td align="right" valign="top"><a href="#" title="{% trans "Close window" %}" class="s__avatar_upload_win_close"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}" title="{% trans "Close window" %}"></a></td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
@@ -47,7 +47,7 @@
                                     <tr>
                                         <td>
                                             <div class="set_avatar_box">
-                                                <div style="margin-bottom:10px; font-size:12px;">Выберите файл для загрузки на сервер</div>
+                                                <div style="margin-bottom:10px; font-size:12px;">{% trans "Select a file to creating an avatar" %}</div>
                                                 <span><input id="avatar_file" name="avatar" type="file" accept="image/jpeg" data-url="/json/media/avatarupload/"></span>
                                             </div>
                                         </td>
