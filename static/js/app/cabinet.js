@@ -6,10 +6,10 @@ var __PET_FIELDS = ['name', 'breed', 'birthday', 'gender', 'color', 'about', 'sp
 
 function pet_gender_name(gender) {
     if (gender == 'M') {
-        return 'Мальчик';
+        return trans('Boy');
     }
     else if (gender == 'F') {
-        return 'Девочка';
+        return trans('Girl');
     }
 
     return '';
@@ -412,16 +412,16 @@ function load_discussions() {
             '<div class="pagination">' +
             '<div class="step-links">';
       if (discussions.paginator.has_previous) {
-          pager += '<a class="discussion_previous_page pagination_left_page" href="#page=' + ( discussions.paginator.current_page - 1 ) + '">« Туда</a>';
+          pager += '<a class="discussion_previous_page pagination_left_page" href="#page=' + ( discussions.paginator.current_page - 1 ) + '">' + trans('« Back') + '</a>';
       }
       else {
           pager += '<a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>';
       }
       pager += '<a class="pagination_current_page">' +
-                   'Страница ' + discussions.paginator.current_page + ' из '+ discussions.paginator.pages + 
+                   trans('Page %s of %s', discussions.paginator.current_page, discussions.paginator.pages) + 
                '</a>';
       if (discussions.paginator.has_next ) {
-          pager += '<a class="discussion_next_page pagination_right_page" href="#page=' + (discussions.paginator.current_page + 1) + '">Сюда »</a>';
+          pager += '<a class="discussion_next_page pagination_right_page" href="#page=' + (discussions.paginator.current_page + 1) + '">' + trans('Forward »') + '</a>';
       }
       else {
           pager += '<a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>';

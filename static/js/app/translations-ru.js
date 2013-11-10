@@ -42,7 +42,11 @@ var translations = {
     'added a new photo': 'добавил(а) новое фото',
     'Like': 'Лайк',
     'like photo': 'понравилось фото',
-    '': ''
+    'Boy': 'Мальчик',
+    'Girl': 'Девочка',
+    '« Back': '« Туда',
+    'Page %s of %s': 'Страница %s из %s',
+    'Forward »': 'Сюда »'
 };
 
 function trans(key) {
