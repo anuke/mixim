@@ -48,7 +48,7 @@ function __append_pet_block(pet) {
     });
 
     if (!pet.last_picture) {
-        pet.last_picture = "/media/absent.png";
+        pet.last_picture = "/images/absent.png";
     }
 
     pet.gender_name = pet_gender_name(pet.gender);

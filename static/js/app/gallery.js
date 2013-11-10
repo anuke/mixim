@@ -69,7 +69,7 @@
                             td.append(a);
                         }
                         else {
-                            var img = $('<img>').attr('src', "/media/absent.png").attr('title', 'Фотография отсутствует!');
+                            var img = $('<img>').attr('src', "/images/absent.png").attr('title', 'Фотография отсутствует!');
                             td.attr('align', 'center').attr('valign', 'middle').append(img);
                         }
                         tr.append(td);
