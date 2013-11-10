@@ -108,7 +108,7 @@ function auth_login(prefix) {
     },
     function (data) {
         if (!data.success) {
-            my_error('<center><b>Ошибка авторизации!</b></center>&nbsp;&nbsp;Возможно неверно заполнены поля <b>логин/никнейм</b> и <b>пароль</b>. Проверьте на наличие ошибок и <b>повторите попытку</b>.');
+            my_error(trans('<center><b>Authorization error!</b></center>&nbsp;&nbsp;Perhaps incorrectly filled fields <b>username/nickname</b> and <b>password</b>. Check for errors and <b>try again</b>.'));
             return;
         }
 
@@ -183,6 +183,7 @@ function auth_register(prefix) {
     },
     function (data) {
         if (!data.success) {
+            console.log(data.environment);
             if (data.environment.errors) {
                 for (var prop in data.environment.errors) {
                     $('#reg_' + prop).addClass('invalid');
@@ -192,11 +193,11 @@ function auth_register(prefix) {
                 }
             }
 
-            my_error('Поля заполнены неверно');
+            my_error(trans('&nbsp;&nbsp;The fields are filled correctly!'));
         }
         else {
             Auth.trigger("register", data.result);
-            my_alert('<b>Поздравляем!</b>', '&nbsp;&nbsp;Регистрация прошла успешно. Проверьте вашу почту, на ваш почтовый ящик было отправлено письмо с кодом активации.');
+            my_alert(trans('<b>Congratulations</b>'), trans('&nbsp;&nbsp;Registration was successful. Check your e-mail. You will be sent an email with an activation code.'));
             hide_window('register');
             //show_login_window();
             $('body').css('overflow-y', 'auto');
@@ -217,14 +218,14 @@ function auth_resetpassword() {
                 var errorMsg = data.error.message;
                 switch (data.error.code) {
                     case 121:
-                        errorMsg = '&nbsp;Пользователь не найден. Проверьте <b>логин/никнейм</b> на наличие ошибок и <b>повторите попытку</b>.';
+                        errorMsg = trans('&nbsp;&nbsp;User not found. Check the <b>username/nickname</b> for errors and <b>try again</b>.');
                 }
                 $('#resetpassword_email').addClass('invalid');
                 my_error(errorMsg);
             }
             else {
                 Auth.trigger("resetpassword");
-                my_alert('<b>Восстановление пароля</b>', '&nbsp;&nbsp;На Ваш почтовый ящик было отправлено письмо. Следуйте дальнейшим инструкциям, указанным в письме.');
+                my_alert(trans('<b>Password recovery</b>'), trans('&nbsp;&nbsp;At your e-mail has been sent to. Follow the instructions in the letter.'));
                 $('body').css('overflow-y', 'auto');
                 $('#overlay').hide();
                 $('.login_add_block').hide();
@@ -314,7 +315,7 @@ function profile_save(properties) {
 function pet_enable(pet) {
     $.getJSON('/json/pet/enable/' + pet.id + '/', function (data) {
         if (!data.success) {
-            my_error('Не могу отключить питомца');
+            my_error(trans('It is not possible to disable pet'));
             return;
         }
 
@@ -325,7 +326,7 @@ function pet_enable(pet) {
 function pet_disable(pet) {
     $.getJSON('/json/pet/disable/' + pet.id + '/', function (data) {
         if (!data.success) {
-            my_error('Не могу включить питомца');
+            my_error(trans('It is not possible to enable pet'));
             return;
         }
 
@@ -336,7 +337,7 @@ function pet_disable(pet) {
 function pet_add(model) {
     $.post('/json/pet/add/', model.params(), function (data) {
         if (!data.success) {
-            my_error('Не могу сохранить питомца');
+            my_error(trans('It is not possible to add pet'));
             return;
         }
 
@@ -347,7 +348,7 @@ function pet_add(model) {
 function pet_save(model) {
     $.post('/json/pet/save/' + model.id + '/', model.params(), function (data) {
         if (!data.success) {
-            my_error('Не могу сохранить питомца');
+            my_error(trans('It is not possible to save pet'));
             return;
         }
 
@@ -370,7 +371,7 @@ function media_like() {
             }
         }
         else {
-            my_alert('Ошибка', data.error.message);
+            my_alert(trans('Error'), data.error.message);
         }
     });
 }
@@ -384,7 +385,7 @@ function media_unlike() {
             toggle_media_like_btns(false);
         }
         else {
-            my_alert('Ошибка', data.error.message);
+            my_alert(trans('Error'), data.error.message);
         }
     });
 }
@@ -393,12 +394,12 @@ function media_disable() {
     var url = '/json/media/disable/' + current_photo.id + '/';
     $.getJSON(url, {}, function (data) {
         if (data.success) {
-            my_alert('Готово', 'Фото удалено.');
+            my_alert(trans('Finish'), trans('Photo removed.'));
             gallery_refresh();
             hide_window('photo');
         }
         else {
-            my_alert('Ошибка', data.error.message);
+            my_alert(trans('Error'), data.error.message);
         }
     });
 }
@@ -419,7 +420,7 @@ function media_save() {
     $.post("/json/media/save/" + current_photo.id + "/", params,
         function (result) {
             if (result.success) {
-                my_alert('Информация о фото', 'Сохранено.');
+                my_alert(trans('Photo info'), trans('Saved.'));
                 // TODO: change properties of current_photo
                 $('#photo_pet').text(petName);
                 $('#photo_description').text(description);
@@ -454,8 +455,8 @@ function friend_add(user) {
             if (data.success) {
                 // TODO: design subscription notification
                 friendInfo.friends.push(user);
-                $('#photo_add_friend').attr('title', 'Отписаться').find('img').attr('src', '/images/favorite_person_remove.png');
-                alert('Вы подписаны на ' + user);
+                $('#photo_add_friend').attr('title', trans('Not follow')).find('img').attr('src', '/images/favorite_person_remove.png');
+                alert(trans('You follow ') + user);
             }
         },
         "json");
@@ -468,8 +469,8 @@ function friend_remove(user) {
                 // TODO: design subscription notification
                 friendInfo.friends = _.filter(friendInfo.friends,
                     function (friend) { return friend != user; });
-                $('#photo_add_friend').attr('title', 'Подписаться').find('img').attr('src', '/images/favorite_person_add.png');
-                alert('Вы отписаны от ' + user);
+                $('#photo_add_friend').attr('title', trans('Follow')).find('img').attr('src', '/images/favorite_person_add.png');
+                alert(trans('You not follow ') + user);
             }
         },
         "json");
@@ -513,7 +514,7 @@ function comment_list() {
                 $.each(data.result, function (idx, el) {
                     html +=
                         '<div style="margin:4px;">\n' +
-                        '    <a href="/@' + el.author + '/" target="_blank" title="к профилю пользователя" style="font-weight:normal; text-transform:uppercase;">' + el.author + '</a>\n' +
+                        '    <a href="/@' + el.author + '/" target="_blank" title="' + trans('on the user&#39;s profile') + '" style="font-weight:normal; text-transform:uppercase;">' + el.author + '</a>\n' +
                         '    <br>\n' +
                         '    &nbsp;&nbsp;&nbsp;' + el.text + '\n' +
                         '</div>\n';
@@ -551,12 +552,12 @@ function last_comments(type) {
                         '<table align="left" style="margin-top:10px;" border="0" cellspacing="0" cellpadding="0"><!-- входящие -->' +
                         '    <tr>' +
                         '        <td class="cabinet_photo_in">' +
-                        '             <a id="last_photo_' + el.photo_id + '" href="#" title="Показать фото">' +
+                        '             <a id="last_photo_' + el.photo_id + '" href="#" title="' + trans('Show photo') + '">' +
                         '                 <img id="" src="' + el.thumbnail + '" width="100px" height="75px">' +
                         '             </a>' +
                         '        </td>' +
                         '        <td align="left" valign="top">' +
-                        '            <span id="" class="cabinet_caption_in">Коментарий</span>' +
+                        '            <span id="" class="cabinet_caption_in">' + trans('Comment') + '</span>' +
                         '            <div class="cabinet_body_in">' +
                         '            <table width="386px" border="0" cellspacing="0" cellpadding="0">' +
                         '                <tr>' +
@@ -570,7 +571,7 @@ function last_comments(type) {
                         '           </div>' +
                         '        </td>' +
                         '        <td class="modify_pet_button">' +
-                        '            <a href="#" class="message_delete_button" id="comment_' + el.id + '" title="Удалить этот комментарий">Удалить</a>' +
+                        '            <a href="#" class="message_delete_button" id="comment_' + el.id + '" title="' + trans('Remove this comment') + '">' + trans('Remove') + '</a>' +
                         '        </td>' +
                         '    </tr>' +
                         '</table>';

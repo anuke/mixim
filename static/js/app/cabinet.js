@@ -48,7 +48,7 @@ function __append_pet_block(pet) {
     });
 
     if (!pet.last_picture) {
-        pet.last_picture = "/images/absent.png";
+        pet.last_picture = "/media/absent.png";
     }
 
     pet.gender_name = pet_gender_name(pet.gender);
@@ -159,15 +159,15 @@ function __show_pet_window(pet) {
 var NO_CLUSTER = "0";
 var pw_cluster = NO_CLUSTER;
 var cluster_names = {
-    "dog": "Собаки",
-    "insect": "Бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи и прочие насекомые",
-    "bird": "Попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби и другие пернатые",
-    "cat": "Кошки",
-    "rodent": "Шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки и т.д.",
-    "fish": "Аквариумные рыбки и улитки",
-    "reptile": "Змеи, лягушки, черепахи, и т.п.",
-    "horse": "Лошади и пони",
-    "other": "Приматы, парнокопыные, шестокрылые и остальные экзотические виды"
+    "dog": trans('Dogs'),
+    "insect": trans('Butterflies, praying mantises, centipedes, spiders, Madagascar cockroaches, ants and other insects'),
+    "bird": trans('Parakeets, canaries, goldfinches, hawks, falcons, nightingales, quails, pigeons and other birds'),
+    "cat": trans('Cats'),
+    "rodent": trans('Chinchilla, mice, guinea pigs, rats, rabbits, hamsters, hedgehogs, gerbils, ferrets, etc.'),
+    "fish": trans('Aquarium fish and snails'),
+    "reptile": trans('Snakes, frogs, turtles, etc.'),
+    "horse": trans('Horses and ponies'),
+    "other": trans('Primates, parnokopynye, shestokrylye and other exotic species')
 };
 
 function pw_showClusterPetData(cluster) {
@@ -256,24 +256,24 @@ Auth.on("profile:mine", function (profile) {
 });
 
 Auth.on("change:password:done", function () {
-    alert('Пароль изменён');
+    alert(trans('Password changed'));
     $('#f_new_password').val('');
     $('#f_confirmation').val('');
 });
 
 Auth.on("change:password:fail", function () {
-    alert('Ошибка при изменении пароля');
+    alert(trans('Error when changing password'));
 });
 
 Auth.on("change:profile:done", function (props) {
-    alert('Данные изменены');
+    alert(trans('Data has been modified'));
     for (name in props) {
         current_user[name] = props[name]
     }
 });
 
 Auth.on("change:profile:fail", function () {
-    alert('Ошибка при изменении данных');
+    alert(trans('Incorrectly editing the data'));
 });
 
 function cabinet_change_password() {
@@ -304,7 +304,7 @@ function cabinet_update_profile() {
 }
 
 function confirm_delete_comment(event) {
-    var del = confirm('Удалить сообщение?');
+    var del = confirm(trans('To delete a post?'));
     if (del) {
         delete_comment(event.currentTarget.id.replace("comment_", ""))
     }
@@ -341,14 +341,14 @@ function friends_media_load() {
                 '        </td>\n' +
                 '        <td align="left" class="cabinet_like_box_username">\n' +
                 '            <div style="position:absolute; color:#999999; margin-top:-20px; font-size:9px;">' + media.created + '</div>\n' +
-                '            <a href="/@' + media.author + '">' + media.author + '</a> добавил(а) новое фото\n' +
+                '            <a href="/@' + media.author + '">' + media.author + '</a> ' + trans('added a new photo') + '\n' +
                 '        </td>\n' +
                 '        <td align="center" width="100px">\n' +
-                '            <img src="/images/cabinet_new_photo.png" width="44px" height="44px" border="0" alt="Лайк">\n' +
+                '            <img src="/images/cabinet_new_photo.png" width="44px" height="44px" border="0" alt="' + trans('Like') + '">\n' +
                 '        </td>\n' +
                 '        <td class="cabinet_like_box_photo">\n' +
                 '            <a href="#" id="cabinet_follow_media_' + media.id + '">\n' +
-                '                <img src="' + media.thumbnail + '" width="100px" height="75px" border="0" title="Комментарий:' + media.description + '">\n' +
+                '                <img src="' + media.thumbnail + '" width="100px" height="75px" border="0" title="' + trans('Comment') + ': ' + media.description + '">\n' +
                 '            </a>\n' +
                 '        </td>\n' +
                 '    </tr>\n' +
@@ -379,10 +379,10 @@ function my_likes_load() {
                 '            </a>\n' +
                 '        </td>\n' +
                 '        <td align="left" class="cabinet_like_box_username">\n' +
-                '            <a href="/@' + like.user + '">' + like.user + '</a> понравилось фото\n' +
+                '            <a href="/@' + like.user + '">' + like.user + '</a> ' + trans('like photo') + '\n' +
                 '        </td>\n' +
                 '        <td align="center" width="100px">\n' +
-                '                <img src="/images/cabinet_like.png" width="44px" height="44px" border="0" alt="Лайк">\n' +
+                '                <img src="/images/cabinet_like.png" width="44px" height="44px" border="0" alt="' + trans('Like') + '">\n' +
                 '        </td>\n' +
                 '        <td class="cabinet_like_box_photo">\n' +
                 '            <a href="#" id="cabinet_like_like_' + index + '">\n' +
