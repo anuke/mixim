@@ -22,7 +22,7 @@ class RegistrationForm(forms.ModelForm):
 
     def __init__(self, request):
         super(RegistrationForm, self).__init__(request.POST)
-        self.hostname = request.hostname
+        self.request = request
 
     class Meta:
         model = User
@@ -44,7 +44,7 @@ class RegistrationForm(forms.ModelForm):
         try:
             user = User.objects.get(email=user.email)
 
-            send_mail_to_user(request, user, 'registration_exist')
+            send_mail_to_user(self.request, user, 'registration_exist')
 
             return user
         except User.DoesNotExist:
@@ -60,8 +60,8 @@ class RegistrationForm(forms.ModelForm):
             profile.birthday = self.cleaned_data['birthday']
             profile.save()
 
-            activation_url = settings.ACTIVATION_URL % (self.hostname, profile.activation_key)
-            send_mail_to_user(request, user, 'activation_code', { 'activation_url': activation_url })
+            activation_url = settings.ACTIVATION_URL % (self.request.hostname, profile.activation_key)
+            send_mail_to_user(self.request, user, 'activation_code', { 'activation_url': activation_url })
 
         return user
 
