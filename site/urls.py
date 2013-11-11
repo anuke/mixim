@@ -32,6 +32,8 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/profile/get/my', 'server.views.profile_my'),
     url(r'^([^/]+)/profile/save/', 'server.views.profile_save'),
 
+    url(r'^([^/]+)/myfilter/save/', 'server.views.myfilter_save'),
+
     url(r'^([^/]+)/pet/add/', 'server.views.pet_add'),
     url(r'^([^/]+)/pet/get/(\d+)/', 'server.views.pet_get'),
     url(r'^([^/]+)/pet/save/(\d+)/', 'server.views.pet_save'),

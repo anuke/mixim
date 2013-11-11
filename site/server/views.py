@@ -185,6 +185,17 @@ def profile_save(request):
 @serialize
 @require_method("POST")
 @require_auth
+def myfilter_save(request):
+    form = FilterSettingsForm(request)
+    if not form.is_valid():
+        raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
+
+    form.save()
+
+
+@serialize
+@require_method("POST")
+@require_auth
 def pet_add(request):
     pet = Pet(owner=request.user)
     form = PetForm(request.POST, instance=pet)

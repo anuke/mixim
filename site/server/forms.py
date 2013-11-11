@@ -155,3 +155,16 @@ class MediaForm(forms.ModelForm):
             media.tag_with(tags.split(","))
 
         return media
+
+
+class FilterSettingsForm(forms.Form):
+    filter_mycountry = forms.BooleanField(required=False)
+
+    def __init__(self, request):
+        super(FilterSettingsForm, self).__init__(request.POST)
+        self.user = request.user
+
+    def save(self):
+        filter_mycountry = self.cleaned_data['filter_mycountry']
+        self.user.profile.filter_mycountry = filter_mycountry
+        self.user.profile.save()
