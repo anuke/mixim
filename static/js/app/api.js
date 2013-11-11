@@ -310,6 +310,21 @@ function profile_save(properties) {
 }
 
 //
+// /myfilter/ module
+//
+
+function myfilter_save(settings) {
+    $.post('/json/myfilter/save/', settings,
+        function (data) {
+            if (!data.success) {
+                Auth.trigger("change:myfilter:fail");
+                return;
+            }
+            Auth.trigger("change:myfilter:done");
+        }, 'json');
+}
+
+//
 // /pet/ module
 //
 

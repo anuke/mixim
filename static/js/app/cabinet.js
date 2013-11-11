@@ -247,6 +247,7 @@ Auth.on("profile:mine", function (profile) {
     $('#f_user_birthday').val(or_blank(profile.birthday));
     $('#f_user_firstname').val(or_blank(profile.first_name));
     $('#f_user_lastname').val(or_blank(profile.last_name));
+    $('#f_user_filter_mycountry').val(profile.filter_mycountry ? 'True' : 'False');
 
     $('#avatar').attr('src', profile.avatar);
 
@@ -276,11 +277,25 @@ Auth.on("change:profile:fail", function () {
     alert(trans('Incorrectly editing the data'));
 });
 
+Auth.on("change:myfilter:done", function () {
+    alert(trans('Your settings had been changed successfully.'));
+});
+
+Auth.on("change:myfilter:fail", function () {
+    alert(trans('Can not change your settings, sorry.'));
+});
+
 function cabinet_change_password() {
     var new_password = $('#f_new_password').val();
     var confirmation = $('#f_confirmation').val();
 
     change_password(new_password, confirmation);
+}
+
+function cabinet_save_myfilter() {
+    myfilter_save({
+        filter_mycountry: $('#f_user_filter_mycountry').val()
+    });
 }
 
 function cabinet_update_profile() {
