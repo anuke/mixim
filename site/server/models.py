@@ -76,7 +76,8 @@ class UserProfile(models.Model):
         return to_plain_data(self,
             'id', 'user_id:user.id', 'username:user.username', 'about', 'avatar:avatarurl',
             'first_name:user.first_name', 'last_name:user.last_name',
-            'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets')
+            'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets',
+            'filter_mycountry')
 
     def __unicode__(self):
         return self.user.username
