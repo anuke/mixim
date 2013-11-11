@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from models import UserProfile, Pet, MediaFile, MediaTag
 from choices import GENDERS
-from utils import send_mail_to_user
+from utils import send_mail_to_user, find_geo_by_ip
 
 import settings
 
@@ -58,6 +58,14 @@ class RegistrationForm(forms.ModelForm):
             profile.city     = self.cleaned_data['city']
             profile.gender   = self.cleaned_data['gender']
             profile.birthday = self.cleaned_data['birthday']
+
+            if not profile.country:
+                geo = find_geo_by_ip(self.request.META['REMOTE_ADDR'])
+                if geo is not None:
+                    profile.country = geo.get('country_code', '')
+                    if not profile.city:
+                        profile.city = geo.get('city', '')
+
             profile.save()
 
             activation_url = settings.ACTIVATION_URL % (self.request.hostname, profile.activation_key)
