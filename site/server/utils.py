@@ -21,7 +21,7 @@ def send_mail_to_user(request, user, template, context = None):
 
 def find_geo_by_ip(ip):
     try:
-        geo_json = urllib2.urlopen("http://api.hostip.info/get_json.php?ip=" + ip).read()
+        geo_json = urllib2.urlopen("http://freegeoip.net/json/" + ip).read()
         return json.loads(geo_json)
     except:
         pass
