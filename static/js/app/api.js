@@ -138,17 +138,26 @@ function auth_login(prefix) {
 }
 
 function auth_logout() {
-    $.getJSON("/json/auth/logout/",
-        function (data) {
-            current_user = null;
-            Auth.trigger("logout");
+    $.getJSON("/json/user/species/",
+        function (date) {
+            var saved_species = data.result;
 
-            hide_window('cabinet');
-            show_window('login');
 
-            if (current_photo) {
-                show_photo(current_photo.id);
-            }
+        $.getJSON("/json/auth/logout/",
+            function (data) {
+                current_user = null;
+                Auth.trigger("logout");
+
+                hide_window('cabinet');
+                show_window('login');
+
+                if (current_photo) {
+                    show_photo(current_photo.id);
+                }
+            $.getJSON("/json/user/species/" + saved_species,
+                function (date) {
+                });
+            });
         });
 }
 
