@@ -29,8 +29,8 @@
 
         if (!params) params = gallery_last_params;
         gallery_last_params = params;
-
-        jQuery.getJSON("/json/media/list/" + start + "/" + limit + "/", params,
+        var timestamp = new Date().getTime();
+        jQuery.getJSON("/json/media/list/" + start + "/" + limit + "/?_="+timestamp, params,
             function (data) {
                 if (!data.success) {
                     alert(data.error.message);
@@ -64,12 +64,12 @@
                             var image = images[i];
                             function open_image(id) { return function() { show_photo(id); }}
                             var img = $('<img>').attr('src', image.thumbnail).attr('title', image.description);
-                            var a = $('<a></a>').attr('href', '#').attr('id', 'media-' + image.id).click(open_image(image.id));
+                            var a = $('<a></a>').attr('class', 'finger').attr('id', 'media-' + image.id).click(open_image(image.id));
                             a.append(img);
                             td.append(a);
                         }
                         else {
-                            var img = $('<img>').attr('src', "/images/absent.png").attr('title', 'Фотография отсутствует!');
+                            var img = $('<img>').attr('src', "/media/absent.png").attr('title', trans('No photo'));
                             td.attr('align', 'center').attr('valign', 'middle').append(img);
                         }
                         tr.append(td);

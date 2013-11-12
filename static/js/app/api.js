@@ -55,9 +55,9 @@ function show_photo(picId) {
                 }
 
                 // by default: if friend list has not been loaded
-                $('#photo_add_friend').attr('title', 'Подписаться').find('img').attr('src', '/images/favorite_person_add.png');
+                $('#photo_add_friend').attr('title', 'Подписаться').find('img').attr('src', '../images/favorite_person_add.png');
                 if (_.contains(friendInfo.friends, photo.author)) {
-                    $('#photo_add_friend').attr('title', 'Отписаться').find('img').attr('src', '/images/favorite_person_remove.png')
+                    $('#photo_add_friend').attr('title', 'Отписаться').find('img').attr('src', '../images/favorite_person_remove.png')
                 }
             }
             else {
@@ -139,26 +139,26 @@ function auth_login(prefix) {
 
 function auth_logout() {
     $.getJSON("/json/user/species/",
-        function (date) {
-            var saved_species = data.result;
-
-
-        $.getJSON("/json/auth/logout/",
             function (data) {
-                current_user = null;
-                Auth.trigger("logout");
+                var saved_species = data.result;
 
-                hide_window('cabinet');
-                show_window('login');
 
-                if (current_photo) {
-                    show_photo(current_photo.id);
-                }
-            $.getJSON("/json/user/species/" + saved_species,
-                function (date) {
-                });
+                $.getJSON("/json/auth/logout/",
+                    function (data) {
+                        current_user = null;
+                        Auth.trigger("logout");
+
+                        hide_window('cabinet');
+                        show_window('login');
+
+                        if (current_photo) {
+                            show_photo(current_photo.id);
+                        }
+                        $.getJSON("/json/user/species/" + saved_species,
+                            function (data) {
+                            });
+                    });
             });
-        });
 }
 
 function auth_logged() {
@@ -293,7 +293,8 @@ function user_likes(model) {
 
 
 function user_species(view, species) {
-    var url = "/json/user/species/" + (species ? (species + "/") : "");
+    var timestamp = new Date().getTime();
+    var url = "/json/user/species/" + (species ? (species + "/") : "") + "?_=" + timestamp;
     $.getJSON(url, {}, function (data) {
         if (data.success) {
             var eventName = (species ? 'set' : 'get') + ':species';
@@ -480,7 +481,7 @@ function friend_add(user) {
             if (data.success) {
                 // TODO: design subscription notification
                 friendInfo.friends.push(user);
-                $('#photo_add_friend').attr('title', trans('Not follow')).find('img').attr('src', '/images/favorite_person_remove.png');
+                $('#photo_add_friend').attr('title', trans('Not follow')).find('img').attr('src', '../images/favorite_person_remove.png');
                 alert(trans('You follow ') + user);
             }
         },
@@ -494,7 +495,7 @@ function friend_remove(user) {
                 // TODO: design subscription notification
                 friendInfo.friends = _.filter(friendInfo.friends,
                     function (friend) { return friend != user; });
-                $('#photo_add_friend').attr('title', trans('Follow')).find('img').attr('src', '/images/favorite_person_add.png');
+                $('#photo_add_friend').attr('title', trans('Follow')).find('img').attr('src', '../images/favorite_person_add.png');
                 alert(trans('You not follow ') + user);
             }
         },

@@ -35,7 +35,7 @@
                     <table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
                         <tr>
                             <td class="animals_window_caption">{% trans "Feedback" %}</td>
-                            <td align="right" valign="top"><a href="#" title="Закрыть окно" class="feedback_block_off"><img src="/images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
+                            <td align="right" valign="top"><a title="{% trans "Close window" %}" class="feedback_block_off finger"><img src="../images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}" title="{% trans "Close window" %}"></a></td>
                         </tr>
                         <tr>
                             <td colspan="2" height="240px" align="center">
@@ -57,11 +57,11 @@
                                             </div>
                                         </td>
                                         <td valign="top" class="feedback_box_right">
-                                            <img src="/images/feedback_1.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Ask a question" %}';" width="48px" height="48px" border="0px" title="{% trans "Ask a question" %}">
-                                            <img src="/images/feedback_2.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Suggest a feature" %}';" width="48px" height="48px" border="0px" title="{% trans "Suggest a feature" %}">
-                                            <img src="/images/feedback_3.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Having problems?" %}';" width="48px" height="48px" border="0px" title="{% trans "Having problems?" %}">
-                                            <img src="/images/feedback_4.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "To express gratitude" %}';" width="48px" height="48px" border="0px" title="{% trans "To express gratitude" %}">
-                                            <img src="/images/feedback_5.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "The proposal to cooperate" %}';" width="48px" height="48px" border="0px" title="{% trans "The proposal to cooperate" %}">
+                                            <img src="../images/feedback_1.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Ask a question" %}';" width="48px" height="48px" border="0px" title="{% trans "Ask a question" %}">
+                                            <img src="../images/feedback_2.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Suggest a feature" %}';" width="48px" height="48px" border="0px" title="{% trans "Suggest a feature" %}">
+                                            <img src="../images/feedback_3.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "Having problems?" %}';" width="48px" height="48px" border="0px" title="{% trans "Having problems?" %}">
+                                            <img src="../images/feedback_4.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "To express gratitude" %}';" width="48px" height="48px" border="0px" title="{% trans "To express gratitude" %}">
+                                            <img src="../images/feedback_5.png" onclick="document.getElementById('f_feedback_subject').value='{% trans "The proposal to cooperate" %}';" width="48px" height="48px" border="0px" title="{% trans "The proposal to cooperate" %}">
                                         </td>
                                     </tr>
                                 </table>
@@ -71,7 +71,7 @@
                             <td colspan="2" class="button_1_buble">
                                 <div class="button_1">
                                     <center>
-                                        <a href="#" id="feedback_send_link">{% trans "Send" %}</a>
+                                        <a id="feedback_send_link" class="finger">{% trans "Send" %}</a>
                                     </center>
                                 <div>
                             </td>

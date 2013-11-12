@@ -1,4 +1,6 @@
+{% load i18n %}
     <script src="/js/app/geo.js"></script>
+    
 
     <table class="sitemap_block">
         <tr>
@@ -43,8 +45,8 @@
                             </div>
                         </td>
                         <td width="40px" valign="top" align="right">
-                            <a href="#" title="Закрыть окно" class="sitemap_block_off">
-                                <img src="../images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно">
+                            <a title="{% trans "Close window" %}" class="sitemap_block_off finger">
+                                <img src="../images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}">
                             </a>
                         </td>
                     </tr>

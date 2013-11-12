@@ -15,6 +15,9 @@ body {
 	background-image:url(/images/top_bubbles.gif);
 	background-position:center -206px;
 }
+.finger {
+    cursor: pointer !important;
+}
 .cluster {
     width:40px;
     position:absolute;
@@ -235,7 +238,7 @@ body {
 	display:none;
 	left:0;
 	top:0;
-	height:100%;
+	height:150%; /* +50% to 100% for cover footer */
 	width:100%;
 	background-color:#000000;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=75);
