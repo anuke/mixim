@@ -33,6 +33,7 @@ Auth.on("logged", function (logged) {
     $('#photo_win_close_btn').click(function() {
         $('#photo_window').hide();
         current_photo = null;
+        $('#ss__nocomment_div').hide();
     });
 
     if (logged) {
