@@ -4,7 +4,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 <html>
 <head>
-<title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
+<title>{% trans "MiXiM - for those who love pets" %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
@@ -103,7 +103,7 @@
             <img src="../images/bubble_smoke.gif" width="80" height="57" style="position:absolute; margin-left:78px; top:138px; z-index:-1;">
             <a href="#" class="media_1_openscreen f_goto_userpage">
                 <img src="../images/media.png" width="40" height="40" border="0" alt="{% trans "My page" %}">
-                &nbsp;&nbsp;&nbsp;&nbsp;{% trans "My page" %}&nbsp;&nbsp;&nbsp;&nbsp;
+                {% trans "&nbsp;&nbsp;&nbsp;&nbsp;My page&nbsp;&nbsp;&nbsp;&nbsp;" %}
             </a>
             <a href="#" title="Добавить фото" class="media_1_row_line_add_photo s__media_upload_win_open">
                 <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="{% trans "Add picture" %}">
@@ -557,7 +557,7 @@
                                                 <input type="text" id="f_user_city" class="redit_body" style="width:234px;">
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans "A little bit about yourself:" %}</span><br>
+                                                <span class="redit_caption">{% trans "Tell other pet owners about yourself:" %}</span><br>
                                                 <textarea id="f_user_about" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:234px; height:250px;"></textarea>
                                             </div>
                                         </td>
@@ -577,7 +577,7 @@
                                     <tr>
                                         <td class="user_data_box_top" style="pading-top:5px;">
                                             <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans "I want to watch for:" %}</span><br>
+                                                <span class="redit_caption">{% trans "I want to see:" %}</span><br>
                                                 <select class="redit_body" id="f_user_filter_mycountry" style="width:238px;">
                                                     <option value="True">{% trans "Pets of my country" %}</option>
                                                     <option value="False">{% trans "Pets from around the world" %}</option>

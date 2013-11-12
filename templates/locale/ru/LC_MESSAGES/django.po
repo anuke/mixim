@@ -1,0 +1,801 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-05 19:29+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: 404.html:5 500.html:5 static/index.html:5 static/notify_remail.html:5
+#: static/register-help.html:5 user/user_page.html:5
+msgid "MiXiM - for those who love pets"
+msgstr "MiXiM - для тех, кто любит и очень любит животных"
+
+#: 404.html:14 404.html.py:15 500.html:14 500.html.py:15 static/index.html:84
+#: static/index.html.py:85 static/notify_remail.html:14
+#: static/notify_remail.html.py:15 static/register-help.html:14
+#: static/register-help.html.py:15
+msgid "Go to the main page"
+msgstr "На главную страницу"
+
+#: 404.html:19
+msgid "404 Error!!!"
+msgstr "Ошибка 404!!!"
+
+#: 404.html:25
+msgid "PAGE NOT FOUND!"
+msgstr "СТРАНИЦА НЕ НАЙДЕНА!"
+
+#: 404.html:26
+msgid "You are not able to visit this page because of:"
+msgstr "Вы не можете посетить текущую страницу потому, что:"
+
+#: 404.html:27
+msgid "overdue tab elected"
+msgstr "просрочена закладка избранного"
+
+#: 404.html:28
+msgid "search engine that has an expired listing for this site"
+msgstr "поисковый механизм, у которого просрочен список для этого сайта"
+
+#: 404.html:29
+msgid "a mistyped address, check your spelling"
+msgstr "пропущен адрес, проверьте правильность написания"
+
+#: 404.html:30
+msgid "you do not have access to this page"
+msgstr "у вас нет прав на эту страницу"
+
+#: 404.html:31
+msgid "in the processing of your request was an error"
+msgstr "в процессе обработки вашего запроса произошла ошибка"
+
+#: 404.html:34 500.html:32
+msgid "Please try one of the following pages:"
+msgstr "Пожалуйста, попробуйте одну из следующих страниц:"
+
+#: 404.html:35 500.html:33
+msgid "Homepage"
+msgstr "Домашняя страница"
+
+#: 500.html:19
+msgid "500 Error!!!"
+msgstr "Ошибка 500!!!"
+
+#: 500.html:25
+msgid "INTERNAL SERVER ERROR!"
+msgstr "ВНУТРЕННЯЯ ОШИБКА СЕРВЕРА!"
+
+#: 500.html:26
+msgid "Unable to process request:"
+msgstr "Не удалось обработать запрос:"
+
+#: 500.html:27
+msgid "sometimes it helps to resolve the issue update page"
+msgstr "устранить проблему иногда помогает обновление страницы"
+
+#: 500.html:28
+msgid "wait a bit and try to enter again"
+msgstr "подождите немного и попробуйте войти еще раз"
+
+#: 500.html:29
+msgid "or..."
+msgstr "или..."
+
+#: include/clusters.html:39 include/photo_win.html:116
+msgid "Dogs"
+msgstr "Собаки"
+
+#: include/clusters.html:45 include/photo_win.html:117
+msgid "Insects"
+msgstr "Насекомые"
+
+#: include/clusters.html:51 include/photo_win.html:118
+msgid "Birds"
+msgstr "Птицы"
+
+#: include/clusters.html:57 include/photo_win.html:119
+msgid "Cats"
+msgstr "Кошки"
+
+#: include/clusters.html:63 include/photo_win.html:120
+msgid "Rodents&nbsp;&&nbsp;rabbits"
+msgstr "Грызуны&nbsp;и&nbsp;кролики"
+
+#: include/clusters.html:69 include/photo_win.html:121
+msgid "Fish&nbsp;&&nbsp;shellfish"
+msgstr "Рыбы&nbsp;и&nbsp;моллюски"
+
+#: include/clusters.html:75 include/photo_win.html:122
+msgid "Amphibious&nbsp;&&nbsp;reptiles"
+msgstr "Земноводные&nbsp;и&nbsp;рептилии"
+
+#: include/clusters.html:81 include/photo_win.html:123
+msgid "Horses&nbsp;&&nbsp;pony"
+msgstr "Лошади&nbsp;и&nbsp;пони"
+
+#: include/clusters.html:87 include/photo_win.html:124
+msgid "Other&nbsp;types&nbsp;of&nbsp;animals"
+msgstr "Другие&nbsp;виды&nbsp;животных"
+
+#: include/footer.html:9 user/user_page.html:155
+msgid "World wide"
+msgstr "География"
+
+#: include/footer.html:10 user/user_page.html:156
+msgid "Contact us"
+msgstr "Пишие письма"
+
+#: include/footer.html:11
+msgid "&copy;2006-2013 &nbsp; www.mixim.us | pets2show &nbsp; ООО &quot;Мобитун&quot;"
+msgstr "&copy;2006-2013 &nbsp; www.mixim.ru &nbsp; ООО &quot;Мобитун&quot;"
+
+#: include/footer.html:12 user/user_page.html:158
+msgid "Rules"
+msgstr "Регламент"
+
+#: include/footer.html:13 user/user_page.html:159
+msgid "About us"
+msgstr "О проекте"
+
+#: include/login.html:60 include/login.html.py:91
+msgid "Login (nickname):"
+msgstr "Логин (никнейм):"
+
+#: include/login.html:64
+msgid "Password:"
+msgstr "Пароль:"
+
+#: include/login.html:70
+msgid "stay signed in"
+msgstr "запомнить меня"
+
+#: include/login.html:73 include/navi.html:28
+msgid "Forgot&nbsp;your&nbsp;password?"
+msgstr "Забыли&nbsp;пароль!?"
+
+#: include/login.html:77
+msgid "SIGN&nbsp;IN"
+msgstr "ВОЙТИ"
+
+#: include/login.html:87
+msgid "Your e-Mail:"
+msgstr "E-Mail (адрес почты):"
+
+#: include/login.html:95
+msgid "Too short a login/nickname."
+msgstr "Слишком короткий логин/никнейм."
+
+#: include/login.html:98
+msgid "Login/nickname contains illegal characters."
+msgstr "Логин/никнейм содержит недопустимые символы."
+
+#: include/login.html:101
+msgid "This login/nickname is already taken. Try to pick up the other."
+msgstr "Такой логин/никнейм уже занят. Попробуйте подобрать другой"
+
+#: include/login.html:106
+msgid "CONTINUE"
+msgstr "ПРОДОЛЖИТЬ"
+
+#: include/login.html:116
+msgid "Your login(nickname):"
+msgstr "Ваш логин (никнейм):"
+
+#: include/login.html:120
+msgid "At specified at registration e-Mail address will be sent instructions to reset your password."
+msgstr "На указанный вами при регистрации E-Mail (адрес электронной почты), будет отправленна инструкция по восстановлению пароля."
+
+#: include/login.html:125
+msgid "RECOVER"
+msgstr "ВОССТАНОВИТЬ"
+
+#: include/login.html:141 include/login.html.py:142
+#: include/media_upload.html:56 include/photo_win.html:3
+msgid "Close window"
+msgstr "Закрыть окно"
+
+#: include/media_upload.html:8
+msgid "&nbsp;&nbsp;Only registered users can post photos in galleries!"
+msgstr "&nbsp;&nbsp;Только зарегестрированные пользователи могут размещать фотографии в галереях!"
+
+#: include/media_upload.html:55
+msgid "Uploading image"
+msgstr "Загрузка изображения"
+
+#: include/media_upload.html:67
+msgid "Select a file to upload into gallery"
+msgstr "Выберите файл для размещения в галерее"
+
+#: include/navi.html:16
+msgid "Sign&nbsp;in"
+msgstr "Войти"
+
+#: include/navi.html:22
+msgid "Create&nbsp;an&nbsp;account"
+msgstr "Регистрация"
+
+#: include/navi.html:35
+msgid "Add&nbsp;picture"
+msgstr "Добавить&nbsp;фото"
+
+#: include/navi.html:41
+msgid "My&nbsp;account"
+msgstr "Личный&nbsp;кабинет"
+
+#: include/navi.html:47
+msgid "Exit"
+msgstr "Выход"
+
+#: include/photo_win.html:19
+msgid "Author:"
+msgstr "Автор:"
+
+#: include/photo_win.html:20
+msgid "author`s profile"
+msgstr "к профилю автора"
+
+#: include/photo_win.html:21 include/photo_win.html.py:136
+msgid "Description:"
+msgstr "Описание:"
+
+#: include/photo_win.html:25 include/photo_win.html.py:128
+msgid "Рet:"
+msgstr "Питомец:"
+
+#: include/photo_win.html:30 include/photo_win.html.py:140
+msgid "Tags:"
+msgstr "Теги:"
+
+#: include/photo_win.html:44
+msgid "Fullscreen"
+msgstr "Открыть на весь экран"
+
+#: include/photo_win.html:58 include/photo_win.html.py:62
+msgid "I like it!"
+msgstr "Мне нравится!"
+
+#: include/photo_win.html:63 include/photo_win.html.py:66
+#: include/photo_win.html:71 include/photo_win.html.py:76
+msgid "Like"
+msgstr "Лайк"
+
+#: include/photo_win.html:65
+msgid "It is not like"
+msgstr "Уже не нравится"
+
+#: include/photo_win.html:70
+msgid "Your likes"
+msgstr "Ваши лайки"
+
+#: include/photo_win.html:75
+msgid "To like, you should register!"
+msgstr "Для голосования необходимо зарегестрироваться!"
+
+#: include/photo_win.html:90 include/photo_win.html.py:91
+msgid "Delete this image"
+msgstr "Удалить фото"
+
+#: include/photo_win.html:107
+msgid "Image data:"
+msgstr "Данные фото:"
+
+#: include/photo_win.html:114
+msgid "Divide:"
+msgstr "Раздел:"
+
+#: include/photo_win.html:147
+msgid "Save"
+msgstr "Сохранить"
+
+#: include/photo_win.html:151
+msgid "User comments:"
+msgstr "Комментарии пользователей:"
+
+#: include/photo_win.html:160
+msgid "Disable comments"
+msgstr "Запретить комментарии"
+
+#: include/photo_win.html:164 include/photo_win.html.py:191
+msgid "Your comment:"
+msgstr "Ваш комментарий:"
+
+#: include/photo_win.html:173 include/photo_win.html.py:200
+msgid "Send"
+msgstr "Отправить"
+
+#: include/photo_win.html:181 include/photo_win.html.py:219
+msgid "Comments:"
+msgstr "Комментарии:"
+
+#: include/photo_win.html:184
+msgid "No comments yet.<br>Your comment may be the first."
+msgstr "Комментариев нет.<br>Ваш комментарий может быть первым."
+
+#: include/photo_win.html:186
+msgid "The author has disabled commenting."
+msgstr "Автор ограничил возможность комментирования."
+
+#: include/photo_win.html:207
+msgid "Follow"
+msgstr "Подписаться"
+
+#: include/photo_win.html:221
+msgid "No comments yet."
+msgstr "Комментариев нет."
+
+#: include/photo_win.html:230
+msgid "Leave a comment can only registered users!"
+msgstr "Оставлять комментарии могут только зарегистрированные пользователи!"
+
+#: include/photo_win.html:232
+msgid "If you are already registered, you can simply"
+msgstr "Если вы уже зарегистрированны, вам достаточно"
+
+#: include/photo_win.html:232
+msgid "Sign in"
+msgstr "Войти"
+
+#: include/photo_win.html:232
+msgid "SIGN IN"
+msgstr "ВОЙТИ"
+
+#: include/photo_win.html:234
+msgid "If you are not registered, we will be happy to see you in our community."
+msgstr "Если вы еще не зарегистрированы, мы будем рады вас видеть в нашем сообществе."
+
+#: include/photo_win.html:234
+msgid "Sign up"
+msgstr "Регистрируйтесь"
+
+#: include/photo_win.html:234
+msgid "SIGN UP"
+msgstr "РЕГИСТРИРУЙТЕСЬ"
+
+#: static/index.html:82
+msgid "glory_soon_en.png"
+msgstr "glory_soon_ru.png"
+
+#: static/index.html:92
+msgid "Expand to gallery"
+msgstr "Развернуть галерею"
+
+#: static/index.html:93
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;Expand&nbsp;&nbsp;&nbsp;&nbsp;"
+msgstr "Развернуть"
+
+#: static/index.html:96 user/user_page.html:77 user/user_page.html.py:116
+msgid "Forward"
+msgstr "Сюда"
+
+#: static/index.html:97 user/user_page.html:71 user/user_page.html.py:110
+msgid "Back"
+msgstr "Туда"
+
+#: static/index.html:100
+msgid "New photos"
+msgstr "Новые фотографии"
+
+#: static/index.html:127
+msgid "Actual comments"
+msgstr "Актуальные комментарии"
+
+#: static/index.html:132
+msgid "slogan_2_en.png"
+msgstr "slogan_2_ru.png"
+
+#: static/index.html:135
+msgid "The number One online community for<br>pet owners and their pets!"
+msgstr "Первое сообщество<br>животных и людей!"
+
+#: static/index.html:139
+msgid "A unique and original<br>picture exchange service!"
+msgstr "Уникальный сервис<br>обмена фотографиями!"
+
+#: static/index.html:143
+msgid "Pageants, exhibitions<br>and other events!"
+msgstr "Конкурсы, выставки<br>и другие мероприятия!"
+
+#: static/index.html:147
+msgid "A unique way to search for<br>and rank awesome pictures!"
+msgstr "Уникальная система поиска<br>и ранжирования фотографий!"
+
+#: static/index.html:151
+msgid "slogan_en.png"
+msgstr "slogan_ru.png"
+
+#: static/index.html:154
+msgid "A new mobile app:<br><b>absolutely free!</b>"
+msgstr "Мобильное приложение<br>совершенно бесплатно!"
+
+#: static/index.html:158
+msgid "Publish your photo<br>reports in real time!"
+msgstr "Публикация фоторепортажей<br>в реальном времени!"
+
+#: static/index.html:162
+msgid "Here you can always be in<br>touch: online blogs & chats!"
+msgstr "Всегда быть на связи -<br>онлайн чаты и блоги!"
+
+#: static/index.html:167
+msgid "Available on Google play"
+msgstr "Скачать из Google play"
+
+#: static/index.html:167
+msgid "app_google_play_en.png"
+msgstr "app_google_play_ru.png"
+
+#: static/index.html:175
+msgid "Android app"
+msgstr "Android приложение"
+
+#: static/index.html:179
+msgid "Windows8 app"
+msgstr "Windows8 приложение"
+
+#: static/index.html:183
+msgid "iOS app"
+msgstr "iOS приложение"
+
+#: static/index.html:190
+msgid "slogan_3_en.png"
+msgstr "slogan_3_ru.png"
+
+#: static/index.html:193
+msgid "User Profiles<br>for Pets!"
+msgstr "Личные страницы<br>для питомцев!"
+
+#: static/index.html:197
+msgid "Personal pages for<br>groups & individuals!"
+msgstr "Собственные разделы,<br>клубов и питомников!"
+
+#: static/index.html:201
+msgid "Join us now:<br><b>IT’S FREE!</b>"
+msgstr "<b>Вы еще не с нами?</b><br>ПРИСОЕДИНЯЙТЕСЬ!"
+
+#: static/index.html:214
+msgid "bodyes1_en.gif"
+msgstr "bodyes1_ru.gif"
+
+#: static/notify_remail.html:19
+msgid "Password Reset done!"
+msgstr "Сброс пароля осуществлен!"
+
+#: static/notify_remail.html:25
+msgid "ATTENTION!"
+msgstr "ВНИМАНИЕ!"
+
+#: static/notify_remail.html:26
+msgid "New password sent to your e-mail address"
+msgstr "Новый пароль выслан на ваш почтовый адрес"
+
+#: static/notify_remail.html:27
+msgid "to access the site use"
+msgstr "для входа на сайт пользуйтесь"
+
+#: static/notify_remail.html:28
+msgid "you can change the password in the user settings."
+msgstr "сменить пароль можно в личных настройках."
+
+#: static/register-help.html:19
+msgid "Congratulations!"
+msgstr "Поздравляем!"
+
+#: static/register-help.html:25
+msgid "Registration was successful!"
+msgstr "Регистрация прошла успешно!"
+
+#: static/register-help.html:26
+msgid "You have joined the community MiXiM."
+msgstr "Вы присоединились к сообществу MiXiM."
+
+#: static/register-help.html:27
+msgid "Activate your profile by clicking on the link sent to your e-mail address."
+msgstr "Активируйте свой профиль, перейдя по ссылке, отправленной на ваш почтовый адрес."
+
+#: user/user_page.html:44
+msgid "Pets:"
+msgstr "Питомцы:"
+
+#: user/user_page.html:44
+msgid "Subscribe to:"
+msgstr "Подписался на:"
+
+#: user/user_page.html:44
+msgid "Favorited:"
+msgstr "В избранном у:"
+
+#: user/user_page.html:44
+msgid "Posts:"
+msgstr "Сообщений:"
+
+#: user/user_page.html:46
+msgid "on the site from:"
+msgstr "на сайте с:"
+
+#: user/user_page.html:75 user/user_page.html.py:114
+msgid "Page"
+msgstr "Страница"
+
+#: user/user_page.html:75 user/user_page.html.py:114
+msgid "of"
+msgstr "из"
+
+msgid "Enable comments"
+msgstr "Разрешить комментарии"
+
+msgid "Congratulations on your enrollment in the community MiXiM!"
+msgstr "Поздравляем Вас с регистрацией в сообществе MiXiM!"
+
+msgid "To complete the registration please click on the following link to activate your account:"
+msgstr "Для завершения регистрации, пожалуйста, перейдите по следующей ссылке для активации Вашего аккаунта:"
+
+msgid "Your new password:"
+msgstr "Ваш новый пароль:"
+
+msgid "You can change the password to your account:"
+msgstr "Вы можете изменить пароль в личном кабинете:"
+
+msgid "You have a new comment to a pet's picture from"
+msgstr "У Вашей фотографии новый комментарий от"
+
+msgid "Read the comments, reply to, or you can delete in your account:"
+msgstr "Прочесть комментарии, ответить или удалить Вы сможете в личном кабинете:"
+
+msgid "http://www.mixim.us/cabinet.shtml"
+msgstr "http://www.mixim.ru/cabinet.shtml"
+
+msgid "This is your new password:"
+msgstr "Это Ваш новый пароль:"
+
+msgid "Someone requested a password reset for your account on http://www.mixim.us"
+msgstr "Кто-то запросил сброс пароля для Вашей учетной записи на http://www.mixim.ru"
+
+msgid "If this request yours, then click on the following link to reset your password and get a new, temporary password:"
+msgstr "Если этот запрос Ваш, то перейдите по следующей ссылке для того, чтобы сбросить свой пароль и получить новый, временный:"
+
+msgid "http://mixim.us/auth/autocreatepassword/?key="
+msgstr "http://mixim.ru/auth/autocreatepassword/?key="
+
+msgid "If you do not want to reset your password - just ignore it!"
+msgstr "Если Вы не хотите сбрасывать свой пароль – просто проигнорируйте это сообщение!"
+
+msgid "Your password:"
+msgstr "Ваш пароль:"
+
+msgid "User {{user.username}} already attached to the email address {{user.email}}!"
+msgstr "Пользователь {{ user.username }} уже привязан к электронному адресу {{ user.email }}!"
+
+msgid "Use the {{user.username}} to sign in."
+msgstr "Используйте {{ user.username }} для входа на сайт."
+
+msgid "Registration: Your activation code"
+msgstr "Регистрация: Ваш код активации"
+
+msgid "Your new password!"
+msgstr "Ваш новый пароль!"
+
+msgid "New comment"
+msgstr "Новый комментарий"
+
+msgid "Password changed"
+msgstr "Пароль изменен"
+
+msgid "Password reset"
+msgstr "Сброс пароля"
+
+msgid "Registration: Successful completion!"
+msgstr "Регистрация: Успешное завершение!"
+
+msgid "Registration"
+msgstr "Регистрация"
+
+msgid "With best regards,"
+msgstr "С уважением,"
+
+msgid "Support MiXiM"
+msgstr "Служба поддержки MiXiM"
+
+msgid "Activation is done!<br>The message with your <b>password</b> had been sent to your e-Mail address.<br>Please use it to login into MiХiM:"
+msgstr "Активая прошла успешно!<br>Сообщение с Вашим <b>паролем</b> отправленно на ваш почтовый адрес.<br>Вы можете воспользоваться им для входа на сайт:"
+
+msgid "Activation Key is not found!<br>Most likely the Activation Key has been entered incorrectly.<br>Please verify your Activation Key and try again."
+msgstr "Ключ активации не найден!<br>Скорее всего, ключ активации был введен неправильно.<br>Пожалуйста проверьте ваш ключ активации и повторите попытку."
+
+msgid "You are on the main page"
+msgstr "Вы на главной странице"
+
+msgid "To home page"
+msgstr "На главную страницу"
+
+msgid "The mobile app Pets! - absolutely free!"
+msgstr "Мобильное приложение Pets! - совершенно бесплатно!"
+
+msgid "Add picture"
+msgstr "Добавить фото"
+
+msgid "Boys"
+msgstr "Мальчики"
+
+msgid "Girls"
+msgstr "Девочки"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "text_block_en"
+msgstr "text_block_ru"
+
+msgid "Feedback"
+msgstr "Обратная связь"
+
+msgid "<b>Attention!</b><br>For the correct delivery, all fields are required."
+msgstr "<b>Внимание!</b> Для корректной отправки,<br>все поля обязательны к заполнению."
+
+msgid "Message subject:"
+msgstr "Тема сообщения:"
+
+msgid "Your message:"
+msgstr "Текст сообщения:"
+
+msgid "Your message has been sent"
+msgstr "Ваше сообщение отправлено"
+
+msgid "Error sending message"
+msgstr "Ошибка при отправке сообщения"
+
+msgid "Ask a question"
+msgstr "Задать вопрос"
+
+msgid "Suggest a feature"
+msgstr "Предложить идею"
+
+msgid "Having problems?"
+msgstr "Возникли проблемы?"
+
+msgid "To express gratitude"
+msgstr "Выразить благодарность"
+
+msgid "The proposal to cooperate"
+msgstr "Предложение сотрудничать"
+
+msgid "Next page"
+msgstr "Следующая страница"
+
+msgid "Previous page"
+msgstr "Предыдущая сраница"
+
+msgid "add_slogan_1_en.png"
+msgstr "add_slogan_1_ru.png"
+
+msgid "app_stamp_en.png"
+msgstr "app_stamp_ru.png"
+
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;My page&nbsp;&nbsp;&nbsp;&nbsp;"
+msgstr "Моя страница"
+
+msgid "My Photos"
+msgstr "Мои фотографии"
+
+msgid "Change the thumbnail..."
+msgstr "Изменить миниатюру..."
+
+msgid "Messages"
+msgstr "Сообщения"
+
+msgid "Discussions"
+msgstr "Обсуждения"
+
+msgid "Ratings"
+msgstr "Оценки"
+
+msgid "Follows"
+msgstr "Подписки"
+
+msgid "Personal data"
+msgstr "Личные данные"
+
+msgid "Inbox"
+msgstr "Входящие"
+
+msgid "Outbox"
+msgstr "Исходящие"
+
+msgid "Add pet"
+msgstr "Добавить питомца"
+
+msgid "Date of Birth:"
+msgstr "Дата рождения:"
+
+msgid "Gender:"
+msgstr "Пол:"
+
+msgid "Color:"
+msgstr "Окрас:"
+
+msgid "Breed:"
+msgstr "Порода:"
+
+msgid "Additional Information:"
+msgstr "Дополнительная информация:"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Enable"
+msgstr "Включить"
+
+msgid "Disable"
+msgstr "Отключить"
+
+msgid "First Name:"
+msgstr "Мое Имя:"
+
+msgid "Last Name:"
+msgstr "Моя Фамилия:"
+
+msgid "Male"
+msgstr "Мужской"
+
+msgid "Female"
+msgstr "Женский"
+
+msgid "Country:"
+msgstr "Cтрана:"
+
+msgid "City:"
+msgstr "Город:"
+
+msgid "Tell other pet owners about yourself:"
+msgstr "Расскажите немного о себе:"
+
+msgid "I want to see:"
+msgstr "Хочу наблюдать за:"
+
+msgid "Pets of my country"
+msgstr "Питомцами моей страны"
+
+msgid "Pets from around the world"
+msgstr "Питомцами со всего мира"
+
+msgid "You new password:"
+msgstr "Ваш новый пароль:"
+
+msgid "Confirm new password:"
+msgstr "Подвердите новый пароль:"
+
+msgid "Pets details"
+msgstr "Данные питомца"
+
+msgid "Specify the type of animal to which treat your pet"
+msgstr "Выбирете класс животного, к которому относиться ваш питомец"
+
+msgid "Pets name:"
+msgstr "Кличка:"
+
+msgid "Boy (male)"
+msgstr "Мальчик (самец)"
+
+msgid "Girl (female)"
+msgstr "Девочка (самка)"
+
+msgid "Only registered users can create avatars!"
+msgstr "Создание аватарки доступно только зарегистрированным пользователям."
+
+msgid "Select a file to creating an avatar"
+msgstr "Выберите файл для создания аватара"
+
+msgid "Pets"
+msgstr "Питомцы"
