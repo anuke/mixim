@@ -122,7 +122,7 @@ function auth_login(prefix) {
         
         try {
             $('#sid__gender_image').attr('src', current_user.avatar);
-            $('#sid__username').attr('src', current_user.username);
+            $('#sid__username').html(current_user.username);
         }
         catch(e) {
 
