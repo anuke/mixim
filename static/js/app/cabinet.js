@@ -350,19 +350,19 @@ function friends_media_load() {
                 '<table width="600px" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">\n' +
                 '    <tr>\n' +
                 '        <td align="center" class="cabinet_like_box_from">\n' +
-                '            <a href="#">\n' +
+                '            <a class="finger">\n' +
                 '                <img src="' + media.authorAvatar + '" width="75px" height="75px" border="0">\n' +
                 '            </a>\n' +
                 '        </td>\n' +
                 '        <td align="left" class="cabinet_like_box_username">\n' +
                 '            <div style="position:absolute; color:#999999; margin-top:-20px; font-size:9px;">' + media.created + '</div>\n' +
-                '            <a href="/@' + media.author + '">' + media.author + '</a> ' + trans('added a new photo') + '\n' +
+                '            <a href="/@' + media.author + '" target="_blank">' + media.author + '</a> ' + trans('added a new photo') + '\n' +
                 '        </td>\n' +
                 '        <td align="center" width="100px">\n' +
                 '            <img src="/images/cabinet_new_photo.png" width="44px" height="44px" border="0" alt="' + trans('Like') + '">\n' +
                 '        </td>\n' +
                 '        <td class="cabinet_like_box_photo">\n' +
-                '            <a href="#" id="cabinet_follow_media_' + media.id + '">\n' +
+                '            <a id="cabinet_follow_media_' + media.id + '" class="finger">\n' +
                 '                <img src="' + media.thumbnail + '" width="100px" height="75px" border="0" title="' + trans('Comment') + ': ' + media.description + '">\n' +
                 '            </a>\n' +
                 '        </td>\n' +
@@ -389,18 +389,18 @@ function my_likes_load() {
                 '<table width="600px" border="0" cellspacing="0" cellpadding="0" class="cabinet_like_box" style="margin-top:10px;">\n' +
                 '   <tr>\n' +
                 '        <td align="center" class="cabinet_like_box_from">\n' +
-                '            <a href="/@' + like.user + '">\n' +
+                '            <a href="/@' + like.user + '" target="_blank">\n' +
                 '                <img src="' + like.userAvatar + '" width="75px" height="75px" border="0">\n' +
                 '            </a>\n' +
                 '        </td>\n' +
                 '        <td align="left" class="cabinet_like_box_username">\n' +
-                '            <a href="/@' + like.user + '">' + like.user + '</a> ' + trans('like photo') + '\n' +
+                '            <a href="/@' + like.user + '" target="_blank">' + like.user + '</a> ' + trans('like photo') + '\n' +
                 '        </td>\n' +
                 '        <td align="center" width="100px">\n' +
                 '                <img src="/images/cabinet_like.png" width="44px" height="44px" border="0" alt="' + trans('Like') + '">\n' +
                 '        </td>\n' +
                 '        <td class="cabinet_like_box_photo">\n' +
-                '            <a href="#" id="cabinet_like_like_' + index + '">\n' +
+                '            <a id="cabinet_like_like_' + index + '" class="finger">\n' +
                 '                <img src="' + like.media.thumbnail + '" width="100px" height="75px" border="0">\n' +
                 '            </a>\n' +
                 '        </td>\n' +

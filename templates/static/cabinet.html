@@ -101,11 +101,11 @@
     <tr>
         <td height="141px" valign="top" style="padding-top:92px;">
             <img src="../images/bubble_smoke.gif" width="80" height="57" style="position:absolute; margin-left:78px; top:138px; z-index:-1;">
-            <a href="#" class="media_1_openscreen f_goto_userpage">
+            <a class="media_1_openscreen f_goto_userpage finger">
                 <img src="../images/media.png" width="40" height="40" border="0" alt="{% trans "My page" %}">
                 {% trans "&nbsp;&nbsp;&nbsp;&nbsp;My page&nbsp;&nbsp;&nbsp;&nbsp;" %}
             </a>
-            <a href="#" title="Добавить фото" class="media_1_row_line_add_photo s__media_upload_win_open">
+            <a title="{% trans "Add picture" %}" class="media_1_row_line_add_photo s__media_upload_win_open finger">
                 <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="{% trans "Add picture" %}">
             </a>
             <div style="width:980px; height:121px;"> <!-- вынести в перед над всеми - position:relative; z-index:10;-->
@@ -139,7 +139,7 @@
 						</script-->
                         <div class="cabinet_user_menu"> <!-- onclick="document.getElementById('avatar_file').click(); return false"-->
                             <div class="cabinet_user_avatar">
-                                <a href="#" title="{% trans "Change the thumbnail..." %}">
+                                <a title="{% trans "Change the thumbnail..." %}" class="finger">
                                     <img id="avatar" src="../images/user_unisex.png" border="0" alt="{% trans "Change the thumbnail..." %}" style="background-color:#000;">
                                 </a>
                             </div>
@@ -161,13 +161,13 @@
                             <table align="center" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td align="center" class="ff_me_button" id="inbox_pet_new_window_link">
-                        			    <a href="#">&dArr;&nbsp;&nbsp;{% trans "Inbox" %}</a>
+                        			    <a>&dArr;&nbsp;&nbsp;{% trans "Inbox" %}</a>
                         			</td>
                         			<td width="60px">
                         			    &nbsp;
                         			</td>
                         			<td align="center" class="ff_me_button on_button" id="outbox_pet_new_window_link">
-                        			    <a href="#">&uArr;&nbsp;&nbsp;{% trans "Outbox" %}</a>
+                        			    <a>&uArr;&nbsp;&nbsp;{% trans "Outbox" %}</a>
                         			</td>
                         	    </tr>
                             </table>
@@ -196,14 +196,14 @@
                         <!-- div открывает кнопка "Питомцы" и показываеся по умолчанию при входе в кабинет (начало)-->
                         <div id="cabinet_pets" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
                             <center class="add_pet_button">
-                                <a href="#" id="pet_new_window_link"><b>+</b>&nbsp;&nbsp;{% trans "Add pet" %}</a>
+                                <a id="pet_new_window_link" class="finger"><b>+</b>&nbsp;&nbsp;{% trans "Add pet" %}</a>
                             </center>
                             <div id="pet_list"></div>
                             <div id="pet_template" style="display:none">
                                 <table align="left" style="margin-top:10px;" border="0" cellspacing="0" cellpadding="0"><!-- входящие -->
                                     <tr>
                                         <td class="cabinet_photo_in">
-                                            <a id="pet_upload_photo_link_{id}" href="#" title="Добавить фото">
+                                            <a id="pet_upload_photo_link_{id}" class="finger" title="{% trans "Add picture" %}">
                                                 <img id="pet_last_picture_{id}" src="media/absent.png" width="100px" height="75px">
                                             </a>
                                         </td>
@@ -261,9 +261,9 @@
                                             </div>
                                         </td>
                                         <td class="modify_pet_button">
-                                            <a href="#" id="pet_edit_window_link_{id}">{% trans "Change" %}</a>
-                                            <a href="#" id="pet_enable_link_{id}">{% trans "Enable" %}</a>
-                                            <a href="#" id="pet_disable_link_{id}">{% trans "Disable" %}</a>
+                                            <a id="pet_edit_window_link_{id}" class="finger">{% trans "Change" %}</a>
+                                            <a id="pet_enable_link_{id}" class="finger">{% trans "Enable" %}</a>
+                                            <a id="pet_disable_link_{id}" class="finger">{% trans "Disable" %}</a>
                                         </td>
                                     </tr>
                                 </table>
