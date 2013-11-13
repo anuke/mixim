@@ -1,22 +1,27 @@
 {% load i18n %}
         <script type="text/javascript">
-                $(document).ready(function(){
-                  $('a.rules_block_on').click(function() {
-                        $('body').css('overflow-y', 'hidden'); // убираем скрол
-                        $('#overlay').show(); // заеняем
-                        $('.rules_block').show(); // показываем окно
-                        
-                        $('.{% trans "text_block_en" %}').show(); // показываем локаизацию
-                  });
-
-                  $('a.rules_block_off').click(function() {
-                        $('body').css('overflow-y', 'auto'); // возвращаем скрол
-                        $('#overlay').hide(); // освеляем
-                        $('.rules_block').hide(); // скрываем окно
-
-                        $('.{% trans "text_block_en" %}').hide(); // скрываем локаизацию
-                  });
+            $(document).ready(function(){
+                $('a.rules_block_on').click(function() {
+                    $('.rules_block').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу 
+                    $('#overlay').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу
+                
+                    $('body').css('overflow-y', 'hidden'); // убираем скрол
+                    $('#overlay').show(); // заеняем
+                    $('.rules_block').show(); // показываем окно
+                    
+                    $('.{% trans "text_block_en" %}').show(); // показываем локаизацию
                 });
+
+                $('a.rules_block_off').click(function() {
+                    $('body').css('overflow-y', 'auto'); // возвращаем скрол
+                    $('#overlay').hide(); // освеляем
+                    $('.rules_block').hide(); // скрываем окно
+
+                    $('#overlay').css('top', '0'); // обнуляем верхнюю точку
+
+                    $('.{% trans "text_block_en" %}').hide(); // скрываем локаизацию
+                });
+            });
         </script>
         <table class="rules_block">
             <tr>

@@ -1,22 +1,27 @@
 {% load i18n %}
         <script type="text/javascript">
-                $(document).ready(function(){
-                  $('a.about_block_on').click(function() {
-                        $('body').css('overflow-y', 'hidden'); // убираем скрол
-                        $('#overlay').show(); // заеняем
-                        $('.about_block').show(); // показываем окно
+            $(document).ready(function(){
+                $('a.about_block_on').click(function() {
+                    $('.about_block').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу 
+                    $('#overlay').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу
+                    
+                    $('body').css('overflow-y', 'hidden'); // убираем скрол
+                    $('#overlay').show(); // заеняем
+                    $('.about_block').show(); // показываем окно
 
-                        $('.{% trans "text_block_en" %}').show(); // показываем локаизацию
-                  });
-
-                  $('a.about_block_off').click(function() {
-                        $('body').css('overflow-y', 'auto'); // возвращаем скрол
-                        $('#overlay').hide(); // освеляем
-                        $('.about_block').hide(); // скрываем окно
-
-                        $('.{% trans "text_block_en" %}').hide(); // скрываем локаизацию
-                  });
+                    $('.{% trans "text_block_en" %}').show(); // показываем локаизацию
                 });
+
+                $('a.about_block_off').click(function() {
+                    $('body').css('overflow-y', 'auto'); // возвращаем скрол
+                    $('#overlay').hide(); // освеляем
+                    $('.about_block').hide(); // скрываем окно
+
+                    $('#overlay').css('top', '0'); // обнуляем верхнюю точку
+
+                    $('.{% trans "text_block_en" %}').hide(); // скрываем локаизацию
+                });
+            });
         </script>
         <table class="about_block">
             <tr>

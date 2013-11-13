@@ -2,6 +2,9 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('a.feedback_block_on').click(function() {
+                    $('.feedback_block').css('top', $(window).scrollTop());
+                    $('#overlay').css('top', $(window).scrollTop());
+                    
                     $('body').css('overflow-y', 'hidden');
                     $('#overlay').show();
                     $('.feedback_block').show();
@@ -11,6 +14,8 @@
                     $('body').css('overflow-y', 'auto');
                     $('#overlay').hide();
                     $('.feedback_block').hide();
+                    
+                    $('#overlay').css('top', '0');
                 });
 
                 $('#feedback_send_link').click(function () {

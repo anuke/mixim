@@ -1,5 +1,8 @@
 $(document).ready(function(){
     $('a.sitemap_block_on').click(function() {
+        $('.sitemap_block').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу 
+        $('#overlay').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу
+                    
         $('body').css('overflow-y', 'hidden'); // убираем скрол
         $('#overlay').show(); // заеняем
         $('.sitemap_block').show(); // показываем окно
@@ -9,6 +12,8 @@ $(document).ready(function(){
         $('body').css('overflow-y', 'auto'); // возвращаем скрол
         $('#overlay').hide(); // освеляем
         $('.sitemap_block').hide(); // скрываем окно
+        
+        $('#overlay').css('top', '0'); // обнуляем верхнюю точку
     });
 });
 
