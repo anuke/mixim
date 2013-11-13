@@ -1065,9 +1065,10 @@ form {
 	width:900px;
 	height:600px;
 	left:50%;
-	top:50%;
+	/* top:50%; */
+    top:0px;
 	margin-left:-450px;
-	margin-top:-300px;
+	/* margin-top:-300px; */
 	text-align:left;
 }
 .photo {

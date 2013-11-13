@@ -45,6 +45,11 @@ function show_photo(picId) {
 
                 comment_list();
 
+                var photo_window_top_position = $(window).height() / 2 - 300 + $(window).scrollTop();
+                if (photo_window_top_position < 0)
+                    photo_window_top_position = 0;
+                $('#photo_window').css('top', photo_window_top_position);
+                
                 $('#photo_window').show();
                 $('.author_photo_bar').toggle(is_author());
                 $('.viewer_photo_bar').toggle(is_viewer());
