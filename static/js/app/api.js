@@ -19,6 +19,7 @@ function full_screen() {
 }
 
 function show_photo(picId) {
+    $('#ss__nocomment_div').hide();
     $.getJSON('/json/media/get/' + picId + '/', {},
         function (data) {
             if (data.success) {
@@ -552,7 +553,7 @@ function comment_list() {
                 });
                 $('.comment_container').html(html);
                 if (html == "") {
-                    $('#ss__nocomment_div').css('display','block');
+                    $('#ss__nocomment_div').show();
                 }
             }
         },
