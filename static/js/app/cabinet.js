@@ -178,8 +178,17 @@ function pw_showClusterPetData(cluster) {
     if (_.has(cluster_names, cluster)) {
         $("#pw_id_pets_list").text(cluster_names[cluster]);
         $("#pw_name, #pw_gender, #pw_color, #pw_birthday, #pw_about").show();
-        if (_.contains(["dog", "cat"], cluster)) {
+        if (_.contains(["dog"], cluster)) {
+            $("#pw_standard").show();
+            $("#pet_breed").css("width", "210px");
             $("#pw_breed").show();
+        }
+        else {
+            $("#pw_standard").hide();
+            $("#pet_breed").css("width", "301px");
+        }
+        if (_.contains(["cat"], cluster)) {
+            $("#pw_breed").show();            
         }
     }
    

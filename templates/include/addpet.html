@@ -6,7 +6,7 @@
                     <table width="460" align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
                         <tr>
                             <td class="add_photo_window_caption"><span id="w1">{% trans "Pets details" %}</span><br><span class="animals_window_tooltip" id="w2">&nbsp;</span></td>
-                            <td align="right" valign="top"><a href="#" title="{% trans "Close window" %}" id="pet_window_close_link"><img src="images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}" title="{% trans "Close window" %}"></a></td>
+                            <td align="right" valign="top"><a title="{% trans "Close window" %}" id="pet_window_close_link" class="finger"><img src="images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}" title="{% trans "Close window" %}"></a></td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center" class="add_photo_cluster_buttons">
@@ -35,6 +35,14 @@
                                                 <div id="pw_name" style="margin-bottom:10px;">
                                                     <span class="redit_caption">{% trans "Pets name:" %}</span><br>
                                                     <input id="pet_name" class="redit_body" type="text" value="" maxlength="256" style="width:300px;">
+                                                </div>
+                                                <div id="pw_standard" style="margin-bottom:10px; margin-right:10px; float:left;">
+                                                    <span class="redit_caption">{% trans "Standard:" %}</span><br>
+                                                    <select id="pet_standard_dog" class="redit_body" style="width:80px;">
+                                                        <option value="" selected></option>
+                                                        <option value="FCI">{% trans "FCI - Cynological International Federation" %}</option>
+                                                        <option value="AKC">{% trans "AKC - American Kennel Club" %}</option>
+                                                    </select>
                                                 </div>
                                                 <div id="pw_breed" style="margin-bottom:10px;">
                                                     <span class="redit_caption">{% trans "Breed:" %}</span><br>
