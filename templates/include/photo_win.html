@@ -87,7 +87,7 @@
                             </td-->
                             <td>
                                 <div class="author_photo_bar">
-                                    <a href="#" class="pull_delete media_disable" title="{% trans "Delete this image" %}">
+                                    <a class="pull_delete media_disable finger" title="{% trans "Delete this image" %}">
                                         <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Delete this image" %}">
                                     </a>
                                 </div>
@@ -181,7 +181,7 @@
                     {% trans "Comments:" %}
                     <div class="print">
                         <!-- Если пользователь разрешил коментировать -->
-                        <div style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans "No comments yet.<br>Your comment may be the first." %}</div>
+                        <div class="ss__nocomment_div" style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans "No comments yet.<br>Your comment may be the first." %}</div>
                         <!-- Если пользователь не разрешил коментировать -->
                         <div style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans "The author has disabled commenting." %}</div>
                         <!-- Коментарии -->
@@ -218,7 +218,7 @@
                 <div style="padding-left:10px;" class="guest_photo_bar">
                     {% trans "Comments:" %}
                     <div class="print">
-                        <div style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;" id="ss__nocomment_div">{% trans "No comments yet." %}</div>
+                        <div class="ss__nocomment_div" style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans "No comments yet." %}</div>
                         <!-- Коментарии -->
                         <div class="comment_container"></div>
                     </div>
@@ -229,9 +229,9 @@
                                     <div id="send_message_needauth">
                                         {% trans "Leave a comment can only registered users!" %}
                                         <br><br>
-                                        {% trans "If you are already registered, you can simply" %} <a href="#" title="{% trans "Sign in" %}" class="la_login">{% trans "SIGN IN" %}</a>.
+                                        {% trans "If you are already registered, you can simply" %} <a title="{% trans "Sign in" %}" class="la_login finger">{% trans "SIGN IN" %}</a>.
                                         <br><br>
-                                        {% trans "If you are not registered, we will be happy to see you in our community." %} <a href="#" title="{% trans "Sign up" %}" class="la_add">{% trans "SIGN UP" %}</a>!
+                                        {% trans "If you are not registered, we will be happy to see you in our community." %} <a title="{% trans "Sign up" %}" class="la_add finger">{% trans "SIGN UP" %}</a>!
                                     </div>
                                 </td>
                             </tr>
