@@ -531,6 +531,7 @@ function comment_add(text_id) {
         function (result) {
             if (result.success) {
                 text_field.val('');
+                $('.ss__nocomment_div').hide();
                 comment_list();
             }
         },
