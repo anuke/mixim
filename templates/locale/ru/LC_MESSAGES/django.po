@@ -40,15 +40,15 @@ msgid "PAGE NOT FOUND!"
 msgstr "СТРАНИЦА НЕ НАЙДЕНА!"
 
 #: 404.html:26
-msgid "You are not able to visit this page because of:"
+msgid "The page you are looking for is currently unavailable because of:"
 msgstr "Вы не можете посетить текущую страницу потому, что:"
 
 #: 404.html:27
-msgid "overdue tab elected"
+msgid "an out of date bookmark/favorite"
 msgstr "просрочена закладка избранного"
 
 #: 404.html:28
-msgid "search engine that has an expired listing for this site"
+msgid "a search engine that has an out of date listing for this site"
 msgstr "поисковый механизм, у которого просрочен список для этого сайта"
 
 #: 404.html:29
@@ -56,11 +56,11 @@ msgid "a mistyped address, check your spelling"
 msgstr "пропущен адрес, проверьте правильность написания"
 
 #: 404.html:30
-msgid "you do not have access to this page"
+msgid "you have no access to this page"
 msgstr "у вас нет прав на эту страницу"
 
 #: 404.html:31
-msgid "in the processing of your request was an error"
+msgid "an error has occurred while processing your request"
 msgstr "в процессе обработки вашего запроса произошла ошибка"
 
 #: 404.html:34 500.html:32
