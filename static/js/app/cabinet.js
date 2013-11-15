@@ -54,6 +54,8 @@ function __append_pet_block(pet) {
 
 function __close_pet_window() {
     $('#pet_id').val('');
+    $('#pet_standard_dog').val('');
+
     _.each(__PET_FIELDS, function (name) {
         $('#pet_' + name).val('');
     });
@@ -68,10 +70,22 @@ function __close_pet_window() {
 function __show_pet_window(pet) {
     return function () {
         function params() {
+            function normalize(s) {
+                if (typeof s == 'string' || s instanceof String) {
+                    return s.trim();
+                }
+
+                return "";
+            }
+
             function pet_name_and_val(name) {
                 return [name, $('#pet_' + name).val()];
             }
-            return _.chain(__PET_FIELDS).map(pet_name_and_val).object().value();
+
+            var result = _.chain(__PET_FIELDS).map(pet_name_and_val).object().value();
+            var breed = $('#pet_breed_index option:selected').val();
+            result.breed = normalize(breed);
+            return result;
         }
 
         function orEmpty(v) {
