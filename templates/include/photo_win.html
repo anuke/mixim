@@ -62,7 +62,7 @@
                                     <a id="media_like_btn" href="javascript:media_like()" class="pull_like" title="{% trans "I like it!" %}">
                                         <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
                                     </a>
-                                    <a id="media_unlike_btn" href="javascript:media_unlike()" class="pull_unlike" title="{% trans "It is not like" %}">
+                                    <a id="media_unlike_btn" href="javascript:media_unlike()" class="pull_unlike" title="{% trans "Unlike" %}">
                                         <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans "Like" %}">
                                     </a>
                                 </div>
@@ -181,7 +181,7 @@
                     {% trans "Comments:" %}
                     <div class="print">
                         <!-- Если пользователь разрешил коментировать -->
-                        <div class="ss__nocomment_div" style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans "No comments yet.<br>Your comment may be the first." %}</div>
+                        <div class="ss__nocomment_div" style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans "No comments yet.<br>Be the first to comment!" %}</div>
                         <!-- Если пользователь не разрешил коментировать -->
                         <div style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans "The author has disabled commenting." %}</div>
                         <!-- Коментарии -->
@@ -227,11 +227,11 @@
                             <tr>
                                 <td class="send_message_td">
                                     <div id="send_message_needauth">
-                                        {% trans "Leave a comment can only registered users!" %}
+                                        {% trans "Please sign in or register to leave a comment!" %}
                                         <br><br>
                                         {% trans "If you are already registered, you can simply" %} <a title="{% trans "Sign in" %}" class="la_login finger">{% trans "SIGN IN" %}</a>.
                                         <br><br>
-                                        {% trans "If you are not registered, we will be happy to see you in our community." %} <a title="{% trans "Sign up" %}" class="la_add finger">{% trans "SIGN UP" %}</a>!
+                                        {% trans "Not registered yet? It’s so easy to create your free account! We will be happy to see you join our pet-loving community." %} <a title="{% trans "Sign up" %}" class="la_add finger">{% trans "SIGN UP" %}</a>!
                                     </div>
                                 </td>
                             </tr>

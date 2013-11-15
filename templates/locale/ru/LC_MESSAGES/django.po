@@ -274,7 +274,7 @@ msgid "Like"
 msgstr "Лайк"
 
 #: include/photo_win.html:65
-msgid "It is not like"
+msgid "Unlike"
 msgstr "Уже не нравится"
 
 #: include/photo_win.html:70
@@ -322,7 +322,7 @@ msgid "Comments:"
 msgstr "Комментарии:"
 
 #: include/photo_win.html:184
-msgid "No comments yet.<br>Your comment may be the first."
+msgid "No comments yet.<br>Be the first to comment!"
 msgstr "Комментариев нет.<br>Ваш комментарий может быть первым."
 
 #: include/photo_win.html:186
@@ -338,7 +338,7 @@ msgid "No comments yet."
 msgstr "Комментариев нет."
 
 #: include/photo_win.html:230
-msgid "Leave a comment can only registered users!"
+msgid "Please sign in or register to leave a comment!"
 msgstr "Оставлять комментарии могут только зарегистрированные пользователи!"
 
 #: include/photo_win.html:232
@@ -354,7 +354,7 @@ msgid "SIGN IN"
 msgstr "ВОЙТИ"
 
 #: include/photo_win.html:234
-msgid "If you are not registered, we will be happy to see you in our community."
+msgid "Not registered yet? It’s so easy to create your free account! We will be happy to see you join our pet-loving community."
 msgstr "Если вы еще не зарегистрированы, мы будем рады вас видеть в нашем сообществе."
 
 #: include/photo_win.html:234
