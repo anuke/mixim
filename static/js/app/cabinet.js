@@ -83,7 +83,7 @@ function __show_pet_window(pet) {
             }
 
             var result = _.chain(__PET_FIELDS).map(pet_name_and_val).object().value();
-            var breed = $('#pet_breed_index option:selected').val();
+            var breed = $('#pet_breed_index option:selected').text();
             result.breed = normalize(breed);
             return result;
         }
