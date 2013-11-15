@@ -188,10 +188,10 @@ function pw_showClusterPetData(cluster) {
             $("#pet_breed").css("width", "301px");
         }
         if (_.contains(["cat"], cluster)) {
-            $("#pw_breed").show();            
+            $("#pw_breed").show();
         }
     }
-   
+
     //console.log(cluster)
 
     if (pw_cluster == NO_CLUSTER) {
@@ -427,12 +427,12 @@ function my_likes_load() {
 
 function load_discussions() {
     $('#cabinet_discussion > div').empty();
-    
+
     var view = {};
     _.extend(view, Backbone.Events);
 
     view.on('load:discussions', function (discussions) {
-      pager =             
+      pager =
             '<div class="pagination">' +
             '<div class="step-links">';
       if (discussions.paginator.has_previous) {
@@ -442,7 +442,7 @@ function load_discussions() {
           pager += '<a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>';
       }
       pager += '<a class="pagination_current_page">' +
-                   trans('Page %s of %s', discussions.paginator.current_page, discussions.paginator.pages) + 
+                   trans('Page %s of %s', discussions.paginator.current_page, discussions.paginator.pages) +
                '</a>';
       if (discussions.paginator.has_next ) {
           pager += '<a class="discussion_next_page pagination_right_page" href="#page=' + (discussions.paginator.current_page + 1) + '">' + trans('Forward »') + '</a>';
@@ -451,9 +451,9 @@ function load_discussions() {
           pager += '<a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>';
       }
       pager += '</div></div>';
-      
+
       $('#cabinet_discussion > div').append(pager);
-      
+
       _.each(discussions.results, function (discussion, index) {
             $('#cabinet_discussion > div').append(
               '<a id="last_photo_' + discussion.id + '" class="cabinet_discussion_box_photo">' +
@@ -462,14 +462,14 @@ function load_discussions() {
               '<img src="' + discussion.thumbnail + '" height="75px" border="0" width="100px"></a>');
               $('#last_photo_' + discussion.id).click(function() { show_photo(discussion.id) } );
         });
-      
+
       $('#cabinet_discussion > div').append(pager);
-      
+
       $('.discussion_next_page').click(function() {
           discussion_page += 1;
           load_discussions();
       });
-      
+
       $('.discussion_previous_page').click(function() {
           discussion_page -= 1;
           load_discussions();
@@ -485,7 +485,7 @@ function load_discussions() {
 var user_menu_button_name = 'news';
 
 $(document).ready(function() {
-    function show_in_cabinet(name) {        
+    function show_in_cabinet(name) {
         $('#cabinet_' + name + '_link').click(
             function() {
             $('#cabinet_' + user_menu_button_name + '_link').removeClass('cabinet_user_menu_button_off').addClass('cabinet_user_menu_button');
@@ -510,9 +510,9 @@ $(document).ready(function() {
     $('#pet_close_btn').click(function () {
         $('#animals_window').hide();
     });
-    
+
     $('#pet_close_btn').click(function() {});
-    
+
     $('#cabinet_discussion_link').click(load_discussions);
 
     $('#pet_new_window_link').click(__show_pet_window({}));

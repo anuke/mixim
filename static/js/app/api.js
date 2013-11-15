@@ -50,7 +50,7 @@ function show_photo(picId) {
                 if (photo_window_top_position < 0)
                     photo_window_top_position = 0;
                 $('#photo_window').css('top', photo_window_top_position);
-                
+
                 $('#photo_window').show();
                 $('.author_photo_bar').toggle(is_author());
                 $('.viewer_photo_bar').toggle(is_viewer());
@@ -125,7 +125,7 @@ function auth_login(prefix) {
             document.location.href = 'media.shtml';
             return;
         }
-        
+
         try {
             $('#sid__gender_image').attr('src', current_user.avatar);
             $('#sid__username').html(current_user.username);
@@ -133,7 +133,7 @@ function auth_login(prefix) {
         catch(e) {
 
         }
-        
+
         $('#noauto_block').hide();
         $('#auto_block').show();
 
