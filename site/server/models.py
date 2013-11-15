@@ -117,7 +117,7 @@ class Pet(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'name', 'species', 'breed', 'color', 'birthday', 'gender', 'enabled', 'about', 'last_picture')
+            'id', 'name', 'species', 'breed', 'color', 'birthday', 'gender', 'enabled', 'about', 'last_picture', 'breed_index')
 
     def __unicode__(self):
         return self.name
