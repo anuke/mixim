@@ -244,23 +244,21 @@ def pet_disable(request, pet):
 @require_method("GET")
 def media_list(request, start = 0, limit = 10):
     user = request.user
-    media = MediaFile.enabled_objects
+    query = MediaFile.enabled_objects.all()
 
     species = request.GET.get('species', current_species(request))
     if species and species != 'all':
-        query = media.with_species(species)
-    else:
-        query = media.all() # by default
+        query = query.with_species(species)
 
     if user.is_authenticated():
         # filter by country filter
         profile = user.profile
         if profile.filter_mycountry and profile.country:
-            query = media.filter(author__profile__country = profile.country)
+            query = query.filter(author__profile__country = profile.country)
     else:
         # filter by domain
         if hasattr(request, 'domain_country'):
-            query = media.filter(author__profile__country = request.domain_country)
+            query = query.filter(author__profile__country = request.domain_country)
 
     return __list_media(request, query, start, limit)
 
