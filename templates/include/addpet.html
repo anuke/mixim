@@ -1,4 +1,37 @@
 {% load i18n %}
+<script>
+if (!jQuery.fn.toggleOption) {
+    jQuery.fn.toggleOption = function (show) {
+        jQuery(this).toggle(show);
+        if (show) {
+            if (jQuery(this).parent('span.toggleOption').length)
+                jQuery(this).unwrap();
+        }
+        else {
+            if (jQuery(this).parent('span.toggleOption').length == 0)
+                jQuery(this).wrap('<span class="toggleOption" style="display: none;" />');
+        }
+    };
+}
+
+jQuery(document).ready(function ($) {
+    $('#pet_standard_dog').val('');
+    $('#pet_breed option').toggleOption(false);
+
+    $('#pet_standard_dog').change(function () {
+        $("#pet_breed").prop('disabled', true);
+        $('#pet_breed option').toggleOption(false);
+        $('#pet_breed option:first').toggleOption(true);
+
+        var standard = $(this).val();
+        if (standard) {
+            $('#pet_breed option[value^=' + standard + ']').toggleOption(true);
+            $("#pet_breed").val($("#pet_breed option:first").val());
+            $("#pet_breed").prop('disabled', false);
+        }
+    });
+});
+</script>
 	<!-- Окно создания и редактирования питомца (начало)-->
 		<table id="pet_window" class="add_pet_block">
 			<tr>
@@ -47,6 +80,13 @@
                                                 <div id="pw_breed" style="margin-bottom:10px;">
                                                     <span class="redit_caption">{% trans "Breed:" %}</span><br>
                                                     <select id="pet_breed" class="redit_body" style="width:301px;">
+                                                        <option value="">&nbsp;</option>
+                                                        {% with "include/breed_fci_"|add:LANGUAGE_CODE|add:".html" as template %}
+                                                        {% include template %}
+                                                        {% endwith %}
+                                                        {% with "include/breed_akc_"|add:LANGUAGE_CODE|add:".html" as template %}
+                                                        {% include template %}
+                                                        {% endwith %}
                                                     </select>
                                                 </div>
                                                 <div id="pw_gender" style="margin-bottom:10px;">
