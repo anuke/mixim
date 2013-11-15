@@ -44,7 +44,7 @@
             </div>
             <div class="user_about">
                 <!--div class="user_about_bkg opa25"></div-->
-                {{ user_profile.profile.about|default_if_none:"" }}
+                {{ user_profile.profile.about|default_if_none:"Пользователь предпочел о себе ничего не рассказывать." }}
             </div>
             <div class="user_about_plus opa75">{% trans "Pets:" %} {{ user_profile.pets.count }} | {% trans "Subscribe to:" %} {{ user_profile.follows.count}} | {% trans "Favorited:" %} {{ user_profile.followed_by.count}} | {% trans "Posts:" %} {{ user_profile.comment_set.count }}</div>
             <div class="user_name">{{ user_profile.first_name }} {{ user_profile.last_name }}</div>
