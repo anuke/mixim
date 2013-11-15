@@ -16,18 +16,18 @@ if (!jQuery.fn.toggleOption) {
 
 jQuery(document).ready(function ($) {
     $('#pet_standard_dog').val('');
-    $('#pet_breed option').toggleOption(false);
+    $('#pet_breed_index option').toggleOption(false);
 
     $('#pet_standard_dog').change(function () {
-        $("#pet_breed").prop('disabled', true);
-        $('#pet_breed option').toggleOption(false);
-        $('#pet_breed option:first').toggleOption(true);
+        $("#pet_breed_index").prop('disabled', true);
+        $('#pet_breed_index option').toggleOption(false);
+        $('#pet_breed_index option:first').toggleOption(true);
 
         var standard = $(this).val();
         if (standard) {
-            $('#pet_breed option[value^=' + standard + ']').toggleOption(true);
-            $("#pet_breed").val($("#pet_breed option:first").val());
-            $("#pet_breed").prop('disabled', false);
+            $('#pet_breed_index option[value^=' + standard + ']').toggleOption(true);
+            $("#pet_breed_index").val($("#pet_breed_index option:first").val());
+            $("#pet_breed_index").prop('disabled', false);
         }
     });
 });
@@ -79,7 +79,7 @@ jQuery(document).ready(function ($) {
                                                 </div>
                                                 <div id="pw_breed" style="margin-bottom:10px;">
                                                     <span class="redit_caption">{% trans "Breed:" %}</span><br>
-                                                    <select id="pet_breed" class="redit_body" style="width:301px;">
+                                                    <select id="pet_breed_index" class="redit_body" style="width:301px;">
                                                         <option value="">&nbsp;</option>
                                                         {% with "include/breed_fci_"|add:LANGUAGE_CODE|add:".html" as template %}
                                                         {% include template %}

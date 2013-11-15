@@ -2,7 +2,7 @@
 // Storing pet
 //
 
-var __PET_FIELDS = ['name', 'breed', 'birthday', 'gender', 'color', 'about', 'species'];
+var __PET_FIELDS = ['name', 'breed_index', 'birthday', 'gender', 'color', 'about', 'species'];
 
 function pet_gender_name(gender) {
     if (gender == 'M') {
@@ -162,12 +162,12 @@ function pw_showClusterPetData(cluster) {
         $("#pw_name, #pw_gender, #pw_color, #pw_birthday, #pw_about").show();
         if (_.contains(["dog"], cluster)) {
             $("#pw_standard").show();
-            $("#pet_breed").css("width", "210px");
+            $("#pet_breed_index").css("width", "210px");
             $("#pw_breed").show();
         }
         else {
             $("#pw_standard").hide();
-            $("#pet_breed").css("width", "301px");
+            $("#pet_breed_index").css("width", "301px");
         }
         if (_.contains(["cat"], cluster)) {
             $("#pw_breed").show();
