@@ -134,6 +134,19 @@ function __show_pet_window(pet) {
             $('#f_photo_pet').append($('<option>').attr('value', added_pet.id).text(added_pet.name));
         });
 
+        // handle breed controls
+        $('#pet_standard_dog').val('');
+        $("#pet_breed_index").prop('disabled', true);
+        $('#pet_breed_index option').toggleOption(false);
+        $('#pet_breed_index option:first').toggleOption(true);
+        if (pet.breed_index) {
+            // Standard is exactly 3 chars!
+            var standard = pet.breed_index.substring(0, 3);
+            $('#pet_standard_dog').val(standard);
+            $('#pet_breed_index option[value^=' + standard + ']').toggleOption(true);
+            $("#pet_breed_index").prop('disabled', false);
+        }
+
         $('#pet_id').val(orEmpty(pet.id));
         _.each(__PET_FIELDS, function (name) {
             $('#pet_' + name).val(orEmpty(pet[name]));
