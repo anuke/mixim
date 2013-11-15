@@ -117,6 +117,7 @@ function __show_pet_window(pet) {
                     $('#pet_' + name + '_' + model.id).text(saved_pet[name]);
                 }
             });
+            $('#pet_breed_' + model.id).text(saved_pet.breed);
         });
 
         model.on('added', function (added_pet) {
