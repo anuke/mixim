@@ -97,6 +97,7 @@ class Pet(models.Model):
     gender   = models.CharField(name=_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
     about    = models.TextField(name=_("About"), blank=True, null=True)
     enabled  = models.BooleanField(name=_("Enabled"), default=True)
+    breed_index = models.CharField(name=_("Breed Index"), max_length=50, blank=True, null=True)
 
     def get_last_picture(self):
         files = self.media_files.order_by('-id')[0:1]

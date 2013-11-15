@@ -121,7 +121,7 @@ class PetForm(forms.ModelForm):
 
     class Meta:
         model = Pet
-        fields = ("name", "species", "breed", "color", "birthday", "gender", "about")
+        fields = ("name", "species", "breed_index", "breed", "color", "birthday", "gender", "about")
 
 
 class AvatarForm(forms.ModelForm):
