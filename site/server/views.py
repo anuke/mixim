@@ -245,7 +245,12 @@ def pet_disable(request, pet):
 def media_list(request, start = 0, limit = 10):
     user = request.user
     media = MediaFile.enabled_objects
-    query = media.all() # by default
+
+    species = request.GET.get('species', current_species(request))
+    if species and species != 'all':
+        query = query.with_species(species)
+    else:
+        query = media.all() # by default
 
     if user.is_authenticated():
         # filter by country filter
@@ -554,7 +559,6 @@ def __list_media(request, query, start, limit):
     pet_id    = request.GET.get('pet_id')
     breed     = request.GET.get('breed')
     gender    = request.GET.get('gender')
-    species   = request.GET.get('species', current_species(request))
 
     query = query.order_by('-created')
     if tags:
@@ -569,8 +573,6 @@ def __list_media(request, query, start, limit):
         query = query.with_breed(breed)
     if gender:
         query = query.with_gender(gender)
-    if species and species != 'all':
-        query = query.with_species(species)
 
     start = int(start)
     limit = int(limit)
