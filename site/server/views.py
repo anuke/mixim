@@ -248,7 +248,7 @@ def media_list(request, start = 0, limit = 10):
 
     species = request.GET.get('species', current_species(request))
     if species and species != 'all':
-        query = query.with_species(species)
+        query = media.with_species(species)
     else:
         query = media.all() # by default
 
