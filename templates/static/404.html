@@ -1,40 +1,39 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+{% load i18n %}<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MIXIM - Мы их любим</title>
+<title>{% trans "MiXiM - for those who love pets" %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body class="media">
 <table width="980px" align="center" height="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td height="98px" valign="top">
             <div class="logo_media">
-                <a href="index.shtml" title="На главную страницу" target="_self">
-                    <img src="images/logo.png" width="156" height="46" border="0" alt="На главную страницу">
+                <a href="../" title="{% trans "On the main page" %}" target="_self">
+                    <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "On the main page" %}">
                 </a>
             </div>
             <div class="div_404">
-                Ошибка 404!
+                {% trans "404 Error!!!" %}
             </div>
         </td>
     </tr>
     <tr>
         <td align="center" class="text_404">
-            <h2>СТРАНИЦА НЕ НАЙДЕНА!</h2>
-            <ul>Вы не можете посетить текущую страницу потому, что:<br>
-                <li> просрочена закладка избранного</li>
-                <li> поисковый механизм, у которого просрочен список для этого сайта</li>
-                <li> пропущен адрес, проверьте правильность написания</li>
-                <li> у вас нет прав на эту страницу</li>
-                <li> в процессе обработки вашего запроса произошла ошибка</li>
+            <h2>{% trans "PAGE NOT FOUND!" %}</h2>
+            <ul>{% trans "The page you are looking for is currently unavailable because of:" %}<br>
+                <li> {% trans "an out of date bookmark/favorite" %}</li>
+                <li> {% trans "a search engine that has an out of date listing for this site" %}</li>
+                <li> {% trans "a mistyped address, check your spelling" %}</li>
+                <li> {% trans "you have no access to this page" %}</li>
+                <li> {% trans "an error has occurred while processing your request" %}</li>
                 <br>
                 <br>
-                Пожалуйста, попробуйте одну из следующих страниц:<br>
-                <li><a href="http://www.mixim.ru">Домашняя страница</a></li>
+                {% trans "Please try one of the following pages:" %}<br>
+                <li><a href="../">{% trans "Homepage" %}</a></li>
             </ul>
-
         </td>
     </tr>
 </table>
@@ -46,7 +45,7 @@
         <td class="footer_text">
             <table align="center" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td width="400px" align="center">&copy;2006-2013 &nbsp; www.mixim.ru &nbsp; ООО &quot;Мобитун&quot;</td>
+                    <td width="400px" align="center">{% trans "&copy;2006-2013 &nbsp; www.mixim.us | pets2show &nbsp; ООО &quot;Мобитун&quot;" %}</td>
                 </tr>
             </table>
         </td>
