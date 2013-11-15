@@ -632,16 +632,3 @@ function last_all_comments(comments) {
         }
     });
 }
-
-//
-// other modules
-//
-
-function dict_breed(species, view) {
-    $.getJSON("/json/dict/breed/", { species: species }, function (data) {
-        if (data.success) {
-            var breeds = data.result;
-            view.trigger('load:breeds', breeds);
-        }
-    });
-}

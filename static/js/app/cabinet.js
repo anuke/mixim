@@ -15,24 +15,6 @@ function pet_gender_name(gender) {
     return '';
 }
 
-//
-// load breeds on demand
-//
-
-var breeds_view = {};
-_.extend(breeds_view, Backbone.Events);
-
-breeds_view.on('load:breeds', function (breeds) {
-    $('#pet_breed').empty().append($('<option>').attr('value', '').text(''));
-    for (var i = 0; i < breeds.length; i++) {
-        var breed = breeds[i];
-        $('#pet_breed').append($('<option>').attr('value', breed.name).text(breed.name));
-    }
-
-    var model = $("#pet_window").data("model");
-    if (model && model.pet) { $("#pet_breed").val(model.pet.breed); }
-});
-
 ////////
 
 function __append_pet_block(pet) {
@@ -209,8 +191,6 @@ function pw_showClusterPetData(cluster) {
     }
 
     pw_cluster = cluster;
-
-    dict_breed(cluster, breeds_view);
 };
 
 function pw_close() {
