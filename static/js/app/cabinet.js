@@ -464,11 +464,11 @@ function load_discussions() {
 
       _.each(discussions.results, function (discussion, index) {
             $('#cabinet_discussion > div').append(
-              '<a id="last_photo_' + discussion.id + '" class="cabinet_discussion_box_photo">' +
+              '<a id="discussion_photo_' + discussion.id + '" class="cabinet_discussion_box_photo">' +
               '<div class="cabinet_discussion_box_photo_info_bkg opa50"></div>' +
               '<div class="cabinet_discussion_box_photo_info">' + discussion.created.replace(/\//g, '.').substr(0, 10) + '</div>' +
               '<img src="' + discussion.thumbnail + '" height="75px" border="0" width="100px"></a>');
-              $('#last_photo_' + discussion.id).click(function() { show_photo(discussion.id) } );
+              $('#discussion_photo_' + discussion.id).click(function() { show_photo(discussion.id) } );
         });
 
       $('#cabinet_discussion > div').append(pager);
