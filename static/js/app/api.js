@@ -18,18 +18,26 @@ function full_screen() {
     window.open(current_photo.original, 'full_screen_photo');
 }
 
+function attention_empty_partition_on_off() {
+    if ($('#f_photo_species').val() == "")
+        $('.attention_empty_partition').show();
+    else
+        $('.attention_empty_partition').hide();
+}
+
 function show_photo(picId) {
     $('.ss__nocomment_div').hide();
-    $('.attention_empty_partition').hide();
+
+    attention_empty_partition_on_off();
+
     $.getJSON('/json/media/get/' + picId + '/', {},
         function (data) {
             if (data.success) {
                 var photo = data.result;
                 current_photo = photo;
-
-                if (photo.species == '') {
-                    $('.attention_empty_partition').show();
-                }
+                //console.log(photo.species)
+//                if (photo.species == '')
+//                    $('.attention_empty_partition').show();
 
                 $.each(['author', 'pet', 'created', 'description'], function () {
                     var value = photo[this];
@@ -448,12 +456,15 @@ function media_save() {
     var tags = $('#f_photo_tags').val();
     var petName = $('#f_photo_pet :selected').text();
 
+    attention_empty_partition_on_off();
+    
     var params = {
         pet: pet,
         species: species,
         description: description,
         tags: tags
     };
+
     $.post("/json/media/save/" + current_photo.id + "/", params,
         function (result) {
             if (result.success) {
