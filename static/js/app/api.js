@@ -18,7 +18,7 @@ function full_screen() {
     window.open(current_photo.original, 'full_screen_photo');
 }
 
-function attention_empty_partition_on_off(species) {
+function toggle_attention_block(species) {
     var need_attention = !species;
     $('.attention_empty_partition').toggle(need_attention);
 }
@@ -57,7 +57,7 @@ function show_photo(picId) {
                     photo_window_top_position = 0;
                 $('#photo_window').css('top', photo_window_top_position);
 
-                attention_empty_partition_on_off(photo.species);
+                toggle_attention_block(photo.species);
 
                 $('#photo_window').show();
                 $('.author_photo_bar').toggle(is_author());
@@ -451,7 +451,7 @@ function media_save() {
     var tags = $('#f_photo_tags').val();
     var petName = $('#f_photo_pet :selected').text();
 
-    attention_empty_partition_on_off(species);
+    toggle_attention_block(species);
 
     var params = {
         pet: pet,
