@@ -35,9 +35,6 @@ function show_photo(picId) {
             if (data.success) {
                 var photo = data.result;
                 current_photo = photo;
-                //console.log(photo.species)
-//                if (photo.species == '')
-//                    $('.attention_empty_partition').show();
 
                 $.each(['author', 'pet', 'created', 'description'], function () {
                     var value = photo[this];
@@ -457,7 +454,7 @@ function media_save() {
     var petName = $('#f_photo_pet :selected').text();
 
     attention_empty_partition_on_off();
-    
+
     var params = {
         pet: pet,
         species: species,
