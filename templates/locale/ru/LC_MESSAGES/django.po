@@ -176,7 +176,7 @@ msgid "Your e-Mail:"
 msgstr "E-Mail (адрес почты):"
 
 #: include/login.html:95
-msgid "Too short a login/nickname."
+msgid "Login/nickname is too short."
 msgstr "Слишком короткий логин/никнейм."
 
 #: include/login.html:98
@@ -184,7 +184,7 @@ msgid "Login/nickname contains illegal characters."
 msgstr "Логин/никнейм содержит недопустимые символы."
 
 #: include/login.html:101
-msgid "This login/nickname is already taken. Try to pick up the other."
+msgid "This login/nickname is already taken, please choose another one."
 msgstr "Такой логин/никнейм уже занят. Попробуйте подобрать другой"
 
 #: include/login.html:106
@@ -196,7 +196,7 @@ msgid "Your login(nickname):"
 msgstr "Ваш логин (никнейм):"
 
 #: include/login.html:120
-msgid "At specified at registration e-Mail address will be sent instructions to reset your password."
+msgid "An message with instructions to reset your password will be sent to the e-Mail address you provided at registration."
 msgstr "На указанный вами при регистрации E-Mail (адрес электронной почты), будет отправленна инструкция по восстановлению пароля."
 
 #: include/login.html:125
