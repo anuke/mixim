@@ -1071,6 +1071,30 @@ form {
 	/* margin-top:-300px; */
 	text-align:left;
 }
+.attention_empty_partition {
+    background-color:#CC0000;
+    color:#FFFFFF;
+    font-size:11px;
+    margin-left:235px;
+    margin-top:66px;
+    padding:5px;
+    position:absolute;
+    text-align:justify;
+    width:320px;
+    z-index:1;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+}
+.attention_empty_partition img {
+    margin-left:303px;
+    margin-top:-40px;
+    position:absolute;
+}
+.attention_empty_partition p {
+    margin-top:0;
+    margin-bottom:5px;
+}
 .photo {
 	width:600px;
 	text-align:center;
