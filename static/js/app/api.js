@@ -18,17 +18,13 @@ function full_screen() {
     window.open(current_photo.original, 'full_screen_photo');
 }
 
-function attention_empty_partition_on_off() {
-    if ($('#f_photo_species').val() == "")
-        $('.attention_empty_partition').show();
-    else
-        $('.attention_empty_partition').hide();
+function attention_empty_partition_on_off(species) {
+    var need_attention = !species;
+    $('.attention_empty_partition').toggle(need_attention);
 }
 
 function show_photo(picId) {
     $('.ss__nocomment_div').hide();
-
-    attention_empty_partition_on_off();
 
     $.getJSON('/json/media/get/' + picId + '/', {},
         function (data) {
@@ -60,6 +56,8 @@ function show_photo(picId) {
                 if (photo_window_top_position < 0)
                     photo_window_top_position = 0;
                 $('#photo_window').css('top', photo_window_top_position);
+
+                attention_empty_partition_on_off(photo.species);
 
                 $('#photo_window').show();
                 $('.author_photo_bar').toggle(is_author());
@@ -453,7 +451,7 @@ function media_save() {
     var tags = $('#f_photo_tags').val();
     var petName = $('#f_photo_pet :selected').text();
 
-    attention_empty_partition_on_off();
+    attention_empty_partition_on_off(species);
 
     var params = {
         pet: pet,
