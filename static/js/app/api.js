@@ -20,11 +20,16 @@ function full_screen() {
 
 function show_photo(picId) {
     $('.ss__nocomment_div').hide();
+    $('.attention_empty_partition').hide();
     $.getJSON('/json/media/get/' + picId + '/', {},
         function (data) {
             if (data.success) {
                 var photo = data.result;
                 current_photo = photo;
+
+                if (photo.species == '') {
+                    $('.attention_empty_partition').show();
+                }
 
                 $.each(['author', 'pet', 'created', 'description'], function () {
                     var value = photo[this];
