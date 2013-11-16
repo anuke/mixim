@@ -185,7 +185,7 @@ msgstr "Логин/никнейм содержит недопустимые си
 
 #: include/login.html:101
 msgid "This login/nickname is already taken, please choose another one."
-msgstr "Такой логин/никнейм уже занят. Попробуйте подобрать другой"
+msgstr "Такой логин/никнейм уже занят. Попробуйте подобрать другой."
 
 #: include/login.html:106
 msgid "CONTINUE"
@@ -209,8 +209,8 @@ msgid "Close window"
 msgstr "Закрыть окно"
 
 #: include/media_upload.html:8
-msgid "&nbsp;&nbsp;Only registered users can post photos in galleries!"
-msgstr "&nbsp;&nbsp;Только зарегестрированные пользователи могут размещать фотографии в галереях!"
+msgid "&nbsp;&nbsp;Only registered users can post photos. Please sign in. You may create a free account!"
+msgstr "&nbsp;&nbsp;Только зарегистрированные пользователи могут размещать фотографии в галереях!"
 
 #: include/media_upload.html:55
 msgid "Uploading image"
