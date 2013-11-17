@@ -73,7 +73,7 @@
                             td.append(a);
                         }
                         else {
-                            var img = $('<img>').attr('src', "/media/absent.png").attr('title', trans('No photo'));
+                            var img = $('<img>').attr('src', "/images/absent.png").attr('title', trans('No photo'));
                             td.attr('align', 'center').attr('valign', 'middle').append(img);
                         }
                         tr.append(td);
