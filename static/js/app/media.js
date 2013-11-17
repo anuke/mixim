@@ -28,7 +28,7 @@ function show_resetpassword_window() {
 
 jQuery(document).ready(function ($) {
     // UI
-    $('#tags_filter').watermark('искать по тегу').autocomplete({
+    $('#tags_filter').watermark(trans('search by tag')).autocomplete({
         minLength: 2,
         source: function(request, response) {
             $.getJSON("/json/available/tag/", { term: request.term },
@@ -46,7 +46,7 @@ jQuery(document).ready(function ($) {
             }
         }
     });
-    $('#breed_filter').watermark('искать по породе').autocomplete({
+    $('#breed_filter').watermark(trans('search by breed')).autocomplete({
         minLength: 2,
         source: function(request, response) {
             $.getJSON("/json/available/breed/", { term: request.term },
