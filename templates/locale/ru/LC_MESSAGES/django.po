@@ -294,7 +294,7 @@ msgid "Image data:"
 msgstr "Данные фото:"
 
 #: include/photo_win.html:114
-msgid "Divide:"
+msgid "Section:"
 msgstr "Раздел:"
 
 #: include/photo_win.html:147
@@ -799,3 +799,12 @@ msgstr "Выберите файл для создания аватара"
 
 msgid "Pets"
 msgstr "Питомцы"
+
+msgid "Keep in mind that you need to identify your pet 'Section' if you want it to be visible to other pet owners!"
+msgstr "ВНИМАНИЕ! Укажите раздел, в который следует поместить данную фотографию. Фотографии без указания раздела не будут видны другим пользователям!"
+
+msgid "We recommend:"
+msgstr "Рекомендуется:"
+
+msgid "<p>Identifying your pets and including a short description and a few tags. This will improve your photo sharing and networking experience, and will make it easier for other pet owners with similar interests to find your pet pictures.</p>"
+msgstr "<p>Отметить питомца, если на фотографии ваше животное.</p><p>Добавить описание к фотографии. Это улучшит восприятие фотографии.</p><p>Указать теги. Теги помогут другим людям быстрее найти фотографию.</p>"

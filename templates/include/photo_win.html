@@ -15,11 +15,9 @@
                     <div class="attention_empty_partition finger" style="display:none;" onclick="$('.attention_empty_partition').hide();">
                         <img src="../images/error_red_arrow_top.png">
                         <div style="text-indent:10px;">
-                            <p><b>ВНИМАНИЕ! Укажите раздел, в который следует поместить данную фотографию. Фотографии без указания раздела не будут видны другим пользователям!</b></p>
-                            <center style="margin-bottom:5px;">Рекомендуется:</center>
-                            <p>Отметить питомца, если на фотографии ваше животное.</p>
-                            <p>Добавить описание к фотографии. Это улучшит восприятие фотографии.</p>
-                            <p>Указать теги. Теги помогут другим людям быстрее найти фотографию.</p>
+                            <p><b>{% trans "Keep in mind that you need to identify your pet 'Section' if you want it to be visible to other pet owners!" %}</b></p>
+                            <center style="margin-bottom:5px;">{% trans "We recommend:" %}</center>
+                            {% trans "<p>Identifying your pets and including a short description and a few tags. This will improve your photo sharing and networking experience, and will make it easier for other pet owners with similar interests to find your pet pictures.</p>" %}
                         </div>
                     </div>
                 </div>
@@ -123,7 +121,7 @@
                                 <table width="238px" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px; margin-left:5px;">
                                     <tr>
                                         <td width="125px">
-                                            <span class="redit_caption">{% trans "Divide:" %}</span><br>
+                                            <span class="redit_caption">{% trans "Section:" %}</span><br>
                                             <select class="redit_body" id="f_photo_species" style="width:113px;">
                                                 <option value="">-</option>
                                                 <option value="dog">{% trans "Dogs" %}</option>
@@ -217,7 +215,7 @@
                         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="like_box1">
                             <tr>
                                 <td class="favorite_add">
-                                    <a id="photo_add_friend" href="#" title="{% trans "Follow" %}"><img src="../images/favorite_person_add.png" width="64px" height="54" alt="{% trans "Follow" %}" border="0"></a>
+                                    <a id="photo_add_friend" class="finger" title="{% trans "Follow" %}"><img src="../images/favorite_person_add.png" width="64px" height="54" alt="{% trans "Follow" %}" border="0"></a>
                                 </td>
                                 <!--td class="favorite_add">
                                     <a href="#" title="Добавить питомца в избранное"><img src="../images/favorite_pet.png" width="64px" height="54" alt="Добавить питомца в избранное" border="0"></a>
