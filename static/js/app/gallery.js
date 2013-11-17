@@ -53,10 +53,6 @@
                 if (last_id) last_id = last_id[0];
                 var loaded_first_id = len > 0 ? images[0].id : undefined;
                 var loaded_last_id  = len > 0 ? images[len - 1].id : undefined;
-                console.log(first_id);
-                console.log(last_id);
-                console.log(loaded_first_id);
-                console.log(loaded_last_id);
                 if ((first_id == loaded_first_id) && (last_id  == loaded_last_id)) return;
 
                 $('#image_container').empty();
