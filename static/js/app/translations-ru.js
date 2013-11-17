@@ -19,6 +19,7 @@ var translations = {
     'Not follow': 'Отписаться',
     'You follow ': 'Вы подписаны на ',
     'Follow': 'Подписаться',
+    'Unfollow': 'Отписаться',
     'You not follow ': 'Вы отписаны от ',
     'on the user&#39;s profile': 'к профилю пользователя',
     'Show photo': 'Показать фото',
@@ -46,7 +47,12 @@ var translations = {
     'Girl': 'Девочка',
     '« Back': '« Туда',
     'Page %s of %s': 'Страница %s из %s',
-    'Forward »': 'Сюда »'
+    'Forward »': 'Сюда »',
+    'search by tag': 'искать по тегу',
+    'search by breed': 'искать по породе',
+    'No photo': 'Фотография отсутствует',
+    'from': 'от',
+    'sent': 'отправлено'
 };
 
 function trans(key) {

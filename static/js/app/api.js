@@ -69,9 +69,9 @@ function show_photo(picId) {
                 }
 
                 // by default: if friend list has not been loaded
-                $('#photo_add_friend').attr('title', 'Подписаться').find('img').attr('src', '../images/favorite_person_add.png');
+                $('#photo_add_friend').attr('title', trans('Follow')).find('img').attr('src', '../images/favorite_person_add.png');
                 if (_.contains(friendInfo.friends, photo.author)) {
-                    $('#photo_add_friend').attr('title', 'Отписаться').find('img').attr('src', '../images/favorite_person_remove.png')
+                    $('#photo_add_friend').attr('title', trans('Unfollow')).find('img').attr('src', '../images/favorite_person_remove.png')
                 }
             }
             else {
@@ -596,7 +596,7 @@ function last_comments(type) {
                         '<table align="left" style="margin-top:10px;" border="0" cellspacing="0" cellpadding="0"><!-- входящие -->' +
                         '    <tr>' +
                         '        <td class="cabinet_photo_in">' +
-                        '             <a id="last_photo_' + el.photo_id + '" href="#" title="' + trans('Show photo') + '">' +
+                        '             <a id="last_photo_' + el.photo_id + '"class="finger" title="' + trans('Show photo') + '">' +
                         '                 <img id="" src="' + el.thumbnail + '" width="100px" height="75px">' +
                         '             </a>' +
                         '        </td>' +
@@ -606,16 +606,16 @@ function last_comments(type) {
                         '            <table width="386px" border="0" cellspacing="0" cellpadding="0">' +
                         '                <tr>' +
                         '                    <td>' +
-                        '                        <div>от <a href="/@' + el.author + '/" target="_blank" style="text-transform:uppercase;">' + el.author + '</a>:</div>' +
+                        '                        <div>' + trans('from') + ' <a href="/@' + el.author + '/" target="_blank" style="text-transform:uppercase;">' + el.author + '</a>:</div>' +
                         '                        <div class="cabinet_body_comment">' + el.text+ '</div>' +
-                        '                        <div style="text-align:right;">оставлен ' + el.created + '</div>' +
+                        '                        <div style="text-align:right;">' + trans('sent') + ' ' + el.created + '</div>' +
                         '                    </td>' +
                         '               </tr>' +
                         '           </table>' +
                         '           </div>' +
                         '        </td>' +
                         '        <td class="modify_pet_button">' +
-                        '            <a href="#" class="message_delete_button" id="comment_' + el.id + '" title="' + trans('Remove this comment') + '">' + trans('Remove') + '</a>' +
+                        '            <a class="message_delete_button finger" id="comment_' + el.id + '" title="' + trans('Remove this comment') + '">' + trans('Remove') + '</a>' +
                         '        </td>' +
                         '    </tr>' +
                         '</table>';
