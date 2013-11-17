@@ -46,7 +46,11 @@
 
                 // do not refresh if media are same
                 var first_id = $('#image_container tr td a:first').attr('id');
-                var last_id  = $('#image_container tr td a:last').attr('id');
+                if (first_id) first_id = first_id.match(/\d*/);
+                if (first_id) first_id = first_id[0];
+                var last_id = $('#image_container tr td a:last').attr('id');
+                if (last_id) last_id = last_id.match(/\d*/);
+                if (last_id) last_id = last_id[0];
                 var loaded_first_id = len > 0 ? images[0].id : undefined;
                 var loaded_last_id  = len > 0 ? images[len - 1].id : undefined;
                 if ((first_id == loaded_first_id) && (last_id  == loaded_last_id)) return;
