@@ -966,6 +966,7 @@ form {
 	margin-left:-300px;
 	margin-top:-240px;
 	text-align:left;
+    z-index:2;
 }
 #info_window input {
 	border:0px;
