@@ -101,7 +101,7 @@
     <tr>
         <td height="141px" valign="top" style="padding-top:92px;">
             <img src="../images/bubble_smoke.gif" width="80" height="57" style="position:absolute; margin-left:78px; top:138px; z-index:-1;">
-            <a class="media_1_openscreen f_goto_userpage finger">
+            <a class="media_1_openscreen f_goto_userpage finger" target="_blank">
                 <img src="../images/media.png" width="40" height="40" border="0" alt="{% trans "My page" %}">
                 {% trans "&nbsp;&nbsp;&nbsp;&nbsp;My page&nbsp;&nbsp;&nbsp;&nbsp;" %}
             </a>
@@ -273,10 +273,8 @@
                         <!-- div открывает кнопка "Личные данные" и показываеся по умолчанию при входе в кабинет (начало)-->
                         <div id="cabinet_mine" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
                             <div style="margin-top:10px;">
-                                <div style="width:340px; float:right; text-align:justify; text-indent:1.5em; color:#f24f00;">
-                                    <p>Заполняя информацию о себе, Вы делаете возможным поиск ваших питомцев.</p>
-                                    <p>Например: без указания Вами, Вашего места жительства, другим членам сообщества при геопоиске (страна и/или город), фотографии Ваших любимцев не будут показываться.</p>
-                                    <p>Старайтесь не скупиться на слова, рассказывая немного о себе. Чем Вы интереснее, тем больше людей будут наблюдать за вашими питомцами.</p>
+                                <div style="width:340px; float:right; text-align:justify; text-indent:10px; color:#f24f00;">
+                                    {% trans "<center><b>We recommend:</b></center><p>By sharing information about yourself you gain access to  many advanced search options, which will help you and others to network more efficiently.</p><p>For example: <i>by sharing the city and country where you live will make the photos of your pets geo/searchable by other pet owners in your area with similar interests</i>.</p><br><p><b>Do not be shy in showing off your Pet :-) Share your thoughts, write comments: the more the merrier! We all want to see and hear about the pet in your life!</b></p><br><p>You can use your pet's picture or your own picture as your avatar, it is all up to you!</p>" %}
                                 </div>
                                 <table width="248px" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
@@ -328,7 +326,7 @@
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans "Tell other pet owners about yourself:" %}</span><br>
-                                                <textarea id="f_user_about" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:234px; height:250px;"></textarea>
+                                                <textarea id="f_user_about" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:234px; height:200px;"></textarea>
                                             </div>
                                         </td>
                                     </tr>
@@ -364,7 +362,7 @@
                             </div>
                             <div style="margin-top:10px;">
                                 <div style="width:340px; float:right; text-align:justify; text-indent:1.5em; color:#f24f00; word-break:break-all;">
-                                    <p>Если при восстановлении доступа, предложенный нами пароль Вам показался не понравился, Вы всегда можете воспользоваться формой изменения пароля.</p>
+                                    <p>{% trans "If you are not satisfied with your password, you can always change it." %}</p>
                                 </div>
                                 <table width="248px" border="0" cellspacing="0" cellpadding="0">
                                     <tr>

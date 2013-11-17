@@ -196,7 +196,7 @@ msgid "Your login(nickname):"
 msgstr "Ваш логин (никнейм):"
 
 #: include/login.html:120
-msgid "An message with instructions to reset your password will be sent to the e-Mail address you provided at registration."
+msgid "A message with instructions to reset your password will be sent to the e-Mail address you provided at registration."
 msgstr "На указанный вами при регистрации E-Mail (адрес электронной почты), будет отправленна инструкция по восстановлению пароля."
 
 #: include/login.html:125
@@ -808,3 +808,9 @@ msgstr "Рекомендуется:"
 
 msgid "<p>Identifying your pets and including a short description and a few tags. This will improve your photo sharing and networking experience, and will make it easier for other pet owners with similar interests to find your pet pictures.</p>"
 msgstr "<p>Отметить питомца, если на фотографии ваше животное.</p><p>Добавить описание к фотографии. Это улучшит восприятие фотографии.</p><p>Указать теги. Теги помогут другим людям быстрее найти фотографию.</p>"
+
+msgid "<center><b>We recommend:</b></center><p>By sharing information about yourself you gain access to  many advanced search options, which will help you and others to network more efficiently.</p><p>For example: <i>by sharing the city and country where you live will make the photos of your pets geo/searchable by other pet owners in your area with similar interests</i>.</p><br><p><b>Do not be shy in showing off your Pet :-) Share your thoughts, write comments: the more the merrier! We all want to see and hear about the pet in your life!</b></p><br><p>You can use your pet's picture or your own picture as your avatar, it is all up to you!</p>"
+msgstr "<center><b>Рекомендации:</b></center><p>Заполняя информацию о себе, Вы делаете возможным поиск ваших питомцев.</p><p>Например: </i>без указания Вами, Вашего места жительства, другим членам сообщества при геопоиске (страна и/или город), фотографии Ваших любимцев не будут показываться.</i></p><p>Старайтесь не скупиться на слова, рассказывая немного о себе. Чем Вы интереснее, тем больше людей будут наблюдать за вашими питомцами.</p>"
+
+msgid "If you are not satisfied with your password, you can always change it."
+msgid "Если вас не устраивает пароль, вы всегда можете сменить."
