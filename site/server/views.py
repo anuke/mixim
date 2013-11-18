@@ -413,7 +413,7 @@ def comment_last(request, type='outbox'):
     query = None
 
     if type == 'inbox':
-        query = Comment.objects.filter(media__author=request.user)
+        query = Comment.objects.filter(media__author=request.user).exclude(author=request.user)
     elif type == 'outbox':
         query = Comment.objects.filter(author=request.user)
     else:
