@@ -43,10 +43,11 @@
                 <!--/a-->
             </div>
             <div class="user_about">
+                <!--div class="user_about_bkg opa25"></div-->
                 {% if user_profile.profile.about == None or user_profile.profile.about == "" %}
-                Пользователь предпочел о себе ничего не рассказывать.              
-                {% else %}                                                         
-                {{ user_profile.profile.about }}                                   
+                    {% trans "This user preferred to tell about himself nothing." %}
+                {% else %}
+                    {{ user_profile.profile.about }}
                 {% endif %}
             </div>
             <div class="user_about_plus opa75">{% trans "Pets:" %} {{ user_profile.pets.count }} | {% trans "Subscribe to:" %} {{ user_profile.follows.count}} | {% trans "Favorited:" %} {{ user_profile.followed_by.count}} | {% trans "Posts:" %} {{ user_profile.comment_set.count }}</div>

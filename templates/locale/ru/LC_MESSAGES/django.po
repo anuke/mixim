@@ -814,3 +814,6 @@ msgstr "<center><b>Рекомендации:</b></center><p>Заполняя и�
 
 msgid "If you are not satisfied with your password, you can always change it."
 msgstr "Если вас не устраивает пароль, вы всегда можете сменить."
+
+msgid "This user preferred to tell about himself nothing."
+msgstr "Пользователь предпочел о себе ничего не рассказывать." 
