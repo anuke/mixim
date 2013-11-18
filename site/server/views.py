@@ -410,12 +410,16 @@ def discussions(request):
 @serialize
 @require_auth
 def comment_last(request, type='outbox'):
+    query = None
+
     if type == 'inbox':
-        return Comment.objects.filter(media__author=request.user, deleted=False).order_by('-created')
+        query = Comment.objects.filter(media__author=request.user)
     elif type == 'outbox':
-        return Comment.objects.filter(author=request.user, deleted=False).order_by('-created')
+        query = Comment.objects.filter(author=request.user)
     else:
         return False
+
+    return query.filter(deleted=False).order_by('-created')
 
 
 @serialize
