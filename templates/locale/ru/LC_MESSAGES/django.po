@@ -398,7 +398,7 @@ msgid "slogan_2_en.png"
 msgstr "slogan_2_ru.png"
 
 #: static/index.html:135
-msgid "The number One online community for<br>pet owners and their pets!"
+msgid "The number One online community<br>for pet owners and their pets!"
 msgstr "Первое сообщество<br>животных и людей!"
 
 #: static/index.html:139
