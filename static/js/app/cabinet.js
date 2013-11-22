@@ -199,6 +199,7 @@ function pw_showClusterPetData(cluster) {
         }
         if (_.contains(["cat"], cluster)) {
             $("#pw_breed").show();
+            select_breed_list('CAT');
         }
     }
 

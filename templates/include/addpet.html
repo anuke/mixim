@@ -14,6 +14,14 @@ if (!jQuery.fn.toggleOption) {
     };
 }
 
+function select_breed_list(list) {
+    if (list) {
+        $('#pet_breed_index option[value^=' + list + ']').toggleOption(true);
+        $("#pet_breed_index").val($("#pet_breed_index option:first").val());
+        $("#pet_breed_index").prop('disabled', false);
+    }
+}
+
 jQuery(document).ready(function ($) {
     $('#pet_standard_dog').val('');
     $('#pet_breed_index option').toggleOption(false);
@@ -24,11 +32,7 @@ jQuery(document).ready(function ($) {
         $('#pet_breed_index option:first').toggleOption(true);
 
         var standard = $(this).val();
-        if (standard) {
-            $('#pet_breed_index option[value^=' + standard + ']').toggleOption(true);
-            $("#pet_breed_index").val($("#pet_breed_index option:first").val());
-            $("#pet_breed_index").prop('disabled', false);
-        }
+        select_breed_list(standard);
     });
 });
 </script>
@@ -87,6 +91,10 @@ jQuery(document).ready(function ($) {
                                                         {% with "include/breed_akc_"|add:LANGUAGE_CODE|add:".html" as template %}
                                                         {% include template %}
                                                         {% endwith %}
+                                                        {% with "include/breed_cat_"|add:LANGUAGE_CODE|add:".html" as template %}
+                                                        {% include template %}
+                                                        {% endwith %}
+                                                        {{ "include/breed_cat_"|add:LANGUAGE_CODE|add:".html" }}
                                                     </select>
                                                 </div>
                                                 <div id="pw_gender" style="margin-bottom:10px;">
