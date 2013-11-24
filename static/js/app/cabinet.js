@@ -181,6 +181,8 @@ var cluster_names = {
 };
 
 function pw_showClusterPetData(cluster) {
+    if (cluster == pw_cluster) return;
+
     $('#pet_species').val(cluster);
 
     $("#pw_name, #pw_breed, #pw_gender, #pw_color, #pw_birthday, #pw_about").hide();
