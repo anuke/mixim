@@ -15,6 +15,10 @@ if (!jQuery.fn.toggleOption) {
 }
 
 function select_breed_list(list) {
+    $("#pet_breed_index").prop('disabled', true);
+    $('#pet_breed_index option').toggleOption(false);
+    $('#pet_breed_index option:first').toggleOption(true);
+
     if (list) {
         $('#pet_breed_index option[value^=' + list + ']').toggleOption(true);
         $("#pet_breed_index").val($("#pet_breed_index option:first").val());
@@ -27,10 +31,6 @@ jQuery(document).ready(function ($) {
     $('#pet_breed_index option').toggleOption(false);
 
     $('#pet_standard_dog').change(function () {
-        $("#pet_breed_index").prop('disabled', true);
-        $('#pet_breed_index option').toggleOption(false);
-        $('#pet_breed_index option:first').toggleOption(true);
-
         var standard = $(this).val();
         select_breed_list(standard);
     });
