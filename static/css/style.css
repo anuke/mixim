@@ -2532,6 +2532,14 @@ form {
     color:#f24f00;
     padding:0 5px; 
 }
+.user_page_content_box_empty {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:26px;
+    color:#f24f00;
+    text-transform:uppercase;
+    background:url(../images/no_photo_posted.png) no-repeat center;
+    padding-bottom:260px;
+}
 .user_page_content_box {
     width:956px;
     border:2px solid #f24f00;
