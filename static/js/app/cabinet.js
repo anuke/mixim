@@ -52,13 +52,17 @@ function __append_pet_block(pet) {
     $('#pet_upload_photo_link_' + pet.id).click(open_upload(pet.id));
 }
 
-function __close_pet_window() {
+function __reset_pet_window_controls() {
     $('#pet_id').val('');
     $('#pet_standard_dog').val('');
 
     _.each(__PET_FIELDS, function (name) {
         $('#pet_' + name).val('');
     });
+}
+
+function __close_pet_window() {
+    __reset_pet_window_controls();
 
     pw_close(); /* addpet.html */
 
@@ -187,6 +191,8 @@ function pw_showClusterPetData(cluster) {
 
     $("#pw_name, #pw_breed, #pw_gender, #pw_color, #pw_birthday, #pw_about").hide();
     $("#pw_pet_data").show();
+    __reset_pet_window_controls();
+
     if (_.has(cluster_names, cluster)) {
         $("#pw_id_pets_list").text(cluster_names[cluster]);
         $("#pw_name, #pw_gender, #pw_color, #pw_birthday, #pw_about").show();
