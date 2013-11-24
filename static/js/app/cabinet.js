@@ -203,8 +203,6 @@ function pw_showClusterPetData(cluster) {
         }
     }
 
-    //console.log(cluster)
-
     if (pw_cluster == NO_CLUSTER) {
         $("#pw_save_button").show();
     }
