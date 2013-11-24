@@ -59,6 +59,8 @@ function __reset_pet_window_controls() {
     _.each(__PET_FIELDS, function (name) {
         $('#pet_' + name).val('');
     });
+
+    select_breed_list(false);
 }
 
 function __close_pet_window() {
