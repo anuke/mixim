@@ -4,19 +4,19 @@ if (!jQuery.fn.toggleOption) {
     jQuery.fn.toggleOption = function (show) {
         jQuery(this).toggle(show);
         if (show) {
-            if (jQuery(this).parent('span.toggleOption').length)
-                jQuery(this).unwrap();
+            if (!!jQuery(this).parent('span.toggleOption').length)
+                jQuery(this).unwrap('<span>').show();
         }
         else {
-            if (jQuery(this).parent('span.toggleOption').length == 0)
-                jQuery(this).wrap('<span class="toggleOption" style="display: none;" />');
+            if (!jQuery(this).parent('span.toggleOption').length)
+                jQuery(this).wrap('<span class="toggleOption" style="display: none;" />').hide();
         }
     };
 }
 
 function select_breed_list(list) {
     $("#pet_breed_index").prop('disabled', true);
-    $('#pet_breed_index option').toggleOption(false);
+    $('#pet_breed_index > option').toggleOption(false);
     $('#pet_breed_index option:first').toggleOption(true);
 
     if (list) {
@@ -94,7 +94,6 @@ jQuery(document).ready(function ($) {
                                                         {% with "include/breed_cat_"|add:LANGUAGE_CODE|add:".html" as template %}
                                                         {% include template %}
                                                         {% endwith %}
-                                                        {{ "include/breed_cat_"|add:LANGUAGE_CODE|add:".html" }}
                                                     </select>
                                                 </div>
                                                 <div id="pw_gender" style="margin-bottom:10px;">
