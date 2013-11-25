@@ -7,6 +7,7 @@ from django.http import Http404
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Max
 
 from decorators import *
 from errors import *
@@ -391,7 +392,7 @@ def comment_list(request, media):
 @require_method("GET")
 @require_auth
 def discussions(request):
-    paginator = Paginator(MediaFile.objects.filter(comment__author=request.user).distinct(), settings.DISCUSSION_PER_PAGE)
+    Paginator(MediaFile.objects.filter(comment__author=request.user).annotate(latest=Max('comment__created')).order_by('-latest'), settings.DISCUSSION_PER_PAGE)
     page = request.GET.get('page', 1)
 
     try:
