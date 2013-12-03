@@ -163,16 +163,16 @@ function __show_pet_window(pet) {
             $("#pet_breed_index").prop('disabled', false);
         }
 
-        $('#pet_id').val(orEmpty(pet.id));
-        _.each(__PET_FIELDS, function (name) {
-            $('#pet_' + name).val(orEmpty(pet[name]));
-        });
-
         // render
         $('body').css('overflow-y', 'hidden');
         $('#overlay').show();
         $('#pet_window').show();
         pw_showClusterPetData(model.pet.species)
+
+        $('#pet_id').val(orEmpty(pet.id));
+        _.each(__PET_FIELDS, function (name) {
+            $('#pet_' + name).val(orEmpty(pet[name]));
+        });
     }
 }
 
