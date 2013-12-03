@@ -56,8 +56,17 @@ function __reset_pet_window_controls() {
     $('#pet_id').val('');
     $('#pet_standard_dog').val('');
 
+    var model = $('#pet_window').data('model');
+    var params = !!model ? model.params() : {};
+
+    function get_field(name) {
+        var result = params[name];
+        if (!!result) return result;
+        return '';
+    }
+
     _.each(__PET_FIELDS, function (name) {
-        $('#pet_' + name).val('');
+        $('#pet_' + name).val(get_field(name));
     });
 
     select_breed_list(false);
