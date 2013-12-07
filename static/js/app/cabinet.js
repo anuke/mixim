@@ -87,7 +87,7 @@ function __show_pet_window(pet) {
         function params() {
             function normalize(s) {
                 if (typeof s == 'string' || s instanceof String) {
-                    return s.trim();
+                    return $.trim(s);
                 }
 
                 return "";
