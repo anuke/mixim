@@ -29,6 +29,8 @@
 <script src="/js/app/index.js"></script>
 <script src="/js/app/auth.js"></script>
 
+<script src="/js/app/share42.js"></script>
+
 <script type="text/javascript">
     IMG_PER_ROW = 7;
     IMG_PER_COL = 1;
@@ -214,7 +216,20 @@
     <td height="50px">&nbsp;</td>
   </tr>
   <tr>
-    <td align="center">
+    <td align="center" valign="bottom">
+        <table height="155px" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="120px" valign="top">
+                    <img src="../images/share42_megaphone.png" style="position:absolute; margin-top:-12px; z-index:-1;">
+                </td>
+                <td valign="top">
+                    <div class="share42init"></div>
+                </td>
+                <td width="120px">
+                    &nbsp;
+                </td>
+            </tr>
+        </table>
         <!--table id="bodyes" border="0" cellspacing="0" cellpadding="0" style="background-image:url(../images/{% trans "bodyes1_en.gif" %});">
             <tr>
                 <td width="107px">&nbsp;</td>
