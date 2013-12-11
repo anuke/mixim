@@ -8,6 +8,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Max
+from django.core.exceptions import ObjectDoesNotExist
 
 from decorators import *
 from errors import *
@@ -551,6 +552,21 @@ def show_user_page(request, username):
     })
 
     return render_to_response('user/user_page.html', context_instance=RequestContext(request, context))
+
+
+def show_share_page(request, picture):
+    media_file=None
+    try:
+      media_file = MediaFile.objects.get(id=picture, enabled=True)
+    except ObjectDoesNotExist:
+        pass
+    context=None
+    if media_file:
+      context = RequestContext(request, {
+          'media_file': media_file,
+          'media_file_id':media_file.id
+      })
+    return render_to_response('user/share_page.html', context_instance=RequestContext(request, context))
 
 
 # util region

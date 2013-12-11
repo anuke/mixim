@@ -15,6 +15,8 @@ urlpatterns = patterns('',
     url(r'(.*?).shtml$', 'server.views.show_static_page'),
     url(r'^@([^/]+)/$', 'server.views.show_user_page'),
 
+    url(r'pic([0-9]+)$', 'server.views.show_share_page'),
+
     url(r'^([^/]+)/auth/register/', 'server.views.auth_register'),
     url(r'^([^/]+)/auth/login/', 'server.views.auth_login'),
     url(r'^([^/]+)/auth/logout/', 'server.views.auth_logout'),
