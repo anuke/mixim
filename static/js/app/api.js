@@ -82,15 +82,6 @@ function show_photo(picId) {
                     "title": photo.pet,
                     "image": photo.thumbnail
                 };
-                var YaShareInstance = new Ya.share({
-                  element: 'ya_share',
-                  elementStyle: {
-                      quickServices: ['facebook', 'gplus', 'odnoklassniki', 'twitter', 'vkontakte', 'linkedin']
-                  },
-                  onready: function(instance) {
-                      instance.updateShareLink(shareParams)
-                  }
-                });
                 YaShareInstance.updateShareLink({
                     link: 'http://mixim.ru/pic' + photo.id,
                     title: photo.pet,
