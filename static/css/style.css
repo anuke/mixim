@@ -1153,6 +1153,7 @@ form {
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
+	z-index:1;
 }
 .info_image a {
 	/*font-weight:bold;*/
