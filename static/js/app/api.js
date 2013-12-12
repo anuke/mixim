@@ -77,16 +77,27 @@ function show_photo(picId) {
                 // YaShare section
 
                 $('ya_share').empty();
-                var shareParams = {"link":'http://mixim.ru/pic' + photo.id,"title":photo.pet,"image":photo.thumbnail};
+                var shareParams = {
+                    "link": 'http://mixim.ru/pic' + photo.id,
+                    "title": photo.pet,
+                    "image": photo.thumbnail
+                };
                 var YaShareInstance = new Ya.share({
                   element: 'ya_share',
-                  elementStyle:{quickServices:['facebook', 'gplus', 'odnoklassniki', 'twitter', 'vkontakte', 'linkedin']},
+                  elementStyle: {
+                      quickServices: ['facebook', 'gplus', 'odnoklassniki', 'twitter', 'vkontakte', 'linkedin']
+                  },
                   onready: function(instance) {
                       instance.updateShareLink(shareParams)
                   }
                 });
-                YaShareInstance.updateShareLink({link:'http://mixim.ru/pic' + photo.id, title:photo.pet, serviceSpecific:{"facebook":shareParams}});
-
+                YaShareInstance.updateShareLink({
+                    link: 'http://mixim.ru/pic' + photo.id,
+                    title: photo.pet,
+                    serviceSpecific: {
+                        "facebook": shareParams
+                    }
+                });
             }
             else {
                 my_alert('Media retrieving', data.error.message);
