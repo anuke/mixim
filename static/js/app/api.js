@@ -80,7 +80,8 @@ function show_photo(picId) {
                 YaShareInstance.updateShareLink({
                     "link": 'http://mixim.ru/pic' + photo.id,
                     "title": photo.pet,
-                    "image": photo.thumbnail
+                    "image": photo.thumbnail,
+                    "description":photo.description
                 });
             }
             else {
