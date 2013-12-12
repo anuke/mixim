@@ -77,17 +77,10 @@ function show_photo(picId) {
                 // YaShare section
 
                 $('ya_share').empty();
-                var shareParams = {
+                YaShareInstance.updateShareLink({
                     "link": 'http://mixim.ru/pic' + photo.id,
                     "title": photo.pet,
                     "image": photo.thumbnail
-                };
-                YaShareInstance.updateShareLink({
-                    link: 'http://mixim.ru/pic' + photo.id,
-                    title: photo.pet,
-                    serviceSpecific: {
-                        "facebook": shareParams
-                    }
                 });
             }
             else {
