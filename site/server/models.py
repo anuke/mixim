@@ -306,7 +306,8 @@ class Comment(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'author:author.username', 'created', 'text', 'thumbnail:media.thumbnail', 'photo_id:media.id')
+            'id', 'author:author.username','authorAvatar:author.profile.avatarurl',
+            'created', 'text', 'thumbnail:media.thumbnail', 'photo_id:media.id')
 
     def __unicode__(self):
         return u"%s: %s" % (self.author, self.text[0:50])
