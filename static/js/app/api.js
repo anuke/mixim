@@ -74,14 +74,33 @@ function show_photo(picId) {
                     $('#photo_add_friend').attr('title', trans('Unfollow')).find('img').attr('src', '../images/favorite_person_remove.png')
                 }
 
-                // YaShare section
+                // Share section
 
-                $('ya_share').empty();
-                YaShareInstance.updateShareLink({
-                    "link": 'http://mixim.ru/pic' + photo.id,
-                    "title": photo.pet,
-                    "image": photo.thumbnail,
-                    "description":photo.description
+                var shareLink = 'http://mixim.ru/pic' + photo.id;
+                var shareTitle = photo.pet || "";
+                var sharePicture = photo.thumbnail;
+                var shareDescription = photo.description;
+
+                var fbUrl = "https://www.facebook.com/sharer/sharer.php?src=sp&u="+shareLink+"&t="+shareTitle+"&description="+shareDescription+"&picture="+sharePicture;
+                var vkUrl = "http://vk.com/share.php?url="+encodeURIComponent(shareLink)+"&title="+encodeURIComponent(shareTitle)+"&description="+encodeURIComponent(shareDescription)+"&image="+encodeURIComponent(sharePicture);
+                var gpUrl = "https://plus.google.com/share?url="+shareLink;
+                var twUrl = "https://twitter.com/intent/tweet?status="+shareTitle+" "+shareLink;
+
+                $("#share20_fb").click(function(){
+                      window.open(fbUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+                        return false;
+                });
+                $("#share20_vk").click(function(){
+                      window.open(vkUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+                        return false;
+                });
+                $("#share20_gp").click(function(){
+                      window.open(gpUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+                        return false;
+                });
+                $("#share20_t").click(function(){
+                      window.open(twUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+                        return false;
                 });
             }
             else {

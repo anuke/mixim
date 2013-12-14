@@ -41,8 +41,48 @@
                             <td valign="top" id="photo_tags"><!-- список тегов --></td>
                         </tr>
                     </table>
-                    <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
-                    <div id="ya_share"></div>
+
+                    <style>
+                    .share20init {
+                        width:558px;
+                        clear: both;
+                        text-align:right;
+                        position:absolute;
+                    }
+                    .share20bttn {
+                        width:20px;
+                        height:20px;
+                        display:inline-block;
+                        margin:0;
+                        padding:0;
+                        outline:none;
+                        background:url(../images/share20_icons.png) no-repeat;
+                        cursor:pointer;
+                    }
+                    .share20bttn_fb {
+                        background-position: 0 0;
+                    }
+                    .share20bttn_gp {
+                        background-position: -20px 0;
+                    }
+                    .share20bttn_ok {
+                        background-position: -40px 0;
+                    }
+                    .share20bttn_t {
+                        background-position: -60px 0;
+                    }
+                    .share20bttn_vk {
+                        background-position: -80px 0;
+                    }
+                    </style>
+                    <div id="share20init" class="share20init">
+                        <a id="share20_fb" target="_blank" class="share20bttn share20bttn_fb"></a>
+                        <a id="share20_gp" target="_blank" class="share20bttn share20bttn_gp"></a>
+                        <a id="share20_ok" target="_blank" class="share20bttn share20bttn_ok"></a>
+                        <a id="share20_t" target="_blank" class="share20bttn share20bttn_t"></a>
+                        <a id="share20_vk" target="_blank" class="share20bttn share20bttn_vk"></a>
+                    </div>
+
                 </div>
                 <table class="photo_actions opa25 opacible" border="0" cellspacing="0" cellpadding="0">
                     <tr>
