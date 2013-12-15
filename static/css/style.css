@@ -1053,6 +1053,51 @@ form {
 	-webkit-border-radius:10px;
 	border-radius:10px;
 }
+
+/*-- share photo --*/
+.share20init {
+    height:20px;
+    clear:both;
+    text-align:right;
+    position:absolute;
+    padding:4px;
+    margin-top:5px;
+    background-color: #FFFFFF;
+    border: 1px solid #F24F00;
+    -moz-border-radius:5px 15px 15px 5px;
+    -webkit-border-radius:5px 15px 15px 5px;
+    border-radius:5px 15px 15px 5px;
+}
+.share20init span {
+    vertical-align:top;
+    font:11px/19px Verdana,Arial,Helvetica,sans-serif;
+}
+.share20bttn {
+    width:20px;
+    height:20px;
+    display:inline-block;
+    margin:0;
+    padding:0;
+    outline:none;
+    background:url(../images/share20_icons.png) no-repeat;
+    cursor:pointer;
+}
+.share20bttn_fb {
+    background-position:0 0;
+}
+.share20bttn_gp {
+    background-position:-20px 0;
+}
+.share20bttn_ok {
+    background-position:-40px 0;
+}
+.share20bttn_t {
+    background-position:-60px 0;
+}
+.share20bttn_vk {
+    background-position:-80px 0;
+}
+
 /*-- photo window --*/
 .photo_close {
 	position:absolute;
