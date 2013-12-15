@@ -625,7 +625,7 @@ function last_comments(type) {
                         '<table align="left" style="margin-top:10px;" border="0" cellspacing="0" cellpadding="0"><!-- входящие -->' +
                         '    <tr>' +
                         '        <td class="cabinet_photo_in">' +
-                        '             <a id="last_photo_' + el.photo_id + '"class="finger" title="' + trans('Show photo') + '">' +
+                        '             <a id="last_photo_' + el.mediaId + '"class="finger" title="' + trans('Show photo') + '">' +
                         '                 <img id="" src="' + el.thumbnail + '" width="100px" height="75px">' +
                         '             </a>' +
                         '        </td>' +

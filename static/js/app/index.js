@@ -24,7 +24,7 @@ MyComments.on('comments', function (comments) {
                 append($('<td valign="top" id="my_comment_' + comment.id + '_text"></td>')));
         $('#sid__my_comments').append(comment_row);
         $('#my_comment_' + comment.id + '_text').text(comment.text);
-        $('#my_comment_' + comment.id).click(function () { show_photo(comment.photo_id); });
+        $('#my_comment_' + comment.id).click(function () { show_photo(comment.mediaId); });
     });
 });
 
