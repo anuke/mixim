@@ -81,10 +81,11 @@ function show_photo(picId) {
                 var sharePicture = photo.thumbnail;
                 var shareDescription = photo.description;
 
-                var fbUrl = "https://www.facebook.com/sharer/sharer.php?src=sp&u="+shareLink+"&t="+shareTitle+"&description="+shareDescription+"&picture="+sharePicture;
+                var fbUrl = "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(shareLink)+"&t="+encodeURIComponent(shareTitle)+"&description="+encodeURIComponent(shareDescription)+"&picture="+encodeURIComponent(sharePicture);
                 var vkUrl = "http://vk.com/share.php?url="+encodeURIComponent(shareLink)+"&title="+encodeURIComponent(shareTitle)+"&description="+encodeURIComponent(shareDescription)+"&image="+encodeURIComponent(sharePicture);
+                var okUrl = "http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl="+shareLink+"&title="+shareTitle;
                 var gpUrl = "https://plus.google.com/share?url="+shareLink;
-                var twUrl = "https://twitter.com/intent/tweet?status="+shareTitle+" "+shareLink;
+                var twUrl = "https://twitter.com/intent/tweet?status="+encodeURIComponent(shareTitle)+" "+shareLink;
 
                 $("#share20_fb").click(function(){
                       window.open(fbUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");

@@ -28,6 +28,13 @@
 
         <script src="/js/app/ui.js"></script>
         <script src="/js/app/auth.js"></script>
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="{{ media_file.pet|default:""}}" />
+        <meta property="og:url" content="http://www.mixim.ru/pic{{ media_file.id }}" />
+        <meta property="og:description" content="{{ media_file.description }}" />
+        <meta property="og:image" content="{{ media_file.thumbnail }}" />
+
     </head>
     <body class="media">
         <!-- Окно сообщений (начало) - по умолчанию скрыто -->
