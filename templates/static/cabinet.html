@@ -151,6 +151,7 @@
                             <!--div class="cabinet_user_menu_button"><a href="">Избранное</a></div-->
                             <div id="cabinet_pets_link" class="cabinet_user_menu_button"><a>{% trans "Pets" %}</a></div>
                             <div id="cabinet_mine_link" class="cabinet_user_menu_button"><a>{% trans "Personal data" %}</a></div>
+                            <div id="cabinet_settings_link" class="cabinet_user_menu_button"><a>{% trans "Settings" %}</a></div>
                             <div style="width:90px; height:1px; background-color:#f24f00; margin-bottom:10px;"></div>
                             <div class="cabinet_user_menu_button"><a href="javascript:auth_logout()">{% trans "Exit" %}</a></div>
                         <div>
@@ -331,19 +332,46 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td align="right" valign="bottom" class="user_data_box_bottom">
+                                        <td align="right" valign="bottom" class="user_data_box_bottom radius_0006">
                                             <input name="button" type="button" class="button_sand" onclick="cabinet_update_profile()" value="{% trans "Save" %}">
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <div style="margin-top:10px;">
+                            <!--div style="margin-top:10px;">
                                 <div style="width:340px; float:right; text-align:justify; text-indent:1.5em; color:#f24f00; word-break:break-all;">
                                     <p>&nbsp;</p>
                                 </div>
                                 <table width="248px" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td class="user_data_box_top" style="pading-top:5px;">
+                                            <div style="margin-top:5px; margin-left:5px;">
+                                                <span class="redit_caption">{% trans "I want to see:" %}</span><br>
+                                                <select class="redit_body" id="f_user_filter_mycountry" style="width:238px;">
+                                                    <option value="True">{% trans "Pets of my country" %}</option>
+                                                    <option value="False">{% trans "Pets from around the world" %}</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" valign="bottom" class="user_data_box_bottom">
+                                            <input name="button" type="button" class="button_sand" onclick="cabinet_save_myfilter()" value="{% trans "Save" %}">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div-->
+                        </div>
+                        <!-- "Личные данные" (конец)-->                        
+                        <!-- div открывает кнопка "Настройки" и показываеся по умолчанию при входе в кабинет (начало)-->
+                        <div id="cabinet_settings" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
+                            <div style="margin-top:10px;">
+                                <div style="width:340px; float:right; text-align:justify; text-indent:1.5em; color:#f24f00; word-break:break-all;">
+                                    <p>&nbsp;</p>
+                                </div>
+                                <table width="248px" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="user_data_box_top radius_6000" style="pading-top:5px;">
                                             <div style="margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans "I want to see:" %}</span><br>
                                                 <select class="redit_body" id="f_user_filter_mycountry" style="width:238px;">
@@ -394,6 +422,8 @@
                                 </table>
                             </div>
                         </div>
+                        <!-- "Настройки" (конец)-->                        
+                        
                         <!-- Глобальные новости, Анонсы мероприятий и т.п. (начало)-->
                         <div class="cabinet_column" style="width:182px; background-color:#ffffcc;">
                             <!--div style="margin-top:10px;">

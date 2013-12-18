@@ -528,6 +528,7 @@ $(document).ready(function() {
     show_in_cabinet('follow');
     show_in_cabinet('pets');
     show_in_cabinet('mine');
+    show_in_cabinet('settings');
 
     //
     // pets block
