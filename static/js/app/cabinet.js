@@ -150,6 +150,8 @@ function __show_pet_window(pet) {
             $('#f_photo_pet').append($('<option>').attr('value', added_pet.id).text(added_pet.name));
         });
 
+        pw_showClusterPetData(model.pet.species)
+
         // handle breed controls
         $('#pet_standard_dog').val('');
         $("#pet_breed_index").prop('disabled', true);
@@ -167,7 +169,6 @@ function __show_pet_window(pet) {
         $('body').css('overflow-y', 'hidden');
         $('#overlay').show();
         $('#pet_window').show();
-        pw_showClusterPetData(model.pet.species)
 
         $('#pet_id').val(orEmpty(pet.id));
         _.each(__PET_FIELDS, function (name) {
