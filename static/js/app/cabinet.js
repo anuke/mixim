@@ -55,6 +55,8 @@ function __append_pet_block(pet) {
 function __reset_pet_window_controls() {
     $('#pet_id').val('');
     $('#pet_standard_dog').val('');
+    $('#pet_breed_index option:selected').prop('selected', false);
+    $('#pet_breed_index').val('')
 
     var model = $('#pet_window').data('model');
     var params = !!model ? model.params() : {};

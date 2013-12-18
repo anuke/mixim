@@ -17,6 +17,7 @@ if (!jQuery.fn.toggleOption) {
 function select_breed_list(list) {
     $("#pet_breed_index").prop('disabled', true);
     $('#pet_breed_index > option').toggleOption(false);
+    $('#pet_breed_index option:selected').prop('selected', false);
     $('#pet_breed_index option:first').toggleOption(true);
 
     if (list) {
