@@ -5,7 +5,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 <html>
     <head>
-        <title>{% trans "MiXiM -  for those who love and loves pets" %}</title>
+        <title>{% trans 'MiXiM - for those who love pets' %}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link href="/css/style.css" rel="stylesheet" type="text/css">
 
@@ -23,7 +23,6 @@
         <script src="/js/app/api.js"></script>
         <script src="/js/app/util.js"></script>
         <script src="/js/app/gallery.js"></script>
-        <script src="/js/app/keydown.js"></script>
         <script src="/js/app/media.js"></script>
 
         <script src="/js/app/ui.js"></script>
@@ -34,13 +33,55 @@
         <meta property="og:url" content="http://www.mixim.ru/pic{{ media_file.id }}" />
         <meta property="og:description" content="{{ media_file.description }}" />
         <meta property="og:image" content="{{ media_file.thumbnail }}" />
-
     </head>
     <body class="media">
-        <!-- Окно сообщений (начало) - по умолчанию скрыто -->
-            {% include 'include/footer.html' %}
-        <!-- Окно сообщений (конец) -->
-
+        <img style="display:none" src="{{ media_file.thumbnail }}">
+        <div id="show_qr" class="show_qr_window">
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td height="68px" align="right" valign="top">
+                        <img src="../images/qr_window_arrow.png" width="53" height="62" border="0">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="show_qr_box" style="padding-top:8px;">
+                        <img src="../images/qr_android_ru.png" width="300" height="300" border="0">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <table width="980px" align="center" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="98px" valign="top">
+                    <div class="logo_media s__logged" style="margin-left:95px;">
+                        <a href="../media.shtml" title="{% trans "To home page" %}" target="_self">
+                            <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "To home page" %}">
+                        </a>
+                    </div>
+                    <div class="logo_media s__not_logged" style="margin-left:95px;">
+                        <a href="../" title="{% trans "To home page" %}" target="_self">
+                            <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "To home page" %}">
+                        </a>
+                    </div>
+                    <div class="app_div" style="margin-left:485px;">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="141">
+                                    <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans "Available on Google play" %}"><img src="../images/{% trans "app_google_play_en.png" %}" width="141" height="46" border="0" alt="{% trans "Available on Google play" %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
+                                    <!--a href="#" title="Скачать из App store"><img src="../images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
+                                </td>
+                                <td align="center" width="90px;">
+                                    <!--a href="#" title="Pets!"--><img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
+                                </td>
+                                <td width="164">
+                                    <img src="../images/{% trans "app_stamp_en.png" %}" width="164" height="98" border="0" alt="{% trans "The mobile app Pets! - absolutely free!" %}">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
         <!-- Окно сообщений (начало) - по умолчанию скрыто -->
         <div id="info_window" style="visibility:hidden;">
             <table class="info_table" border="0" cellspacing="0" cellpadding="0">
@@ -73,8 +114,6 @@
             <div id="overlay"></div>
         <!-- Блок затенения (конец)-->
 
-
-
         <!-- Google Analytic (начало) -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -89,11 +128,10 @@
         <!-- Google Analytic (конец) -->
     </body>
     <script type="text/javascript">
-
-    var share_pic = {{ media_file_id|default:"false" }};
-    if (share_pic) {
-        show_photo(share_pic);
-    }
-
+        var share_pic = {{ media_file_id|default:"false" }};
+        if (share_pic) {
+            show_photo(share_pic);
+        }
+        $("#photo_win_close_btn").hide();
     </script>
 </html>
