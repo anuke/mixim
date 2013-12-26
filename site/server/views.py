@@ -569,6 +569,22 @@ def show_share_page(request, picture):
     return render_to_response('user/share_page.html', context_instance=RequestContext(request, context))
 
 
+def show_pet_page(request, pet):
+    paginator = Paginator(MediaFile.enabled_objects.with_pet(pet), 20)
+    page = int(request.GET.get('page', 1))
+
+    try:
+      media_list = paginator.page(page)
+    except PageNotAnInteger:
+      media_list = paginator.page(1)
+    except EmptyPage:
+      medi_list = paginator.page(paginator.num_pages)
+
+    context = RequestContext(request, {
+        'media_list':media_list
+    })
+    return render_to_response('user/pet_page.html', context_instance=RequestContext(request, context))
+
 # util region
 
 def __list_media(request, query, start, limit):

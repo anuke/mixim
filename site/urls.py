@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^@([^/]+)/$', 'server.views.show_user_page'),
 
     url(r'pic([0-9]+)$', 'server.views.show_share_page'),
+    url(r'pet([0-9]+)$', 'server.views.show_pet_page'),
 
     url(r'^([^/]+)/auth/register/', 'server.views.auth_register'),
     url(r'^([^/]+)/auth/login/', 'server.views.auth_login'),
