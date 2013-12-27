@@ -47,6 +47,7 @@ function show_photo(picId) {
 
                 $('#photo_tags').text(tags);
                 $('#photo_author').attr('href', '/@' + photo.author + '/');
+                $('#photo_pet').attr('href', '/pet' + photo.petId);
                 $('#photo_image').css("background-image", "url(" + photo.original.replace('original', 'resized/598x598') + ")");
                 $('div.full_screen a').first().attr('href', photo.original).attr('title', photo.description).attr('target', 'blank');
 
