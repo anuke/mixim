@@ -247,9 +247,11 @@ msgstr "Выход"
 msgid "Author:"
 msgstr "Автор:"
 
-#: include/photo_win.html:20
 msgid "author`s profile"
 msgstr "к профилю автора"
+
+msgid "pet`s profile"
+msgstr "к профилю питомца"
 
 #: include/photo_win.html:21 include/photo_win.html.py:136
 msgid "Description:"
