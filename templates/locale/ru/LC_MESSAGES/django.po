@@ -143,8 +143,8 @@ msgid "Contact us"
 msgstr "Пишие письма"
 
 #: include/footer.html:11
-msgid "&copy;2006-2013 &nbsp; www.mixim.us | pets2show &nbsp; ООО &quot;Мобитун&quot;"
-msgstr "&copy;2006-2013 &nbsp; www.mixim.ru &nbsp; ООО &quot;Мобитун&quot;"
+msgid "www.mixim.us | pets2show &nbsp; &quot;Mobitoon&quot; Inc."
+msgstr "www.mixim.ru &nbsp; ООО &quot;Мобитун&quot;"
 
 #: include/footer.html:12 user/user_page.html:158
 msgid "Rules"
