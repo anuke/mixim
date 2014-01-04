@@ -42,14 +42,26 @@
                     <img id="userpage_avatar" src="" border="0" alt="" style="background-color:#000;">
                 <!--/a-->
             </div>
-            <div class="user_about">
-                <!--div class="user_about_bkg opa25"></div-->
-                {% if user_profile.profile.about == None or user_profile.profile.about == "" %}
-                    {% trans "This user preferred to tell about himself nothing." %}
-                {% else %}
-                    {{ user_profile.profile.about }}
-                {% endif %}
+            <div class="user_about_area">
+                <div class="user_about_content">
+                    {% if user_profile.profile.about == None or user_profile.profile.about == "" %}
+                        {% trans "This user preferred to tell about himself nothing." %}
+                    {% else %}
+                        {{ user_profile.profile.about }}
+                    {% endif %}
+                </div>
             </div>
+            <!--table class="user_about_area" border="0" cellspacing="0" cellpadding="0">
+                </tr>
+                    <td class="user_about_content">
+                        {% if user_profile.profile.about == None or user_profile.profile.about == "" %}
+                            {% trans "This user preferred to tell about himself nothing." %}
+                        {% else %}
+                            {{ user_profile.profile.about }}
+                        {% endif %}
+                    </td>
+                </tr>
+            </table-->
             <div class="user_about_plus opa75">{% trans "Pets:" %} {{ user_profile.pets.count }} | {% trans "Subscribe to:" %} {{ user_profile.follows.count}} | {% trans "Favorited:" %} {{ user_profile.followed_by.count}} | {% trans "Posts:" %} {{ user_profile.comment_set.count }}</div>
             <div class="user_name">{{ user_profile.first_name }} {{ user_profile.last_name }}</div>
             <div class="user_about_plus opa75">{{ user_profile.username}} - {% trans "on the site from:" %} {{ user_profile.date_joined }}</div>

@@ -2031,22 +2031,27 @@ form {
     vertical-align: middle;
     line-height: 20px;
 }
-.user_about {
-    width: 440px;   
-    height: 76px;
-    top: 0;
-    border: 2px solid #FFFF99;
-    color: #ffffcc;
-    font-size: 10px;
-    margin: 7px 0 0 536px;
-    position: absolute;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    line-height: 76px;
-    border-radius: 20px 20px 20px 20px;
+.user_about_area {
     background-color: #F24F00;
+    border: 2px solid #FFFF99;
+    border-radius: 20px;
+    height: 76px;
+    margin: 7px 0 0 536px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 440px;
 }
+.user_about_content {
+    color: #FFFFCC;
+    display: table-cell;
+    font-size: 10px;
+    height: 76px;
+    text-align: center;
+    vertical-align: middle;
+    width: 440px;    
+}
+
 .user_about_bkg {
     width: 440px;   
     height: 76px;
@@ -2597,7 +2602,7 @@ form {
 }
 .user_grid_box {
     display:inline-block;
-    vertical-align: middle;
+    vertical-align: top;
     width:180px;
     background-color:#ffffcc;
     border:1px solid #f24f00;
