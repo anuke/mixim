@@ -2032,24 +2032,26 @@ form {
     line-height: 20px;
 }
 .user_about_area {
-    background-color: #F24F00;
-    border: 2px solid #FFFF99;
-    border-radius: 20px;
+    top: 0;
     height: 76px;
+    width: 440px;
+    border: 2px solid #FFFF99;
+    background-color: #F24F00;
+    cursor: default;
     margin: 7px 0 0 536px;
     overflow: hidden;
     position: absolute;
-    top: 0;
-    width: 440px;
+    border-radius: 20px;
+    z-index: 1;
 }
 .user_about_content {
+    width: 440px;    
+    height: 76px;
     color: #FFFFCC;
     display: table-cell;
     font-size: 10px;
-    height: 76px;
     text-align: center;
     vertical-align: middle;
-    width: 440px;    
 }
 
 .user_about_bkg {
