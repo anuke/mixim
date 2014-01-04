@@ -1,0 +1,242 @@
+{% load extra %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html>
+<head>
+<title>{% trans 'MiXiM - for those who love pets' %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/css/style.css" rel="stylesheet" type="text/css">
+
+<script src="/js/underscore-min.js"></script>
+<script src="/js/backbone-min.js"></script>
+<script src="/js/jquery-1.8.3.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/jquery.watermark.min.js"></script>
+<script src="/js/vendor/jquery.ui.widget.js"></script>
+<script src="/js/jquery.iframe-transport.js"></script>
+<script src="/js/jquery.fileupload.js"></script>
+<script src="/js/sprintf.min.js"></script>
+<script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
+<script src="/js/app/init.js"></script>
+<script src="/js/app/api.js"></script>
+<script src="/js/app/util.js"></script>
+<script src="/js/app/gallery.js"></script>
+<script src="/js/app/keydown.js"></script>
+<script src="/js/app/media.js"></script>
+
+<script src="/js/app/ui.js"></script>
+<script src="/js/app/auth.js"></script>
+
+
+</head>
+<body class="media">
+
+   
+<table width="980px" height="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td height="94px">
+            <!--div class="user_avatar">
+                    <img id="userpage_avatar" src="" border="0" alt="" style="background-color:#000;">
+            </div>
+            <div class="user_about">
+                {% if user_profile.profile.about == None or user_profile.profile.about == "" %}
+                    {% trans "This user preferred to tell about himself nothing." %}
+                {% else %}
+                    {{ user_profile.profile.about }}
+                {% endif %}
+            </div>
+            <div class="user_about_plus opa75">{% trans "Pets:" %} {{ user_profile.pets.count }} | {% trans "Subscribe to:" %} {{ user_profile.follows.count}} | {% trans "Favorited:" %} {{ user_profile.followed_by.count}} | {% trans "Posts:" %} {{ user_profile.comment_set.count }}</div>
+            <div class="user_name">{{ user_profile.first_name }} {{ user_profile.last_name }}</div>
+            <div class="user_about_plus opa75">{{ user_profile.username}} - {% trans "on the site from:" %} {{ user_profile.date_joined }}</div-->
+        </td>
+    </tr>
+    <tr>
+        <td height="86px">            
+        	<!--div class="user_cluster">
+        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_1.png" width="40" height="40" border="0"></a>
+        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_2.png" width="40" height="40" border="0"></a>
+        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_3.png" width="40" height="40" border="0"></a>
+				<img class="up_pets" alt="собаки" src="../images/cluster_4.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_5.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_6.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_7.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_8.png">
+				<img class="up_pets" alt="собаки" src="../images/cluster_9.png">
+			</div-->
+        </td>
+    </tr>
+    <tr>
+        <td align="center" valign="top">
+            <table class="ss_user_page_nocontent" height="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="user_page_content_box_empty">
+                        {% trans "On this page has not posted photos." %}
+                    </td>
+                </tr>
+            </table>
+            <div class="user_page_content_box  ss_user_page_content">
+                {% with media_obj=media_list %}
+                {% if media_obj.paginator.num_pages > 1 %}
+                {% spaceless %}
+                <div class="pagination" style="padding: 0 0 10px;">
+                    <div class="step-links">
+                        {% if media_obj.has_previous %}
+                            <a class="discussion_previous_page pagination_left_page" href="?page={{ media_obj.previous_page_number }}">&#171; {% trans "Back" %}</a>
+                        {% else %}
+                            <a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>
+                        {% endif %}
+                        <a class="pagination_current_page">{% trans "Page" %} {{ media_obj.number }} {% trans "of" %} {{ media_obj.paginator.num_pages }}</a>
+                        {% if media_obj.has_next %}
+                            <a class="discussion_next_page pagination_right_page" href="?page={{ media_obj.next_page_number }}">{% trans "Forward" %} &#187;</a>
+                        {% else %}
+                            <a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endspaceless %}
+                {% endif %}
+                {% for media in media_obj.object_list %}
+                <div class="user_grid_box">
+                    <a class="user_grid_photo finger" onclick="show_photo({{ media.id }})">
+                        <img src="{{ media|resized:'176x176' }}">
+                    </a>
+                    {% if media.description %}
+                    <div class="user_grid_text">
+                        {{ media.description }}
+                    </div>
+                    {% endif %}
+                    <div class="hr"></div>
+                    <table class="user_grid_counter_table" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><img src="/images/user_small_comments_counter_ico.png" width="20px" height="20px" title="Оставили комментарии"></td>
+                            <td class="user_grid_counter">{{ media.comments.count }}</td>
+                            <td width="10px"></td>
+                            <td><img src="/images/user_small_like_counter_ico.png" width="20px" height="20px" title="Понравилось"></td>
+                            <td class="user_grid_counter">{{ media.likes }}</td>
+                        </tr>
+                    </table>
+                </div>
+                {% endfor %}
+                {% if media_obj.paginator.num_pages > 1 %}
+                {% spaceless %}
+                <div class="pagination" style="padding: 0 0 11px;">
+                    <div class="step-links">
+                        {% if media_obj.has_previous %}
+                            <a class="discussion_previous_page pagination_left_page" href="?page={{ media_obj.previous_page_number }}">&#171; {% trans "Back" %}</a>
+                        {% else %}
+                            <a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>
+                        {% endif %}
+                        <a class="pagination_current_page">{% trans "Page" %} {{ media_obj.number }} {% trans "of" %} {{ media_obj.paginator.num_pages }}</a>
+                        {% if media_obj.has_next %}
+                            <a class="discussion_next_page pagination_right_page" href="?page={{ media_obj.next_page_number }}">{% trans "Forward" %} &#187;</a>
+                        {% else %}
+                            <a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endspaceless %}
+                {% endif %}
+                {% if not media_obj.object_list %}
+                <script type="text/javascript">
+                    $('.ss_user_page_nocontent').show();
+                    $('.ss_user_page_content').hide();
+                </script>
+                {% else %}
+                <script type="text/javascript">
+                    $('.ss_user_page_nocontent').hide();
+                    $('.ss_user_page_content').show();
+                </script>                
+                {% endif %}
+                {% endwith %}
+            </div>
+            <!--br>
+            <a href="#" style="color:#f24f00;"> Показать еще... </a>
+            <br-->
+            <br>
+        </td>
+    </tr>
+</table>
+
+    <!--script>
+        var user_avatar = '../images/user_unisex.png';
+        if ( '{{ user_profile.profile.gender }}' == 'M' ) {
+            user_avatar = '../images/user_male.png'
+        }
+        if ( '{{ user_profile.profile.gender }}' == 'F') {
+            user_avatar = '../images/user_female.png'
+        }
+        if ( '{{ user_profile.profile.avatar}}' !== '' ) {
+            user_avatar = '/media/{{ user_profile.profile.avatar}}'
+        }
+        $('#userpage_avatar').attr('src', user_avatar);
+    </script-->
+ 
+<!-- Окно сообщений (начало) - по умолчанию скрыто -->
+    {% include 'include/footer.html' %}
+<!-- Окно сообщений (конец) -->
+
+<!-- Окно сообщений (начало) - по умолчанию скрыто -->
+<div id="info_window" style="visibility:hidden;">
+	<table class="info_table" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center">
+			<div id="message1" class="info_message">Текст</div>
+		</td>
+      </tr>
+      <tr>
+        <td height="30" align="center"><input type="submit" name="Submit2" value="Закрыть" style="background-color:#f24f00; color:#ffff99; cursor:hand;"></td>
+      </tr>
+    </table>
+</div>
+<!-- Окно сообщений (конец) -->
+
+<!-- Окно фотографии (начало) - по умолчанию скрыто -->
+    <!--#include virtual="photo_win.html" -->
+    {% include 'include/photo_win.html' %}
+<!-- Окно фотографии (конец) -->
+
+<!-- Блок авторизации, регистрации и востановления пароля (начало) -->
+    <!--#include virtual="login.html"-->
+    {% include 'include/login.html' %}
+<!-- Блок авторизации, регистрации и востановления пароля (конец) -->
+
+<!--#include virtual="message_box.html" -->
+    {% include 'include/message_box.html' %}
+
+<!-- Блок затенения (начало)-->
+    <div id="overlay"></div>
+<!-- Блок затенения (конец)-->
+
+<!-- География сообщества (начало) -->
+    {% include 'include/geo.html' %}
+<!-- География сообщества (конец) -->
+
+<!-- Пишите письма (начало) -->
+    {% include 'include/feedback.html' %}
+<!-- Пишите письма (конец) -->
+
+<!-- Регламент (начало) -->
+    {% include 'include/rules.html' %}
+<!-- Регламент (конец) -->
+
+<!-- О проекте (начало) -->
+    {% include 'include/about.html' %}
+<!-- О проекте (конец) -->
+
+
+<!-- Google Analytic (начало) -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40365184-1', 'mixim.ru');
+  ga('send', 'pageview');
+
+</script>
+<!-- Google Analytic (конец) -->
+</body>
+</html>
