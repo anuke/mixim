@@ -7,6 +7,9 @@
     <head>
         <title>{% trans 'MiXiM - for those who love pets' %}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+        <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+        <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
         <link href="/css/style.css" rel="stylesheet" type="text/css">
 
         <script src="/js/underscore-min.js"></script>
@@ -35,6 +38,9 @@
         <meta property="og:image" content="{{ media_file.thumbnail }}" />
     </head>
     <body class="media">
+        <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
+        {% include 'include/login.html' %}
+        <!-- /Блок авторизации, регистрации и востановления пароля (конец) -->
         <img style="display:none" src="{{ media_file.thumbnail }}">
         <div id="show_qr" class="show_qr_window">
             <table border="0" cellspacing="0" cellpadding="0">
@@ -82,56 +88,29 @@
                 </td>
             </tr>
         </table>
-        <!-- Окно сообщений (начало) - по умолчанию скрыто -->
-        <div id="info_window" style="visibility:hidden;">
-            <table class="info_table" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td align="center">
-                    <div id="message1" class="info_message">Текст</div>
-                </td>
-              </tr>
-              <tr>
-                <td height="30" align="center"><input type="submit" name="Submit2" value="Закрыть" style="background-color:#f24f00; color:#ffff99; cursor:hand;"></td>
-              </tr>
-            </table>
-        </div>
-        <!-- Окно сообщений (конец) -->
 
-        <!-- Окно фотографии (начало) - по умолчанию скрыто -->
-            <!--#include virtual="photo_win.html" -->
-            {% include 'include/photo_win.html' %}
-        <!-- Окно фотографии (конец) -->
+        <!-- Окно фотографии - по умолчанию скрыто -->
+        {% include 'include/photo_win.html' %}
+        <!-- /Окно фотографии -->
 
-        <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
-            <!--#include virtual="login.html"-->
-            {% include 'include/login.html' %}
-        <!-- Блок авторизации, регистрации и востановления пароля (конец) -->
-
-        <!--#include virtual="message_box.html" -->
-            {% include 'include/message_box.html' %}
+        <!-- Окно сообщений -->
+        {% include 'include/message_box.html' %}
+        <!-- /Окно сообщений -->
 
         <!-- Блок затенения (начало)-->
             <div id="overlay"></div>
         <!-- Блок затенения (конец)-->
+        
+        <!-- Аналитика -->
+        {% include 'include/analytics.html' %}
+        <!-- /Аналитика -->
 
-        <!-- Google Analytic (начало) -->
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-          ga('create', 'UA-40365184-1', 'mixim.ru');
-          ga('send', 'pageview');
-
+        <script type="text/javascript">
+            var share_pic = {{ media_file_id|default:"false" }};
+            if (share_pic) {
+                show_photo(share_pic);
+            }
+            $("#photo_win_close_btn").hide();
         </script>
-        <!-- Google Analytic (конец) -->
     </body>
-    <script type="text/javascript">
-        var share_pic = {{ media_file_id|default:"false" }};
-        if (share_pic) {
-            show_photo(share_pic);
-        }
-        $("#photo_win_close_btn").hide();
-    </script>
 </html>

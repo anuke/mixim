@@ -7,6 +7,9 @@
 <head>
 <title>{% trans 'MiXiM - for those who love pets' %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+<meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+<meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
 <link href="/css/style.css" rel="stylesheet" type="text/css">
 
 <script src="/js/underscore-min.js"></script>
@@ -28,12 +31,11 @@
 
 <script src="/js/app/ui.js"></script>
 <script src="/js/app/auth.js"></script>
-
-
 </head>
 <body class="media">
-
-   
+<!-- Блок авторизации, регистрации и востановления пароля (начало) -->
+{% include 'include/login.html' %}
+<!-- /Блок авторизации, регистрации и востановления пароля (конец) -->
 <table width="980px" height="100%" align="center" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td height="94px">
@@ -157,86 +159,41 @@
             <br>
         </td>
     </tr>
-</table>
+</table> 
+<!-- Подвал -->
+{% include 'include/footer.html' %}
+<!-- /Подвал -->
 
-    <!--script>
-        var user_avatar = '../images/user_unisex.png';
-        if ( '{{ user_profile.profile.gender }}' == 'M' ) {
-            user_avatar = '../images/user_male.png'
-        }
-        if ( '{{ user_profile.profile.gender }}' == 'F') {
-            user_avatar = '../images/user_female.png'
-        }
-        if ( '{{ user_profile.profile.avatar}}' !== '' ) {
-            user_avatar = '/media/{{ user_profile.profile.avatar}}'
-        }
-        $('#userpage_avatar').attr('src', user_avatar);
-    </script-->
- 
-<!-- Окно сообщений (начало) - по умолчанию скрыто -->
-    {% include 'include/footer.html' %}
-<!-- Окно сообщений (конец) -->
+<!-- Окно фотографии - по умолчанию скрыто -->
+{% include 'include/photo_win.html' %}
+<!-- /Окно фотографии -->
 
-<!-- Окно сообщений (начало) - по умолчанию скрыто -->
-<div id="info_window" style="visibility:hidden;">
-	<table class="info_table" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td align="center">
-			<div id="message1" class="info_message">Текст</div>
-		</td>
-      </tr>
-      <tr>
-        <td height="30" align="center"><input type="submit" name="Submit2" value="Закрыть" style="background-color:#f24f00; color:#ffff99; cursor:hand;"></td>
-      </tr>
-    </table>
-</div>
-<!-- Окно сообщений (конец) -->
-
-<!-- Окно фотографии (начало) - по умолчанию скрыто -->
-    <!--#include virtual="photo_win.html" -->
-    {% include 'include/photo_win.html' %}
-<!-- Окно фотографии (конец) -->
-
-<!-- Блок авторизации, регистрации и востановления пароля (начало) -->
-    <!--#include virtual="login.html"-->
-    {% include 'include/login.html' %}
-<!-- Блок авторизации, регистрации и востановления пароля (конец) -->
-
-<!--#include virtual="message_box.html" -->
-    {% include 'include/message_box.html' %}
+<!-- Окно сообщений -->
+{% include 'include/message_box.html' %}
+<!-- /Окно сообщений -->
 
 <!-- Блок затенения (начало)-->
     <div id="overlay"></div>
 <!-- Блок затенения (конец)-->
 
-<!-- География сообщества (начало) -->
-    {% include 'include/geo.html' %}
-<!-- География сообщества (конец) -->
+<!-- География сообщества -->
+{% include 'include/geo.html' %}
+<!-- /География сообщества -->
 
-<!-- Пишите письма (начало) -->
-    {% include 'include/feedback.html' %}
-<!-- Пишите письма (конец) -->
+<!-- Пишите письма -->
+{% include 'include/feedback.html' %}
+<!-- /Пишите письма -->
 
-<!-- Регламент (начало) -->
-    {% include 'include/rules.html' %}
-<!-- Регламент (конец) -->
+<!-- Регламент -->
+{% include 'include/rules.html' %}
+<!-- /Регламент -->
 
-<!-- О проекте (начало) -->
-    {% include 'include/about.html' %}
-<!-- О проекте (конец) -->
+<!-- О проекте -->
+{% include 'include/about.html' %}
+<!-- /О проекте -->
 
-
-<!-- Google Analytic (начало) -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-40365184-1', 'mixim.ru');
-  ga('send', 'pageview');
-
-</script>
-<!-- Google Analytic (конец) -->
+<!-- Аналитика -->
+{% include 'include/analytics.html' %}
+<!-- /Аналитика -->
 </body>
 </html>
