@@ -615,8 +615,8 @@ form {
 }
 .show_qr_window {
     position:absolute;
-    left:422px;
-    top:46px;
+    margin-left:-310px;
+    margin-top:42px;
 	width:304px;
 	height:351px;
     z-index:300;

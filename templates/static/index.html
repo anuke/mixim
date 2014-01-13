@@ -58,19 +58,6 @@
 </head>
 
 <body class="index">
-<div id="show_qr" class="show_qr_window" style="width:372px; left:280px; top:267px;">
-    <table border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td class="show_qr_box">
-                <img src="images/qr_android_ru.png" width="300" height="300" border="0">
-            </td>
-            <td width="68px" align="right" valign="top">
-                <br><img src="images/qr_window_arrow2.png" width="62" height="34" border="0">
-            </td>
-        </tr>
-    </table>
-</div>
-
 <!-- Главное меню (Навигация) -->
 {% include 'include/navi.html' %}
 <!-- /Главное меню (Навигация) -->
@@ -82,7 +69,6 @@
 <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
 {% include 'include/login.html' %}
 <!-- /Блок авторизации, регистрации и востановления пароля (конец) -->
-
 
 <table align="center" width="980" height="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -174,6 +160,18 @@
             <table align="right" width="465" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td width="158" valign="top" class="markets_links">
+                        <div id="show_qr" class="show_qr_window" style="width:372px; margin-left:-375px; margin-top:-12px;">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td class="show_qr_box">
+                                        <img src="images/qr_android_ru.png" width="300" height="300" border="0">
+                                    </td>
+                                    <td width="68px" align="right" valign="top">
+                                        <br><img src="images/qr_window_arrow2.png" width="62" height="34" border="0">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                         <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans 'Available on Google play' %}"><img src="images/{% trans 'app_google_play_en.png' %}" width="141" height="46" border="0" alt="{% trans 'Available on Google play' %}" onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
                     </td>
                     <td id="bubble_phone_login" width="207" valign="top" class="phone"><!-- работать с контентом отдельным классом, центрировать маргином-->
