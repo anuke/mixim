@@ -110,7 +110,13 @@
             if (share_pic) {
                 show_photo(share_pic);
             }
+            
             $("#photo_win_close_btn").hide();
+            
+            $(window).bind("load", function() {
+                if( $( "#photo_window" ).offset().top < 150 )
+                    $( "#photo_window" ).attr( "style", "top:150px !important" );
+            });
         </script>
     </body>
 </html>
