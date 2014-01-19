@@ -209,7 +209,8 @@ class MediaFileQuerySet(QuerySet):
 
     def with_species(self, species):
         if species:
-            return self.filter(species=species)
+            species_list = [i.strip() for i in species.split(",")]
+            return self.filter(species__in=species_list)
         else:
             return self
 
