@@ -7,4 +7,4 @@ size=$1
 src=$2
 dst=$3
 
-/usr/bin/convert "$src" -resize $size "$dst"
+/usr/bin/convert "$src" -resize $size -quality 70 "$dst"
