@@ -290,8 +290,8 @@ class MediaFile(models.Model):
         return self.file.url
 
     class Meta:
-        verbose_name = _("Member")
-        verbose_name_plural = _("Members")
+        verbose_name = _("Media File")
+        verbose_name_plural = _("Media Files")
         ordering = ["-created"]
 
 
@@ -314,8 +314,8 @@ class Comment(models.Model):
         return u"%s: %s" % (self.author, self.text[0:50])
 
     class Meta:
-        verbose_name = _("Member")
-        verbose_name_plural = _("Members")
+        verbose_name = _("Comment")
+        verbose_name_plural = _("Comments")
         ordering = ["-created"]
 
 
