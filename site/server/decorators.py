@@ -9,10 +9,9 @@ def serialize(f):
             raise ValueError("There is no such format: %s" % format)
         try:
             result = f(request, *args, **kwargs)
-            callback = request.GET.get('callback', None)
-            return serializer.serializeData(result) if callback is None else serializer.serializeData(result, callback)
+            return serializer.serializeData(result, request)
         except ProtoException, ex:
-            return serializer.serializeException(ex)
+            return serializer.serializeException(ex, request)
 
     wrapper.__name__ = f.__name__
     return wrapper

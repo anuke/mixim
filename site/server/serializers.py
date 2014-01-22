@@ -56,7 +56,7 @@ class JsonSerializer:
     def __dump(self, data):
         return HttpResponse(json.dumps(data), 'text/html') # 'application/json'
 
-    def serializeData(self, data):
+    def serializeData(self, data, request):
         dumped = None
         if data is not None:
             dumped = to_plain(data)
@@ -66,7 +66,7 @@ class JsonSerializer:
             "result": dumped,
         })
 
-    def serializeException(self, exc):
+    def serializeException(self, exc, request):
         return self.__dump({
             "success": False,
             "error": {
@@ -78,10 +78,17 @@ class JsonSerializer:
 
 
 class JsonpSerializer:
-    def __dump(self, data, callback):
+    def __dump(self, data, request):
+        if request.method == 'GET':
+            params = request.GET
+        else:
+            params = request.POST
+
+        callback = params.get('callback', 'mixim_jsonp_callback')
+
         return HttpResponse("%s(%s)" % (callback, json.dumps(data)), 'text/javascript')
 
-    def serializeData(self, data, callback):
+    def serializeData(self, data, request):
         dumped = None
         if data is not None:
             dumped = to_plain(data)
@@ -89,9 +96,9 @@ class JsonpSerializer:
         return self.__dump({
             "success": True,
             "result": dumped,
-        }, callback)
+        }, request)
 
-    def serializeException(self, exc):
+    def serializeException(self, exc, request):
         return self.__dump({
             "success": False,
             "error": {
@@ -99,7 +106,7 @@ class JsonpSerializer:
                 "message": exc.message,
             },
             "environment": exc.params,
-        })
+        }, request)
 
 
 class XmlSerializer:
@@ -122,14 +129,14 @@ class XmlSerializer:
         ET.ElementTree(root).write(response)
         return response
 
-    def serializeData(self, data):
+    def serializeData(self, data, request):
         root = ET.Element("result", {"success": "true"})
         if data is not None:
             self.__dump(root, to_plain(data))
 
         return self.__response(root)
 
-    def serializeException(self, exc):
+    def serializeException(self, exc, request):
         root = ET.Element("result", {"success": "false"})
         ET.SubElement(root, "error", {
             "code": str(exc.code),
