@@ -53,12 +53,35 @@ def to_plain_data(data, *props):
 
 
 class JsonSerializer:
-    def __dump(self, data, callback=None):
-        if callback is not None:
-            return HttpResponse("%s(%s)" % (callback, json.dumps(data)), 'text/html')
+    def __dump(self, data):
         return HttpResponse(json.dumps(data), 'text/html') # 'application/json'
 
-    def serializeData(self, data, callback=None):
+    def serializeData(self, data):
+        dumped = None
+        if data is not None:
+            dumped = to_plain(data)
+
+        return self.__dump({
+            "success": True,
+            "result": dumped,
+        })
+
+    def serializeException(self, exc):
+        return self.__dump({
+            "success": False,
+            "error": {
+                "code": exc.code,
+                "message": exc.message,
+            },
+            "environment": exc.params,
+        })
+
+
+class JsonpSerializer:
+    def __dump(self, data, callback):
+        return HttpResponse("%s(%s)" % (callback, json.dumps(data)), 'text/javascript')
+
+    def serializeData(self, data, callback):
         dumped = None
         if data is not None:
             dumped = to_plain(data)
@@ -119,6 +142,7 @@ class XmlSerializer:
 
 __SERIALIZERS__ = {
     'json': JsonSerializer(),
+    'jsonp': JsonpSerializer(),
     'xml': XmlSerializer(),
 }
 
