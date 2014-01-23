@@ -11,6 +11,10 @@ body {
 	background-repeat:no-repeat;
 	background-position:center top;
 }
+textarea,
+input {
+	outline:0;
+}
 .index {
 	background-image:url(/images/top_bubbles.gif);
 	background-position:center -206px;
