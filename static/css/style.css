@@ -1065,7 +1065,6 @@ form {
     text-align:right;
     position:absolute;
     padding:4px;
-    margin-top:5px;
     background-color: #FFFFFF;
     border: 1px solid #F24F00;
     -moz-border-radius:5px 15px 15px 5px;
@@ -1195,7 +1194,7 @@ form {
 .info_image {
 	border:1px solid #f24f00;
 	position:absolute;
-	width:559px;
+	width:560px;
 	background-color:#ffffff;
 	top:40px;
 	left:40px;
@@ -1241,12 +1240,15 @@ form {
 	/*background-color:#eeeeee;*/
 	position:absolute;
 	width:560px;
-	top:580px;
+	top:570px;
 	left:40px;
 	text-align:center;
 }
 .pull_image {
-	font-family:Verdana, Arial, Helvetica, sans-serif;
+    font:11px/19px Verdana,Arial,Helvetica,sans-serif;
+    vertical-align:top;
+}
+/*	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:11px;
 	color:#f24f00;
 	padding:2px 2px 2px 6px;
@@ -1262,21 +1264,39 @@ form {
 	font-size:11px;
 	color:#f24f00;
 	text-decoration:none;
+}*/
+.like20 {
+    height:20px;
+    clear:both;
+    text-align:right;
+
+    float:right;
+    padding:4px;
+    background-color:#ffffff;
+    border:1px solid #f24f00;
+    border-radius:15px 5px 5px 15px;
 }
 .pull_like,
 .pull_unlike {
-	display: block;
+/*	display: block;
 	border:1px solid #f24f00;
 	background-color:#ffffff;
-	background-image:url(/images/search_like.png);
 	background-repeat:no-repeat;
 	background-position:0px 0px;
 	-moz-border-radius:2px;
 	-webkit-border-radius:2px;
-	border-radius:2px;
+	border-radius:2px; */
+    display: inline-block;
+	background-repeat:no-repeat;
+	background-position:0px 0px;
+    width:20px;
+    height:20px;
+}
+.pull_like {
+	background-image:url(../images/pull_like.png);
 }
 .pull_unlike {
-	background-image:url(/images/unlike.png);
+	background-image:url(../images/pull_unlike.png);
 }
 
 .pull_private,
