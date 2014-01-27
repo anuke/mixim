@@ -15,6 +15,9 @@ textarea,
 input {
 	outline:0;
 }
+textarea {
+    resize:none;
+}
 .index {
 	background-image:url(/images/top_bubbles.gif);
 	background-position:center -206px;
@@ -1060,10 +1063,8 @@ form {
 
 /*-- share photo --*/
 .share20init {
+    float:left;
     height:20px;
-    clear:both;
-    text-align:right;
-    position:absolute;
     padding:4px;
     background-color: #FFFFFF;
     border: 1px solid #F24F00;
@@ -1265,11 +1266,17 @@ form {
 	color:#f24f00;
 	text-decoration:none;
 }*/
+.tools20 {
+    height:20px;
+    float:right;
+    padding:4px;
+    background-color:#ffffff;
+    border:1px solid #f24f00;
+    margin-right:10px;
+    border-radius:15px;
+}
 .like20 {
     height:20px;
-    clear:both;
-    text-align:right;
-
     float:right;
     padding:4px;
     background-color:#ffffff;
@@ -1302,13 +1309,11 @@ form {
 .pull_private,
 .pull_public,
 .pull_delete {
-	display: block;
-	border:1px solid #f24f00;
-	background-color:#ffffff;
-    margin-left:30px;
-	-moz-border-radius:2px;
-	-webkit-border-radius:2px;
-	border-radius:2px;
+    display: inline-block;
+	background-repeat:no-repeat;
+	background-position:0px 0px;
+    width:20px;
+    height:20px;
 }
 .pull_private {
 	background-image:url(/images/search_private.png);
@@ -1319,8 +1324,8 @@ form {
 	background-position:0px 0px;
 }
 .pull_delete {
-	background-image:url(/images/delete_photo.png);
-	background-position:0px 0px;
+	background-image:url(../images/pull_delete.png);
+/*	background-image:url(/images/delete_photo.png); */
 }
 .image_h1 {
 	width:60px;
