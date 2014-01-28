@@ -1,5 +1,58 @@
+<script>
+$(document).ready(function(){
+    $( ".pull_code" ).on( "click", function(){
+        $( ".code_window" ).show();
+        $( '#code1' ).text( "" );
+        $( '#code2' ).text( "<img src=\"" + "\">" );
+        $( '#code3' ).text( "<a href=\"" + "\" target=\"_blank\"><img src=\"" + "\"></a>" );
+        $( '#code4' ).text( "[img]" + "[/img]" );
+        $( '#code5' ).text( "[url=" + "][img]" + "[/img][/url]" );
+        $( '#code6' ).text( "http://mixim.ru/pic" + "" );
+    });
+    $( "#code_window_close" ).on( "click", function(){
+        $( ".code_window" ).hide();
+    });
+});
+</script>
+
 {% load i18n %}
 <div id="photo_window" style="display:none">
+    <div class="code_window">
+        <div class="code_window_bkg opa75"></div>
+        <div class="code_window_content">
+            <img id="code_window_close" class="finger" src="../images/photo_close.png" width="19" height="19" border="0" title="{% trans 'Close window' %}" alt="{% trans 'Close window' %}">
+            <span>Ссылка на изображение</span>
+            <div class="code_window_content_box">
+                <div id="code1" class="code_window_content_code"></div>
+                <a class="finger">Скопировать...</a>
+            </div>
+            <span>HTML: изображние в тексте</span>
+            <div class="code_window_content_box">
+                <div id="code2" class="code_window_content_code"></div>
+                <a class="finger">Скопировать...</a>
+            </div>
+            <span>HTML: превью - увеличение по клику</span>
+            <div class="code_window_content_box">
+                <div id="code3" class="code_window_content_code"></div>
+                <a class="finger">Скопировать...</a>
+            </div>
+            <span>BBCode, строчные буквы: изображение в тексте</span>
+            <div class="code_window_content_box">
+                <div id="code4" class="code_window_content_code"></div>
+                <a class="finger">Скопировать...</a>
+            </div>
+            <span>BBCode, строчные буквы: превью - увеличение по клику</span>
+            <div class="code_window_content_box">
+                <div id="code5" class="code_window_content_code"></div>
+                <a class="finger">Скопировать...</a>
+            </div>
+            <span>Ссылка на страницу просмотра этого изображения и комментариев</span>
+            <div class="code_window_content_box">
+                <div id="code6" class="code_window_content_code"></div>
+                <a class="finger">Скопировать...</a>
+            </div>
+        </div>
+    </div>
     <div class="photo_close"><a id="photo_win_close_btn" class="finger" title="{% trans 'Close window' %}"><img src="../images/photo_close.png" width="19" height="19" border="0" alt="{% trans 'Close window' %}" title="{% trans 'Close window' %}"></a></div>
     <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -63,7 +116,7 @@
                 </table>
                 <div class="pull_box opa25 opacible">
                     <div id="share20init" class="share20init">
-                        <span>Share It:</span>
+                        <span>{% trans 'Share It:' %}</span>
                         <a id="share20_fb" target="_blank" class="share20bttn share20bttn_fb" title="Facebook" alt="Facebook"></a>
                         <a id="share20_gp" target="_blank" class="share20bttn share20bttn_gp" title="Google+" alt="Google+"></a>
                         <a id="share20_ok" target="_blank" class="share20bttn share20bttn_ok" title="Одноклассники" alt="Одноклассники"></a>
@@ -78,6 +131,7 @@
                         <span id="media_likes" class="pull_image">{% trans 'I like it!' %}</span>
                     </div>
                     <div class="tools20">
+                        <a class="pull_code finger" title="{% trans 'Get image codes' %}"></a>
                         <a class="author_photo_bar pull_delete media_disable finger" title="{% trans 'Delete this image' %}"></a>
                     </div>
                     
@@ -85,22 +139,12 @@
                     <!--table align="center" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td>
-                            < Этот кусок видят только авторы просматриваемого фото (начало)>
-                            <td>
                                 <div class="author_photo_bar">
                                     <a href="#" class="pull_public" title="Показывать фото всем!">
                                         <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="Открыть фото">
                                     </a>
                                 </div>
                             </td>
-                            <td>
-                                <div class="author_photo_bar">
-                                    <a class="pull_delete media_disable finger" title="{% trans 'Delete this image' %}">
-                                        <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="{% trans 'Delete this image' %}">
-                                    </a>
-                                </div>
-                            </td>
-                            < Этот кусок видят только авторы просматриваемого фото (конец)>
                         </tr>
                     </table-->
                 </div>
