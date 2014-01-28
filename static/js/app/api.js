@@ -27,88 +27,95 @@ function show_photo(picId) {
     $('.ss__nocomment_div').hide();
 
     $.getJSON('/json/media/get/' + picId + '/', {},
-        function (data) {
-            if (data.success) {
-                var photo = data.result;
-                current_photo = photo;
+            function (data) {
+                if (data.success) {
+                    var photo = data.result;
+                    current_photo = photo;
 
-                $.each(['author', 'pet', 'created', 'description'], function () {
-                    var value = photo[this];
-                    if (!value) value = "";
-                    value = value.replace(" ", "&nbsp;");
-                    $('#photo_' + this).html(value);
-                });
-                var tags = photo.tags.join(', ');
+                    $.each(['author', 'pet', 'created', 'description'], function () {
+                        var value = photo[this];
+                        if (!value) value = "";
+                        value = value.replace(" ", "&nbsp;");
+                        $('#photo_' + this).html(value);
+                    });
+                    var tags = photo.tags.join(', ');
 
-                $('#f_photo_tags').val(tags);
-                $('#f_photo_pet').val(photo.petId || 0);
-                $('#f_photo_species').val(photo.species);
-                $('#f_photo_description').val(photo.description);
+                    $('#f_photo_tags').val(tags);
+                    $('#f_photo_pet').val(photo.petId || 0);
+                    $('#f_photo_species').val(photo.species);
+                    $('#f_photo_description').val(photo.description);
 
-                $('#photo_tags').text(tags);
-                $('#photo_author').attr('href', '/@' + photo.author + '/');
-                $('#photo_pet').attr('href', '/pet' + photo.petId);
-                $('#photo_image').css("background-image", "url(" + photo.original.replace('original', 'resized/598x598') + ")");
-                $('div.full_screen a').first().attr('href', photo.original).attr('title', photo.description).attr('target', 'blank');
+                    $('#photo_tags').text(tags);
+                    $('#photo_author').attr('href', '/@' + photo.author + '/');
+                    $('#photo_pet').attr('href', '/pet' + photo.petId);
+                    $('#photo_image').css("background-image", "url(" + photo.original.replace('original', 'resized/598x598') + ")");
+                    $('div.full_screen a').first().attr('href', photo.original).attr('title', photo.description).attr('target', 'blank');
 
-                comment_list();
+                    comment_list();
 
-                var photo_window_top_position = $(window).height() / 2 - 300 + $(window).scrollTop();
-                if (photo_window_top_position < 0)
-                    photo_window_top_position = 0;
-                $('#photo_window').css('top', photo_window_top_position);
+                    var photo_window_top_position = $(window).height() / 2 - 300 + $(window).scrollTop();
+                    if (photo_window_top_position < 0)
+                        photo_window_top_position = 0;
+                    $('#photo_window').css('top', photo_window_top_position);
 
-                toggle_attention_block(photo.species);
+                    toggle_attention_block(photo.species);
 
-                $('#photo_window').show();
-                $('.author_photo_bar').toggle(is_author());
-                $('.viewer_photo_bar').toggle(is_viewer());
-                $('.guest_photo_bar').toggle(is_guest());
-                $('#media_likes').text(current_photo.likes);
-                if (is_viewer()) {
-                    toggle_media_like_btns(current_photo.favourite);
+                    $('#photo_window').show();
+                    $('.author_photo_bar').toggle(is_author());
+                    $('.viewer_photo_bar').toggle(is_viewer());
+                    $('.guest_photo_bar').toggle(is_guest());
+                    $('#media_likes').text(current_photo.likes);
+                    if (is_viewer()) {
+                        toggle_media_like_btns(current_photo.favourite);
+                    }
+
+                    // by default: if friend list has not been loaded
+                    $('#photo_add_friend').attr('title', trans('Follow')).find('img').attr('src', '../images/favorite_person_add.png');
+                    if (_.contains(friendInfo.friends, photo.author)) {
+                        $('#photo_add_friend').attr('title', trans('Unfollow')).find('img').attr('src', '../images/favorite_person_remove.png')
+                    }
+
+                    $('#code1').html(photo.original.replace('original', 'resized/598x598'))
+                    $('#code2').text('<img src="' + photo.original.replace('original', 'resized/598x598') + '"/>')
+                    $('#code3').text('<a href="' + photo.original + '"><img src="' + photo.original.replace('original', 'resized/598x598') + '"/></a>')
+                    $('#code4').text('[IMG]' + photo.original + '[/IMG]')              
+                    $('#code5').text('[URL=' + photo.original + '][IMG]' + photo.original.replace('original', 'resized/598x598') + '[/IMG][/URL]')
+                    $('#code6').text('http://mixim.ru/pic' + photo.id )
+
+                    // Share section
+
+                    var shareLink = 'http://mixim.ru/pic' + photo.id;
+                    var shareTitle = photo.pet || "";
+                    var sharePicture = photo.thumbnail;
+                    var shareDescription = photo.description;
+
+                    var fbUrl = "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(shareLink)+"&t="+encodeURIComponent(shareTitle)+"&description="+encodeURIComponent(shareDescription)+"&picture="+encodeURIComponent(sharePicture);
+                    var vkUrl = "http://vk.com/share.php?url="+encodeURIComponent(shareLink)+"&title="+encodeURIComponent(shareTitle)+"&description="+encodeURIComponent(shareDescription)+"&image="+encodeURIComponent(sharePicture);
+                    var okUrl = "http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl="+shareLink+"&title="+shareTitle;
+                    var gpUrl = "https://plus.google.com/share?url="+shareLink;
+                    var twUrl = "https://twitter.com/intent/tweet?status="+encodeURIComponent(shareTitle)+" "+shareLink;
+
+                    $("#share20_fb").click(function(){
+                        window.open(fbUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+                        return false;
+                    });
+                    $("#share20_vk").click(function(){
+                        window.open(vkUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+                        return false;
+                    });
+                    $("#share20_gp").click(function(){
+                        window.open(gpUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+                        return false;
+                    });
+                    $("#share20_t").click(function(){
+                        window.open(twUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
+                        return false;
+                    });
                 }
-
-                // by default: if friend list has not been loaded
-                $('#photo_add_friend').attr('title', trans('Follow')).find('img').attr('src', '../images/favorite_person_add.png');
-                if (_.contains(friendInfo.friends, photo.author)) {
-                    $('#photo_add_friend').attr('title', trans('Unfollow')).find('img').attr('src', '../images/favorite_person_remove.png')
+                else {
+                    my_alert('Media retrieving', data.error.message);
                 }
-
-                // Share section
-
-                var shareLink = 'http://mixim.ru/pic' + photo.id;
-                var shareTitle = photo.pet || "";
-                var sharePicture = photo.thumbnail;
-                var shareDescription = photo.description;
-
-                var fbUrl = "https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(shareLink)+"&t="+encodeURIComponent(shareTitle)+"&description="+encodeURIComponent(shareDescription)+"&picture="+encodeURIComponent(sharePicture);
-                var vkUrl = "http://vk.com/share.php?url="+encodeURIComponent(shareLink)+"&title="+encodeURIComponent(shareTitle)+"&description="+encodeURIComponent(shareDescription)+"&image="+encodeURIComponent(sharePicture);
-                var okUrl = "http://www.odnoklassniki.ru/dk?st.cmd=addShare&st._surl="+shareLink+"&title="+shareTitle;
-                var gpUrl = "https://plus.google.com/share?url="+shareLink;
-                var twUrl = "https://twitter.com/intent/tweet?status="+encodeURIComponent(shareTitle)+" "+shareLink;
-
-                $("#share20_fb").click(function(){
-                      window.open(fbUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
-                        return false;
-                });
-                $("#share20_vk").click(function(){
-                      window.open(vkUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
-                        return false;
-                });
-                $("#share20_gp").click(function(){
-                      window.open(gpUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
-                        return false;
-                });
-                $("#share20_t").click(function(){
-                      window.open(twUrl, 'share', "height=200,width=400,status=yes,toolbar=no,menubar=no,location=no");
-                        return false;
-                });
             }
-            else {
-                my_alert('Media retrieving', data.error.message);
-            }
-        }
     )
 }
 
@@ -208,18 +215,18 @@ function auth_logout() {
 
 function auth_logged() {
     $.getJSON("/json/auth/logged/", {},
-        function (data) {
-            Auth.trigger("logged", data.result);
+            function (data) {
+                Auth.trigger("logged", data.result);
 
-            if (data.result) {
-                $.getJSON("/json/profile/get/my/", {},
-                    function (data) {
-                        current_user = data.result;
-                        Auth.trigger("profile:mine", data.result);
-                        $('.f_goto_userpage').attr('href', '@' + data.result.username + '/')
-                    });
-            }
-        });
+                if (data.result) {
+                    $.getJSON("/json/profile/get/my/", {},
+                        function (data) {
+                            current_user = data.result;
+                            Auth.trigger("profile:mine", data.result);
+                            $('.f_goto_userpage').attr('href', '@' + data.result.username + '/')
+                        });
+                }
+            });
 }
 
 function auth_register(prefix) {
@@ -268,35 +275,35 @@ function auth_register(prefix) {
 function auth_resetpassword() {
     var email = $('#resetpassword_email').val();
     $.getJSON("/json/auth/resetpassword/", { email: email },
-        function(data) {
-            if (!data.success) {
-                var errorMsg = data.error.message;
-                switch (data.error.code) {
-                    case 121:
-                        errorMsg = trans('&nbsp;&nbsp;User not found. Check the <b>username/nickname</b> for errors and <b>try again</b>.');
+            function(data) {
+                if (!data.success) {
+                    var errorMsg = data.error.message;
+                    switch (data.error.code) {
+                        case 121:
+                            errorMsg = trans('&nbsp;&nbsp;User not found. Check the <b>username/nickname</b> for errors and <b>try again</b>.');
+                    }
+                    $('#resetpassword_email').addClass('invalid');
+                    my_error(errorMsg);
                 }
-                $('#resetpassword_email').addClass('invalid');
-                my_error(errorMsg);
-            }
-            else {
-                Auth.trigger("resetpassword");
-                my_alert(trans('<b>Password recovery</b>'), trans('&nbsp;&nbsp;At your e-mail has been sent to. Follow the instructions in the letter.'));
-                $('body').css('overflow-y', 'auto');
-                $('#overlay').hide();
-                $('.login_add_block').hide();
-            }
-        });
+                else {
+                    Auth.trigger("resetpassword");
+                    my_alert(trans('<b>Password recovery</b>'), trans('&nbsp;&nbsp;At your e-mail has been sent to. Follow the instructions in the letter.'));
+                    $('body').css('overflow-y', 'auto');
+                    $('#overlay').hide();
+                    $('.login_add_block').hide();
+                }
+            });
 }
 
 function change_password(new_password, confirmation) {
     $.post('/json/auth/changepassword/', { new_password: new_password, confirmation: confirmation },
-        function (data) {
-            if (!data.success) {
-                Auth.trigger("change:password:fail");
-                return;
-            }
-            Auth.trigger("change:password:done");
-        }, 'json');
+            function (data) {
+                if (!data.success) {
+                    Auth.trigger("change:password:fail");
+                    return;
+                }
+                Auth.trigger("change:password:done");
+            }, 'json');
 }
 
 //
@@ -315,12 +322,12 @@ function user_stat(stat) {
 
 function discussions(model) {
     $.getJSON("/json/discussion/list/", {'page':discussion_page},
-        function (data) {
-            if (data.success) {
-                model.trigger('load:discussions', data.result);
-            }
-        },
-        "json");
+            function (data) {
+                if (data.success) {
+                    model.trigger('load:discussions', data.result);
+                }
+            },
+            "json");
 }
 
 
@@ -328,12 +335,12 @@ function discussions(model) {
 function user_likes(model) {
     // TODO: support pagination
     $.getJSON("/json/user/likes/", {},
-        function (data) {
-            if (data.success) {
-                model.trigger('load:user_likes', data.result);
-            }
-        },
-        "json");
+            function (data) {
+                if (data.success) {
+                    model.trigger('load:user_likes', data.result);
+                }
+            },
+            "json");
 }
 
 
@@ -355,13 +362,13 @@ function user_species(view, species) {
 
 function profile_save(properties) {
     $.post('/json/profile/save/', properties,
-        function (data) {
-            if (!data.success) {
-                Auth.trigger("change:profile:fail");
-                return;
-            }
-            Auth.trigger("change:profile:done");
-        }, 'json');
+            function (data) {
+                if (!data.success) {
+                    Auth.trigger("change:profile:fail");
+                    return;
+                }
+                Auth.trigger("change:profile:done");
+            }, 'json');
 }
 
 //
@@ -370,13 +377,13 @@ function profile_save(properties) {
 
 function myfilter_save(settings) {
     $.post('/json/myfilter/save/', settings,
-        function (data) {
-            if (!data.success) {
-                Auth.trigger("change:myfilter:fail");
-                return;
-            }
-            Auth.trigger("change:myfilter:done");
-        }, 'json');
+            function (data) {
+                if (!data.success) {
+                    Auth.trigger("change:myfilter:fail");
+                    return;
+                }
+                Auth.trigger("change:myfilter:done");
+            }, 'json');
 }
 
 //
@@ -492,16 +499,16 @@ function media_save() {
     };
 
     $.post("/json/media/save/" + current_photo.id + "/", params,
-        function (result) {
-            if (result.success) {
-                my_alert(trans('Photo info'), trans('Saved.'));
-                // TODO: change properties of current_photo
-                $('#photo_pet').text(petName);
-                $('#photo_description').text(description);
-                $('#photo_tags').text(tags);
-            }
-        },
-        "json");
+            function (result) {
+                if (result.success) {
+                    my_alert(trans('Photo info'), trans('Saved.'));
+                    // TODO: change properties of current_photo
+                    $('#photo_pet').text(petName);
+                    $('#photo_description').text(description);
+                    $('#photo_tags').text(tags);
+                }
+            },
+            "json");
 }
 
 //
@@ -515,50 +522,50 @@ var friendInfo = {
 
 function friend_list() {
     $.getJSON('/json/friend/list/', {},
-        function (data) {
-            if (data.success) {
-                friendInfo = data.result;
-            }
-        },
-        "json");
+            function (data) {
+                if (data.success) {
+                    friendInfo = data.result;
+                }
+            },
+            "json");
 }
 
 function friend_add(user) {
     $.getJSON('/json/friend/add/' + user + '/', {},
-        function (data) {
-            if (data.success) {
-                // TODO: design subscription notification
-                friendInfo.friends.push(user);
-                $('#photo_add_friend').attr('title', trans('Not follow')).find('img').attr('src', '../images/favorite_person_remove.png');
-                alert(trans('You follow ') + user);
-            }
-        },
-        "json");
+            function (data) {
+                if (data.success) {
+                    // TODO: design subscription notification
+                    friendInfo.friends.push(user);
+                    $('#photo_add_friend').attr('title', trans('Not follow')).find('img').attr('src', '../images/favorite_person_remove.png');
+                    alert(trans('You follow ') + user);
+                }
+            },
+            "json");
 }
 
 function friend_remove(user) {
     $.getJSON('/json/friend/remove/' + user + '/', {},
-        function (data) {
-            if (data.success) {
-                // TODO: design subscription notification
-                friendInfo.friends = _.filter(friendInfo.friends,
-                    function (friend) { return friend != user; });
-                $('#photo_add_friend').attr('title', trans('Follow')).find('img').attr('src', '../images/favorite_person_add.png');
-                alert(trans('You not follow ') + user);
-            }
-        },
-        "json");
+            function (data) {
+                if (data.success) {
+                    // TODO: design subscription notification
+                    friendInfo.friends = _.filter(friendInfo.friends,
+                        function (friend) { return friend != user; });
+                    $('#photo_add_friend').attr('title', trans('Follow')).find('img').attr('src', '../images/favorite_person_add.png');
+                    alert(trans('You not follow ') + user);
+                }
+            },
+            "json");
 }
 
 function friend_media(model) {
     // TODO: support pagination
     $.getJSON("/json/friend/media/0/10/", {},
-        function (data) {
-            if (data.success) {
-                model.trigger('load:friend_media', data.result);
-            }
-        },
-        "json");
+            function (data) {
+                if (data.success) {
+                    model.trigger('load:friend_media', data.result);
+                }
+            },
+            "json");
 }
 
 //
@@ -570,48 +577,48 @@ function comment_add(text_id) {
     var text_field = $('#' + text_id);
 
     $.post("/json/comment/add/" + media_id + "/", { text: text_field.val() },
-        function (result) {
-            if (result.success) {
-                text_field.val('');
-                $('.ss__nocomment_div').hide();
-                comment_list();
-            }
-        },
-        "json")
+            function (result) {
+                if (result.success) {
+                    text_field.val('');
+                    $('.ss__nocomment_div').hide();
+                    comment_list();
+                }
+            },
+            "json")
 }
 
 function comment_list() {
     var media_id = current_photo.id;
     $.getJSON("/json/comment/list/" + media_id + "/", {},
-        function (data) {
-            if (data.success) {
-                var html = "";
-                $.each(data.result, function (idx, el) {
-                    html +=
+            function (data) {
+                if (data.success) {
+                    var html = "";
+                    $.each(data.result, function (idx, el) {
+                        html +=
                         '<div style="margin:4px;">\n' +
                         '    <a href="/@' + el.author + '/" target="_blank" title="' + trans('on the user&#39;s profile') + '" style="font-weight:normal; text-transform:uppercase;">' + el.author + '</a>\n' +
                         '    <br>\n' +
                         '    &nbsp;&nbsp;&nbsp;' + el.text + '\n' +
                         '</div>\n';
-                });
-                $('.comment_container').html(html);
-                if (html == "") {
-                    $('.ss__nocomment_div').show();
+                    });
+                    $('.comment_container').html(html);
+                    if (html == "") {
+                        $('.ss__nocomment_div').show();
+                    }
                 }
-            }
-        },
-        "json")
+            },
+            "json")
 }
 
 function delete_comment(comment_id) {
     $.post("/json/comment/delete/", { "comment": comment_id },
-        function (result) {
-            if (result.success) {
-                $('#cabinet_news > #last_comments_id').empty();
-                last_comments();
-            }
-        },
-        "json")
+            function (result) {
+                if (result.success) {
+                    $('#cabinet_news > #last_comments_id').empty();
+                    last_comments();
+                }
+            },
+            "json")
 }
 
 function last_comments(type) {
@@ -619,11 +626,11 @@ function last_comments(type) {
         type = "inbox";
     }
     $.getJSON("/json/comment/last/" + type + "/", {},
-        function (data) {
-            if (data.success) {
-                var html = "";
-                $.each(data.result, function (idx, el) {
-                    html +=
+            function (data) {
+                if (data.success) {
+                    var html = "";
+                    $.each(data.result, function (idx, el) {
+                        html +=
                         '<table align="left" style="margin-top:10px;" border="0" cellspacing="0" cellpadding="0"><!-- входящие -->' +
                         '    <tr>' +
                         '        <td class="cabinet_photo_in">' +
@@ -650,13 +657,13 @@ function last_comments(type) {
                         '        </td>' +
                         '    </tr>' +
                         '</table>';
-                });
-                $('#cabinet_news > #last_comments_id').html(html);
-				$('a[id*=last_photo]').click(function() {show_photo($(this).attr("id").replace("last_photo_", ""))})
-                $('.message_delete_button').bind('click', function(event) {confirm_delete_comment(event)});
-            }
-        },
-        "json")
+                    });
+                    $('#cabinet_news > #last_comments_id').html(html);
+                    $('a[id*=last_photo]').click(function() {show_photo($(this).attr("id").replace("last_photo_", ""))})
+                        $('.message_delete_button').bind('click', function(event) {confirm_delete_comment(event)});
+                }
+            },
+            "json")
 }
 
 function last_outbox(comments) {
