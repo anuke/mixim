@@ -5,6 +5,7 @@
 			if ($('#photo_window').css('display') == 'block')
 			{
 				$('#photo_window').hide();
+                $( ".code_window" ).hide();
 			}
 				
 			if ($('.about_block').is(':visible'))

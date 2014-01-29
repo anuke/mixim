@@ -828,3 +828,27 @@ msgstr "Пользователь предпочел о себе ничего н�
 
 msgid "On this page has not posted photos."
 msgstr "Пользователь еще не разместил фотографии."
+
+msgid "Share It:"
+msgstr "Поделиться:"
+
+msgid "Select the row with the code by mouse click and press "ctrl + c" to copy"
+msgstr "Выделите нужную строку с кодом кликом мыши и нажмите "ctrl + c" для копирования"
+
+msgid "Link to image"
+msgstr "Ссылка на изображение"
+
+msgid "HTML: The image in a text"
+msgstr "HTML: изображение в тексте"
+
+msgid "HTML: thumb - increase by clicking"
+msgstr "HTML: превью - увеличение по клику"
+
+msgid "BBCode, lowercase letters: the image in a text"
+msgstr "BBCode, строчные буквы: изображение в тексте"
+
+msgid "BBCode, lowercase letters: thumb - increase by clicking"
+msgstr "BBCode, строчные буквы: превью - увеличение по клику"
+
+msgid "Direct link to view this page images and comments"
+msgstr "Ссылка на страницу просмотра этого изображения и комментариев"

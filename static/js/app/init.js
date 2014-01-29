@@ -7,6 +7,7 @@ var current_user = null;
 var current_species = null;
 
 var discussion_page = 1;
+var ya_share_inited = false;
 
 var Auth = {};
 _.extend(Auth, Backbone.Events);
@@ -32,6 +33,7 @@ Auth.on("logged", function (logged) {
 
     $('#photo_win_close_btn').click(function() {
         $('#photo_window').hide();
+        $( ".code_window" ).hide();
         current_photo = null;
     });
 
