@@ -2,16 +2,12 @@
 $(document).ready(function(){
     $( ".pull_code" ).on( "click", function(){
         $( ".code_window" ).show();
-        return;
-        $( '#code1' ).text( "" );
-        $( '#code2' ).text( "<img src=\"" + "\">" );
-        $( '#code3' ).text( "<a href=\"" + "\" target=\"_blank\"><img src=\"" + "\"></a>" );
-        $( '#code4' ).text( "[img]" + "[/img]" );
-        $( '#code5' ).text( "[url=" + "][img]" + "[/img][/url]" );
-        $( '#code6' ).text( "http://mixim.ru/pic" + "" );
     });
     $( "#code_window_close" ).on( "click", function(){
         $( ".code_window" ).hide();
+    });
+    $( ".code_window_content" ).on( "click", "input", function(){
+        $(this).select();
     });
 });
 </script>
@@ -19,38 +15,26 @@ $(document).ready(function(){
 {% load i18n %}
 <div id="photo_window" style="display:none">
     <div class="code_window">
-        <div class="code_window_bkg opa75"></div>
-        <div class="code_window_content">
+        <div class="code_window_bkg opa75">
+            <div class="code_window_info">
+                {% trans 'Select the row with the code by mouse click and press &#34;ctrl + c&#34; to copy' %}
+            </div>
             <img id="code_window_close" class="finger" src="../images/photo_close.png" width="19" height="19" border="0" title="{% trans 'Close window' %}" alt="{% trans 'Close window' %}">
-            <span>Ссылка на изображение</span>
-            <div class="code_window_content_box">
-                <div id="code1" class="code_window_content_code"></div>
-                <a class="finger">Скопировать...</a>
-            </div>
-            <span>HTML: изображние в тексте</span>
-            <div class="code_window_content_box">
-                <div id="code2" class="code_window_content_code"></div>
-                <a class="finger">Скопировать...</a>
-            </div>
-            <span>HTML: превью - увеличение по клику</span>
-            <div class="code_window_content_box">
-                <div id="code3" class="code_window_content_code"></div>
-                <a class="finger">Скопировать...</a>
-            </div>
-            <span>BBCode, строчные буквы: изображение в тексте</span>
-            <div class="code_window_content_box">
-                <div id="code4" class="code_window_content_code"></div>
-                <a class="finger">Скопировать...</a>
-            </div>
-            <span>BBCode, строчные буквы: превью - увеличение по клику</span>
-            <div class="code_window_content_box">
-                <div id="code5" class="code_window_content_code"></div>
-                <a class="finger">Скопировать...</a>
-            </div>
-            <span>Ссылка на страницу просмотра этого изображения и комментариев</span>
-            <div class="code_window_content_box">
-                <div id="code6" class="code_window_content_code"></div>
-                <a class="finger">Скопировать...</a>
+        </div>
+        <div class="code_window_content">
+            <div class="opa75">
+                <span>{% trans 'Link to image' %}</span>
+                <input id="code1" class="finger" readonly value="">
+                <span>{% trans 'HTML: The image in a text' %}</span>
+                <input id="code2" class="finger" readonly value="http">
+                <span>{% trans 'HTML: thumb - increase by clicking' %}</span>
+                <input id="code3" class="finger" readonly value="http">
+                <span>{% trans 'BBCode, lowercase letters: the image in a text' %}</span>
+                <input id="code4" class="finger" readonly value="http">
+                <span>{% trans 'BBCode, lowercase letters: thumb - increase by clicking' %}</span>
+                <input id="code5" class="finger" readonly value="http">
+                <span>{% trans 'Direct link to view this page images and comments' %}</span>
+                <input id="code6" class="finger" readonly value="http">
             </div>
         </div>
     </div>
