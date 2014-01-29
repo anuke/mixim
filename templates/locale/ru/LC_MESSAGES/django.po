@@ -832,8 +832,8 @@ msgstr "Пользователь еще не разместил фотограф
 msgid "Share It:"
 msgstr "Поделиться:"
 
-msgid "Select the row with the code by mouse click and press "ctrl + c" to copy"
-msgstr "Выделите нужную строку с кодом кликом мыши и нажмите "ctrl + c" для копирования"
+msgid "Select the row with the code by mouse click and press &#34;ctrl + c&#34; to copy"
+msgstr "Выделите нужную строку с кодом кликом мыши и нажмите &#34;ctrl + c&#34; для копирования"
 
 msgid "Link to image"
 msgstr "Ссылка на изображение"
