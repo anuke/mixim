@@ -78,13 +78,13 @@ function show_photo(picId) {
                     $('#code1').html(photo.original.replace('original', 'resized/598x598'))
                     $('#code2').text('<img src="' + photo.original.replace('original', 'resized/598x598') + '"/>')
                     $('#code3').text('<a href="' + photo.original + '"><img src="' + photo.thumbnail '"/></a>')
-                    $('#code4').text('[IMG]' + photo.original + '[/IMG]')              
+                    $('#code4').text('[IMG]' + photo.original + '[/IMG]')
                     $('#code5').text('[URL=' + photo.original + '][IMG]' + photo.thumbnail + '[/IMG][/URL]')
-                    $('#code6').text('http://mixim.ru/pic' + photo.id )
+                    $('#code6').text('http://' + window.location.hostname + '/pic' + photo.id )
 
                     // Share section
 
-                    var shareLink = 'http://mixim.ru/pic' + photo.id;
+                    var shareLink = 'http://' + window.location.hostname + '/pic' + photo.id;
                     var shareTitle = photo.pet || "";
                     var sharePicture = photo.thumbnail;
                     var shareDescription = photo.description;

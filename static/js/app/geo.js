@@ -1,8 +1,8 @@
 $(document).ready(function(){
     $('a.sitemap_block_on').click(function() {
-        $('.sitemap_block').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу 
+        $('.sitemap_block').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу
         $('#overlay').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу
-                    
+
         $('body').css('overflow-y', 'hidden'); // убираем скрол
         $('#overlay').show(); // заеняем
         $('.sitemap_block').show(); // показываем окно
@@ -12,7 +12,7 @@ $(document).ready(function(){
         $('body').css('overflow-y', 'auto'); // возвращаем скрол
         $('#overlay').hide(); // освеляем
         $('.sitemap_block').hide(); // скрываем окно
-        
+
         $('#overlay').css('top', '0'); // обнуляем верхнюю точку
     });
 });
@@ -47,4 +47,4 @@ function show_map_ru() {
 function show_map_ua() {
     document.getElementById('country').innerHTML = "<a href='http://www.mixim.ru' target='_self'>www.mixim.ru</a>";
     document.getElementById('country').style.backgroundImage="url(../images/flag-map_ua.png)";
-};            
+};
