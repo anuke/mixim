@@ -104,6 +104,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'server.middleware.HostnameMiddleware',
+    'server.middleware.RequestMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 #    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
