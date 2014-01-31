@@ -10,6 +10,7 @@ from django.db.models.signals import post_save
 from choices import GENDERS, STATUSES
 from serializers import to_plain_data
 from media import media_upload_path, avatar_upload_path, prepare_thumbnail, thumbnail_url
+from utils import normalize_url
 
 
 class UserProfile(models.Model):
@@ -63,12 +64,14 @@ class UserProfile(models.Model):
 
     def get_avatarurl(self):
         if self.avatar:
-            return self.avatar.url
-        if self.gender == 'M':
-            return '/images/user_male.png'
-        if self.gender == 'F':
-            return '/images/user_female.png'
-        return '/images/user_unisex.png'
+            url = self.avatar.url
+        elif self.gender == 'M':
+            url = '/images/user_male.png'
+        elif self.gender == 'F':
+            url = '/images/user_female.png'
+        else:
+            url = '/images/user_unisex.png'
+        return normalize_url(url)
 
     avatarurl = property(get_avatarurl)
 
@@ -244,8 +247,8 @@ class MediaFile(models.Model):
     enabled_objects = EnabledMediaFileManager()
 
     owner     = property(lambda self: self.author)
-    original  = property(lambda self: self.file.url)
-    thumbnail = property(lambda self: thumbnail_url(self.file.url))
+    original  = property(lambda self: normalize_url(self.file.url))
+    thumbnail = property(lambda self: thumbnail_url(self.original))
     likes     = property(lambda self: self.like_set.count())
     comments  = property(lambda self: self.comment_set.filter(deleted=False))
 
