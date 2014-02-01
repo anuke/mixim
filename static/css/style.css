@@ -1306,7 +1306,7 @@ form {
 .code_window {
     display:none;
     position:absolute;
-    margin:220px 0 0 40px;
+    margin:230px 0 0 40px;
     z-index:2;
 }
 .code_window_bkg,
@@ -1315,7 +1315,7 @@ form {
 }
 .code_window_bkg {    
     width:818px;
-    height:328px;
+    height:324px;
     border:1px solid #f24f00;
     background-color:#ffffff;
     border-radius:9px;
@@ -1346,26 +1346,31 @@ form {
     height:290px;
     font-family:Verdana,Arial,Helvetica,sans-serif;
     font-size:10px;
-    margin:20px;
-    z-index:3;
+    margin:22px 20px 20px 20px;
 }
 .code_window_content span {
+    border:1px solid #999999;
+    border-bottom:none;
+    position:relative;
     background-color:#cccccc;
     font-weight:bold;
     padding-left:4px;
     padding-right:4px;
-    padding-top:2px;
+    padding-top:1px;
     border-radius:4px 4px 0 0;
   	-moz-border-radius:4px 4px 0 0;
 	-webkit-border-radius:4px 4px 0 0;
+    z-index:1;
 }
 .code_window_content input{
-    border:0;
-    width:772px;
+    border:1px solid #999999;
+    position:relative;
+    width:770px;
     font: 10px/20px Verdana,Arial,Helvetica,sans-serif;
     background-color: #cccccc;
-    height: 20px;
+    height: 18px;
     margin-bottom: 10px;
+    margin-top:-1px;
     padding: 4px;    
     border-radius:0 4px 4px 4px;
   	-moz-border-radius:0 4px 4px 4px;
@@ -1466,42 +1471,17 @@ form {
 	text-align:center;
 	color:#f24f00;
 }
-/*.send_message_speech {
-	height:19px;
-	background-image:url(/images/send_message_speech.gif);
-	background-repeat:no-repeat;
-	background-position:0px top;
-}
-.send_message_speech_login {
-	background-position:-205px top;
-}
-.send_message_speech_registration {
-	background-position:-85px top;
-}
-.message_login_button ,
-.message_reg_button {
-	background-color:#ffffcc;
-	border:1px solid #f24f00;
-	color:#f24f00;
-}
-.message_login_button {
-	width:97px;
-	margin-right:6px;
-	-moz-border-radius:0px 0px 0px 5px;
-	-webkit-border-radius:0px 0px 0px 5px;
-	border-radius:0px 0px 0px 5px;
-}
-.message_reg_button {
-	width:147px;
-	-moz-border-radius:0px 0px 5px 0px;
-	-webkit-border-radius:0px 0px 5px 0px;
-	border-radius:0px 0px 5px 0px;
-}*/
+
 
 /*-- media.html / properties.html --*/
+#image_container {
+    width:100%;
+}
 #image_container td {
-	width:108px;
-	height:83px;
+    text-align:center;
+}
+#image_container a {
+    display:inline-block;
 	text-align:center;
 	vertical-align:middle;
 	border:1px solid #f24f00;
@@ -1511,10 +1491,6 @@ form {
 	border-radius:3px;
 }
 #image_container a:hover {
-    display:block;
-	background-color:#f24f00;
-}
-#image_container td:hover {
 	background-color:#f24f00;
 }
 #image_container img {

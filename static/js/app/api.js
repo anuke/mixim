@@ -75,11 +75,11 @@ function show_photo(picId) {
                         $('#photo_add_friend').attr('title', trans('Unfollow')).find('img').attr('src', '../images/favorite_person_remove.png')
                     }
 
-                    $('#code1').attr( "value", 'http://' + window.location.hostname + photo.original.replace('original', 'resized/598x598'));
-                    $('#code2').attr( "value", '<img src="http://' + window.location.hostname + photo.original.replace('original', 'resized/598x598') + '"/>');
-                    $('#code3').attr( "value", '<a href="http://' + window.location.hostname + photo.original + '"><img src="http://' + window.location.hostname + photo.thumbnail + '"/></a>');
-                    $('#code4').attr( "value", '[img]http://' + window.location.hostname + photo.original + '[/img]');
-                    $('#code5').attr( "value", '[url=http://' + window.location.hostname + photo.original + '][img]http://' + window.location.hostname + photo.thumbnail + '[/img][/url]');
+                    $('#code1').attr( "value", photo.original.replace('original', 'resized/598x598'));
+                    $('#code2').attr( "value", '<img src="' + photo.original.replace('original', 'resized/598x598') + '">');
+                    $('#code3').attr( "value", '<a href="' + photo.original + '" target="_blank"><img src="' + photo.thumbnail + '"/></a>');
+                    $('#code4').attr( "value", '[img]' + photo.original + '[/img]');
+                    $('#code5').attr( "value", '[url=' + photo.original + '][img]' + photo.thumbnail + '[/img][/url]');
                     $('#code6').attr( "value", 'http://' + window.location.hostname + '/pic' + photo.id );
  
 
