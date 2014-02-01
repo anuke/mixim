@@ -1,0 +1,53 @@
+#mixim_photo table{
+    width:100%;
+}
+#mixim_np,
+#mixim_pp {
+    width:44px;
+}
+#mixim_np a,
+#mixim_pp a {
+    display:block;
+    width:22px;
+    height:22px;
+    margin:0 10px;
+    text-align:center;
+    font:bold 18px/20px cursive;
+    color:#f24f00;
+    background-color:#ffffcc;
+    text-decoration:none;
+    border:1px solid #f24f00;
+    -moz-border-radius:12px;
+    -webkit-border-radius:12px;
+    border-radius:12px;
+}
+#mixim_np a:hover,
+#mixim_pp a:hover {
+    background-color:#f24f00;
+    color:#ffffcc;
+}
+#image_container {
+    width:100%;
+}
+#image_container td {
+    text-align:center;
+}
+#image_container a {
+    display:inline-block;
+    text-align:center;
+    vertical-align:middle;
+    border:1px solid #f24f00;
+    background-color:#ffffcc;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+}
+#image_container a:hover {
+    background-color:#f24f00;
+}
+#image_container img {
+    width:100px;
+    height:75px;
+    border:0;
+    margin:4px;
+}
