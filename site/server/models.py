@@ -15,16 +15,16 @@ from utils import normalize_url
 
 class UserProfile(models.Model):
     user     = models.OneToOneField(User, related_name='profile')
-    country  = models.CharField(name=_("Country"), max_length=50, blank=True, null=True)
-    city     = models.CharField(name=_("City"), max_length=50, blank=True, null=True)
-    gender   = models.CharField(name=_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
-    birthday = models.DateField(name=_("Birthday"), blank=True, null=True)
-    status   = models.CharField(name=_("Status"), max_length=50, choices=STATUSES, default='unverified')
-    about    = models.TextField(name=_("About"), blank=True, null=True)
-    avatar   = models.FileField(name=_("Avatar"), upload_to=avatar_upload_path, blank=True, null=True)
-    activation_key = models.CharField(name=_("Activation Key"), max_length=30, default='old-user')
-    password_reset = models.CharField(name=_("Reset password key"), max_length=32, blank=True, null=True)
-    filter_mycountry = models.BooleanField(name=_("Filter by my country"), default=True)
+    country  = models.CharField(_("Country"), max_length=50, blank=True, null=True)
+    city     = models.CharField(_("City"), max_length=50, blank=True, null=True)
+    gender   = models.CharField(_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
+    birthday = models.DateField(_("Birthday"), blank=True, null=True)
+    status   = models.CharField(_("Status"), max_length=50, choices=STATUSES, default='unverified')
+    about    = models.TextField(_("About"), blank=True, null=True)
+    avatar   = models.FileField(_("Avatar"), upload_to=avatar_upload_path, blank=True, null=True)
+    activation_key = models.CharField(_("Activation Key"), max_length=30, default='old-user')
+    password_reset = models.CharField(_("Reset password key"), max_length=32, blank=True, null=True)
+    filter_mycountry = models.BooleanField(_("Filter by my country"), default=True)
 
     def activate(self):
         self.status = 'verified'
@@ -92,15 +92,15 @@ class UserProfile(models.Model):
 
 class Pet(models.Model):
     owner    = models.ForeignKey(User, related_name='pets')
-    name     = models.CharField(name=_("Name"), max_length=50)
-    species  = models.CharField(name=_("Species"), max_length=50, blank=True, null=True)
-    breed    = models.CharField(name=_("Breed"), max_length=50, blank=True, null=True)
-    color    = models.CharField(name=_("Color"), max_length=50, blank=True, null=True)
-    birthday = models.DateField(name=_("Birthday"), blank=True, null=True)
-    gender   = models.CharField(name=_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
-    about    = models.TextField(name=_("About"), blank=True, null=True)
-    enabled  = models.BooleanField(name=_("Enabled"), default=True)
-    breed_index = models.CharField(name=_("Breed Index"), max_length=50, blank=True, null=True)
+    name     = models.CharField(_("Name"), max_length=50)
+    species  = models.CharField(_("Species"), max_length=50, blank=True, null=True)
+    breed    = models.CharField(_("Breed"), max_length=50, blank=True, null=True)
+    color    = models.CharField(_("Color"), max_length=50, blank=True, null=True)
+    birthday = models.DateField(_("Birthday"), blank=True, null=True)
+    gender   = models.CharField(_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
+    about    = models.TextField(_("About"), blank=True, null=True)
+    enabled  = models.BooleanField(_("Enabled"), default=True)
+    breed_index = models.CharField(_("Breed Index"), max_length=50, blank=True, null=True)
 
     def get_last_picture(self):
         files = self.media_files.order_by('-id')[0:1]
@@ -131,9 +131,9 @@ class Pet(models.Model):
 
 
 class Breed(models.Model):
-    name   = models.CharField(name=_("Name"), max_length=150)
-    fci_no = models.IntegerField(name=_("FCI Standard No"), blank=True, null=True)
-    species  = models.CharField(name=_("Species"), max_length=50, blank=True, null=True)
+    name   = models.CharField(_("Name"), max_length=150)
+    fci_no = models.IntegerField(_("FCI Standard No"), blank=True, null=True)
+    species  = models.CharField(_("Species"), max_length=50, blank=True, null=True)
 
     def __unicode__(self):
         return self.name
@@ -153,8 +153,8 @@ class MediaTagManager(models.Manager):
 
 
 class MediaTag(models.Model):
-    name   = models.CharField(name=_("Name"), max_length=50)
-    hidden = models.BooleanField(name=_("Hidden"), default=False)
+    name   = models.CharField(_("Name"), max_length=50)
+    hidden = models.BooleanField(_("Hidden"), default=False)
 
     objects = MediaTagManager()
 
@@ -236,12 +236,12 @@ class EnabledMediaFileManager(MediaFileManager):
 class MediaFile(models.Model):
     author      = models.ForeignKey(User)
     pet         = models.ForeignKey(Pet, null=True, blank=True, related_name='media_files')
-    species     = models.CharField(name=_("Species"), max_length=50, blank=True, null=True)
-    created     = models.DateTimeField(name=_("Created"), auto_now_add=True)
-    file        = models.FileField(name=_("File"), upload_to=media_upload_path)
-    description = models.TextField(name=_("Description"), null=True, blank=True)
+    species     = models.CharField(_("Species"), max_length=50, blank=True, null=True)
+    created     = models.DateTimeField(_("Created"), auto_now_add=True)
+    file        = models.FileField(_("File"), upload_to=media_upload_path)
+    description = models.TextField(_("Description"), null=True, blank=True)
     tags        = models.ManyToManyField(MediaTag, related_name='files+', null=True, blank=True)
-    enabled     = models.BooleanField(name=_("Enabled"), default=True)
+    enabled     = models.BooleanField(_("Enabled"), default=True)
 
     objects = MediaFileManager()
     enabled_objects = EnabledMediaFileManager()
@@ -301,9 +301,9 @@ class MediaFile(models.Model):
 class Comment(models.Model):
     author  = models.ForeignKey(User)
     media   = models.ForeignKey(MediaFile)
-    created = models.DateTimeField(name=_("Created"), auto_now_add=True)
-    text    = models.TextField(name=_("Text"))
-    deleted = models.BooleanField(name=_("Deleted"))
+    created = models.DateTimeField(_("Created"), auto_now_add=True)
+    text    = models.TextField(_("Text"))
+    deleted = models.BooleanField(_("Deleted"))
 
     def get_query_set(self):
         return super(Comment, self).get_query_set().filter(deleted=False)
@@ -325,7 +325,7 @@ class Comment(models.Model):
 class Like(models.Model):
     user    = models.ForeignKey(User)
     media   = models.ForeignKey(MediaFile)
-    created = models.DateTimeField(name=_("Created"), auto_now_add=True)
+    created = models.DateTimeField(_("Created"), auto_now_add=True)
 
     def plain_data(self):
         return to_plain_data(self, 'user:user.username', 'userAvatar:user.profile.avatarurl', 'created', 'media')
