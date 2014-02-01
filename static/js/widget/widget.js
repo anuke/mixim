@@ -69,9 +69,8 @@ function mixim_widget_load(params) {
 
                     if (i < len) {
                         var image = images[i];
-                        function open_image(id) { return function() { show_photo(id); }}
                         var img = $('<img>').attr('src', image.thumbnail).attr('title', image.description);
-                        var a = $('<a></a>').attr('class', 'finger').attr('id', 'media-' + image.id).click(open_image(image.id));
+                        var a = $('<a></a>').attr('class', 'finger').attr('id', 'media-' + image.id).attr('target', 'blank').attr('href', 'http://mixim.ru/pic' + image.id);
                         a.append(img);
                         td.append(a);
                     }
