@@ -83,7 +83,7 @@ function mixim_widget_load() {
                         td.append(a);
                     }
                     else {
-                        var img = $('<img>').attr('src', "/images/absent.png").attr('title', 'No photo');
+                        var img = $('<img>').attr('src', "http://mixim.ru/images/absent.png").attr('title', 'No photo');
                         td.attr('align', 'center').attr('valign', 'middle').append(img);
                     }
                     tr.append(td);
