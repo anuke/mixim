@@ -11,14 +11,6 @@ if (typeof MIXIM_WIDGET_ROWS == 'undefined') {
 
 var mixim_widget_page_no = 1;
 
-if (typeof(widget_auto_load) === "undefined") {
-    var widget_auto_load = true;
-}
-
-if (typeof(widget_last_params) === "undefined") {
-    var widget_last_params = true;
-}
-
 function mixim_prevPage() {
     if (mixim_widget_page_no <= 1) return;
     mixim_widget_page_no--;
@@ -34,8 +26,6 @@ function mixim_widget_load(params) {
     var limit = MIXIM_WIDGET_COLS * MIXIM_WIDGET_ROWS;
     var start = (mixim_widget_page_no - 1) * limit;
 
-    if (!params) params = widget_last_params;
-    widget_last_params = params;
     var timestamp = new Date().getTime();
     jQuery.get("http://mixim.ru/jsonp/media/list/" + start + "/" + limit + "/?_=" + timestamp, params,
         function (data) {
@@ -96,8 +86,6 @@ function mixim_widget_refresh() {
 }
 
 jQuery(document).ready(function() {
-    if (widget_auto_load) {
-        mixim_widget_load();
-    }
+    mixim_widget_load();
     setInterval(mixim_widget_refresh, 20000);
 });
