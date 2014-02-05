@@ -30,13 +30,13 @@ function mixim_widget_load() {
 
     if (typeof MIXIM_SPECIES != 'undefined') {
         if (MIXIM_SPECIES) {
-            params = { species: MIXIM_SPECIES };
+            params.species = MIXIM_SPECIES;
         }
     }
 
     if (typeof MIXIM_TAGS != 'undefined') {
         if (MIXIM_TAGS) {
-            params = { tags: MIXIM_TAGS };
+            params.tags = MIXIM_TAGS;
         }
     }
 
