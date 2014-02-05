@@ -1,8 +1,12 @@
-if (typeof IMG_PER_ROW == 'undefined') {
-    var IMG_PER_ROW = 7;
+if (typeof MIXIM_WIDGET_COLS == 'undefined') {
+    var MIXIM_WIDGET_COLS = 7;
 }
-if (typeof IMG_PER_COL == 'undefined') {
-    var IMG_PER_COL = 1;
+if (typeof MIXIM_WIDGET_ROWS == 'undefined') {
+    var MIXIM_WIDGET_ROWS = 1;
+}
+
+if (typeof MIXIM_WIDGET_ROWS == 'undefined') {
+    var MIXIM_WIDGET_ROWS = 1;
 }
 
 var mixim_widget_page_no = 1;
@@ -27,7 +31,7 @@ function mixim_nextPage() {
 }
 
 function mixim_widget_load(params) {
-    var limit = IMG_PER_ROW * IMG_PER_COL;
+    var limit = MIXIM_WIDGET_COLS * MIXIM_WIDGET_ROWS;
     var start = (mixim_widget_page_no - 1) * limit;
 
     if (!params) params = widget_last_params;
@@ -60,11 +64,11 @@ function mixim_widget_load(params) {
 
             $('#image_container').empty();
 
-            for (var row = 0; row < IMG_PER_COL; row++) {
+            for (var row = 0; row < MIXIM_WIDGET_ROWS; row++) {
                 var tr = $('<tr></tr>');
 
-                for (var col = 0; col < IMG_PER_ROW; col++) {
-                    var i = row*IMG_PER_ROW + col;
+                for (var col = 0; col < MIXIM_WIDGET_COLS; col++) {
+                    var i = row*MIXIM_WIDGET_COLS + col;
                     var td = $('<td></td>');
 
                     if (i < len) {
