@@ -40,6 +40,12 @@ function mixim_widget_load() {
         }
     }
 
+    if (typeof MIXIM_AUTHORS != 'undefined') {
+        if (MIXIM_AUTHORS) {
+            params.authors = MIXIM_AUTHORS;
+        }
+    }
+
     var timestamp = new Date().getTime();
     jQuery.get("http://mixim.ru/jsonp/media/list/" + start + "/" + limit + "/?_=" + timestamp, params,
         function (data) {
