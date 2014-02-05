@@ -22,9 +22,23 @@ function mixim_nextPage() {
     mixim_widget_load();
 }
 
-function mixim_widget_load(params) {
+function mixim_widget_load() {
     var limit = MIXIM_WIDGET_COLS * MIXIM_WIDGET_ROWS;
     var start = (mixim_widget_page_no - 1) * limit;
+
+    var params = {}
+
+    if (typeof MIXIM_SPECIES != 'undefined') {
+        if (MIXIM_SPECIES) {
+            params = { species: MIXIM_SPECIES };
+        }
+    }
+
+    if (typeof MIXIM_TAGS != 'undefined') {
+        if (MIXIM_TAGS) {
+            params = { tags: MIXIM_TAGS };
+        }
+    }
 
     var timestamp = new Date().getTime();
     jQuery.get("http://mixim.ru/jsonp/media/list/" + start + "/" + limit + "/?_=" + timestamp, params,
