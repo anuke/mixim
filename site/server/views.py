@@ -393,7 +393,7 @@ def comment_list(request, media):
 @require_method("GET")
 @require_auth
 def discussions(request):
-    Paginator(MediaFile.objects.filter(comment__author=request.user).annotate(latest=Max('comment__created')).order_by('-latest'), settings.DISCUSSION_PER_PAGE)
+    paginator = Paginator(MediaFile.objects.filter(comment__author=request.user).annotate(latest=Max('comment__created')).order_by('-latest'), settings.DISCUSSION_PER_PAGE)
     page = request.GET.get('page', 1)
 
     try:
