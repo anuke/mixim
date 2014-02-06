@@ -32,7 +32,7 @@ window.onload = function () {
         '        <tr>\n' +
         '            <td id="mixim_pp"><a href="javascript:mixim_prevPage()" title="&#60; Туда">&#60;</a></td>\n' +
         '            <td>\n' +
-        '                <table cellpadding="0" cellspacing="6" id="image_container"></table>\n' +
+        '                <table cellpadding="0" cellspacing="6" id="mixim_image_container"></table>\n' +
         '            </td>\n' +
         '            <td id="mixim_np"><a href="javascript:mixim_nextPage()" title="Сюда &#62;">&#62;</a></td>\n' +
         '        </tr>\n' +
