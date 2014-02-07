@@ -9,6 +9,7 @@ from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Max
 from django.core.exceptions import ObjectDoesNotExist
+from django.views.defaults import page_not_found
 
 from decorators import *
 from errors import *
@@ -531,8 +532,7 @@ def show_static_page(request, page_name = 'index'):
     return render_to_response('static/' + page_name + '.html', context_instance=RequestContext(request))
 
 def handle404(request):
-    request._req.add_common_vars()
-    url = request._req.subprocess_env['REDIRECT_URL']
+    url = request.META['REQUEST_URI']
 
     if  url.startswith('/media/resized/'):
         splitted = url.split("/")
@@ -549,7 +549,7 @@ def handle404(request):
 
         return redirect(settings.TEMP_MEDIA_URL + '/'.join(splitted[2:]))
     else:
-        raise Http404
+        page_not_found(request)
 
 def show_user_page(request, username):
     user = User.objects.get(username=username)

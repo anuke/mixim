@@ -4,6 +4,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+handler404 = 'server.views.handle404'
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'idrop.views.home', name='home'),
