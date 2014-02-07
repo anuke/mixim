@@ -303,7 +303,7 @@ class Comment(models.Model):
     media   = models.ForeignKey(MediaFile)
     created = models.DateTimeField(_("Created"), auto_now_add=True)
     text    = models.TextField(_("Text"))
-    deleted = models.BooleanField(_("Deleted"))
+    deleted = models.BooleanField(_("Deleted"), default=False)
 
     def get_query_set(self):
         return super(Comment, self).get_query_set().filter(deleted=False)
