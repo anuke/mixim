@@ -219,18 +219,18 @@ class MediaFileQuerySet(QuerySet):
 
 
 class MediaFileManager(models.Manager):
-    def get_query_set(self):
+    def get_queryset(self):
         return MediaFileQuerySet(self.model)
 
     def __getattr__(self, name, *args):
         if name.startswith("_"):
             raise AttributeError(name)
 
-        return getattr(self.get_query_set(), name)
+        return getattr(self.get_queryset(), name)
 
 
 class EnabledMediaFileManager(MediaFileManager):
-    def get_query_set(self):
+    def get_queryset(self):
         return MediaFileQuerySet(self.model).filter(enabled=True).exclude(pet__enabled=False)
 
 class MediaFile(models.Model):
@@ -305,8 +305,8 @@ class Comment(models.Model):
     text    = models.TextField(_("Text"))
     deleted = models.BooleanField(_("Deleted"), default=False)
 
-    def get_query_set(self):
-        return super(Comment, self).get_query_set().filter(deleted=False)
+    def get_queryset(self):
+        return super(Comment, self).get_queryset().filter(deleted=False)
 
     def plain_data(self):
         return to_plain_data(self,
