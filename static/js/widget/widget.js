@@ -47,7 +47,7 @@ function mixim_widget_load() {
     }
 
     var timestamp = new Date().getTime();
-    jQuery.get("http://mixim.ru/jsonp/media/list/" + start + "/" + limit + "/?_=" + timestamp, params,
+    jQuery.get("http://" + mixim_domain + "/jsonp/media/list/" + start + "/" + limit + "/?_=" + timestamp, params,
         function (data) {
             if (!data.success) {
                 alert(data.error.message);
@@ -84,12 +84,12 @@ function mixim_widget_load() {
                     if (i < len) {
                         var image = images[i];
                         var img = $('<img>').attr('src', image.thumbnail).attr('title', image.description);
-                        var a = $('<a></a>').attr('class', 'finger').attr('id', 'media-' + image.id).attr('target', 'blank').attr('href', 'http://mixim.ru/pic' + image.id);
+                        var a = $('<a></a>').attr('class', 'finger').attr('id', 'media-' + image.id).attr('target', 'blank').attr('href', 'http://' + mixim_domain + '/pic' + image.id);
                         a.append(img);
                         td.append(a);
                     }
                     else {
-                        var img = $('<img>').attr('src', "http://mixim.ru/images/absent.png").attr('title', 'No photo');
+                        var img = $('<img>').attr('src', "http://" + mixim_domain + "/images/absent.png").attr('title', 'No photo');
                         td.attr('align', 'center').attr('valign', 'middle').append(img);
                     }
                     tr.append(td);

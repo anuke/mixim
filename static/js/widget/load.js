@@ -16,13 +16,22 @@ function mixim_load_css(src) {
 }
 
 var mixim_old_onload = window.onload;
+var mixim_domain = (function() {
+    var scripts = document.getElementsByTagName('script');
+    var index = scripts.length - 1;
+    var my_src = scripts[index].src;
+    var a = document.createElement('a');
+    a.href = my_src;
+    return a.hostname;
+})()
+
 window.onload = function () {
     if (mixim_old_onload) mixim_old_onload();
-    mixim_load_css('http://mixim.ru/css/widget.css');
+    mixim_load_css('http://' + mixim_domain + '/css/widget.css');
     if (typeof jQuery == 'undefined') {
-        mixim_load_js("http://mixim.ru/js/jquery-1.8.3.min.js");
+        mixim_load_js('http://' + mixim_domain + '/js/jquery-1.8.3.min.js');
     }
-    setTimeout('mixim_load_js("http://mixim.ru/js/widget/widget.js")', 1);
+    setTimeout('mixim_load_js("http://' + mixim_domain + '/js/widget/widget.js")', 1);
 }
 
 {
