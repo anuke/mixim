@@ -666,15 +666,21 @@ function last_comments(type, page) {
                     });
                     pager =
                     '<div class="pagination">'+
-                    '   <div class="step-links">';
+                    '<div class="step-links">';
                     if ( page > 1 ) {
-                      pager += '       <a id="user_comments_previous" class="discussion_previous_page pagination_left_page" href="#">« Туда</a>';
+                      pager += '<a id="user_comments_previous" class="discussion_previous_page pagination_left_page" href="#">« Туда</a>';
+                    }
+                    else {
+                        pager += '<a style="padding:3px 5px 4px" class="pagination_left_page_off">';
                     }
                     pager += '       <a class="pagination_current_page">Страница ' + page + ' из ' + Math.ceil(data.result.total / per_page)+ '</a>';
                     if (page * per_page < data.result.total) {
-                      pager += '       <a id="user_comments_next" class="discussion_next_page pagination_right_page" href="#">Сюда »</a>';
+                      pager += '<a id="user_comments_next" class="discussion_next_page pagination_right_page" href="#">Сюда »</a>';
                     }
-                    pager += '   </div>'+
+                    else {
+                        pager += '<a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>';
+                    }
+                    pager += '</div>'+
                     '</div>';
                     $('#cabinet_news > #last_comments_id').html(html);
                     $('#user_comments_previous').bind('click', function(){last_comments(type, page-1)})
