@@ -425,6 +425,28 @@ def comment_last(request, type='outbox'):
 
 
 @serialize
+@require_auth
+@require_method("GET")
+def user_comments(request, type='outbox'):
+    query = None
+
+    try:
+        page = int(request.GET.get('page', 1))
+    except:
+        page = 1
+
+    if type == 'inbox':
+        query = Comment.objects.filter(media__author=request.user).exclude(author=request.user)
+    elif type == 'outbox':
+        query = Comment.objects.filter(author=request.user)
+    else:
+        return False
+
+    total = query.filter(deleted=False).count()
+    return {'total':total, 'items':query.filter(deleted=False).order_by('-created')[(page-1)*settings.COMMENTS_PER_PAGE:page*settings.COMMENTS_PER_PAGE]}
+
+
+@serialize
 def comment_all_last(request, type='outbox'):
     species = current_species(request)
     return Comment.objects.filter(deleted=False, media__species=species).order_by('-created')[:10]

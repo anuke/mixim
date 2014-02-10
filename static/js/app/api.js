@@ -81,7 +81,7 @@ function show_photo(picId) {
                     $('#code4').attr( "value", '[img]' + photo.original + '[/img]');
                     $('#code5').attr( "value", '[url=' + photo.original + '][img]' + photo.thumbnail + '[/img][/url]');
                     $('#code6').attr( "value", 'http://' + window.location.hostname + '/pic' + photo.id );
- 
+
 
 
                     // Share section
@@ -627,11 +627,11 @@ function last_comments(type) {
     if (type == undefined) {
         type = "inbox";
     }
-    $.getJSON("/json/comment/last/" + type + "/", {},
+    $.getJSON("/json/user/comments/" + type + "/", {},
             function (data) {
                 if (data.success) {
                     var html = "";
-                    $.each(data.result, function (idx, el) {
+                    $.each(data.result.items, function (idx, el) {
                         html +=
                         '<table align="left" style="margin-top:10px;" border="0" cellspacing="0" cellpadding="0"><!-- входящие -->' +
                         '    <tr>' +
