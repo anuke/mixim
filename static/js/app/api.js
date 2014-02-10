@@ -623,11 +623,15 @@ function delete_comment(comment_id) {
             "json")
 }
 
-function last_comments(type) {
+function last_comments(type, page) {
     if (type == undefined) {
         type = "inbox";
     }
-    $.getJSON("/json/user/comments/" + type + "/", {},
+    if (page == undefined) {
+        page = 1
+    }
+    per_page = 10
+    $.getJSON("/json/user/comments/" + type + "/?page="+page + '&per_page=' + per_page , {},
             function (data) {
                 if (data.success) {
                     var html = "";
@@ -660,9 +664,23 @@ function last_comments(type) {
                         '    </tr>' +
                         '</table>';
                     });
+                    pager =
+                    '<div class="pagination">'+
+                    '   <div class="step-links">';
+                    if ( page > 1 ) {
+                      pager += '       <a id="user_comments_previous" class="discussion_previous_page pagination_left_page" href="#">« Туда</a>';
+                    }
+                    pager += '       <a class="pagination_current_page">Страница ' + page + ' из ' + Math.ceil(data.result.total / per_page)+ '</a>';
+                    if (page * per_page < data.result.total) {
+                      pager += '       <a id="user_comments_next" class="discussion_next_page pagination_right_page" href="#">Сюда »</a>';
+                    }
+                    pager += '   </div>'+
+                    '</div>';
                     $('#cabinet_news > #last_comments_id').html(html);
+                    $('#user_comments_previous').bind('click', function(){last_comments(type, page-1)})
+                    $('#user_comments_next').bind('click', function(){last_comments(type, page+1)})
                     $('a[id*=last_photo]').click(function() {show_photo($(this).attr("id").replace("last_photo_", ""))})
-                        $('.message_delete_button').bind('click', function(event) {confirm_delete_comment(event)});
+                    $('.message_delete_button').bind('click', function(event) {confirm_delete_comment(event)});
                 }
             },
             "json")
