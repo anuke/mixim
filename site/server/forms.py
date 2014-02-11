@@ -2,7 +2,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
-from models import UserProfile, Pet, MediaFile, MediaTag
+from models import UserProfile, Pet, MediaFile
 from choices import GENDERS
 from utils import send_mail_to_user, find_geo_by_ip
 
@@ -18,7 +18,7 @@ class RegistrationForm(forms.ModelForm):
     country  = forms.CharField(label=_("Country"), max_length=50, required=False)
     city     = forms.CharField(label=_("City"), max_length=50, required=False)
     gender   = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
-    birthday = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
+    birthday = forms.DateField(label=_("Birthday"), required=False, input_formats=['%d/%m/%Y'])
 
     def __init__(self, request):
         super(RegistrationForm, self).__init__(request.POST)
@@ -26,7 +26,7 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("username","email",)
+        fields = ("username", "email",)
 
     def clean_username(self):
         username = self.cleaned_data["username"]
@@ -69,7 +69,7 @@ class RegistrationForm(forms.ModelForm):
             profile.save()
 
             activation_url = settings.ACTIVATION_URL % (self.request.hostname, profile.activation_key)
-            send_mail_to_user(self.request, user, 'activation_code', { 'activation_url': activation_url })
+            send_mail_to_user(self.request, user, 'activation_code', {'activation_url': activation_url})
 
         return user
 
@@ -80,7 +80,7 @@ class ProfileForm(forms.ModelForm):
     country    = forms.CharField(label=_("Country"), max_length=50, required=False)
     city       = forms.CharField(label=_("City"), max_length=50, required=False)
     gender     = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
-    birthday   = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
+    birthday   = forms.DateField(label=_("Birthday"), required=False, input_formats=['%d/%m/%Y'])
     about      = forms.CharField(label=_("About"), widget=forms.Textarea, required=False)
 
     class Meta:
@@ -117,7 +117,7 @@ class ProfileForm(forms.ModelForm):
 
 
 class PetForm(forms.ModelForm):
-    birthday = forms.DateField(label=_("Birthday"), required=False, input_formats = ['%d/%m/%Y'])
+    birthday = forms.DateField(label=_("Birthday"), required=False, input_formats=['%d/%m/%Y'])
 
     class Meta:
         model = Pet

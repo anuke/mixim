@@ -47,16 +47,16 @@ def to_plain_data(data, *props):
         else:
             (key, value) = (splitted[0], splitted[1])
 
-        return (key, get_prop(data, value))
+        return key, get_prop(data, value)
 
     return dict([go(prop) for prop in props])
 
 
 class JsonSerializer:
     def __dump(self, data):
-        return HttpResponse(json.dumps(data), 'text/html') # 'application/json'
+        return HttpResponse(json.dumps(data), 'text/html')  # 'application/json'
 
-    def serializeData(self, data, request):
+    def serialize_data(self, data, request):
         dumped = None
         if data is not None:
             dumped = to_plain(data)
@@ -66,7 +66,7 @@ class JsonSerializer:
             "result": dumped,
         })
 
-    def serializeException(self, exc, request):
+    def serialize_exception(self, exc, request):
         return self.__dump({
             "success": False,
             "error": {
@@ -88,7 +88,7 @@ class JsonpSerializer:
 
         return HttpResponse("%s(%s)" % (callback, json.dumps(data)), 'text/javascript')
 
-    def serializeData(self, data, request):
+    def serialize_data(self, data, request):
         dumped = None
         if data is not None:
             dumped = to_plain(data)
@@ -98,7 +98,7 @@ class JsonpSerializer:
             "result": dumped,
         }, request)
 
-    def serializeException(self, exc, request):
+    def serialize_exception(self, exc, request):
         return self.__dump({
             "success": False,
             "error": {
@@ -129,14 +129,14 @@ class XmlSerializer:
         ET.ElementTree(root).write(response)
         return response
 
-    def serializeData(self, data, request):
+    def serialize_data(self, data, request):
         root = ET.Element("result", {"success": "true"})
         if data is not None:
             self.__dump(root, to_plain(data))
 
         return self.__response(root)
 
-    def serializeException(self, exc, request):
+    def serialize_exception(self, exc, request):
         root = ET.Element("result", {"success": "false"})
         ET.SubElement(root, "error", {
             "code": str(exc.code),
@@ -154,5 +154,5 @@ __SERIALIZERS__ = {
 }
 
 
-def get_serializer(format):
-    return __SERIALIZERS__.get(format, None)
+def get_serializer(out_format):
+    return __SERIALIZERS__.get(out_format, None)

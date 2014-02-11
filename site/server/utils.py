@@ -7,7 +7,8 @@ from django.template.loader import render_to_string
 
 from middleware import get_current_request
 
-def send_mail_to_user(request, user, template, context = None):
+
+def send_mail_to_user(request, user, template, context=None):
     if not context:
         context = {}
 

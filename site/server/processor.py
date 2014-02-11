@@ -1,2 +1,2 @@
 def hostname(request):
-    return { 'hostname': request.hostname }
+    return {'hostname': request.hostname}

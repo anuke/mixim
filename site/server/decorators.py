@@ -3,15 +3,15 @@ from errors import *
 
 
 def serialize(f):
-    def wrapper(request, format, *args, **kwargs):
-        serializer = get_serializer(format)
+    def wrapper(request, out_format, *args, **kwargs):
+        serializer = get_serializer(out_format)
         if serializer is None:
-            raise ValueError("There is no such format: %s" % format)
+            raise ValueError("There is no such format: %s" % out_format)
         try:
             result = f(request, *args, **kwargs)
-            return serializer.serializeData(result, request)
+            return serializer.serialize_data(result, request)
         except ProtoException, ex:
-            return serializer.serializeException(ex, request)
+            return serializer.serialize_exception(ex, request)
 
     wrapper.__name__ = f.__name__
     return wrapper

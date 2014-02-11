@@ -1,6 +1,3 @@
-import random
-import string
-
 from django.db import models
 from django.db.models.query import QuerySet
 from django.contrib.auth.models import User
@@ -41,11 +38,11 @@ class UserProfile(models.Model):
     # friends region
 
     def add_friend(self, friend):
-        rel, created = Friendship.objects.get_or_create(user = self.user, friend = friend)
+        rel, created = Friendship.objects.get_or_create(user=self.user, friend=friend)
         return created
 
     def remove_friend(self, friend):
-        queryset = Friendship.objects.filter(user = self.user, friend = friend)
+        queryset = Friendship.objects.filter(user=self.user, friend=friend)
         exists = bool(queryset.count())
         if exists:
             queryset.delete()
@@ -120,7 +117,8 @@ class Pet(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'name', 'species', 'breed', 'color', 'birthday', 'gender', 'enabled', 'about', 'last_picture', 'breed_index')
+            'id', 'name', 'species', 'breed', 'color', 'birthday',
+            'gender', 'enabled', 'about', 'last_picture', 'breed_index')
 
     def __unicode__(self):
         return self.name
@@ -188,7 +186,7 @@ class MediaFileQuerySet(QuerySet):
         if author_id:
             return self.filter(author__id=int(author_id))
         else:
-            return self;
+            return self
 
     def with_pet(self, pet_id):
         if pet_id == "no":
@@ -196,19 +194,19 @@ class MediaFileQuerySet(QuerySet):
         elif pet_id:
             return self.filter(pet__id=int(pet_id))
         else:
-            return self;
+            return self
 
     def with_breed(self, breed):
         if breed:
             return self.filter(pet__breed__iexact=breed)
         else:
-            return self;
+            return self
 
     def with_gender(self, gender):
         if gender:
             return self.filter(pet__gender__iexact=gender)
         else:
-            return self;
+            return self
 
     def with_species(self, species):
         if species:
@@ -222,7 +220,7 @@ class MediaFileManager(models.Manager):
     def get_queryset(self):
         return MediaFileQuerySet(self.model)
 
-    def __getattr__(self, name, *args):
+    def __getattr__(self, name):
         if name.startswith("_"):
             raise AttributeError(name)
 
@@ -232,6 +230,7 @@ class MediaFileManager(models.Manager):
 class EnabledMediaFileManager(MediaFileManager):
     def get_queryset(self):
         return MediaFileQuerySet(self.model).filter(enabled=True).exclude(pet__enabled=False)
+
 
 class MediaFile(models.Model):
     author      = models.ForeignKey(User)
@@ -272,7 +271,7 @@ class MediaFile(models.Model):
         def save_tag(name):
             return MediaTag.objects.get_or_create(name=name.strip())
 
-        new_tags = set([tag for tag,_ in [save_tag(name) for name in tag_names if name.strip()]])
+        new_tags = set([tag for tag, _ in [save_tag(name) for name in tag_names if name.strip()]])
         old_tags = set(self.tags.all())
 
         add_tags = new_tags - old_tags
@@ -310,7 +309,7 @@ class Comment(models.Model):
 
     def plain_data(self):
         return to_plain_data(self,
-            'id', 'author:author.username','authorAvatar:author.profile.avatarurl',
+            'id', 'author:author.username', 'authorAvatar:author.profile.avatarurl',
             'created', 'text', 'thumbnail:media.thumbnail', 'mediaId:media.id')
 
     def __unicode__(self):
@@ -332,15 +331,16 @@ class Like(models.Model):
 
 
 class Friendship(models.Model):
-    user    = models.ForeignKey(User, related_name = 'follows')
-    friend  = models.ForeignKey(User, related_name = 'followed_by')
+    user    = models.ForeignKey(User, related_name='follows')
+    friend  = models.ForeignKey(User, related_name='followed_by')
 
 
 # Signal callbacks
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        activation_key = ''.join(random.choice(string.ascii_uppercase + string.digits) for n in range(30))
+        activation_key = User.objects.make_random_password(
+            length=30, allowed_chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789')
         UserProfile.objects.create(user=instance, activation_key=activation_key)
 
 

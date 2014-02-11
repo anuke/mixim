@@ -1,9 +1,5 @@
-import random
-import string
-
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
-from django.http import Http404
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -77,7 +73,7 @@ def auth_activate(request, activation_key):
 
         login(request, profile.user)
 
-        send_mail_to_user(request, profile.user, 'registration_done', { 'password': password })
+        send_mail_to_user(request, profile.user, 'registration_done', {'password': password})
 
         return render_to_response('auth/activation_done.html', context_instance=RequestContext(request))
     except UserProfile.DoesNotExist:
@@ -92,11 +88,11 @@ def auth_reset_password(request):
     user = User.objects.get(username=email)
     profile = UserProfile.objects.get(user=User.objects.get(username=email))
 
-    reset_password = ''.join(random.choice(string.letters + string.digits) for n in range(32))
+    reset_password = User.objects.make_random_password(length=32)
     profile.password_reset = reset_password
     profile.save()
 
-    send_mail_to_user(request, user, 'password_reset', { 'reset_key': reset_password })
+    send_mail_to_user(request, user, 'password_reset', {'reset_key': reset_password})
 
 
 @require_method("GET")
@@ -104,11 +100,11 @@ def auth_autocreate_password(request):
     reset_key = request.GET['key']
     user = User.objects.get(profile=UserProfile.objects.get(password_reset=reset_key))
 
-    password = ''.join(random.choice(string.letters + string.digits) for n in range(8))
+    password = User.objects.make_random_password(length=8)
     user.set_password(password)
     user.save()
 
-    send_mail_to_user(request, user, 'password_changed', { 'password': password })
+    send_mail_to_user(request, user, 'password_changed', {'password': password})
     return redirect('/notify_remail.shtml')
 
 
@@ -120,13 +116,13 @@ def auth_change_password(request):
     password = request.POST['new_password']
     confirm = request.POST['confirmation']
     if not password:
-        raise proto_exc(EXC_INVALID_DATA, { "new_password": "Password should not be empty" })
+        raise proto_exc(EXC_INVALID_DATA, {"new_password": "Password should not be empty"})
     if password != confirm:
-        raise proto_exc(EXC_INVALID_DATA, { "confirm": "Confirmation does not match the password." })
+        raise proto_exc(EXC_INVALID_DATA, {"confirm": "Confirmation does not match the password."})
     user.set_password(password)
     user.save()
 
-    send_mail_to_user(request, user, 'password_changed', { 'password': password })
+    send_mail_to_user(request, user, 'password_changed', {'password': password})
 
 
 @serialize
@@ -134,7 +130,7 @@ def auth_change_password(request):
 def user_stat(request):
     users = User.objects.count()
     pets = Pet.objects.count()
-    return { "count": users + pets }
+    return {"count": users + pets}
 
 
 @serialize
@@ -151,12 +147,12 @@ def user_species(request, species):
 
 @serialize
 @require_method("GET")
-def user_likes(request, start = 0, limit = 10):
+def user_likes(request, start=0, limit=10):
     start = int(start)
     limit = int(limit)
     end = start + limit
 
-    query = Like.objects.filter(media__author = request.user).order_by('-created')
+    query = Like.objects.filter(media__author=request.user).order_by('-created')
     return query[start:end]
 
 
@@ -245,7 +241,7 @@ def pet_disable(request, pet):
 
 @serialize
 @require_method("GET")
-def media_list(request, start = 0, limit = 10):
+def media_list(request, start=0, limit=10):
     user = request.user
     query = MediaFile.enabled_objects.all()
 
@@ -257,11 +253,11 @@ def media_list(request, start = 0, limit = 10):
         # filter by country filter
         profile = user.profile
         if profile.filter_mycountry and profile.country:
-            query = query.filter(author__profile__country = profile.country)
+            query = query.filter(author__profile__country=profile.country)
     else:
         # filter by domain
         if hasattr(request, 'domain_country'):
-            query = query.filter(author__profile__country = request.domain_country)
+            query = query.filter(author__profile__country=request.domain_country)
 
     return __list_media(request, query, start, limit)
 
@@ -332,7 +328,6 @@ def avatar_upload(request):
         raise proto_exc(EXC_INVALID_DATA, {"errors": form.errors})
 
 
-
 @serialize
 @require_method("POST")
 @require_auth
@@ -349,7 +344,7 @@ def media_save(request, media):
 @require_method("GET")
 @require_auth
 def friend_add(request, username):
-    friend = User.objects.get(username = username)
+    friend = User.objects.get(username=username)
     return request.user.profile.add_friend(friend)
 
 
@@ -357,7 +352,7 @@ def friend_add(request, username):
 @require_method("GET")
 @require_auth
 def friend_remove(request, username):
-    friend = User.objects.get(username = username)
+    friend = User.objects.get(username=username)
     return request.user.profile.remove_friend(friend)
 
 
@@ -378,7 +373,7 @@ def friend_list(request):
 @serialize
 @require_method("GET")
 @require_auth
-def friend_media(request, start = 0, limit = 10):
+def friend_media(request, start=0, limit=10):
     query = MediaFile.enabled_objects.filter(author__in=request.user.profile.friends)
     return __list_media(request, query, start, limit)
 
@@ -394,7 +389,12 @@ def comment_list(request, media):
 @require_method("GET")
 @require_auth
 def discussions(request):
-    paginator = Paginator(MediaFile.objects.filter(comment__author=request.user).annotate(latest=Max('comment__created')).order_by('-latest'), settings.DISCUSSION_PER_PAGE)
+    mediafile_list = MediaFile.objects\
+        .filter(comment__author=request.user)\
+        .annotate(latest=Max('comment__created'))\
+        .order_by('-latest')
+
+    paginator = Paginator(mediafile_list, settings.DISCUSSION_PER_PAGE)
     page = request.GET.get('page', 1)
 
     try:
@@ -405,19 +405,25 @@ def discussions(request):
         discussion = paginator.page(paginator.num_pages)
 
     page = int(page)
-    pager = {'current_page':page, 'pages':paginator.num_pages, 'has_previous':page > 1, 'has_next':page < paginator.num_pages}
+    pager = {
+        'current_page': page,
+        'pages': paginator.num_pages,
+        'has_previous': page > 1,
+        'has_next': page < paginator.num_pages
+    }
 
-    return {'paginator':pager, 'results':discussion.object_list}
+    return {
+        'paginator': pager,
+        'results': discussion.object_list
+    }
 
 
 @serialize
 @require_auth
-def comment_last(request, type='outbox'):
-    query = None
-
-    if type == 'inbox':
+def comment_last(request, box_type='outbox'):
+    if box_type == 'inbox':
         query = Comment.objects.filter(media__author=request.user).exclude(author=request.user)
-    elif type == 'outbox':
+    elif box_type == 'outbox':
         query = Comment.objects.filter(author=request.user)
     else:
         return False
@@ -428,27 +434,32 @@ def comment_last(request, type='outbox'):
 @serialize
 @require_auth
 @require_method("GET")
-def user_comments(request, type='outbox'):
-    query = None
-
+def user_comments(request, box_type='outbox'):
     try:
         page = int(request.GET.get('page', 1))
-    except:
+    except ValueError:
         page = 1
 
-    if type == 'inbox':
+    if box_type == 'inbox':
         query = Comment.objects.filter(media__author=request.user).exclude(author=request.user)
-    elif type == 'outbox':
+    elif box_type == 'outbox':
         query = Comment.objects.filter(author=request.user)
     else:
         return False
 
-    total = query.filter(deleted=False).count()
-    return {'total':total, 'items':query.filter(deleted=False).order_by('-created')[(page-1)*settings.COMMENTS_PER_PAGE:page*settings.COMMENTS_PER_PAGE]}
+    query = query.filter(deleted=False)
+    total = query.count()
+    items = query.order_by('-created')
+    start = (page - 1) * settings.COMMENTS_PER_PAGE
+    end = start + settings.COMMENTS_PER_PAGE
+    return {
+        'total': total,
+        'items': items[start:end]
+    }
 
 
 @serialize
-def comment_all_last(request, type='outbox'):
+def comment_all_last(request, box_type='outbox'):
     species = current_species(request)
     return Comment.objects.filter(deleted=False, media__species=species).order_by('-created')[:10]
 
@@ -459,12 +470,12 @@ def comment_all_last(request, type='outbox'):
 @require_id(MediaFile, enabled=True)
 def comment_add(request, media):
     author = request.user
-    text   = request.POST.get('text')
+    text = request.POST.get('text')
     if text.strip() != '':
         comment = Comment.objects.create(author=author, media=media, text=text)
 
         try:
-            send_mail_to_user(request, media.author, 'new_comment', { 'comment': comment })
+            send_mail_to_user(request, media.author, 'new_comment', {'comment': comment})
         except:
             # TODO: log send mail error
             pass
@@ -494,7 +505,8 @@ def breed_dict(request):
 def breed_available(request):
     term = request.GET.get('term', '')
     species = request.GET.get('species', current_species(request))
-    return Pet.objects.filter(species=species, breed__icontains=term, enabled=True).order_by('breed').distinct('breed').values('breed')
+    return Pet.objects.filter(species=species, breed__icontains=term, enabled=True)\
+        .order_by('breed').distinct('breed').values('breed')
 
 
 @serialize
@@ -524,24 +536,26 @@ def feedback(request):
 def bo_media_delete(request, media):
     media.disable()
 
+
 #
 # Non-API views
 #
 
-def show_static_page(request, page_name = 'index'):
+def show_static_page(request, page_name='index'):
     return render_to_response('static/' + page_name + '.html', context_instance=RequestContext(request))
+
 
 def handle404(request):
     url = request.META['REQUEST_URI']
 
-    if  url.startswith('/media/resized/'):
+    if url.startswith('/media/resized/'):
         splitted = url.split("/")
         new_size = splitted[3]
         path = "original/" + "/".join(splitted[4:])
         resize_image(path, new_size)
 
         return redirect(settings.TEMP_MEDIA_URL + '/'.join(splitted[2:]))
-    elif  url.startswith('/media/thumbnails/'):
+    elif url.startswith('/media/thumbnails/'):
         splitted = url.split("/")
         new_size = splitted[3]
         path = "original/" + "/".join(splitted[4:])
@@ -551,44 +565,38 @@ def handle404(request):
     else:
         page_not_found(request)
 
+
 def show_user_page(request, username):
     user = User.objects.get(username=username)
     page = int(request.GET.get('page', 1))
-    per_page = 40
-    start = (page - 1) * per_page
-    end = start + per_page
 
     paginator = Paginator(MediaFile.enabled_objects.with_author(user.id), settings.PETS_PER_USERPAGE)
     try:
-      media_list = paginator.page(page)
+        mediafile_list = paginator.page(page)
     except PageNotAnInteger:
-      media_list = paginator.page(1)
+        mediafile_list = paginator.page(1)
     except EmptyPage:
-      medi_list = paginator.page(paginator.num_pages)
-
-    #media_list = MediaFile.enabled_objects.with_author(user.id)[start:end]
+        mediafile_list = paginator.page(paginator.num_pages)
 
     context = RequestContext(request, {
         'user_profile': user,
-        'media_list': media_list
+        'media_list': mediafile_list
     })
 
     return render_to_response('user/user_page.html', context_instance=RequestContext(request, context))
 
 
 def show_share_page(request, picture):
-    media_file=None
     try:
-      media_file = MediaFile.objects.get(id=picture, enabled=True)
+        media_file = MediaFile.objects.get(id=picture, enabled=True)
     except ObjectDoesNotExist:
-        pass
-    context=None
-    if media_file:
-      context = RequestContext(request, {
-          'media_file': media_file,
-          'media_file_id':media_file.id
-      })
-    return render_to_response('user/share_page.html', context_instance=RequestContext(request, context))
+        media_file = None
+
+    context = media_file and RequestContext(request, {'media_file': media_file}) or None
+
+    return render_to_response(
+        'user/share_page.html',
+        context_instance=RequestContext(request, context))
 
 
 def show_pet_page(request, pet):
@@ -596,16 +604,16 @@ def show_pet_page(request, pet):
     page = int(request.GET.get('page', 1))
 
     try:
-      media_list = paginator.page(page)
+        mediafile_list = paginator.page(page)
     except PageNotAnInteger:
-      media_list = paginator.page(1)
+        mediafile_list = paginator.page(1)
     except EmptyPage:
-      medi_list = paginator.page(paginator.num_pages)
+        mediafile_list = paginator.page(paginator.num_pages)
 
-    context = RequestContext(request, {
-        'media_list':media_list
-    })
+    context = RequestContext(request, {'media_list': mediafile_list})
+
     return render_to_response('user/pet_page.html', context_instance=RequestContext(request, context))
+
 
 # util region
 
@@ -636,11 +644,14 @@ def __list_media(request, query, start, limit):
     end = start + limit
 
     result = list(query[start:end])
+
     # TODO: rewrite to left join
     if request.user.is_authenticated():
         for media in result:
             media.aware_of(request.user)
+
     return result
+
 
 def current_species(request, species = None):
     session = request.session
