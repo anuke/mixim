@@ -3,6 +3,7 @@ from django.db.models.query import QuerySet
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from choices import GENDERS, STATUSES
 from serializers import to_plain_data
@@ -337,6 +338,7 @@ class Friendship(models.Model):
 
 # Signal callbacks
 
+@receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         activation_key = User.objects.make_random_password(
@@ -344,10 +346,7 @@ def create_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance, activation_key=activation_key)
 
 
+@receiver(post_save, sender=MediaFile)
 def create_media_file(sender, instance, created, **kwargs):
     if created:
         prepare_thumbnail(instance)
-
-
-post_save.connect(create_user_profile, sender=User)
-post_save.connect(create_media_file, sender=MediaFile)
