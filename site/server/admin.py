@@ -19,7 +19,7 @@ class PetAdmin(admin.ModelAdmin):
     model = Pet
 
     class Meta:
-        verbose_name = _('Pet')
+        verbose_name = 'Pet'
 
 
 admin.site.register(Pet)
