@@ -44,6 +44,8 @@ SITE_ID = 1
 
 SITE_DIR = '/var/www/html/mixim.ru/'
 
+ALLOWED_HOSTS = ['.mixim.ru', '.mixim.us']
+
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
