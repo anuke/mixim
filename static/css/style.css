@@ -2959,3 +2959,60 @@ form {
     padding:3px 0px 4px;
     color:#FFFFCC;
 }
+
+.webm_body {
+    font-size:12px;
+    color:#f24f00;
+    padding:14px;
+    border:3px solid #f24f00;
+  	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+}
+.webm_code {
+    margin:10px 20px;
+}
+.webm_body_c1 {
+    background-color: #F24F00;
+    color: #FFFFCC;
+    font-size: 14px;
+    font-weight: bold;
+    margin: -16px 200px 20px;
+    padding: 0 5px 2px;
+    position: relative;
+    text-align: center;
+  	-moz-border-radius:0 0 10px 10px;
+	-webkit-border-radius:0 0 10px 10px;
+	border-radius:0 0 10px 10px;
+/*
+    background-color: #F24F00;
+    border-radius: 0 0 10px 3px;
+    color: #FFFFCC;
+    display: table;
+    font-size: 14px;
+    font-weight: bold;
+    margin: -16px 0 20px -16px;
+    padding: 0 25px 2px;
+    position: relative;
+    text-align: center;
+    width: 400px; */
+}
+.webm_body_h1 {
+    background-color:#666666;
+    color:#ffffff;
+    padding:4px 7px;
+    font-weight:bolder;
+  	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;    
+}
+.webm_body_b1 {
+    background-color:#efefef;
+    border:1px solid #999999;
+    color:#666666;
+    padding:10px;
+    margin-left:20px;
+  	-moz-border-radius:0 10px 10px;
+	-webkit-border-radius:0 10px 10px;
+	border-radius:0 10px 10px;
+}
