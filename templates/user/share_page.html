@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
-<html>
+<html itemscope itemtype="http://schema.org/Article">
     <head>
         <title>{% trans 'MiXiM - for those who love pets' %}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -36,6 +36,10 @@
         <meta property="og:url" content="http://{{ hostname }}/pic{{ media_file.id }}" />
         <meta property="og:description" content="{{ media_file.description }}" />
         <meta property="og:image" content="{{ media_file.thumbnail }}" />
+
+        <meta itemprop="name" content="{{ media_file.pet|default:"Mixim"}}">
+        <meta itemprop="description" content="{{ media_file.description }}">
+        <meta itemprop="image" content="{{ media_file.thumbnail }}">
     </head>
     <body class="media">
         <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
