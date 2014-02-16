@@ -7,7 +7,7 @@ body {
 	padding:0px;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	background-color:#ffff99;
-	background-image:url(/images/top_bubbles_old.gif);
+	background-image:url(../images/top_bubbles_old.gif);
 	background-repeat:no-repeat;
 	background-position:center top;
 }
@@ -19,7 +19,7 @@ textarea {
     resize:none;
 }
 .index {
-	background-image:url(/images/top_bubbles.gif);
+	background-image:url(../images/top_bubbles.gif);
 	background-position:center -206px;
 }
 .finger {
@@ -3015,4 +3015,24 @@ form {
   	-moz-border-radius:0 10px 10px;
 	-webkit-border-radius:0 10px 10px;
 	border-radius:0 10px 10px;
+}
+
+.develop_bttn {
+    background-color:#ffff99;
+    position:absolute;
+    left:10px;
+    bottom:10px;
+  	-moz-border-radius:30px;
+	-webkit-border-radius:30px;
+	border-radius:30px;
+}
+.develop_bttn a {
+    display:block;
+    width:55px;
+    height:55px;
+    margin:2px;
+}
+.develop_bttn_tt {
+    position:absolute;
+    margin:-193px 0 0 16px;
 }

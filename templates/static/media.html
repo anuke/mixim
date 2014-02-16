@@ -95,9 +95,14 @@
     <tr>
         <td class="filter_bubble">
             <div class="add_slogan" style="background-image:url(../images/{% trans "add_slogan_1_en.png" %});">
-                <a href="#" class="s__media_upload_win_open" target="_self" title="{% trans "Add picture" %}" style="margin-left:296px;">
+                <div class="s__media_upload_win_open" title="{% trans "Add picture" %}" style="background:url('../images/photo_bubble.gif') no-repeat 0 0; cursor:pointer; height:100px; margin-left:296px; width:80px; overflow:hidden;">
+                    <div class="s__logged">
+                        <input id="media_file" name="file" type="file" data-url="/json/media/upload/" accept="image/jpeg" style="width:1000px; height:100px; font-size:150px; margin-left:-410px; margin-top:0px; filter:alpha(opacity=0); opacity:0; cursor: pointer;">
+                    </div>
+                </div>
+                <!--a href="#" class="s__media_upload_win_open" target="_self" title="{% trans "Add picture" %}" style="margin-left:296px;">
                     <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="{% trans "Add picture" %}">
-                </a>
+                </a-->
             </div>
         </td>
     </tr>
@@ -173,6 +178,11 @@
         <td class="media_close">&nbsp;</td>
     </tr>
 </table>
+
+<!-- Разработчикам -->
+{% include 'include/developers.html' %}
+<!-- /Разработчикам -->
+
 <!-- Подвал -->
 {% include 'include/footer.html' %}
 <!-- /Подвал -->

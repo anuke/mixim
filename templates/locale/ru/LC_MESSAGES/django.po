@@ -852,3 +852,9 @@ msgstr "BBCode, строчные буквы: превью - увеличение
 
 msgid "Direct link to view this page images and comments"
 msgstr "Ссылка на страницу просмотра этого изображения и комментариев"
+
+msgid "_en"
+msgstr "_ru"
+
+msgid "For developers"
+msgstr "Разработчикам"
