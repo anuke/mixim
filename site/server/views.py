@@ -599,8 +599,9 @@ def show_share_page(request, picture):
         context_instance=RequestContext(request, context))
 
 
-def show_pet_page(request, pet):
-    paginator = Paginator(MediaFile.enabled_objects.with_pet(pet), 20)
+def show_pet_page(request, pet_id):
+    pet = Pet.objects.get(id=pet_id)
+    paginator = Paginator(MediaFile.enabled_objects.with_pet(pet_id), 20)
     page = int(request.GET.get('page', 1))
 
     try:
@@ -610,7 +611,10 @@ def show_pet_page(request, pet):
     except EmptyPage:
         mediafile_list = paginator.page(paginator.num_pages)
 
-    context = RequestContext(request, {'media_list': mediafile_list})
+    context = RequestContext(request, {
+        'pet': pet,
+        'media_list': mediafile_list
+    })
 
     return render_to_response('user/pet_page.html', context_instance=RequestContext(request, context))
 

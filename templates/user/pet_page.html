@@ -47,10 +47,10 @@
             <div class="pet_about_area">
                 <div class="pet_about_content">
                     <div id="pet_about_text">
-                    {% if user.profile.about == None or user_profile.profile.about == "" %}
-                        {% trans "This user preferred to tell about himself nothing." %}
+                    {% if pet.about %}
+                        {{ pet.about }}
                     {% else %}
-                        {{ user.profile.about }}
+                        {% trans "This user preferred to tell about himself nothing." %}
                     {% endif %}
                     </div>
                 </div>
