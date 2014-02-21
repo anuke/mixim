@@ -39,19 +39,25 @@
 <table width="980px" height="100%" align="center" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td height="94px">
-            <!--div class="user_avatar">
-                    <img id="userpage_avatar" src="" border="0" alt="" style="background-color:#000;">
+            <div class="pet_avatar">
+                <!--a href="#" title=""-->
+                    <img id="petpage_avatar" src="" border="0" alt="" style="background-color:#000;">
+                <!--/a-->
             </div>
-            <div class="user_about">
-                {% if user_profile.profile.about == None or user_profile.profile.about == "" %}
-                    {% trans "This user preferred to tell about himself nothing." %}
-                {% else %}
-                    {{ user_profile.profile.about }}
-                {% endif %}
+            <div class="pet_about_area">
+                <div class="pet_about_content">
+                    <div id="pet_about_text">
+                    {% if user.profile.about == None or user_profile.profile.about == "" %}
+                        {% trans "This user preferred to tell about himself nothing." %}
+                    {% else %}
+                        {{ user.profile.about }}
+                    {% endif %}
+                    </div>
+                </div>
             </div>
-            <div class="user_about_plus opa75">{% trans "Pets:" %} {{ user_profile.pets.count }} | {% trans "Subscribe to:" %} {{ user_profile.follows.count}} | {% trans "Favorited:" %} {{ user_profile.followed_by.count}} | {% trans "Posts:" %} {{ user_profile.comment_set.count }}</div>
-            <div class="user_name">{{ user_profile.first_name }} {{ user_profile.last_name }}</div>
-            <div class="user_about_plus opa75">{{ user_profile.username}} - {% trans "on the site from:" %} {{ user_profile.date_joined }}</div-->
+            <div class="user_about_plus opa75"></div>
+            <div class="user_name"></div>
+            <div class="user_about_plus opa75"></div>
         </td>
     </tr>
     <tr>
