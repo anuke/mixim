@@ -2049,7 +2049,8 @@ form {
 	border-radius:5px;
 }
 
-.user_avatar {
+.user_avatar,
+.pet_avatar {
     position:absolute;
     top:0px;
     width:90px;
@@ -2061,7 +2062,8 @@ form {
 	-webkit-border-radius:45px;
 	border-radius:45px;
 }
-.user_avatar img {
+.user_avatar img,
+.pet_avatar img {
     width:80px;
     height:80px;
     margin-top:5px;
@@ -2069,7 +2071,8 @@ form {
 	-webkit-border-radius:40px;
 	border-radius:40px;
 }
-.user_name {
+.user_name,
+.pet_name {
     background-color: #FFFF99;
     color: #F24F00;
     font-family: Verdana,Arial,Helvetica,sans-serif;
@@ -2080,7 +2083,8 @@ form {
     vertical-align: middle;
     line-height: 20px;
 }
-.user_about_area {
+.user_about_area,
+.pet_about_area {
     top: 0;
     height: 76px;
     width: 440px;
@@ -2093,7 +2097,8 @@ form {
     border-radius: 20px;
     z-index: 1;
 }
-.user_about_content {
+.user_about_content,
+.pet_about_content {
     width: 440px;    
     height: 76px;
     color: #FFFFCC;
@@ -2110,7 +2115,8 @@ form {
     border-radius: 20px 20px 20px 20px;
     background-color: #FFFFCC;    
 }
-.user_about_plus {
+.user_about_plus,
+.pet_about_plus {
     margin: 2px 0 2px 90px;
     font-size: 10px;
     color: #ffffcc;
