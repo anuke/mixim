@@ -3027,7 +3027,8 @@ form {
     background-color:#ffff99;
     position:absolute;
     left:10px;
-    bottom:10px;
+    /*bottom:10px;*/
+    margin-top: -70px;
   	-moz-border-radius:30px;
 	-webkit-border-radius:30px;
 	border-radius:30px;

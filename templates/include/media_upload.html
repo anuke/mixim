@@ -44,6 +44,13 @@
                 $('#overlay').hide();
                 $('.add_photo_block').hide();
             });
+            
+            $('.s__media_upload_win_open').click(function() {
+                if (!is_logged()) {
+                    my_alert('{% trans "Add picture" %}', '{% trans "&nbsp;&nbsp;Only registered users can post photos. Please sign in. You may create a free account!" %}');
+                    return;
+                }
+            });
 		});
     </script>
 	<!-- Окно выбора файла (начало)-->
