@@ -274,45 +274,33 @@
                         <!-- div открывает кнопка "Личные данные" и показываеся по умолчанию при входе в кабинет (начало)-->
                         <div id="cabinet_mine" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
                             <div style="margin-top:10px;">
-                                <div style="width:340px; float:right; text-align:justify; text-indent:10px; color:#f24f00;">
+                                <!--div style="width:340px; float:right; text-align:justify; text-indent:10px; color:#f24f00;">
                                     {% trans '<center><b>We recommend:</b></center><p>By sharing information about yourself you gain access to  many advanced search options, which will help you and others to network more efficiently.</p><p>For example: <i>by sharing the city and country where you live will make the photos of your pets geo/searchable by other pet owners in your area with similar interests</i>.</p><br><p><b>Do not be shy in showing off your Pet :-) Share your thoughts, write comments: the more the merrier! We all want to see and hear about the pet in your life!</b></p><br><p>You can use your pet`s picture or your own picture as your avatar, it is all up to you!</p>' %}
-                                </div>
-                                <table width="248px" border="0" cellspacing="0" cellpadding="0">
+                                </div-->
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td class="user_data_box_top radius_6000" style="pading-top:5px;">
-                                            <!--div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Cтатус:</span><br>
-                                                <select class="redit_body" id="f_user_country" style="width:234px;">
-                                                    <option value="">Хозяин (у меня есть дома)</option>
-                                                    <option value="">Бридер</option>
-                                                    <option value="">Владелец клуба</option>
-                                                </select>
-                                            </div-->
-                                            <!--div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Мое Имя (никнейм):</span><br>
-                                                <input type="text" id="f_user_nic" class="redit_body" style="width:234px;">
-                                            </div-->
-                                            <div style="margin-top:5px; margin-left:5px;">
+                                        <td class="user_data_box_top radius_6600" style="pading-top:5px;">
+                                            <div style="display:inline-block; margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans 'First Name:' %}</span><br>
-                                                <input type="text" id="f_user_firstname" class="redit_body" style="width:234px;">
+                                                <input type="text" id="f_user_firstname" class="redit_body" style="width:120px;">
                                             </div>
-                                            <div style="margin-top:5px; margin-left:5px;">
+                                            <div style="display:inline-block; margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans 'Last Name:' %}</span><br>
-                                                <input type="text" id="f_user_lastname" class="redit_body" style="width:234px;">
+                                                <input type="text" id="f_user_lastname" class="redit_body" style="width:200px;">
                                             </div>
-                                            <div style="margin-top:5px; margin-left:5px;">
+                                            <div style="display:inline-block; margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans 'Gender:' %}</span><br>
-                                                <select class="redit_body" id="f_user_gender" style="width:238px;">
+                                                <select class="redit_body" id="f_user_gender" style="width:104px;">
                                                     <option value=""></option>
                                                     <option value="M">{% trans 'Male' %}</option>
                                                     <option value="F">{% trans 'Female' %}</option>
                                                 </select>
                                             </div>
-                                            <div style="margin-top:5px; margin-left:5px;">
+                                            <div style="display:inline-block; margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans 'Date of Birth:' %}</span><br>
-                                                <input type="text" id="f_user_birthday" class="redit_body" style="width:234px;">
+                                                <input type="text" id="f_user_birthday" class="redit_body" style="width:130px;">
                                             </div>
-                                            <div style="margin-top:5px; margin-left:5px;">
+                                            <!--div style="margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans 'Country:' %}</span><br>
                                                 <select class="redit_body" id="f_user_country" style="width:238px;">
                                                     <option value=""></option>
@@ -324,6 +312,11 @@
                                             <div style="margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans 'City:' %}</span><br>
                                                 <input type="text" id="f_user_city" class="redit_body" style="width:234px;">
+                                            </div-->
+                                            <div style="margin-top:5px; margin-left:5px;">
+                                                <span class="redit_caption">{% trans 'Location:' %}</span><br>
+                                                <input type="text" id="f_user_location" class="redit_body" placeholder="Type your location" style="width:586px;">
+                                                <div id="map_canvas" style="margin-top:2px; position:relative; background-color:#fff; width:588px; height:400px; overflow: hidden;"></div>
                                             </div>
                                             <div style="margin-top:5px; margin-left:5px;">
                                                 <span class="redit_caption">{% trans 'Tell other pet owners about yourself:' %}</span><br>
