@@ -88,6 +88,27 @@ class UserProfile(models.Model):
         verbose_name_plural = _("Profiles")
 
 
+class Speciality(models.Model):
+    name = models.CharField(_("Name"), max_length=100)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Speciality")
+        verbose_name_plural = _("Specialities")
+
+
+class UserSpeciality(models.Model):
+    user        = models.ForeignKey(User)
+    speciality  = models.ForeignKey(Speciality)
+    country     = models.CharField(_("Country"), max_length=50)
+    city        = models.CharField(_("City"), max_length=50)
+    longitude   = models.FloatField(_("Longitude")
+    latitude    = models.FloatField(_("Latitude")
+    description = models.TextField(_("Description"), null=True, blank=True)
+
+
 class Pet(models.Model):
     owner    = models.ForeignKey(User, related_name='pets')
     name     = models.CharField(_("Name"), max_length=50)
