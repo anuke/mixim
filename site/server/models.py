@@ -104,8 +104,8 @@ class UserSpeciality(models.Model):
     speciality  = models.ForeignKey(Speciality)
     country     = models.CharField(_("Country"), max_length=50)
     city        = models.CharField(_("City"), max_length=50)
-    longitude   = models.FloatField(_("Longitude")
-    latitude    = models.FloatField(_("Latitude")
+    longitude   = models.FloatField(_("Longitude"))
+    latitude    = models.FloatField(_("Latitude"))
     description = models.TextField(_("Description"), null=True, blank=True)
 
 
