@@ -82,10 +82,12 @@ class ProfileForm(forms.ModelForm):
     gender     = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
     birthday   = forms.DateField(label=_("Birthday"), required=False, input_formats=['%d/%m/%Y'])
     about      = forms.CharField(label=_("About"), widget=forms.Textarea, required=False)
+    latitude   = forms.FloatField(label=_("Latitude"), required=False)
+    longitude  = forms.FloatField(label=_("Longitude"), required=False)
 
     class Meta:
         model = UserProfile
-        fields = ("country", "city", "gender", "birthday", "about",)
+        fields = ("country", "city", "gender", "birthday", "about", "latitude", "longitude")
 
     def save(self, commit=True):
         profile = super(ProfileForm, self).save(commit=False)
@@ -101,6 +103,10 @@ class ProfileForm(forms.ModelForm):
                 profile.birthday = self.cleaned_data['birthday']
             if self.cleaned_data['about'] is not None:
                 profile.about    = self.cleaned_data['about']
+            if self.cleaned_data['latitude'] is not None:
+                profile.latitude = self.cleaned_data['latitude']
+            if self.cleaned_data['longitude'] is not None:
+                profile.longitude = self.cleaned_data['longitude']
             profile.save()
 
             user_changed = False
