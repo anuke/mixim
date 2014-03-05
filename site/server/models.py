@@ -23,6 +23,8 @@ class UserProfile(models.Model):
     activation_key = models.CharField(_("Activation Key"), max_length=30, default='old-user')
     password_reset = models.CharField(_("Reset password key"), max_length=32, blank=True, null=True)
     filter_mycountry = models.BooleanField(_("Filter by my country"), default=True)
+    longitude = models.FloatField(_("Longitude", blank=True, null=True))
+    latitude  = models.FloatField(_("Latitude", blank=True, null=True))
 
     def activate(self):
         self.status = 'verified'
@@ -77,8 +79,7 @@ class UserProfile(models.Model):
         return to_plain_data(self,
             'id', 'user_id:user.id', 'username:user.username', 'about', 'avatar:avatarurl',
             'first_name:user.first_name', 'last_name:user.last_name',
-            'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets',
-            'filter_mycountry')
+            'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets',)
 
     def __unicode__(self):
         return self.user.username
@@ -86,6 +87,18 @@ class UserProfile(models.Model):
     class Meta:
         verbose_name = _("Profile")
         verbose_name_plural = _("Profiles")
+
+
+class ExtendedProfile:
+    def __init__(self, profile):
+        self.profile = profile
+
+    def plain_data(self):
+        return to_plain_data(self.profile,
+            'id', 'user_id:user.id', 'username:user.username', 'about', 'avatar:avatarurl',
+            'first_name:user.first_name', 'last_name:user.last_name',
+            'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets',
+            'filter_mycountry', 'longitude', 'latitude')
 
 
 class Speciality(models.Model):

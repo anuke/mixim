@@ -167,7 +167,7 @@ def profile_get(request, user):
 @require_method("GET")
 @require_auth
 def profile_my(request):
-    return request.user.profile
+    return ExtendedProfile(request.user.profile)
 
 
 @serialize
