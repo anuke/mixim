@@ -533,7 +533,7 @@ function init_gmap() {
         console.log(country_item);
 
         if (country_item) {
-            $('#f_user_country').val(country_item.long_name);
+            $('#f_user_country').val(country_item.short_name);
         }
 
         $(f_loc).val(place.formatted_address);
