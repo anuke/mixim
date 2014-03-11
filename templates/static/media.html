@@ -17,7 +17,7 @@
 <script src="/js/backbone-min.js"></script>
 <script src="/js/jquery-1.8.3.min.js"></script>
 <script src="/js/jquery-ui.js"></script>
-<script src="/js/jquery.watermark.min.js"></script>
+<script src="/js/jquery.watermark.min.js"></script> 
 <script src="/js/vendor/jquery.ui.widget.js"></script>
 <script src="/js/jquery.iframe-transport.js"></script>
 <script src="/js/jquery.fileupload.js"></script>
@@ -130,18 +130,18 @@
                                     <td>
                                         <div style="width:100%;"></div>
                                     </td>
-                                    <td align="right" width="36px" style="">
-                                        <a href="#" id="male_filter" class="search_button search_sex_m opa50" title="{% trans "Boys" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
+                                    <td align="right" width="36px">
+                                        <a id="male_filter" class="search_button search_sex_m opa50 finger" title="{% trans "Boys" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
                                     </td>
-                                    <td align="right" width="36px" style="">
-                                        <a href="#" id="female_filter" class="search_button search_sex_f opa50" title="{% trans "Girls" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
+                                    <td align="right" width="36px">
+                                        <a id="female_filter" class="search_button search_sex_f opa50 finger" title="{% trans "Girls" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
                                     </td>
                                     <!--td align="right" width="36px" style="" class="opa25">
                                         <a class="search_button search_readytolove opa50" title="Ищут партнера"><img src="images/transparent_image.gif" width="30" height="30" border="0"></a>
-                                    </td>
-                                    <td align="right" width="70px" style="" class="opa25">
-                                        <a class="search_button search_globe opa50"  title="География поиска..."><img src="images/transparent_image.gif" width="58" height="30" border="0"></a>
                                     </td-->
+                                    <td align="right" width="70px">
+                                        <a id="geo_filter" class="search_button search_globe opa50 finger geo_block_on" title="{% trans "География поиска..." %}"><img src="../images/transparent_image.gif" width="58" height="30" border="0"></a>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -178,6 +178,9 @@
         <td class="media_close">&nbsp;</td>
     </tr>
 </table>
+<!-- География поиска... -->
+{% include 'include/geo_filter.html' %}
+<!-- /География поиска... -->
 
 <!-- Разработчикам -->
 {% include 'include/developers.html' %}

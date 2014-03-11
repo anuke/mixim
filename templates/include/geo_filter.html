@@ -1,0 +1,69 @@
+﻿{% load i18n %}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('a.geo_block_on').click(function() {
+                    $('.geo_filter_block').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу 
+                    $('#overlay').css('top', $(window).scrollTop()); // устанавливаем значение top = скролу
+                    
+                    $('body').css('overflow-y', 'hidden'); // убираем скрол
+                    $('#overlay').show(); // заеняем
+                    $('.geo_filter_block').show(); // показываем окно
+
+                    $('.{% trans "text_block_en" %}').show(); // показываем локаизацию
+                });
+
+                $('a.geo_block_off').click(function() {
+                    $('body').css('overflow-y', 'auto'); // возвращаем скрол
+                    $('#overlay').hide(); // освеляем
+                    $('.geo_filter_block').hide(); // скрываем окно
+
+                    $('#overlay').css('top', '0'); // обнуляем верхнюю точку
+
+                    $('.{% trans "text_block_en" %}').hide(); // скрываем локаизацию
+                });
+            });
+        </script>
+        <table class="geo_filter_block">
+            <tr>
+                <td>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0" class="geo_filter_window">
+                        <tr>
+                            <td class="animals_window_caption">{% trans 'Select a location' %}</td>
+                            <td align="right" valign="top"><a title="{% trans 'Close window' %}" class="geo_block_off finger"><img src="../images/photo_close.png" width="19" height="19" border="0" alt="{% trans 'Close window' %}" title="{% trans 'Close window' %}"></a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="">
+                                    <div style="margin:0 5px;">
+                                        <span class="redit_caption">{% trans 'Type a location:' %}</span><br>
+                                        <input type="text" id="f_user_location" class="redit_body" placeholder="Type your location" style="width:586px;">
+                                        <div id="map_canvas" style="margin-top:2px; position:relative; background-color:#fff; width:588px; height:400px; overflow: hidden;"></div>
+
+                                        <input type="hidden" id="f_user_country">
+                                        <input type="hidden" id="f_user_city">
+                                        <input type="hidden" id="f_user_latitude">
+                                        <input type="hidden" id="f_user_longitude">
+                                    </div>
+                                    <!--div class="text_block_en" style="display:none;">
+                                        
+                                    </div>
+                                    <div class="text_block_ru" style="display:none;">
+                                        
+                                    </div-->
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="button_1_buble">
+                                <div class="button_1">
+                                    <center>
+                                        <a title="{% trans 'Apply the location' %}" class="geo_block_off finger">{% trans 'Apply' %}</a>
+                                        <a title="{% trans 'Close window' %}" class="geo_block_off finger">{% trans 'Close' %}</a>
+                                    </center>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>

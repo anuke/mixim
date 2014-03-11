@@ -267,7 +267,8 @@ textarea {
 .add_photo_block,
 .set_avatar_block,
 .add_pet_block,
-.login_add_block {
+.login_add_block,
+.geo_filter_block {
 	display:none;
 	left:0px;
 	top:0px;
@@ -276,7 +277,8 @@ textarea {
 	position:absolute;
 	z-index:200;
 }
-.animals_window {
+.animals_window,
+.geo_filter_window {
 	background-color:#ffff99;
 	border:2px solid #f24f00;
 	-moz-border-radius:5px 15px 5px 5px;
@@ -286,7 +288,8 @@ textarea {
 	-moz-box-shadow:0 3px 6px 1px #999;
 	box-shadow:0 3px 6px 1px #999; */
 }
-.animals_window td {
+.animals_window td,
+.geo_filter_window td {
 	padding:4px;
 }
 .animals_window_caption,
@@ -2420,7 +2423,8 @@ form {
 	padding:4px 0px;
 }
 .button_1 a {
-    display: block;
+/*    display: block; */
+    display: inline-block;
     width: 110px;
     padding-top:1px;
     padding-bottom:1px;
