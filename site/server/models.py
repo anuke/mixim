@@ -26,6 +26,9 @@ class UserProfile(models.Model):
     longitude = models.FloatField(_("Longitude", blank=True, null=True))
     latitude  = models.FloatField(_("Latitude", blank=True, null=True))
 
+    def has_location(self):
+        return bool(self.longitude) and bool(self.latitude)
+
     def activate(self):
         self.status = 'verified'
         self.save()
@@ -250,6 +253,11 @@ class MediaFileQuerySet(QuerySet):
         else:
             return self
 
+    def next_to_me(self, loc):
+        if loc.has_location():
+            return self
+        else:
+            return self
 
 class MediaFileManager(models.Manager):
     def get_queryset(self):

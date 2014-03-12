@@ -628,6 +628,7 @@ def __list_media(request, query, start, limit):
     pet_id    = request.GET.get('pet_id')
     breed     = request.GET.get('breed')
     gender    = request.GET.get('gender')
+    nextdoor  = request.GET.get('nextdoor')
 
     query = query.order_by('-created')
     if tags:
@@ -642,6 +643,8 @@ def __list_media(request, query, start, limit):
         query = query.with_breed(breed)
     if gender:
         query = query.with_gender(gender)
+    if nextdoor and request.user and request.user.profile.has_location():
+        query = query.next_to_me(request.user.profile)
 
     start = int(start)
     limit = int(limit)
