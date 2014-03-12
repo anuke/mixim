@@ -17,7 +17,7 @@
 <script src="/js/backbone-min.js"></script>
 <script src="/js/jquery-1.8.3.min.js"></script>
 <script src="/js/jquery-ui.js"></script>
-<script src="/js/jquery.watermark.min.js"></script> 
+<script src="/js/jquery.watermark.min.js"></script>
 <script src="/js/vendor/jquery.ui.widget.js"></script>
 <script src="/js/jquery.iframe-transport.js"></script>
 <script src="/js/jquery.fileupload.js"></script>
@@ -79,10 +79,9 @@
                     <tr>
                         <td width="141">
                             <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans "Available on Google play" %}"><img src="../images/{% trans "app_google_play_en.png" %}" width="141" height="46" border="0" alt="{% trans "Available on Google play" %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
-                            <!--a href="#" title="Скачать из App store"><img src="../images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
                         </td>
                         <td align="center" width="90px;">
-                            <!--a href="#" title="Pets!"--><img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
+                            <img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!">
                         </td>
                         <td width="164">
                             <img src="../images/{% trans "app_stamp_en.png" %}" width="164" height="98" border="0" alt="{% trans "The mobile app Pets! - absolutely free!" %}">
@@ -100,9 +99,6 @@
                         <input id="media_file" name="file" type="file" data-url="/json/media/upload/" accept="image/jpeg" style="width:1000px; height:100px; font-size:150px; margin-left:-410px; margin-top:0px; filter:alpha(opacity=0); opacity:0; cursor: pointer;">
                     </div>
                 </div>
-                <!--a href="#" class="s__media_upload_win_open" target="_self" title="{% trans "Add picture" %}" style="margin-left:296px;">
-                    <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="{% trans "Add picture" %}">
-                </a-->
             </div>
         </td>
     </tr>
@@ -110,9 +106,6 @@
         <td class="media_status">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <!--td width="64px" class="media_search_animal">
-                        <a href="#" target="_self" title=""><img src="images/animal_1.png" width="64" height="64" border="0" alt=""></a>
-                    </td-->
                     <td>
                         <div class="search_decor">
                             <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -136,17 +129,13 @@
                                     <td align="right" width="36px">
                                         <a id="female_filter" class="search_button search_sex_f opa50 finger" title="{% trans "Girls" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
                                     </td>
-                                    <!--td align="right" width="36px" style="" class="opa25">
-                                        <a class="search_button search_readytolove opa50" title="Ищут партнера"><img src="images/transparent_image.gif" width="30" height="30" border="0"></a>
-                                    </td-->
-                                    <td align="right" width="70px"> <!-- geo_block_on для geo_filter.html -->
+                                    <td align="right" width="70px">
                                         <a id="geo_filter" class="search_button search_globe opa50 finger" title="{% trans "География поиска..." %}"><img src="../images/transparent_image.gif" width="58" height="30" border="0"></a>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </td>
-                    <!--td width="48"><a href="#" target="_self" title=""><img src="imagesimage.gif" width="36" height="36" border="0" alt=""></a></td-->
                 </tr>
             </table>
         </td>
@@ -178,9 +167,6 @@
         <td class="media_close">&nbsp;</td>
     </tr>
 </table>
-<!-- География поиска... --
- include 'include/geo_filter.html' 
--- /География поиска... -->
 
 <!-- Разработчикам -->
 {% include 'include/developers.html' %}

@@ -88,17 +88,6 @@ jQuery(document).ready(function ($) {
         load_filtered();
     }).blur(function () { load_filtered(); });
 
-    /*
-    $.getJSON("/json/dict/breed/", {}, function (data) {
-        $('#breed_filter').append($('<option>').attr('value', '').text(''));
-        var breeds = data.result;
-        for (var i = 0; i < breeds.length; i++) {
-            var breed = breeds[i];
-            $('#breed_filter').append($('<option>').attr('value', breed.name).text(breed.name));
-        }
-    });
-    */
-
     var __media_last_filter_params;
 
     function load_filtered(params) {
@@ -123,7 +112,6 @@ jQuery(document).ready(function ($) {
             load_filtered();
         }
     });
-    //$('#breed_filter').change(load_filtered);
 
     // Other stuff
     $('#alert_window_close').click(function () { hide_window('alert'); });
@@ -143,11 +131,11 @@ jQuery(document).ready(function ($) {
         $('#id_media_status_speech').show();
         $('#id_media_body_photo').hide();
         $('#id_media_body_speech').show();
-        
+
         $('#id_media_photo_tab').removeClass('media_tab_off').addClass('media_tab_on');
         $('#id_media_speech_tab').removeClass('media_tab_on').addClass('media_tab_off');
     });
-    
+
     $('#id_media_photo_tab').click(function() {
         $('#id_media_status_speech').hide();
         $('#id_media_status_photo').show();
