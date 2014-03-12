@@ -67,6 +67,7 @@ jQuery(document).ready(function ($) {
 
     var __male_filter = false;
     var __female_filter = false;
+    var __geo_filter = false;
 
     $('#male_filter').click(function () {
         __male_filter = !__male_filter;
@@ -88,6 +89,12 @@ jQuery(document).ready(function ($) {
         load_filtered();
     }).blur(function () { load_filtered(); });
 
+    $('#geo_filter').click(function () {
+        __geo_filter = !__geo_filter;
+        $(this).toggleClass('opa50', !__geo_filter);
+        load_filtered();
+    }).blur(function () { load_filtered(); });
+
     var __media_last_filter_params;
 
     function load_filtered(params) {
@@ -101,6 +108,9 @@ jQuery(document).ready(function ($) {
         }
         else if (__female_filter) {
             params.gender = 'F';
+        }
+        if (__geo_filter) {
+            params.nextdoor = 'yes';
         }
         if (_.isEqual(__media_last_filter_params, params)) return;
         __media_last_filter_params = params;
