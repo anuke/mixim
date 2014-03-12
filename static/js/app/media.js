@@ -69,32 +69,6 @@ jQuery(document).ready(function ($) {
     var __female_filter = false;
     var __geo_filter = false;
 
-    $('#male_filter').click(function () {
-        __male_filter = !__male_filter;
-        $(this).toggleClass('opa50', !__male_filter);
-        if (__male_filter) {
-            __female_filter = false;
-            $('#female_filter').addClass('opa50');
-        }
-        load_filtered();
-    }).blur(function () { load_filtered(); });
-
-    $('#female_filter').click(function () {
-        __female_filter = !__female_filter;
-        $(this).toggleClass('opa50', !__female_filter);
-        if (__female_filter) {
-            __male_filter = false;
-            $('#male_filter').addClass('opa50');
-        }
-        load_filtered();
-    }).blur(function () { load_filtered(); });
-
-    $('#geo_filter').click(function () {
-        __geo_filter = !__geo_filter;
-        $(this).toggleClass('opa50', !__geo_filter);
-        load_filtered();
-    }).blur(function () { load_filtered(); });
-
     var __media_last_filter_params;
 
     function load_filtered(params) {
@@ -116,6 +90,32 @@ jQuery(document).ready(function ($) {
         __media_last_filter_params = params;
         gallery_load(params);
     }
+
+    $('#male_filter').click(function () {
+        __male_filter = !__male_filter;
+        $(this).toggleClass('opa50', !__male_filter);
+        if (__male_filter) {
+            __female_filter = false;
+            $('#female_filter').addClass('opa50');
+        }
+        load_filtered();
+    }).blur(load_filtered);
+
+    $('#female_filter').click(function () {
+        __female_filter = !__female_filter;
+        $(this).toggleClass('opa50', !__female_filter);
+        if (__female_filter) {
+            __male_filter = false;
+            $('#male_filter').addClass('opa50');
+        }
+        load_filtered();
+    }).blur(load_filtered);
+
+    $('#geo_filter').click(function () {
+        __geo_filter = !__geo_filter;
+        $(this).toggleClass('opa50', !__geo_filter);
+        load_filtered();
+    }).blur(load_filtered);
 
     $('.filter_field').keyup(function (ev) {
         if (ev.keyCode == 13) {
