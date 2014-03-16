@@ -498,7 +498,7 @@
 {% include 'include/analytics.html' %}
 <!-- /Аналитика -->
 </body>
-<script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&language=ru"></script>
+<script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&language={{ LANGUAGE_CODE }}"></script>
 <script>
 function init_gmap() {
     var f_loc = document.getElementById('f_user_location');
