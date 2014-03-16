@@ -643,8 +643,8 @@ def __list_media(request, query, start, limit):
         query = query.with_breed(breed)
     if gender:
         query = query.with_gender(gender)
-    if nextdoor and request.user and request.user.profile.has_location():
-        query = query.next_to_me(request.user.profile)
+    if nextdoor and request.user:
+        query = query.next_to_me(request.user.profile.location)
 
     start = int(start)
     limit = int(limit)

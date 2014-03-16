@@ -1,3 +1,4 @@
+from django.contrib.gis import measure
 from django.contrib.gis.db import models
 from django.db.models.query import QuerySet
 from django.contrib.auth.models import User
@@ -25,8 +26,7 @@ class UserProfile(models.Model):
     filter_mycountry = models.BooleanField(_("Filter by my country"), default=True)
     location  = models.PointField(_("Location"), blank=True, null=True)
 
-    def has_location(self):
-        return bool(self.longitude) and bool(self.latitude)
+    geo = models.GeoManager()
 
     def activate(self):
         self.status = 'verified'
@@ -203,7 +203,7 @@ class MediaTag(models.Model):
         verbose_name_plural = _("Tags")
 
 
-class MediaFileQuerySet(QuerySet):
+class MediaFileQuerySet(models.query.GeoQuerySet):
     def tagged_with(self, tags):
         if not tags:
             return self
@@ -252,8 +252,8 @@ class MediaFileQuerySet(QuerySet):
             return self
 
     def next_to_me(self, loc):
-        if loc.has_location():
-            return self
+        if loc:
+            return self.filter(author__profile__location__distance_lte=(loc, measure.D(km=10)))
         else:
             return self
 
