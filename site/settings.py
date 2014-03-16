@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE':   'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE':   'django.contrib.gis.db.backends.postgis',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME':     'idrop',                                   # Or path to database file if using sqlite3.
         'USER':     'idrop',                                   # Not used with sqlite3.
         'PASSWORD': 'idrop',                                   # Not used with sqlite3.
@@ -146,6 +146,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    "django.contrib.gis",
 
     "south",
     "server",

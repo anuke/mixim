@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.contrib.gis import geos
 
 from models import UserProfile, Pet, MediaFile
 from choices import GENDERS
@@ -87,7 +88,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ("country", "city", "gender", "birthday", "about", "latitude", "longitude")
+        fields = ("country", "city", "gender", "birthday", "about")
 
     def save(self, commit=True):
         profile = super(ProfileForm, self).save(commit=False)
@@ -103,10 +104,10 @@ class ProfileForm(forms.ModelForm):
                 profile.birthday = self.cleaned_data['birthday']
             if self.cleaned_data['about'] is not None:
                 profile.about    = self.cleaned_data['about']
-            if self.cleaned_data['latitude'] is not None:
-                profile.latitude = self.cleaned_data['latitude']
-            if self.cleaned_data['longitude'] is not None:
-                profile.longitude = self.cleaned_data['longitude']
+            if self.cleaned_data['latitude'] is not None and self.cleaned_data['longitude'] is not None:
+                longitude = self.cleaned_data['longitude']
+                latitude = self.cleaned_data['latitude']
+                profile.location = geos.fromstr("POINT(%s %s)" % (longitude, latitude))
             profile.save()
 
             user_changed = False

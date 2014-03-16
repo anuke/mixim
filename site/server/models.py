@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 from django.db.models.query import QuerySet
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
@@ -23,8 +23,7 @@ class UserProfile(models.Model):
     activation_key = models.CharField(_("Activation Key"), max_length=30, default='old-user')
     password_reset = models.CharField(_("Reset password key"), max_length=32, blank=True, null=True)
     filter_mycountry = models.BooleanField(_("Filter by my country"), default=True)
-    longitude = models.FloatField(_("Longitude", blank=True, null=True))
-    latitude  = models.FloatField(_("Latitude", blank=True, null=True))
+    location  = models.PointField(_("Location"), blank=True, null=True)
 
     def has_location(self):
         return bool(self.longitude) and bool(self.latitude)
@@ -101,7 +100,7 @@ class ExtendedProfile:
             'id', 'user_id:user.id', 'username:user.username', 'about', 'avatar:avatarurl',
             'first_name:user.first_name', 'last_name:user.last_name',
             'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets',
-            'filter_mycountry', 'longitude', 'latitude')
+            'filter_mycountry', 'longitude:location.x', 'latitude:location.y')
 
 
 class Speciality(models.Model):
@@ -120,8 +119,7 @@ class UserSpeciality(models.Model):
     speciality  = models.ForeignKey(Speciality)
     country     = models.CharField(_("Country"), max_length=50)
     city        = models.CharField(_("City"), max_length=50)
-    longitude   = models.FloatField(_("Longitude"))
-    latitude    = models.FloatField(_("Latitude"))
+    location    = models.PointField(_("Location"))
     description = models.TextField(_("Description"), null=True, blank=True)
 
 
