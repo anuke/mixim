@@ -307,6 +307,7 @@
 
                                                 <input type="hidden" id="f_user_country">
                                                 <input type="hidden" id="f_user_city">
+                                                <input type="hidden" id="f_user_address">
                                                 <input type="hidden" id="f_user_latitude">
                                                 <input type="hidden" id="f_user_longitude">
                                             </div>
@@ -502,7 +503,7 @@
 <script>
 function init_gmap() {
     var f_loc = document.getElementById('f_user_location');
-    f_loc.value = $('#f_user_city').val() || '';
+    f_loc.value = $('#f_user_addressn').val() || '';
 
     var lat = Number($('#f_user_latitude').val()) || 55.755826,
         lng = Number($('#f_user_longitude').val()) || 37.6173,
@@ -530,14 +531,21 @@ function init_gmap() {
         var country_item = _.find(place.address_components, function (item) {
             return _.contains(item.types, 'country');
         });
-        console.log(country_item);
 
         if (country_item) {
             $('#f_user_country').val(country_item.short_name);
         }
 
+        var city_item = _.find(place.address_components, function (item) {
+            return _.contains(item.types, 'locality');
+        });
+
+        if (city_item) {
+            $('#f_user_city').val(city_item.short_name);
+        }
+
         $(f_loc).val(place.formatted_address);
-        $('#f_user_city').val(place.formatted_address); // change it
+        $('#f_user_address').val(place.formatted_address);
         if (geo) {
             marker.setPosition(place.geometry.location);
             $('#f_user_latitude').val(geo.location.lat());

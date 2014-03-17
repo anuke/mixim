@@ -280,6 +280,7 @@ Auth.on("profile:mine", function (profile) {
 
     $('#f_user_country').val(or_blank(profile.country));
     $('#f_user_city').val(or_blank(profile.city));
+    $('#f_user_address').val(or_blank(profile.address));
     $('#f_user_latitude').val(or_blank(profile.latitude));
     $('#f_user_longitude').val(or_blank(profile.longitude));
     $('#f_user_about').val(or_blank(profile.about));
@@ -341,6 +342,7 @@ function cabinet_save_myfilter() {
 function cabinet_update_profile() {
     var country = $('#f_user_country').val();
     var city = $('#f_user_city').val();
+    var address = $('#f_user_address').val();
     var latitude = $('#f_user_latitude').val();
     var longitude = $('#f_user_longitude').val();
     var about = $('#f_user_about').val();
@@ -352,6 +354,7 @@ function cabinet_update_profile() {
     profile_save({
         country: country,
         city: city,
+        address: address,
         latitude: latitude,
         longitude: longitude,
         about: about,
