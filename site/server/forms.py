@@ -80,6 +80,7 @@ class ProfileForm(forms.ModelForm):
     last_name = forms.CharField(label=_("First name"), max_length=50, required=False)
     country    = forms.CharField(label=_("Country"), max_length=50, required=False)
     city       = forms.CharField(label=_("City"), max_length=50, required=False)
+    address    = forms.CharField(label=_("Address"), max_length=1000, required=False)
     gender     = forms.ChoiceField(label=_("Gender"), choices=GENDERS, required=False)
     birthday   = forms.DateField(label=_("Birthday"), required=False, input_formats=['%d/%m/%Y'])
     about      = forms.CharField(label=_("About"), widget=forms.Textarea, required=False)
@@ -88,7 +89,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ("country", "city", "gender", "birthday", "about")
+        fields = ("country", "city", "address", "gender", "birthday", "about")
 
     def save(self, commit=True):
         profile = super(ProfileForm, self).save(commit=False)
@@ -98,6 +99,8 @@ class ProfileForm(forms.ModelForm):
                 profile.country  = self.cleaned_data['country']
             if self.cleaned_data['city'] is not None:
                 profile.city     = self.cleaned_data['city']
+            if self.cleaned_data['address'] is not None:
+                profile.address  = self.cleaned_data['address']
             if self.cleaned_data['gender'] is not None:
                 profile.gender   = self.cleaned_data['gender']
             if self.cleaned_data['birthday'] is not None:

@@ -16,6 +16,7 @@ class UserProfile(models.Model):
     user     = models.OneToOneField(User, related_name='profile')
     country  = models.CharField(_("Country"), max_length=50, blank=True, null=True)
     city     = models.CharField(_("City"), max_length=50, blank=True, null=True)
+    address  = models.CharField(_("Address"), max_length=1000, blank=True, null=True)
     gender   = models.CharField(_("Gender"), max_length=1, choices=GENDERS, blank=True, null=True)
     birthday = models.DateField(_("Birthday"), blank=True, null=True)
     status   = models.CharField(_("Status"), max_length=50, choices=STATUSES, default='unverified')
@@ -81,7 +82,7 @@ class UserProfile(models.Model):
         return to_plain_data(self,
             'id', 'user_id:user.id', 'username:user.username', 'about', 'avatar:avatarurl',
             'first_name:user.first_name', 'last_name:user.last_name',
-            'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets',)
+            'gender', 'birthday', 'status', 'pets:user.pets',)
 
     def __unicode__(self):
         return self.user.username
@@ -99,7 +100,7 @@ class ExtendedProfile:
         return to_plain_data(self.profile,
             'id', 'user_id:user.id', 'username:user.username', 'about', 'avatar:avatarurl',
             'first_name:user.first_name', 'last_name:user.last_name',
-            'country', 'city', 'gender', 'birthday', 'status', 'pets:user.pets',
+            'country', 'city', 'address', 'gender', 'birthday', 'status', 'pets:user.pets',
             'filter_mycountry', 'longitude:location.x', 'latitude:location.y')
 
 
