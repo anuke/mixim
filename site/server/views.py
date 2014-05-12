@@ -252,7 +252,8 @@ def media_list(request, start=0, limit=10):
     if user.is_authenticated():
         # filter by country filter
         profile = user.profile
-        if profile.filter_mycountry and profile.country:
+        country_filter = request.GET.get('country')
+        if (country_filter == 'my' or profile.filter_mycountry) and profile.country:
             query = query.filter(author__profile__country=profile.country)
     else:
         # filter by domain
