@@ -7,7 +7,7 @@
     }
 
     if (typeof(gallery_last_params) === "undefined") {
-        var gallery_last_params = true;
+        var gallery_last_params = {};
     }
 
     function prevPage() {

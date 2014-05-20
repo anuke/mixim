@@ -1,6 +1,8 @@
 IMG_PER_ROW = 7;
 IMG_PER_COL = 1;
 
+var gallery_last_params = { 'species': 'all' };
+
 var Stat = {};
 _.extend(Stat, Backbone.Events);
 
