@@ -4,202 +4,174 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 <html>
-<head>
-<title>{% trans 'MiXiM - for those who love pets' %}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
-<meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
-<meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
-<link href="/css/style.css" rel="stylesheet" type="text/css">
+    <head>
+        <title>{% trans 'MiXiM - for those who love pets' %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+        <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+        <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
 
-<script src="/js/underscore-min.js"></script>
-<script src="/js/backbone-min.js"></script>
-<script src="/js/jquery-1.8.3.min.js"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/jquery.watermark.min.js"></script>
-<script src="/js/vendor/jquery.ui.widget.js"></script>
-<script src="/js/jquery.iframe-transport.js"></script>
-<script src="/js/jquery.fileupload.js"></script>
-<script src="/js/sprintf.min.js"></script>
-<script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
-<script src="/js/app/init.js"></script>
-<script src="/js/app/api.js"></script>
-<script src="/js/app/util.js"></script>
-<script src="/js/app/gallery.js"></script>
-<script src="/js/app/keydown.js"></script>
-<script src="/js/app/media.js"></script>
+        <link href="/css/style_theme_01.css" rel="stylesheet" type="text/css">
 
-<script src="/js/app/ui.js"></script>
-<script src="/js/app/auth.js"></script>
-</head>
-<body class="media">
+        <script src="/js/underscore-min.js"></script>
+        <script src="/js/backbone-min.js"></script>
+        <script src="/js/jquery-1.8.3.min.js"></script>
+        <script src="/js/jquery-ui.js"></script>
+        <script src="/js/jquery.watermark.min.js"></script>
+        <script src="/js/vendor/jquery.ui.widget.js"></script>
+        <script src="/js/jquery.iframe-transport.js"></script>
+        <script src="/js/jquery.fileupload.js"></script>
+        <script src="/js/sprintf.min.js"></script>
+        <script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
+        <script src="/js/app/init.js"></script>
+        <script src="/js/app/api.js"></script>
+        <script src="/js/app/util.js"></script>
+        <script src="/js/app/gallery.js"></script>
+        <script src="/js/app/keydown.js"></script>
+        <script src="/js/app/media.js"></script>
+
+        <script src="/js/app/ui.js"></script>
+        <script src="/js/app/auth.js"></script>
+    </head>
+
+    <body>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
+
 <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
 {% include 'include/login.html' %}
 <!-- /Блок авторизации, регистрации и востановления пароля (конец) -->
-<table width="980px" height="100%" align="center" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-        <td height="94px">
-            <div class="pet_avatar">
-                <!--a href="#" title=""-->
-                    <img id="petpage_avatar" src="" border="0" alt="" style="background-color:#000;">
-                <!--/a-->
-            </div>
-            <div class="pet_about_area">
-                <div class="pet_about_content">
-                    <div id="pet_about_text">
-                    {% if pet.about %}
-                        {{ pet.about }}
-                    {% else %}
-                        {% trans "This user preferred to tell about himself nothing." %}
-                    {% endif %}
+
+        <table class="bkg_media" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="170px" valign="top">
+                    <div class="box_980px">
+                        <a class="logo_media" href="../" target="_self" title="{% trans 'To home page' %}"></a>
+                        <div class="pet_info_1">
+                            <div class="pet_info_1_into">
+                                <div class="pet_full_name">{{ pet.name }}</div>
+                                <div class="pet_on_the">{% trans "on the site from:" %}</div>
+                                <div class="pet_regi_data"></div>
+                            </div>
+                        </div>
+                        <div class="pet_info_2">
+                            <div class="pet_info_2_into">
+                                {% trans "Photos:" %} <!--колличество фото--> | {% trans "Posts:" %} <!--колличество сообщений--> | {% trans "Likes:" %} <!--колличество лайков всего-->
+                            </div>
+                        </div>
+                        <div class="pet_avatar" title="{{ pet.name }}">
+                            <img id="petpage_avatar" src="">
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="pet_about_plus opa75">&nbsp;</div>
-            <div class="pet_name">{{ pet.name }}</div>
-            <div class="pet_about_plus opa75">&nbsp;</div>
-        </td>
-    </tr>
-    <tr>
-        <td height="86px">            
-        	<!--div class="user_cluster">
-        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_1.png" width="40" height="40" border="0"></a>
-        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_2.png" width="40" height="40" border="0"></a>
-        	    <a href="#" class="user_cluster_a"><img src="../images/cluster_3.png" width="40" height="40" border="0"></a>
-				<img class="up_pets" alt="собаки" src="../images/cluster_4.png">
-				<img class="up_pets" alt="собаки" src="../images/cluster_5.png">
-				<img class="up_pets" alt="собаки" src="../images/cluster_6.png">
-				<img class="up_pets" alt="собаки" src="../images/cluster_7.png">
-				<img class="up_pets" alt="собаки" src="../images/cluster_8.png">
-				<img class="up_pets" alt="собаки" src="../images/cluster_9.png">
-			</div-->
-        </td>
-    </tr>
-    <tr>
-        <td align="center" valign="top">
-            <table class="ss_user_page_nocontent" height="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td class="user_page_content_box_empty">
-                        {% trans "On this page has not posted photos." %}
-                    </td>
-                </tr>
-            </table>
-            <div class="user_page_content_box  ss_user_page_content">
-                {% with media_obj=media_list %}
-                {% if media_obj.paginator.num_pages > 1 %}
-                {% spaceless %}
-                <div class="pagination" style="padding: 0 0 10px;">
-                    <div class="step-links">
-                        {% if media_obj.has_previous %}
-                            <a class="discussion_previous_page pagination_left_page" href="?page={{ media_obj.previous_page_number }}">&#171; {% trans "Back" %}</a>
-                        {% else %}
-                            <a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>
-                        {% endif %}
-                        <a class="pagination_current_page">{% trans "Page" %} {{ media_obj.number }} {% trans "of" %} {{ media_obj.paginator.num_pages }}</a>
-                        {% if media_obj.has_next %}
-                            <a class="discussion_next_page pagination_right_page" href="?page={{ media_obj.next_page_number }}">{% trans "Forward" %} &#187;</a>
-                        {% else %}
-                            <a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>
-                        {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td height="40px" align="center" valign="top">
+                    <div class="pet_hey_top">
+                        <div class="pet_about_text">
+                            <p>
+                                {% if user_profile.profile.about == None or user_profile.profile.about == "" %}
+                                    {% trans "No more information about this pet." %}
+                                {% else %}
+                                    {{ user_profile.profile.about }}
+                                {% endif %}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                {% endspaceless %}
-                {% endif %}
-                {% for media in media_obj.object_list %}
-                <div class="user_grid_box">
-                    <a class="user_grid_photo finger" onclick="show_photo({{ media.id }})">
-                        <img src="{{ media|resized:'176x176' }}">
-                    </a>
-                    {% if media.description %}
-                    <div class="user_grid_text">
-                        {{ media.description }}
-                    </div>
-                    {% endif %}
-                    <div class="hr"></div>
-                    <table class="user_grid_counter_table" border="0" cellspacing="0" cellpadding="0">
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <table border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                            <td><img src="/images/user_small_comments_counter_ico.png" width="20px" height="20px" title="Оставили комментарии"></td>
-                            <td class="user_grid_counter">{{ media.comments.count }}</td>
-                            <td width="10px"></td>
-                            <td><img src="/images/user_small_like_counter_ico.png" width="20px" height="20px" title="Понравилось"></td>
-                            <td class="user_grid_counter">{{ media.likes }}</td>
+                            <td width="26" class="media_page_list_bkg">
+                                {% with media_obj=media_list %}
+                                    {% if media_obj.paginator.num_pages > 1 %}
+                                        {% spaceless %}
+                                            {% if media_obj.has_previous %}
+                                                <div onclick="window.open('?page={{ media_obj.previous_page_number }}', '_self')" class="media_prevpage finger" title="{% trans 'Next page' %}"></div>
+                                            {% endif %}
+                                        {% endspaceless %}
+                                    {% endif %}
+                                {% endwith %}
+                            </td>
+                            <td align="center" valign="top">
+                                <div class="pet_page_content_box_empty ss_pet_page_nocontent">
+                                    {% trans "On this page has not posted photos." %}
+                                </div>
+                                <div class="pet_page_content_box ss_pet_page_content">
+                                    {% with media_obj=media_list %}
+                                        {% for media in media_obj.object_list %}
+                                            <div class="pet_grid_box">
+                                                <a href="javascript:show_photo({{ media.id }});" class="pet_photo_box">
+                                                    <div class="pet_photo">
+                                                        <ul class="media_comments_count">
+                                                            {{ media.comments.count }}
+                                                        </ul>
+                                                        <ul class="media_likes">
+                                                            {{ media.likes }}
+                                                        </ul>
+                                                        <img src="{{ media|resized:'176x176' }}">
+                                                    </div>
+                                                </a>
+                                                {% if media.description != None and media.description != "" %}
+                                                    <div class="pet_photo_hey">
+                                                        <div class="pet_photo_text">
+                                                            <p>
+                                                                {{ media.description }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    {% endwith %}
+                                </div>
+                            </td>
+                            <td width="26" class="media_page_list_bkg">
+                                {% with media_obj=media_list %}
+                                    {% if media_obj.paginator.num_pages > 1 %}
+                                        {% spaceless %}
+                                            {% if media_obj.has_next %}
+                                                <div onclick="window.open('?page={{ media_obj.next_page_number }}', '_self')" class="media_nextpage finger" title="{% trans 'Previous page' %}"></div>
+                                            {% endif %}
+                                        {% endspaceless %}
+                                    {% endif %}
+                                {% endwith %}
+                            </td>
                         </tr>
                     </table>
-                </div>
-                {% endfor %}
-                {% if media_obj.paginator.num_pages > 1 %}
-                {% spaceless %}
-                <div class="pagination" style="padding: 0 0 11px;">
-                    <div class="step-links">
-                        {% if media_obj.has_previous %}
-                            <a class="discussion_previous_page pagination_left_page" href="?page={{ media_obj.previous_page_number }}">&#171; {% trans "Back" %}</a>
-                        {% else %}
-                            <a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>
-                        {% endif %}
-                        <a class="pagination_current_page">{% trans "Page" %} {{ media_obj.number }} {% trans "of" %} {{ media_obj.paginator.num_pages }}</a>
-                        {% if media_obj.has_next %}
-                            <a class="discussion_next_page pagination_right_page" href="?page={{ media_obj.next_page_number }}">{% trans "Forward" %} &#187;</a>
-                        {% else %}
-                            <a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>
-                        {% endif %}
-                    </div>
-                </div>
-                {% endspaceless %}
-                {% endif %}
-                {% if not media_obj.object_list %}
+                </td>
+            </tr>
+        </table>
+        {% with media_obj=media_list %}
+            {% if not media_obj.object_list %}
                 <script type="text/javascript">
-                    $('.ss_user_page_nocontent').show();
-                    $('.ss_user_page_content').hide();
+                    $('.ss_pet_page_nocontent').show();
+                    $('.ss_pet_page_content').hide();
                 </script>
-                {% else %}
+            {% else %}
                 <script type="text/javascript">
-                    $('.ss_user_page_nocontent').hide();
-                    $('.ss_user_page_content').show();
-                </script>                
-                {% endif %}
-                {% endwith %}
-            </div>
-            <!--br>
-            <a href="#" style="color:#f24f00;"> Показать еще... </a>
-            <br-->
-            <br>
-        </td>
-    </tr>
-</table> 
-<!-- Подвал -->
-{% include 'include/footer.html' %}
-<!-- /Подвал -->
+                    $('.ss_pet_page_nocontent').hide();
+                    $('.ss_pet_page_content').show();
+                </script>
+            {% endif %}
+        {% endwith %}
 
-<!-- Окно фотографии - по умолчанию скрыто -->
-{% include 'include/photo_win.html' %}
-<!-- /Окно фотографии -->
 
 <!-- Окно сообщений -->
 {% include 'include/message_box.html' %}
 <!-- /Окно сообщений -->
 
-<!-- Блок затенения (начало)-->
-    <div id="overlay"></div>
-<!-- Блок затенения (конец)-->
-
-<!-- География сообщества -->
-{% include 'include/geo.html' %}
-<!-- /География сообщества -->
-
-<!-- Пишите письма -->
-{% include 'include/feedback.html' %}
-<!-- /Пишите письма -->
-
-<!-- Регламент -->
-{% include 'include/rules.html' %}
-<!-- /Регламент -->
-
-<!-- О проекте -->
-{% include 'include/about.html' %}
-<!-- /О проекте -->
-
-<!-- Аналитика -->
-{% include 'include/analytics.html' %}
-<!-- /Аналитика -->
-</body>
+<!-- Окно фотографии -->
+{% include 'include/photo_win.html' %}
+<!-- /Окно фотографии -->
+    </body>
 </html>

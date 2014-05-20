@@ -3,14 +3,15 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
-<html itemscope itemtype="http://schema.org/Article">
+<html>
     <head>
         <title>{% trans 'MiXiM - for those who love pets' %}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
         <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
         <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
-        <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+        <link href="/css/style_theme_01.css" rel="stylesheet" type="text/css">
 
         <script src="/js/underscore-min.js"></script>
         <script src="/js/backbone-min.js"></script>
@@ -26,6 +27,7 @@
         <script src="/js/app/api.js"></script>
         <script src="/js/app/util.js"></script>
         <script src="/js/app/gallery.js"></script>
+        <script src="/js/app/keydown.js"></script>
         <script src="/js/app/media.js"></script>
 
         <script src="/js/app/ui.js"></script>
@@ -41,75 +43,61 @@
         <meta itemprop="description" content="{{ media_file.description }}">
         <meta itemprop="image" content="{{ media_file.thumbnail }}">
     </head>
-    <body class="media">
-        <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
-        {% include 'include/login.html' %}
-        <!-- /Блок авторизации, регистрации и востановления пароля (конец) -->
-        <img style="display:none" src="{{ media_file.thumbnail }}">
-        <table width="980px" align="center" height="100%" border="0" cellspacing="0" cellpadding="0">
+    <body>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
+
+<!-- Блок авторизации, регистрации и востановления пароля (начало) -->
+{% include 'include/login.html' %}
+<!-- /Блок авторизации, регистрации и востановления пароля (конец) -->
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.google_play').on('mouseenter', function(){
+                    $('.google_play').animate({width:'160px'});
+                }).on('mouseleave', function(){
+                    $('.google_play').animate({width:'46px'});
+                });
+            });
+        </script>
+
+        <table class="bkg_media" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td height="98px" valign="top">
-<!--
-                    <div class="logo_media s__logged" style="margin-left:95px;">
-                        <a href="../media.shtml" title="{% trans 'To home page' %}" target="_self">
-                            <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans 'To home page' %}">
-                        </a>
-                    </div>
-                    <div class="logo_media s__not_logged" style="margin-left:95px;">
-                        <a href="../" title="{% trans 'To home page' %}" target="_self">
-                            <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans 'To home page' %}">
-                        </a>
-                    </div>
--->
-                    <div class="app_div" style="margin-left:485px;">
-                        <div id="show_qr" class="show_qr_window">
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td height="68px" align="right" valign="top">
-                                        <img src="../images/qr_window_arrow.png" width="53" height="62" border="0">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="show_qr_box" style="padding-top:8px;">
-                                        <img src="../images/qr_android_ru.png" width="300" height="300" border="0">
-                                    </td>
-                                </tr>
-                            </table>
+                <td valign="top" height="180px">
+                    <div class="box_980px">
+                        <a class="s__logged logo_media" title="{% trans 'You are on the main page' %}"></a>
+                        <a class="s__not_logged logo_media" href="../" target="_self" title="{% trans 'To home page' %}"></a>
+                        <div class="app_links">
+                            <a class="google_play finger" href="https://play.google.com/store/apps/details?id=ru.mixim" target="_blank" title="{% trans 'Available on Google play' %}"></a>
+                            <div class="app_links_slogan">Всегда на связи<br>с новым приложением<br><b>MiXiM</b></div>
                         </div>
-                        <table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td width="141">
-                                    <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans 'Available on Google play' %}"><img src="../images/{% trans 'app_google_play_en.png' %}" width="141" height="46" border="0" alt="{% trans 'Available on Google play' %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
-                                    <!--a href="#" title="Скачать из App store"><img src="../images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
-                                </td>
-                                <td align="center" width="90px;">
-                                    <!--a href="#" title="Pets!"--><img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
-                                </td>
-                                <td width="164">
-                                    <img src="../images/{% trans 'app_stamp_en.png' %}" width="164" height="98" border="0" alt="{% trans 'The mobile app Pets! - absolutely free!' %}">
-                                </td>
-                            </tr>
-                        </table>
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
                 </td>
             </tr>
         </table>
 
-        <!-- Окно фотографии - по умолчанию скрыто -->
-        {% include 'include/photo_win.html' %}
-        <!-- /Окно фотографии -->
+<!-- Окно сообщений -->
+{% include 'include/message_box.html' %}
+<!-- /Окно сообщений -->
 
-        <!-- Окно сообщений -->
-        {% include 'include/message_box.html' %}
-        <!-- /Окно сообщений -->
+<!-- Окно фотографии -->
+{% include 'include/photo_win.html' %}
+<!-- /Окно фотографии -->
 
-        <!-- Блок затенения (начало)-->
-            <div id="overlay"></div>
-        <!-- Блок затенения (конец)-->
-
-        <!-- Аналитика -->
-        {% include 'include/analytics.html' %}
-        <!-- /Аналитика -->
+<!-- Аналитика -->
+{% include 'include/analytics.html' %}
+<!-- /Аналитика -->
 
         <script type="text/javascript">
             var share_pic = {{ media_file.id|default:"false" }};
@@ -119,10 +107,11 @@
 
             $("#photo_win_close_btn").hide();
 
-            $(window).bind("load", function() {
+            $(document).ready(function() {
                 if( $( "#photo_window" ).offset().top < 150 )
                     $( "#photo_window" ).attr( "style", "top:150px !important" );
             });
         </script>
     </body>
 </html>
+<script src="/js/app/keydown.js"></script>
