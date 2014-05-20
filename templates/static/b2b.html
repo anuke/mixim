@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html>
+    <head>
+        <title>{% trans 'MiXiM - for those who love pets' %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+        <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+        <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
+
+        <link href="/css/style_theme_01.css" rel="stylesheet" type="text/css">
+
+        <script src="/js/jquery-1.8.3.min.js"></script>
+        <script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
+    </head>
+
+    <body>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+                if($('#overlay').css("display") != "none") {
+                    $(window).resize(function() {
+                        $('#overlay').css("height", $(window).height());
+                        $('#overlay').css("height", $(document).height());
+                    });
+                };
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.google_play').on('mouseenter', function(){
+                    $('.google_play').animate({width:'160px'});
+                }).on('mouseleave', function(){
+                    $('.google_play').animate({width:'46px'});
+                });
+            });
+        </script>
+    
+        <table class="bkg_media" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td valign="top" height="160px">
+                    <div class="box_980px">
+                        <a class="logo_media" href="javascript:history.back();" target="_self" title="{% trans 'To home page' %}"></a>
+                        <div class="app_links">
+                            <a class="google_play finger" href="https://play.google.com/store/apps/details?id=ru.mixim" target="_blank" title="{% trans 'Available on Google play' %}"></a>
+                            <div class="app_links_slogan">Всегда на связи<br>с новым приложением<br><b>MiXiM</b></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">
+                    <div class="body_980px">
+                        <div class="b2b_img_block">
+                            <div class="b2b_tip">
+                                <div>
+                                    <ul>
+                                        Услуга:
+                                        <li>- Рекламный блок А1</li>
+                                        Тип рекламы:
+                                        <li>- Статическая, формат изображения .PNG</li>
+                                        <li>- 2D анимационная, слайды формата .PNG</li>
+                                        Срок:
+                                        <li>2 недели</li>
+                                        Цена:
+                                        <li>договорная</li>
+                                    </ul>
+                                    <br>
+                                    <ul>
+                                        Услуга:
+                                        <li>- Рекламный блок А2</li>
+                                        Тип рекламы:
+                                        <li>- Статическая, формат изображения .PNG</li>
+                                        <li>- 2D анимационная, слайды формата .PNG</li>
+                                        <li>! максимальный размер по высоте 340px</li>
+                                        Срок:
+                                        <li>2 недели</li>
+                                        Цена:
+                                        <li>договорная</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <img src="../images/b2b_ad1.png">
+                        </div>
+                        <div class="b2b_img_block">
+                            <div class="b2b_tip">
+                                <div>
+                                    <ul>
+                                        Услуга:
+                                        <li>- Рекламный блок A2</li>
+                                        Тип рекламы:
+                                        <li>- Статическая, формат изображения .PNG</li>
+                                        <li>- 2D анимационная, слайды формата .PNG</li>
+                                        Срок:
+                                        <li>2 недели</li>
+                                        Цена:
+                                        <li>договорная</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <img src="../images/b2b_ad2.png">
+                        </div>
+                        <div class="b2b_img_block">
+                            <div class="b2b_tip">
+                                <div>
+                                    <ul>
+                                        Услуга:
+                                        <li>- Рекламный блок A3</li>
+                                        Тип рекламы:
+                                        <li>- Статическая, формат изображения .PNG</li>
+                                        <li>- 2D анимационная, слайды формата .PNG</li>
+                                        <li>! максимальный размер по ширине 180px</li>
+                                        <li>! максимальный размер по ширине 360px</li>
+                                        Срок:
+                                        <li>2 недели</li>
+                                        Цена:
+                                        <li>договорная</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <img src="../images/b2b_ad3.png">
+                        </div>
+                        <div class="b2b_img_block">
+                            <div class="b2b_tip">
+                                <div>
+                                    <ul>
+                                        Услуга:
+                                        <li>- Рекламный блок A4</li>
+                                        Тип рекламы:
+                                        <li>- Статическая, формат изображения .PNG</li>
+                                        <li>- 2D анимационная, слайды формата .PNG</li>
+                                        Срок:
+                                        <li>2 недели</li>
+                                        Цена:
+                                        <li>договорная</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <img src="../images/b2b_ad4.png">
+                        </div>
+                        <div class="b2b_contact">
+                            По вопросам размещения рекламы: Шакирзянов Марат
+                            <br>
+                            Тел.: +7(987)2224571
+                            <br>
+                            E-Mail: maratpr@mail.ru
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+<!-- Подвал -->
+{% include 'include/footer.html' %}
+<!-- /Подвал -->
+
+<!-- География сообщества -->
+{% include 'include/geo.html' %}
+<!-- /География сообщества -->
+
+    </body>
+</html>

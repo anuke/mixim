@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html>
+    <head>
+        <title>{% trans 'MiXiM - for those who love pets' %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+        <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+        <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
+
+        <link href="/css/style_theme_01.css" rel="stylesheet" type="text/css">
+
+        <script src="/js/jquery-1.8.3.min.js"></script>
+        <script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
+        <script src="/js/app/api.js"></script>
+        <script src="/js/app/util.js"></script>
+        <script src="/js/app/ui.js"></script>
+    </head>
+
+    <body>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+                if($('#overlay').css("display") != "none") {
+                    $(window).resize(function() {
+                        $('#overlay').css("height", $(window).height());
+                        $('#overlay').css("height", $(document).height());
+                    });
+                };
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.google_play').on('mouseenter', function(){
+                    $('.google_play').animate({width:'160px'});
+                }).on('mouseleave', function(){
+                    $('.google_play').animate({width:'46px'});
+                });
+
+                $('#feedback_send_link').click(function () {
+                    $.post('/json/feedback/', {
+                            email: $('#f_feedback_email').val(),
+                            subject: $('#f_feedback_subject').val(),
+                            text: $('#f_feedback_text').val()
+                        }, function (data) {
+                            if (data.success) {
+                                alert('{% trans "Your message has been sent" %}');
+                            }
+                            else {
+                                alert('{% trans "Error sending message" %}');
+                            }
+                        }, 'json');
+                });
+            });
+        </script>
+    
+        <table class="bkg_media" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td valign="top" height="160px">
+                    <div class="box_980px">
+                        <a class="logo_media" href="javascript:history.back();" target="_self" title="{% trans 'To home page' %}"></a>
+                        <div class="app_links">
+                            <a class="google_play finger" href="https://play.google.com/store/apps/details?id=ru.mixim" target="_blank" title="{% trans 'Available on Google play' %}"></a>
+                            <div class="app_links_slogan">Всегда на связи<br>с новым приложением<br><b>MiXiM</b></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">
+                    <div class="feedback_block">
+                        <div class="feedback_body">
+                        <div>
+                            <div class="feedback_attn">{% trans '<b>Attention!</b><br>For the correct delivery, all fields are required.' %}</div>
+                            <input id="f_feedback_email" type="text" placeholder="{% trans 'Your e-Mail:' %}">
+                            <input id="f_feedback_subject" type="text" placeholder="{% trans 'Message subject:' %}">
+                            <div class="f_feedback_subject_bttns">
+                                <ul>
+                                    <div class="feedback_1 finger" onclick="document.getElementById('f_feedback_subject').value='{% trans 'Ask a question' %}';" title="{% trans 'Ask a question' %}"></div>
+                                    <div class="feedback_2 finger" onclick="document.getElementById('f_feedback_subject').value='{% trans 'Suggest a feature' %}';" title="{% trans 'Suggest a feature' %}"></div>
+                                    <div class="feedback_3 finger" onclick="document.getElementById('f_feedback_subject').value='{% trans 'Having problems?' %}';" title="{% trans 'Having problems?' %}"></div>
+                                    <div class="feedback_4 finger" onclick="document.getElementById('f_feedback_subject').value='{% trans 'To express gratitude' %}';" title="{% trans 'To express gratitude' %}"></div>
+                                    <div class="feedback_5 finger" onclick="document.getElementById('f_feedback_subject').value='{% trans 'The proposal to cooperate' %}';" title="{% trans 'The proposal to cooperate' %}"></div>
+                                </ul>
+                            </div>
+                            <textarea id="f_feedback_text" placeholder="{% trans 'Your message:' %}"></textarea>
+                            <div id="feedback_send_link" class="button_input feedback_send_bttn_bkg finger">{% trans 'Send' %}</div>
+                        </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+<!-- Подвал -->
+{% include 'include/footer.html' %}
+<!-- /Подвал -->
+
+<!-- География сообщества -->
+{% include 'include/geo.html' %}
+<!-- /География сообщества -->
+
+    </body>
+</html>

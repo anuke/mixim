@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+<html>
+    <head>
+        <title>{% trans 'MiXiM - for those who love pets' %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+        <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+        <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
+
+        <link href="/css/style_theme_01.css" rel="stylesheet" type="text/css">
+
+        <script src="/js/jquery-1.8.3.min.js"></script>
+        <script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
+    </head>
+
+    <body>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+                if($('#overlay').css("display") != "none") {
+                    $(window).resize(function() {
+                        $('#overlay').css("height", $(window).height());
+                        $('#overlay').css("height", $(document).height());
+                    });
+                };
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.google_play').on('mouseenter', function(){
+                    $('.google_play').animate({width:'160px'});
+                }).on('mouseleave', function(){
+                    $('.google_play').animate({width:'46px'});
+                });
+
+                $('.{% trans "text_block_en" %}').show(); // показываем локаизацию
+            });
+        </script>
+    
+        <table class="bkg_media" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td valign="top" height="160px">
+                    <div class="box_980px">
+                        <a class="logo_media" href="javascript:history.back();" target="_self" title="{% trans 'To home page' %}"></a>
+                        <div class="app_links">
+                            <a class="google_play finger" href="https://play.google.com/store/apps/details?id=ru.mixim" target="_blank" title="{% trans 'Available on Google play' %}"></a>
+                            <div class="app_links_slogan">Всегда на связи<br>с новым приложением<br><b>MiXiM</b></div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="middle">
+                    <div class="body_980px">
+                        <div class="text_block_en rules_block" style="display:none;">
+                            <p>
+                                Please read carefully our Terms &amp; Policies which constitute a User Agreement.
+                            </p>
+                            <p>
+                                This Web site and the MiXiM mobile application is all about pets! It as been created for pet lovers by pet lovers  to enable them to show off their pets by instantly sharing photos with the pet loving community from your mobile device or or your PC/MAC! This site enables its users to write comments, blog entrees, share advice, make new friends and communicate with those who have similar pets and interests.
+                            </p>
+                            <div class="rules_block_caption">
+                                Overview:
+                            </div>
+                            <div class="rules_tip">
+                                <div>
+                                    <p>
+                                        This site and the MiXiM mobile application are focused on your pets. The users will play a role of a photojournalist, biographer or simply camera operator. The content you will transmit must be yours and only yours!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rules_block_caption">
+                                Keep in mind that:
+                            </div>
+                            <div class="rules_tip">
+                                <div>
+                                    <p>
+                                        When you register your user account you can provide as much information as you wish! Use an alias or your real name; later you can easily adjust or change what is visible to the pet  lovers community in your privacy settings. Filling out all the fields in your pets’ profiles and adding a tag or two will give you access to many advanced search options, and will help you and others to network more efficiently.
+                                    </p>
+                                    <center><b><i>Do not be shy in showing off your Pet :-) Share your photos, write comments: the more the merrier! We all want to see and hear about the pet in your life!</i></b></center>
+                                    <p>
+                                        You can use your pets picture or your own picture as your avatar, it is all up to you!
+                                        Make a brief comment or identify the photo you publish on the site or by the mobile application, it makes sharing and interacting with others much more fun!
+                                        What we do not want to see anything illegal; there is no need for foul language, personal attacks and solicitation of any kind! We want to keep this resource positive for everybody’s enjoyment.
+                                        “For tastes are made the colors”: we love our pets and we think that they are the smartest, cutes, and the most perfect in all ways, so please refrain from making negative or offensive comments, there is no need to hurt other pet owners’ feelings.
+                                    </p>
+                                    <p>
+                                        <b><i>We have a one account per person policy (no limits on pets), and by creating an account you as the user agree not</i></b> to upload, post or transmit: any type of advertisement or information with the purpose of conducting commercial activities;  pictures or videos of toys; copyrighted information, erotic/porn materials or links and spam.
+                                        We are committed to protecting your online privacy! It is important to you and it is important for us! Our statement on users’ privacy is below.
+                                    </p>
+                                    <center>What we (“We” hereby refers to MiXiM.US, PETS2SHOW.COM, Pets2Show.us , MIXIM.RU, MIXIMUS, INC) do with collected information.</center>
+                                    <p>
+                                        You do not have to make your personal information public to visit and enjoy many features and benefits of our site and the aggregate mobile application.
+                                        We use the information that you voluntarily provide to enable you to communicate with other users and to facilitate your access to many features and benefits this site and the mobile application provides.
+                                        We do not share your personal information (name and address)  with the third parties unless you ask us to do that or unless it is required by law and only after due process.
+                                    </p>
+                                </div>
+                            </div>
+                            <ul>
+                                <b>Your use of our Services:</b><br>
+                                <li>- When a Service requires or includes downloadable software, this software may update automatically on your device once a new version or feature is available. Some Services may let you adjust your automatic update settings.</li>
+                                <li>- Mixim.us gives you a personal non-assignable and non-exclusive license to use the software provided to you by Mixim as part of the Services. This license is for the sole purpose of enabling you to use and enjoy the benefit of the Services in the manner permitted by these terms. You are not authorized to copy, modify, distribute, sell, or lease any part of our Services or included software (mobile application), nor may you reverse engineer or attempt to extract the source code of that software, unless laws prohibit those restrictions or you have our written permission.</li>
+                            </ul>
+                            <ul>
+                                <b>Liability for our Services:</b><br>
+                                <li>- YOU AGREE NOT TO HOLD MiXiM.US, PETS2SHOW.COM, Pets2Show.us , MIXIM.RU, MIXIMUS, INC, ITS DIRECTORS, OFFICERS, EMPLOYEES, and SHAREHOLDERS RESPONSIBLE FOR LOST PROFITS, REVENUES, OR DATA, FINANCIAL LOSSES OR INDIRECT, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, AND YOU AGREE THAT WE WILL NOT BE LIABLE FOR ANY LOSS OR DAMAGE RESULTING FROM YOUR USE OF OUR SERVICE.</li>
+                                <li>- TO THE EXTENT PERMITTED BY LAW, THE TOTAL LIABILITY OF MIXIM AND ITS SUPPLIERS AND DISTRIBUTORS, FOR ANY CLAIM UNDER THESE TERMS, INCLUDING FOR ANY IMPLIED WARRANTIES, IS LIMITED TO THE AMOUNT YOU PAID US TO USE THE SERVICES (THE USE OF THE SITE IS FREE, BUT WE HAVE TO WRITE THIS).</li>
+                                <li>- IN ANY and ALL CASES, YOU AGREE THAT WE (MiXiM.US, PETS2SHOW.COM, Pets2Show.us , MIXIM.RU, MIXIMUS, INC) OUR SUPPLIERS AND DISTRIBUTORS.</li>
+                            </ul>
+                            <ul>
+                                <b>About these user agreement:</b><br>
+                                <li>- We may modify these terms or any additional terms at any time. By creating the account and using our service you agree to look at the terms regularly. We’ll post notice of modifications to these terms on this page. Keep in mind that changes addressing new functions for a Service or changes made for legal reasons will be effective immediately. If you do not agree to the modified terms, you should discontinue your use and request that we close your account.</li>
+                                <li>- By accessing, registering or otherwise using the Mixim web sites (including, but no limited to mixim.us, mixim.ru, mixim.mobi, mixim.co, mixim.us.com, pets2show.com pets2show.us), Mixim Service and any of its applications  (including, but not limited to its mobile application MiXiM) You agree to be bound by the following terms of use. The service is owned and controlled by MIXIMUS, INC.</li>
+                                <li>- These Terms of Use affect your legal rights and obligations. If you do not accept them and do not agree to be bound by all of these Terms of Use, do not access or use the Service.</li>
+                            </ul>
+                            <ul>
+                                <b>We require that:</b><br>
+                                <li>-&nbsp;You must be at least 13 years old to use the Service;</li>
+                                <li>-&nbsp;You may not and you agree not to post violent, nude, partially nude, discriminatory, unlawful, infringing, hateful, pornographic or sexually suggestive photos or other content via the Service;</li>
+                                <li>-&nbsp;You must not and you agree not to defame, stalk, bully, abuse, harass, threaten, impersonate or intimidate people or entities and you must not post private or confidential information via the Service, including, without limitation, your or any other person's credit card information, social security or alternate national identity numbers, non-public phone numbers or non-public email addresses;</li>
+                                <li>-&nbsp;You may not and you agree not to use the Service for any illegal or unauthorized purpose. You agree to comply with all laws, rules and regulations (for example, federal, state, local and provincial) applicable to your use of the Service and your Content (defined below), including but not limited to, copyright laws;</li>
+                                <li>-&nbsp;You are solely responsible for your conduct and any data, text, files, information, usernames, images, graphics, photos, profiles, audio and video clips, sounds, musical works, works of authorship, applications, links and other content or materials (collectively, "Content") that you submit, post or display on or via the Service;</li>
+                                <li>-&nbsp;You must not change, modify, adapt or alter the Service or change, modify or alter another website so as to falsely imply that it is associated with the Service or MiXiM / Pets2Show;</li>
+                                <li>-&nbsp;You must not access MiXiM / Pets2Show's private API by means other than those permitted by MiXiM / Pets2Show;</li>
+                                <li>-&nbsp;You must not create or submit any commercial or harassing communications (a/k/a "spam") to any MiXiM / Pets2Show users;</li>
+                                <li>-&nbsp;You must not use domain names or web URLs in your username without prior written consent from MiXiM / Pets2Show;</li>
+                                <li>-&nbsp;You must not interfere or disrupt the Service or servers or networks connected to the Service, including by transmitting any worms, viruses, spyware, malware or any other code of a destructive or disruptive nature. You may not inject content or code or otherwise alter or interfere with the way any MiXiM / Pets2Show page is rendered or displayed in a user's browser or device;</li>
+                                <li>-&nbsp;You must not create accounts with the Service through unauthorized means, including but not limited to, by using an automated device, script, bot, spider, crawler or scraper;</li>
+                                <li>-&nbsp;You must not attempt to restrict another user from using or enjoying the Service and you must not encourage or facilitate violations of these Terms of Use or any other MiXiM / Pets2Show terms;</li>
+                                <li>-&nbsp;Violation of these Terms of Use may, in Mixim / Pets2show’s sole discretion, result in termination of your user account. You understand and agree that Mixim / Pets2show cannot and will not be responsible for the Content posted on the Service and you use the Service at your own risk. If you violate the letter or spirit of these Terms of Use, or otherwise create risk or possible legal exposure for Mixim / Pets2show, we can stop providing all or part of the Service to you;</li>
+                            </ul>
+                            <ul>
+                                <b>OTHER CONDITIONS:</b><br>
+                                <li>-&nbsp;We reserve the right to modify or terminate the Service or your access to the Service for any reason, without notice, at any time, and without liability to you. You can deactivate your MiXiM / Pets2Show account by logging into the Service and requesting it be deleted. You understand and agree that in case of your account deactivation/ deletion your photos, comments, likes, blog entrees, friendships, and all other data will no longer be accessible through your account (e.g., other users will not be able to search and navigate to your username and view your photos), but those materials and data may persist and appear within the Service.</li>
+                                <li>-&nbsp;Upon termination, all licenses and other rights granted to you in these Terms of Use will immediately cease.</li>
+                                <li>-&nbsp;We reserve the right, in our sole discretion, to change these Terms of Use ("Updated Terms") from time to time. Unless we make a change for legal or administrative reasons, we will provide reasonable advance notice before the Updated Terms become effective. You agree that we may notify you of the Updated Terms by posting them on the Service, and that your use of the Service after the effective date of the Updated Terms (or engaging in such other conduct as we may reasonably specify) constitutes your agreement to the Updated Terms. Therefore, you should review these Terms of Use and any Updated Terms before using the Service. The Updated Terms will be effective as of the time of posting, or such later date as may be specified in the Updated Terms, and will apply to your use of the Service from that point forward. These Terms of Use will govern any disputes arising before the effective date of the Updated Terms.</li>
+                            </ul>
+                            <p>From time to time a special feature will be offered with its own terms and conditions and those will apply in addition to these Terms of Use. In those cases, the terms specific to the special feature control to the extent there is a conflict with these Terms of Use.</p>
+                            &nbsp;&nbsp;-&nbsp;MiXiM / Pets2Show reserves the right to refuse access to the Service to anyone for any reason at any time and the right to force forfeiture of any username for any reason.<br>
+                            &nbsp;&nbsp;-&nbsp;We may, but have no obligation to, remove, edit, block, and/or monitor Content or accounts containing Content that we determine in our sole discretion violates these Terms of Use.<br>
+                            &nbsp;&nbsp;-&nbsp;You are solely responsible for your interaction with other users of the Service, whether online or offline. You agree that MiXiM / Pets2Show is not responsible or liable for the conduct of any user. MiXiM / Pets2Show reserves the right, but has no obligation, to monitor or become involved in disputes between you and other users. Exercise common sense and your best judgment when interacting with others, including when you submit or post Content or any personal or other information.<br>
+                            &nbsp;&nbsp;-&nbsp;There may be links from the Service, or from communications you receive from the Service, to third-party web sites or features. There may also be links to third-party web sites or features in images or comments within the Service. The Service also includes third-party content that we do not control, maintain or endorse. Functionality on the Service may also permit interactions between the Service and a third-party web site or feature, including applications that connect the Service or your profile on the Service with a third-party web site or feature. For example, the Service may include a feature that enables you to share Content from the Service or your Content with a third party, which may be publicly posted on that third party's service or application. Using this functionality typically requires you to login to your account on the third-party service and you do so at your own risk. MiXiM / Pets2Show does not control any of these third-party web services or any of their content. You expressly acknowledge and agree that MiXiM / Pets2Show is in no way responsible or liable for any such third-party services or features. YOUR CORRESPONDENCE AND BUSINESS DEALINGS WITH THIRD PARTIES FOUND THROUGH THE SERVICE ARE SOLELY BETWEEN YOU AND THE THIRD PARTY. You may choose, at your sole and absolute discretion and risk, to use applications that connect the Service or your profile on the Service with a third-party service (each, an "Application") and such Application may interact with, connect to or gather and/or pull information from and to your Service profile. By using such Applications, you acknowledge and agree to the following:<br>
+                            <i>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(I) If you use an Application to share information, you are consenting to information about your profile on the Service being shared;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(II) Your use of an Application may cause personally identifying information to be publicly disclosed and/or associated with you, even if MiXiM / Pets2Show has not itself provided such information;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;(III) Your use of an Application is at your own option and risk, and you will hold the MiXiM / Pets2Show Parties (defined below) harmless for activity related to the Application.</i><br>
+                            &nbsp;&nbsp;-&nbsp;You agree that you are responsible for all data charges you incur through use of the Service.<br>
+                            &nbsp;&nbsp;-&nbsp;We prohibit crawling, scraping, caching or otherwise accessing any content on the Service via automated means, including but not limited to, user profiles and photos (except as may be the result of standard search engine protocols or technologies used by a search engine with MiXiM / Pets2Show's express consent).<br>
+                            <p>ARBITRATION NOTICE: EXCEPT IF YOU OPT-OUT AND EXCEPT FOR CERTAIN TYPES OF DISPUTES DESCRIBED IN THE ARBITRATION SECTION BELOW, YOU AGREE THAT DISPUTES BETWEEN YOU AND MiXiM / Pets2Show WILL BE RESOLVED BY BINDING, INDIVIDUAL ARBITRATION AND YOU WAIVE YOUR RIGHT TO PARTICIPATE IN A CLASS ACTION LAWSUIT OR CLASS-WIDE ARBITRATION.</p>
+                        </div>
+                        <div class="text_block_ru rules_block" style="display:none;">
+                            <p>
+                                Перед началом использования (регистрацией) социальной сети, Вам (как пользователю) необходимо ознакомиться с настоящими правилами, тем самым, принимая и соблюдая условия использования социальной сети.
+                            </p>
+                            <div class="rules_block_caption">
+                                Вкратце!
+                            </div>
+                            <div class="rules_tip">
+                                <div>
+                                    <p>
+                                        Наш сайт о питомцах и для них, для тех, кто стал нашими домашними любимцами. Человеку на этом празднике жизни выделена роль автобиографа, спецкорреспондента, фотографа. оператора а значит, к публикации будет допущен только собственный контент <i>- фото, видео и т.д.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="rules_block_caption">
+                                Важно знать, что:
+                            </div>
+                            <div class="rules_tip">
+                                <div>
+                                    <ul>
+                                        <li>-&nbsp;желательно заполнять о себе полную информацию <i>– полезно при поиске</i>;</li>
+                                        <li>-&nbsp;не стесняйтесь рассказывать о себе <i>– сообщество должно знать своих героев</i>;</li>
+                                        <li>-&nbsp;указывайте свое настоящее имя и фамилию <i>– вашим друзьям будет легче вас найти</i>;</li>
+                                        <li>-&nbsp;заполняйте все поля при создании профиля Питомца <i>– для лучшего поиска его фотографий</i>;</li>
+                                        <li>-&nbsp;в качестве аватара лучше загружать свою фотографию или нейтральную картинку</i>;</li>
+                                        <li>-&nbsp;пишите о своих питомцах <i>– это всем интересно</i>;</li>
+                                        <li>-&nbsp;если вы собираетесь продать помет, <i>обязательно укажите это</i>;</li>
+                                        <li>-&nbsp;вступая в полемику, хваля или ругая, аргументируйте свое мнение;</li>
+                                        <li>-&nbsp;комментируйте загружаемые фотографии <i>– их будет легче понять</i>;</li>
+                                        <li>-&nbsp;обязательно вводите ключевые слова-метки (теги) к фотографиям <i>- людям будет проще найти интересующие их фото</i>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="rules_block_caption">
+                                Подробнее о том, что запрещено:
+                            </div>
+                            <div class="rules_tip">
+                                <div>
+                                    <ul>
+                                        <li>- употребление ненормативной лексики, даже завуалировано;</li>
+                                        <li><b>* переходить на личности, оскорблять питомца и клеветать</b>;</li>
+                                        <li>- употреблять ругательства любых видов, на любом языке и особенно замаскированные;</li>
+                                        <li><b>* размещать записи аморальные или безнравственные</b>;</li>
+                                        <li>- попрошайничать или организовывать сборы любых материальных ценностей;</li>
+                                        <li>- одному человеку регистрировать более одно аккаунта;</li>
+                                        <li>- размещать информацию рекламного характера на аватарах, именах питомцев, равно и в своем имени;</li>
+                                        <li>- вносить неверные данные в поля данных, относящихся к географии <i>– город, страна и т.п.</i>;</li>
+                                        <li>- размещать игрушечных питомцев, чужих питомцев или вымышленных;</li>
+                                        <li>- рассказывать о питомце без фотографии;</li>
+                                        <li><b>* размещать как сам контент эротического и порнографического характера, так и ссылки на него</b>;</li>
+                                        <li>- вносить информацию рекламного характера в поле дополнительной информации о питомце;</li>
+                                        <li>- плагиат в описании вашего питомца или своем описании, полностью и частично;</li>
+                                        <li>- размещать контент, копирование, которого прямо запрещено правообладателем или его автором;</li>
+                                        <li>- писать о питомце рассказ, в контексте которого невозможно идентифицировать питомца, которому посвящен рассказ;</li>
+                                        <li>- загружать фотографии чужих питомцев, указывая как свои;</li>
+                                        <li>- загружать и создавать питомца в не соответствующие его виду разделах <i>- собаки не кошки, черепахи совсем не лошади, а грызуны далеко не птицы и т.п.</i></li>
+                                        <li>- загружать под видом фотографий текст, схемы, и т.п.;</li>
+                                        <li>- загружать несколько раз одну и ту же фотографию;</li>
+                                        <li>- размещать фотографии с надписями рекламного, оскорбительного характера или с призывами к каким-либо действиям на сайте;</li>
+                                        <li>- помещать на фото элементы дизайна или интерфейса сайтов или операционных систем;</li>
+                                        <li>- оставлять комментарии не по теме;</li>
+                                        <li>- оставлять частые, несодержательные или бессмысленные комментарии, т.е. флудить.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p>
+                                <b>* - случай, когда аккаунт участника будет заблокирован немедленно, мало того, при обнаружении этой персоны в сообществе под другим акаунтом, будет произведена повторная блокировка персоны – значит вам тут не рады.</b>
+                            </p>
+                                Лучший способ не нарушать правила - всем нам в месте насладиться любовью к себе и нашим питомцам!
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+<!-- Подвал -->
+{% include 'include/footer.html' %}
+<!-- /Подвал -->
+
+<!-- География сообщества -->
+{% include 'include/geo.html' %}
+<!-- /География сообщества -->
+
+    </body>
+</html>

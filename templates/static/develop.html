@@ -10,7 +10,7 @@
         <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
         <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
 
-        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="/css/style_theme_01.css" rel="stylesheet" type="text/css">
 
         <script src="/js/underscore-min.js"></script>
         <script src="/js/backbone-min.js"></script>
@@ -24,181 +24,219 @@
         <script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
     </head>
 
-    <body class="media">
-        <table width="980px" align="center" height="100%" border="0" cellspacing="0" cellpadding="0">
+    <body>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+                if($('#overlay').css("display") != "none") {
+                    $(window).resize(function() {
+                        $('#overlay').css("height", $(window).height());
+                        $('#overlay').css("height", $(document).height());
+                    });
+                };
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.google_play').on('mouseenter', function(){
+                    $('.google_play').animate({width:'160px'});
+                }).on('mouseleave', function(){
+                    $('.google_play').animate({width:'46px'});
+                });
+
+                $('.{% trans "text_block_en" %}').show(); // показываем локаизацию
+            });
+        </script>
+    
+        <table class="bkg_media" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td height="98px" valign="top">
-                    <div class="logo_media">
-                        <a href="javascript:history.back();" title="{% trans 'To main page' %}" target="_self">
-                            <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans 'To main page' %}">
-                        </a>
-                    </div>
-                    <div class="app_div">
-                        <div id="show_qr" class="show_qr_window">
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td height="68px" align="right" valign="top">
-                                        <img src="../images/qr_window_arrow.png" width="53" height="62" border="0">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="show_qr_box" style="padding-top:8px;">
-                                        <img src="../images/qr_android_ru.png" width="300" height="300" border="0">
-                                    </td>
-                                </tr>
-                            </table>
+                <td valign="top" height="160px">
+                    <div class="box_980px">
+                        <a class="logo_media" href="javascript:history.back();" target="_self" title="{% trans 'To home page' %}"></a>
+                        <div class="app_links">
+                            <a class="google_play finger" href="https://play.google.com/store/apps/details?id=ru.mixim" target="_blank" title="{% trans 'Available on Google play' %}"></a>
+                            <div class="app_links_slogan">Всегда на связи<br>с новым приложением<br><b>MiXiM</b></div>
                         </div>
-                        <table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td width="141">
-                                    <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans 'Available on Google play' %}"><img src="../images/{% trans 'app_google_play_en.png' %}" width="141" height="46" border="0" alt="{% trans 'Available on Google play' %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
-                                    <!--a href="#" title="Скачать из App store"><img src="../images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
-                                </td>
-                                <td align="center" width="90px;">
-                                    <!--a href="#" title="Pets!"--><img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
-                                </td>
-                                <td width="164">
-                                    <img src="../images/{% trans 'app_stamp_en.png' %}" width="164" height="98" border="0" alt="{% trans 'The mobile app Pets! - absolutely free!' %}">
-                                </td>
-                            </tr>
-                        </table>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td height="92px">
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td class="webm_body" valign="top">
-                    <div class="webm_body_c1">
-                        Виджет
-                    </div>
-                    <center>
-                        Дорогие друзья мы рады представить Вам инструмент расширения возможностей Вашего ресурса!
-                    </center>
-                    <p>
-                        С помощью этого инструмента Вы сможете оперативно, с легкостью размещать фотографии своих питомцев, как в прочем и других животных на своих сайтах, создавать галереи и обсуждать фотографии с друзьями или просто интересующимися людьми.
-                    </p>
-                    <span class="webm_body_h1">Кому виджет может оказаться полезным?</span>
-                    <div class="webm_body_b1">
-                        <b>Питомникам и заводчикам:</b><br>
-                        &nbsp;&nbsp;&nbsp; - установив виджет к себе на страничку, вы всегда сможете в реальном времени показать тех питомцев, которых продаете или похвастаться теми, чей помет распространяете<br>
-                        <br>
-                        <b>Форумам и конференциям:</b><br>
-                        &nbsp;&nbsp;&nbsp; - разместив у себя виджет, вы повышаете лояльность пользователей, позволяя им обмениваться фотографиями своих питомцев друг с другом в рамках форума<br>
-                        &nbsp;&nbsp;&nbsp; - простота модерирования, легкость интегрирования фотографий в сообщенияз форума - значит больше не нужно никаких файлообмеников<br>
-                        &nbsp;&nbsp;&nbsp; - это очень удобно, ведь все происходит в реальном времени, даже если пользователь находиться далеко от компьютера<br>
-                        <br>
-                        <b>Зоо магазинам:</b><br>
-                        &nbsp;&nbsp;&nbsp; - если у вас есть животные на продажу, то настало самое время их показать их покупателям<br>
-                        <br>
-                        <b>Порталам и прочим крупным ресурсам, а так же СМИ:</b><br>
-                        &nbsp;&nbsp;&nbsp; - мы предоставляем возможность ребрендирования нашего продукта, для лучшей интеграции виджета в ваши ресурсы
-                    </div>
-                    <br>
-                    <br>
-                    <span class="webm_body_h1">Установить виджет и разместить фотографии крайне просто, от и до всего лишь несколько маленьких шагов:</span>
-                    <div class="webm_body_b1">
-                        <b>Если у Вас мобильный телефон на базе Android:</b><br>
-                        &nbsp;&nbsp;&nbsp;1 - Скачайте приложение <a href="https://play.google.com/store/apps/details?id=ru.mixim">MiXiM</a> с <a href="https://play.google.com">Google Play</a> и зарегистрируйтесь в нем;<br>
-                        &nbsp;&nbsp;&nbsp;2 - Разместите код виджета в нужном месте Вашего сайта, а дальше все произойдет, как по волшебству.<br>
-                        &nbsp;&nbsp;&nbsp;3 - Начните фотографировать свих любимцев и фотографии будут появляться у Вас на сайте.<br>
-                        <br>
-                        <b>Альтернативный способ:</b><br>
-                        &nbsp;&nbsp;&nbsp;1 - Зарегестрируйтесь (если вы еще не с нами) на сайте нашем сайте <a href="http://mixim.ru">www.mixim.ru</a><br>
-                        &nbsp;&nbsp;&nbsp;2 - Разместите код виджета в нужном месте Вашего сайта.<br>
-                        &nbsp;&nbsp;&nbsp;3 - Исрользуя интерфейс загрузки фотографий нашего сайта Вы с легкостью разместите фотографии на Вашей страничке.<br>
-                    </div>
-                    <br>
-                    <br>
-                    <span class="webm_body_h1">Код виджета:</span>
-                    <div class="webm_body_b1">
-                        <font color="#000">
-                        &lt;script type="text/javascript"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_WIDGET_COLS = <i><b>колличество столбцов</b></i>;<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_WIDGET_ROWS = <i><b>колличество строк</b></i>;<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_SPECIES = "<i><b>раздел(ы) животных</b></i>";<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_AUTHORS = "<i><b>пользователь(и)</b></i>";<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_TAGS = "<i><b>ключевые слова</b></i>";<br>
-                        &lt;/script&gt;<br>
-                        &lt;script type="text/javascript" src="http://mixim.ru/js/widget/load.js"&gt;&lt;/script&gt;
-                        </font>
-                        <br>
-                        <br>
-                        <b>Расшифровка:</b><br>
-                        <i><b>колличество столбцов</b></i> - целочисленное значение от 1 и выше;<br>
-                        <i><b>колличество строк</b></i> - целочисленное значение от 1 и выше;<br>
-                        <i><b>раздел(ы) животных</b></i> - эти параметры указывают, каких животных будет показывать виджет: dog, cat, и параметр all, который позволит показать всех животных;<br>
-                        <i><b>пользователь(и)</b></i> - чтобы показать фотографии конкретного пользователя указывается его логин, так же можно показать фотографии нескольких человек указав их логины и разделив запятой;
-                        <i><b>ключевые слова</b></i> -                         
-                    </div>
-                    <br>
-                    <br>
-                    <span class="webm_body_h1">Пример:</span>
-                    <div class="webm_body_b1">
-                        <b>Код:</b><br>
-                        <font color="#000">
-                        &lt;script type="text/javascript"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_WIDGET_COLS = 6;<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_WIDGET_ROWS = 1;<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_SPECIES = "all";<br>
-                        &nbsp;&nbsp;&nbsp;MIXIM_AUTHORS = "mixim";<br>
-                        &lt;/script&gt;<br>
-                        &lt;script type="text/javascript" src="http://mixim.ru/js/widget/load.js"&gt;&lt;/script&gt;
-                        </font>
-                        <br>
-                        <br>
-                        <b>Виджет:</b><br>
-                        <script type="text/javascript">
-                            MIXIM_WIDGET_COLS = 6;
-                            MIXIM_WIDGET_ROWS = 1;
-                            MIXIM_AUTHORS = 'mixim';
-                            MIXIM_SPECIES = 'all';
-                        </script>
-                        <script type="text/javascript" src="http://mixim.ru/js/widget/load.js"></script>
-                    </div>
-                    <p>
-                        В случае возникновения проблем с подключением или вопросами касающимися работы виджета, Вы всегда можете обратиться к нам, мы будем рады помочь.
-                        <div style="text-align:right; margin-top:-10px;">
-                            Контакты для связи:<br>
-                            Тел.: <i><b>+7(962)9651050</b></i><br>
-                            Skype: <i><b>am-35a</b></i>
+                <td align="center" valign="middle">
+                    <div class="body_980px">
+                        <div class="text_block_ru develop_block" style="display:none;">
+                            <p>
+                                Дорогие друзья мы рады представить Вам инструмент расширения возможностей Вашего ресурса!
+                            </p>
+                            <p>
+                                С помощью этого инструмента Вы сможете оперативно, с легкостью размещать фотографии своих питомцев, как в прочем и других животных на своих сайтах, создавать галереи и обсуждать фотографии с друзьями или просто интересующимися людьми.
+                            </p>
+                            <div class="develop_block_caption">
+                                Кому виджет может оказаться полезным?
+                            </div>
+                            <div class="develop_tip">
+                                <div>
+                                    <ul>
+                                        Питомникам и заводчикам:
+                                        <li>
+                                            - установив виджет к себе на страничку, вы всегда сможете в реальном времени показать тех питомцев, которых продаете или похвастаться теми, чей помет распространяете
+                                        </li>
+                                        Форумам и конференциям:
+                                        <li>
+                                            - разместив у себя виджет, вы повышаете лояльность пользователей, позволяя им обмениваться фотографиями своих питомцев друг с другом в рамках форума
+                                        </li>
+                                        <li>
+                                            - простота модерирования, легкость интегрирования фотографий в сообщенияз форума - значит больше не нужно никаких файлообмеников
+                                        </li>
+                                        <li>
+                                            - это очень удобно, ведь все происходит в реальном времени, даже если пользователь находиться далеко от компьютера
+                                        </li>
+                                        Зоо магазинам:
+                                        <li>
+                                            - если у вас есть животные на продажу, то настало самое время их показать их покупателям
+                                        </li>
+                                        Порталам и прочим крупным ресурсам, а так же СМИ:
+                                        <li>
+                                            - мы предоставляем возможность ребрендирования нашего продукта, для лучшей интеграции виджета в ваши ресурсы
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="develop_block_caption">
+                                Как установить виджет и начать публиковать фотографии?
+                            </div>
+                            <div class="develop_tip">
+                                <div>
+                                    <ul>
+                                        Если у Вас мобильный телефон на базе Android:
+                                        <li>
+                                            1. Скачайте приложение <a href="https://play.google.com/store/apps/details?id=ru.mixim">MiXiM</a> с <a href="https://play.google.com">Google Play</a> и зарегистрируйтесь в нем;
+                                        </li>
+                                        <li>
+                                            2. Разместите код виджета в нужном месте Вашего сайта, а дальше все произойдет, как по волшебству.
+                                        </li>
+                                        <li>
+                                            3. Начните фотографировать свих любимцев и фотографии будут появляться у Вас на сайте.
+                                        </li>
+                                        <br>
+                                        Альтернативный способ:
+                                        <li>
+                                            1. Зарегестрируйтесь (если вы еще не с нами) на сайте нашем сайте <a href="http://mixim.ru">www.mixim.ru</a>
+                                        </li>
+                                        <li>
+                                            2. Разместите код виджета в нужном месте Вашего сайта.
+                                        </li>
+                                        <li>
+                                            3. Исрользуя интерфейс загрузки фотографий нашего сайта Вы с легкостью разместите фотографии на Вашей страничке.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="develop_block_caption">
+                                Какой у виджета HTML код?
+                            </div>
+                            <div class="develop_tip">
+                                <div>
+                                    <ul>
+                                        Код:
+                                        <li>
+                                            &lt;script type="text/javascript"&gt;
+                                        </li>
+                                        <li>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_WIDGET_COLS = <b>колличество столбцов</b>;
+                                        </li>
+                                        <li>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_WIDGET_ROWS = <b>колличество строк</b>;
+                                        </li>
+                                        <li>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_SPECIES = "<b>раздел(ы) животных</b>";
+                                        </li>
+                                        <li>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_AUTHORS = "<b>пользователь(и)</b>";
+                                        </li>
+                                        <li>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_TAGS = "<b>ключевые слова</b>";
+                                        </li>
+                                        <li>
+                                            &lt;/script&gt;
+                                        </li>
+                                        <li>
+                                            &lt;script type="text/javascript" src="http://mixim.ru/js/widget/load.js"&gt;&lt;/script&gt;
+                                        </li>
+                                        <br>
+                                        Расшифровка:
+                                        <li>
+                                            <b>колличество столбцов</b> - целочисленное значение от 1 и выше;
+                                        </li>
+                                        <li>
+                                            <b>колличество строк</b> - целочисленное значение от 1 и выше;
+                                        </li>
+                                        <li>
+                                            <b>раздел(ы) животных</b> - эти параметры указывают, каких животных будет показывать виджет: dog, cat, и параметр all, который позволит показать всех животных;
+                                        </li>
+                                        <li>
+                                            <b>пользователь(и)</b> - чтобы показать фотографии конкретного пользователя указывается его логин, так же можно показать фотографии нескольких человек указав их логины и разделив запятой;
+                                        </li>
+                                        <li>
+                                            <b>ключевые слова</b> - 
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="develop_block_caption">
+                                Пример:
+                            </div>
+                            <div class="develop_tip">
+                                <div>
+                                    <ul>
+                                        Код:
+                                        <li>
+                                            &lt;script type="text/javascript"&gt;<br>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_WIDGET_COLS = 6;<br>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_WIDGET_ROWS = 1;<br>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_SPECIES = "all";<br>
+                                            &nbsp;&nbsp;&nbsp;MIXIM_AUTHORS = "mixim";<br>
+                                            &lt;/script&gt;<br>
+                                            &lt;script type="text/javascript" src="http://mixim.ru/js/widget/load.js"&gt;&lt;/script&gt;
+                                        </li>
+                                        <br>
+                                        Результат:
+                                        <script type="text/javascript">
+                                            MIXIM_WIDGET_COLS = 6;
+                                            MIXIM_WIDGET_ROWS = 1;
+                                            MIXIM_AUTHORS = 'mixim';
+                                            MIXIM_SPECIES = 'all';
+                                        </script>
+                                        <script type="text/javascript" src="http://mixim.ru/js/widget/load.js"></script>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p>
+                                В случае возникновения проблем с подключением или вопросами касающимися работы виджета, Вы всегда можете обратиться к нам, мы будем рады помочь.
+                                <div class="b2b_contact">
+                                    Контакты для связи:
+                                    <br>
+                                    Тел.: +7(962)9651050
+                                    <br>
+                                    Skype: am-35a
+                                </div>
+                            </p>
                         </div>
-                    </p>
+                    </div>
                 </td>
-            </tr>
-            <tr>
-                <td height="22px">&nbsp;</td>
             </tr>
         </table>
-        <!-- Подвал -->
-        {% include 'include/footer.html' %}
-        <!-- /Подвал -->
 
-        <!-- Блок затенения -->
-        <div id="overlay"></div>
-        <!-- /Блок затенения -->
+<!-- Подвал -->
+{% include 'include/footer.html' %}
+<!-- /Подвал -->
 
-        <!-- География сообщества -->
-        {% include 'include/geo.html' %}
-        <!-- /География сообщества -->
+<!-- География сообщества -->
+{% include 'include/geo.html' %}
+<!-- /География сообщества -->
 
-        <!-- Пишите письма -->
-        {% include 'include/feedback.html' %}
-        <!-- /Пишите письма -->
-
-        <!-- Регламент -->
-        {% include 'include/rules.html' %}
-        <!-- /Регламент -->
-
-        <!-- О проекте -->
-        {% include 'include/about.html' %}
-        <!-- /О проекте -->
-
-        <!-- Аналитика -->
-        {% include 'include/analytics.html' %}
-        <!-- /Аналитика -->
     </body>
 </html>

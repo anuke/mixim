@@ -3,289 +3,193 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 <html>
-<head>
-<title>{% trans 'MiXiM - for those who love pets' %}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
-<meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
-<meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
+    <head>
+        <title>{% trans 'MiXiM - for those who love pets' %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+        <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+        <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
 
-<link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/style_theme_01.css" rel="stylesheet" type="text/css">
 
-<script src="/js/underscore-min.js"></script>
-<script src="/js/backbone-min.js"></script>
-<script src="/js/jquery-1.8.3.min.js"></script>
-<script src="/js/vendor/jquery.ui.widget.js"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/jquery.iframe-transport.js"></script>
-<script src="/js/jquery.fileupload.js"></script>
-<script src="/js/jquery.populate.js"></script>
-<script src="/js/sprintf.min.js"></script>
-<script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
-<script src="/js/app/init.js"></script>
-<script src="/js/app/api.js"></script>
-<script src="/js/app/util.js"></script>
-<script src="/js/app/gallery.js"></script>
-<script src="/js/app/keydown.js"></script>
-<script src="/js/app/ui.js"></script>
-<!--script src="/js/app/slide.js"></script-->
-<script src="/js/app/carusel.js"></script>
-<script src="/js/app/index.js"></script>
-<script src="/js/app/auth.js"></script>
+        <script src="/js/underscore-min.js"></script>
+        <script src="/js/backbone-min.js"></script>
+        <script src="/js/jquery-1.8.3.min.js"></script>
+        <script src="/js/vendor/jquery.ui.widget.js"></script>
+        <script src="/js/jquery-ui.js"></script>
+        <script src="/js/jquery.iframe-transport.js"></script>
+        <script src="/js/jquery.fileupload.js"></script>
+        <script src="/js/jquery.populate.js"></script>
+        <script src="/js/sprintf.min.js"></script>
+        <script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
+        <script src="/js/app/init.js"></script>
+        <script src="/js/app/api.js"></script>
+        <script src="/js/app/util.js"></script>
+        <script src="/js/app/gallery.js"></script>
+        <script src="/js/app/keydown.js"></script>
+        <script src="/js/app/ui.js"></script>
+        <script src="/js/app/carusel.js"></script>
+        <script src="/js/app/index.js"></script>
+        <script src="/js/app/auth.js"></script>
+        <script src="/js/app/share42.js"></script>
 
-<script src="/js/app/share42.js"></script>
+        <script type="text/javascript">
+            IMG_PER_ROW = 7;
+            IMG_PER_COL = 1;
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var slideLeft;
+                var slideLeft_2;
+                var documentWidth = $(document).width();
+                function set_slide_position(){
+                    slideLeft = parseInt(( $(".slide_bkg").width() - 1600 ) / 2, 10);
+                    $(".slide_container").css("left", slideLeft + "px");
+                    slideLeft_2 = parseInt(( $(".slide_bkg").width() - 2400 ) / 2, 10);
+                    $(".slide_container_2").css("left", slideLeft_2 + "px");
+                }
+                set_slide_position();
+                $(window).resize(function() {
+                    set_slide_position();
+                    documentWidth = $(document).width();
+                });
+                $(document).mousemove(function(e){
+                    $(".slide_container").css("left", slideLeft + parseInt((documentWidth / 2 - e.pageX) / 5) + "px");
+                    $(".slide_container_2").css("left", slideLeft_2 - parseInt((documentWidth / 2 - e.pageX) / 15) + "px");
+                });
 
-<script type="text/javascript">
-    IMG_PER_ROW = 7;
-    IMG_PER_COL = 1;
-</script>
+            });
+        </script>
+        
+    </head>
+    <body>
+<!-- Анимация фона -->
+        <div class="slide_bkg">
+            <div class="slide_container"></div>
+            <div class="slide_container_2"></div>
+        </div>
+<!-- /Анимация фона -->
 
-<script type="text/javascript">
-    var bubble_os;
-    var bubble_login;
-    var phone_position;
-    function changeOsBubble(bubble_os, bubble_login, phone_position){
-        if (bubble_login = '1') {
-        document.getElementById('bubble_' + bubble_os + '_login').src = '../images/' + bubble_os + '_bubble.png';
-        document.getElementById('bubble_phone_login').style.backgroundPosition = phone_position + 'px, top';
-        }
-//        if (bubble_login = '0') {
-//        document.getElementById('bubble_' + bubble_os).src = '../images/' + bubble_os + '_bubble.png';
-//        document.getElementById('bubble_phone').style.backgroundPosition = phone_position + 'px, top';
-//        }
-    };
-</script>
-</head>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
 
-<body class="index">
 <!-- Главное меню (Навигация) -->
 {% include 'include/navi.html' %}
 <!-- /Главное меню (Навигация) -->
-
-<!-- Переключения кластеров -->
-{% include 'include/clusters.html' %}
-<!-- /Переключения кластеров -->
 
 <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
 {% include 'include/login.html' %}
 <!-- /Блок авторизации, регистрации и востановления пароля (конец) -->
 
-<table align="center" width="980" height="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td height="75px">
-        <img src="../images/bubble_smoke.gif" width="80" height="57" style="position:absolute; margin-left:70px; top:0;">
-        <a class="glory_medal_index">
-            <img src="../images/{% trans 'glory_soon_en.png' %}" width="120" height="48" style="margin:36px 0 0 7px;">
-        </a>
-        <a href="../media.shtml" title="{% trans 'Go to the main page' %}" target="_self" class="logo_new">
-            <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans 'Go to the main page' %}">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td height="141px" valign="top">
-        <a href="media.shtml" class="media_1_openscreen">
-            <img src="../images/media.png" width="40" height="40" border="0" alt="{% trans 'Expand to gallery' %}">
-            {% trans '&nbsp;&nbsp;&nbsp;&nbsp;Expand&nbsp;&nbsp;&nbsp;&nbsp;' %}
-        </a>
-        <div class="media_1_pagelist">
-            <a href="javascript:nextPage()" class="media_1_nextpage">{% trans 'Forward' %} &#187;</a>
-            <a href="javascript:prevPage()" class="media_1_prevpage">&#171; {% trans 'Back' %}</a>
-        </div>
-        <div style="width:842px; height:121px;"> <!-- вынести в перед над всеми - position:relative; z-index:10;-->
-            <span class="media_1_row_line_name">{% trans 'New photos' %}</span>
-            <table class="media_1_row_line" style="width:100%; height:100%;">
-                <tr>
-                    <td align="center">
-                        <table cellpadding="0" cellspacing="6" id="image_container"></table>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <table class="carusel_index_navi" onmouseover="clearInterval(carusel_slide_interval_id)" onmouseout="carusel_slide_interval_id = setInterval(change_slide_auto, carusel_slide_time);">
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#slogan_1').on('mouseenter', function(){
+                    $('.slogan_1_el1').animate({width:'360px', height:'360px', margin:'50px 0 0 480px'});
+                    setTimeout(function(){
+                        $('.slogan_1_el2').fadeIn();
+                    }, 500);
+                    setTimeout(function(){
+                        $('.slogan_1_el3').fadeIn();
+                    }, 700);
+                    
+                    $('.slogan_1_el4').animate({width:'180px', height:'180px', margin:'200px 0 0 250px'});
+                    setTimeout(function(){
+                        $('.slogan_1_el5{% trans "_en" %}').fadeIn();
+                    }, 500);
+                }).on('mouseleave', function(){
+                    setTimeout(function(){
+                        $('.slogan_1_el5{% trans "_en" %}').fadeOut();
+                        setTimeout(function(){
+                            $('.slogan_1_el4').animate({width:'0px', height:'0px', margin:'380px 0 0 250px'});
+                        }, 300);
+                        
+                        $('.slogan_1_el3').fadeOut();
+                        setTimeout(function(){
+                            $('.slogan_1_el2').fadeOut();
+                        }, 300);
+                        setTimeout(function(){
+                            $('.slogan_1_el1').animate({width:'0px', height:'0px', margin:'410px 0 0 840px'});
+                        }, 500);
+                    }, 4000);
+                });
+            });
+        </script>
+        <table class="bkg_index" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td>
-                    <div class="carusellement_1" onclick="change_slide(1);" style="-moz-opacity:1; -khtml-opacity:1; opacity:1;"></div>
+                <td valign="top" height="820px">
+                    <div class="box_980px">
+                        <a href="../media.shtml" class="media_1_openscreen">
+                            <div class="media_1_openscreen_ball" title="{% trans 'Expand to gallery' %}"></div>
+                            <div class="media_1_openscreen_text">
+                                {% trans '&nbsp;&nbsp;&nbsp;&nbsp;Expand&nbsp;&nbsp;&nbsp;&nbsp;' %}
+                            </div>
+                        </a>
+                        <a class="logo_index" href="../media.shtml" target="_self" title="{% trans 'Go to the main page' %}"></a>
+                        <div class="media_1_row_line">
+                            <div class="media_1_pagelist">
+                                <div onclick="javascript:nextPage()" class="media_1_nextpage finger" title="{% trans 'Previous page' %}"></div>
+                                <div onclick="javascript:prevPage()" class="media_1_prevpage finger" title="{% trans 'Next page' %}"></div>
+                            </div>
+                            <span class="media_1_row_line_name">{% trans 'New photos' %}</span>
+                            <div class="media_1_row_line_container_box">
+                                <table align="center" cellpadding="0" cellspacing="6" id="image_container"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide_980px">
+                        <div id="slogan_1" class="slogan{% trans '_en' %}"></div>
+                        <div class="slogan_1_el1"></div>
+                        <div class="slogan_1_el2"></div>
+                        <div class="slogan_1_el3"></div>
+                        <div class="slogan_1_el4"></div>
+                        <div class="slogan_1_el5{% trans '_en' %} finger" onclick="window.open('https://play.google.com/store/apps/details?id=ru.mixim', '_blank')" title="{% trans 'Available on Google play' %}"></div>
+                    </div>
                 </td>
-                <td>
-                    <div class="carusellement_2" onclick="change_slide(2);"></div>
-                </td>
-                <td>
-                    <div class="carusellement_3" onclick="change_slide(3);"></div>
+            </tr>
+            <tr>
+                <td align="center" valign="bottom">
+                    <table height="160px" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="120px" valign="top">
+                                <img src="../images/theme_01/share42_megaphone.png" style="position:absolute; margin-top:-12px; z-index:-10;">
+                            </td>
+                            <td valign="top">
+                                <div class="share42init" data-url="http://{{ hostname }}" data-image="http://{{ hostname }}/images/share_pic_1.jpg"></div>
+                            </td>
+                            <td width="120px">
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>
-    </td>
-  </tr>
-  <tr>
-    <td height="428px" valign="top"> <!--class="slides"-->
-        <div id="slide_1">
-            <span class="last_comments_block_name">{% trans 'Actual comments' %}</span>
-            <div class="last_comments_block">
-                <div id="sid__my_comments" class="last_comments_hide_scroll">
-                </div>
-            </div>
-            <img src="../images/{% trans 'slogan_2_en.png' %}" class="slides_slogan_1">
-            <a class="slides_slogan_2">
-                <img src="../images/1.png">
-                {% trans 'The number One online community<br>for pet owners and their pets!' %}
-            </a>
-            <a class="slides_slogan_3">
-                <img src="../images/2.png">
-                {% trans 'A unique and original<br>picture exchange service!' %}
-            </a>
-            <a class="slides_slogan_4">
-                <img src="../images/3.png">
-                {% trans 'Pageants, exhibitions<br>and other events!' %}
-            </a>
-            <a class="slides_slogan_5">
-                <img src="../images/4.png">
-                {% trans 'A unique way to search for<br>and rank awesome pictures!' %}
-            </a>
-        </div>
-        <div id="slide_2" style="display:none;">
-            <img src="../images/{% trans 'slogan_en.png' %}" class="slides_slogan_6">
-            <a class="slides_slogan_7">
-                <img src="../images/5.png">
-                {% trans 'A new mobile app:<br><b>absolutely free!</b>' %}
-            </a>
-            <a class="slides_slogan_8">
-                <img src="../images/6.png">
-                {% trans 'Publish your photo<br>reports in real time!' %}
-            </a>
-            <a class="slides_slogan_9">
-                <img src="../images/7.png">
-                {% trans 'Here you can always be in<br>touch: online blogs & chats!' %}
-            </a>
-            <table align="right" width="465" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="158" valign="top" class="markets_links">
-                        <div id="show_qr" class="show_qr_window" style="width:372px; margin-left:-375px; margin-top:-12px;">
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td class="show_qr_box">
-                                        <img src="images/qr_android_ru.png" width="300" height="300" border="0">
-                                    </td>
-                                    <td width="68px" align="right" valign="top">
-                                        <br><img src="images/qr_window_arrow2.png" width="62" height="34" border="0">
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans 'Available on Google play' %}"><img src="images/{% trans 'app_google_play_en.png' %}" width="141" height="46" border="0" alt="{% trans 'Available on Google play' %}" onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
-                    </td>
-                    <td id="bubble_phone_login" width="207" valign="top" class="phone"><!-- работать с контентом отдельным классом, центрировать маргином-->
-                        <div style="margin-left:12px; margin-top:66px;">
-                            <img src="../images/phone_screen_slide.png" alt="Pets!" title="Pets!" width="183" height="277">
-                        </div>
-                    </td>
-                    <td width="100" align="right">
-                        <img id="bubble_android_login" src="../images/android_bubble.png" onmouseover="changeOsBubble('android','1','0');" alt="{% trans 'Android app' %}" title="{% trans 'Android app' %}" width="84" height="84">
-                        <br>
-                        <br>
-                        <br>
-                        <img id="bubble_windows_login" src="../images/transparent_image.gif" onmouseover="changeOsBubble('windows','1','-207');" onmouseout="document.getElementById('bubble_windows_login').src='../images/transparent_image.gif';" alt="{% trans 'Windows8 app' %}" title="{% trans 'Windows8 app' %}" width="84" height="84">
-                        <br>
-                        <br>
-                        <br>
-                        <img id="bubble_apple_login" src="../images/transparent_image.gif" onmouseover="changeOsBubble('apple','1','-414');" onmouseout="document.getElementById('bubble_apple_login').src='../images/transparent_image.gif';" alt="{% trans 'iOS app' %}" title="{% trans 'iOS app' %}" width="84" height="84">
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="slide_3" style="display:none;">
-            <img src="../images/id_slide_1_bkg.png" style="position:absolute;">
-            <img src="../images/{% trans 'slogan_3_en.png' %}" class="slides_slogan_10">
-            <a class="slides_slogan_11">
-                <img src="../images/8.png">
-                {% trans 'User Profiles<br>for Pets!' %}
-            </a>
-            <a class="slides_slogan_12">
-                <img src="../images/9.png">
-                {% trans 'Personal pages for<br>groups & individuals!' %}
-            </a>
-            <a class="slides_slogan_13">
-                <img src="../images/10.png">
-                {% trans 'Join us now:<br><b>IT’S FREE!</b>' %}
-            </a>
-        </div>
-        <!--div id="slide_4" style="display:none;">
-            А вот третий бокс.
-        </div-->
-    </td>
-  </tr>
-  <tr>
-    <td height="50px">&nbsp;</td>
-  </tr>
-  <tr>
-    <td align="center" valign="bottom">
-        <!--table id="bodyes" border="0" cellspacing="0" cellpadding="0" style="background-image:url(../images/{% trans 'bodyes1_en.gif' %});">
-            <tr>
-                <td width="107px">&nbsp;</td>
-                <td valign="middle">
-                    <div class="counter"></div>
-                </td>
-            </tr>
-        </table-->
-        <table height="155px" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-                <td width="120px" valign="top">
-                    <img src="../images/share42_megaphone.png" style="position:absolute; margin-top:-12px; z-index:-1;">
-                </td>
-                <td valign="top">
-                    <div class="share42init" data-url="http://{{ hostname }}" data-image="http://{{ hostname }}/images/share_pic_1.jpg"></div>
-                </td>
-                <td width="120px">
-                    &nbsp;
-                </td>
-            </tr>
-        </table>
-    </td>
-  </tr>
-</table>
-
-<!-- Разработчикам -->
-{% include 'include/developers.html' %}
-<!-- /Разработчикам -->
 
 <!-- Подвал -->
 {% include 'include/footer.html' %}
 <!-- /Подвал -->
 
-<!-- Окно фотографии - по умолчанию скрыто -->
-{% include 'include/photo_win.html' %}
-<!-- /Окно фотографии -->
+<!-- География сообщества -->
+{% include 'include/geo.html' %}
+<!-- /География сообщества -->
 
 <!-- Окно сообщений -->
 {% include 'include/message_box.html' %}
 <!-- /Окно сообщений -->
 
-<!-- Блок затенения -->
-<div id="overlay"></div>
-<!-- /Блок затенения -->
-
-<!-- География сообщества -->
-{% include 'include/geo.html' %}
-<!-- /География сообщества -->
-
-<!-- Пишите письма -->
-{% include 'include/feedback.html' %}
-<!-- /Пишите письма -->
-
-<!-- Регламент -->
-{% include 'include/rules.html' %}
-<!-- /Регламент -->
-
-<!-- О проекте -->
-{% include 'include/about.html' %}
-<!-- /О проекте -->
-
-<!-- Загрузка изображений -->
-{% include 'include/media_upload.html' %}
-<!-- /Загрузка изображений -->
+<!-- Окно фотографии -->
+{% include 'include/photo_win.html' %}
+<!-- /Окно фотографии -->
 
 <!-- Аналитика -->
 {% include 'include/analytics.html' %}
 <!-- /Аналитика -->
-</body>
+    </body>
 </html>

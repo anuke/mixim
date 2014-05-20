@@ -3,485 +3,272 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 <html>
-<head>
-<title>{% trans 'MiXiM - for those who love pets' %}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="css/style.css" rel="stylesheet" type="text/css">
-<link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
+    <head>
+        <title>{% trans 'MiXiM - for those who love pets' %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+        <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+        <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
 
-<script src="/js/underscore-min.js"></script>
-<script src="/js/backbone-min.js"></script>
-<script src="/js/jquery-1.8.3.js"></script>
-<script src="/js/vendor/jquery.ui.widget.js"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/jquery.iframe-transport.js"></script>
-<script src="/js/jquery.fileupload.js"></script>
-<script src="/js/jquery.populate.js"></script>
-<script src="/js/sprintf.min.js"></script>
-<script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
-<script src="/js/app/init.js"></script>
-<script src="/js/app/api.js"></script>
-<script src="/js/app/util.js"></script>
-<script src="/js/app/gallery.js"></script>
-<script src="/js/app/keydown.js"></script>
-<script src="/js/app/ui.js"></script>
-<script src="/js/app/cabinet.js"></script>
-<script src="/js/app/auth.js"></script>
-</head>
+        <link href="/css/style_theme_01.css" rel="stylesheet" type="text/css">
+        <link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
 
-<body class="media">
-<div id="show_qr" class="show_qr_window">
-    <table border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td height="68px" align="right" valign="top">
-                <img src="../images/qr_window_arrow.png" width="53" height="62" border="0">
-            </td>
-        </tr>
-        <tr>
-            <td class="show_qr_box">
-                <img src="../images/qr_android_ru.png" width="300" height="300" border="0">
-            </td>
-        </tr>
-    </table>
-</div>
 
-<table width="980px" height="100%" align="center" border="0" cellspacing="0" cellpadding="0"> <!--height="100%"-->
-    <tr>
-        <td height="98px" valign="top">
-            <div class="logo_media">
-                <a href="../media.shtml" title="{% trans 'On the main page' %}" target="_self">
-                    <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans 'On the main page' %}">
-                </a>
-            </div>
-            <div class="app_div">
-                <table border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td width="141">
-                            <a href="https://play.google.com/store/apps/details?id=ru.idrop.app" title="{% trans 'Available on Google play' %}"><img src="../images/{% trans 'app_google_play_en.png' %}" width="141" height="46" border="0" alt="{% trans 'Available on Google play' %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
-                            <!--a href="#" title="Скачать из App store"><img src="../images/app_apple_store_ru.png" width="141" height="46" border="0" alt="App store"></a-->
-                        </td>
-                        <td align="center" width="90px;">
-                            <!--a href="#" title="Pets!"--><img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!"><!--/a-->
-                        </td>
-                        <td width="164">
-                            <img src="../images/{% trans 'app_stamp_en.png' %}" width="164" height="98" border="0" alt="{% trans 'The mobile app Pets! - absolutely free!' %}">
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-    </tr>
-    <!--tr>
-        <td class="filter_bubble">
-            <a href="#" title="Добавить фото" class="s__media_upload_win_open" style="margin-left:296px;">
-                <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="Добавить фото">
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td height="100px" class="media_body">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="48" align="right" valign="middle" class="media_list_opa">
-                        <a href="javascript:prevPage()" title="Следующая сраница"><img src="../images/page_next.png" width="32" height="64" border="0" alt="Следующая сраница" title="Следующая сраница"></a>
-                    </td>
-                    <td align="center" valign="middle">
-                        <table cellpadding="0" cellspacing="6" id="image_container"></table>
-                    </td>
-                    <td width="48" align="left" valign="middle" class="media_list_opa">
-                        <a href="javascript:nextPage()" title="Предыдущая сраница"><img src="../images/page_previous.png" width="32" height="64" border="0" alt="Предыдущая сраница" title="Предыдущая сраница"></a>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td class="media_close">&nbsp;</td>
-    </tr-->
-    <tr>
-        <td height="141px" valign="top" style="padding-top:92px;">
-            <img src="../images/bubble_smoke.gif" width="80" height="57" style="position:absolute; margin-left:78px; top:138px; z-index:-1;">
-            <a class="media_1_openscreen f_goto_userpage finger" target="_blank">
-                <img src="../images/media.png" width="40" height="40" border="0" alt="{% trans 'My page' %}">
-                {% trans '&nbsp;&nbsp;&nbsp;&nbsp;My page&nbsp;&nbsp;&nbsp;&nbsp;' %}
-            </a>
-            <a title="{% trans 'Add picture' %}" class="media_1_row_line_add_photo s__media_upload_win_open finger">
-                <img src="../images/photo_bubble.gif" width="80" height="100" border="0" alt="{% trans 'Add picture' %}">
-            </a>
-            <div style="width:980px; height:121px;"> <!-- вынести в перед над всеми - position:relative; z-index:10;-->
-                <span class="media_1_row_line_name_cabinet">{% trans 'My Photos' %}</span>
-                <table class="media_1_row_line" style="width:100%; height:100%;">
-                    <tr>
-                        <td width="48" align="right" valign="middle" class="media_list_opa">
-                            <a href="javascript:prevPage()" title="{% trans 'Next page' %}"><img src="../images/page_next.png" width="32" height="64" border="0" alt="{% trans 'Next page' %}" title="{% trans 'Next page' %}"></a>
-                        </td>
-                        <td align="center">
-                            <table cellpadding="0" cellspacing="6" id="image_container"></table>
-                        </td>
-                        <td width="48" align="left" valign="middle" class="media_list_opa">
-                            <a href="javascript:nextPage()" title="{% trans 'Previous page' %}"><img src="../images/page_previous.png" width="32" height="64" border="0" alt="{% trans 'Previous page' %}" title="{% trans 'Previous page' %}"></a>
-                        </td>
-                    </tr>
-                </table>
-            <div>
-        </td>
-    </tr>
-    <tr>
-        <td valign="top">
-            <table width="980px" align="center" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="126" valign="top" align="center">
-						<!--form method="post" enctype="multipart/form-data" id="avatar_form" action="/json/media/avatarupload/">
-                            <input type="file" id="avatar_file" name="avatar" style="width:1px;height:1px;display:none;" />
-						</form>
-						<script>
-						    $('#avatar_file').change(function(){$('#avatar_form').submit()})
-						</script-->
-                        <div class="cabinet_user_menu"> <!-- onclick="document.getElementById('avatar_file').click(); return false"-->
+        <script src="/js/underscore-min.js"></script>
+        <script src="/js/backbone-min.js"></script>
+        <script src="/js/jquery-1.8.3.js"></script>
+        <script src="/js/vendor/jquery.ui.widget.js"></script>
+        <script src="/js/jquery-ui.js"></script>
+        <script src="/js/jquery.iframe-transport.js"></script>
+        <script src="/js/jquery.fileupload.js"></script>
+        <script src="/js/jquery.populate.js"></script>
+        <script src="/js/sprintf.min.js"></script>
+        <script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
+        <script src="/js/app/init.js"></script>
+        <script src="/js/app/api.js"></script>
+        <script src="/js/app/util.js"></script>
+        <script src="/js/app/gallery.js"></script>
+        <script src="/js/app/keydown.js"></script>
+        <script src="/js/app/ui.js"></script>
+        <script src="/js/app/cabinet.js"></script>
+        <script src="/js/app/auth.js"></script>
+    </head>
+    <body>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.google_play').on('mouseenter', function(){
+                    $('.google_play').animate({width:'160px'});
+                }).on('mouseleave', function(){
+                    $('.google_play').animate({width:'46px'});
+                });
+            });
+        </script>
+
+        <table class="bkg_media" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td valign="top" height="180px">
+                    <div class="box_980px">
+                        <div class="cabinet_to_userpage">Все фотографии доступны на Вашей персональной странице, по адресу: <a class="f_goto_userpage" target="_blank"></a></div>
+                        <div class="media_upload_box">
+                            <div class="s__media_upload_win_open add_photo_big finger" title="{% trans 'Add picture' %}">
+                                <div class="s__logged">
+                                    <input id="media_file" name="file" type="file" data-url="/json/media/upload/" accept="image/jpeg" style="width:1000px; font-size:150px; margin-left:-410px; margin-top:0px; filter:alpha(opacity=0); opacity:0; -moz-opacity:0; cursor: pointer;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app_links">
+                            <a class="google_play finger" href="https://play.google.com/store/apps/details?id=ru.mixim" target="_blank" title="{% trans 'Available on Google play' %}"></a>
+                            <div class="app_links_slogan">Всегда на связи<br>с новым приложением<br><b>MiXiM</b></div>
+                        </div>
+                        <a class="logo_media" href="../media.shtml" title="{% trans 'On the main page' %}" target="_self"></a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td height="120px" valign="top">
+                    <script type="text/javascript">
+                        IMG_PER_ROW = 8;
+                        IMG_PER_COL = 1;
+                    </script>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="26" class="media_page_list_bkg">
+                                <div onclick="javascript:prevPage()" class="media_prevpage finger" title="{% trans 'Next page' %}"></div>
+                            </td>
+                            <td width="928" align="center" valign="middle">
+                                <table cellpadding="0" cellspacing="6" id="image_container"></table>
+                            </td>
+                            <td width="26" class="media_page_list_bkg">
+                                <div onclick="javascript:nextPage()" class="media_nextpage finger" title="{% trans 'Previous page' %}"></div>
+                            </td>
+                        </tr>
+                    </table>                    
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <div class="cabinet_info_box">
+                        <div class="cabinet_info_container">
+                            <h1>Дорогие друзья!</h1>
+                            <p>Учитывая Ваши пожелания, мы улучшили интерфейс наших продуктов, внесли ряд изменений в систему поиска, открыли доступ к личным страницам пользователя и добавили ряд интересных функций, с которые не останутся вами не замеченными.</p>
+                        </div>
+                    </div>
+                    <div class="cabinet_menu_box">
+                        <div class="cabinet_menu_trec"></div>
+                        <div class="cabinet_user_avatar_box">
                             <div class="cabinet_user_avatar">
-                                <a title="{% trans 'Change the thumbnail...' %}" class="finger">
-                                    <img id="avatar" src="../images/user_unisex.png" border="0" alt="{% trans 'Change the thumbnail...' %}" style="background-color:#000;">
-                                </a>
+                                <img id="avatar" src="../images/user_unisex.png" border="0" alt="{% trans 'Change the thumbnail...' %}">
+                                <input id="avatar_file" name="avatar" type="file" accept="image/jpeg" data-url="/json/media/avatarupload/" style="width:1000px; font-size:150px; margin-left:-410px; margin-top:0px; filter:alpha(opacity=0); opacity:0; -moz-opacity:0; cursor: pointer; z-index:1;">
                             </div>
-                            <div id="cabinet_news_link" class="cabinet_user_menu_button_off"><a>{% trans 'Messages' %}</a></div>
-                            <div id="cabinet_discussion_link" class="cabinet_user_menu_button"><a>{% trans 'Discussions' %}</a></div>
-                            <div id="cabinet_like_link" class="cabinet_user_menu_button"><a>{% trans 'Ratings' %}</a></div>
-                            <div id="cabinet_follow_link" class="cabinet_user_menu_button"><a>{% trans 'Follows' %}</a></div>
-                            <div style="width:90px; height:1px; background-color:#f24f00; margin-bottom:10px;"></div>
-                            <!--div class="cabinet_user_menu_button"><a href="">Избранное</a></div-->
-                            <div id="cabinet_pets_link" class="cabinet_user_menu_button"><a>{% trans 'Pets' %}</a></div>
-                            <div id="cabinet_mine_link" class="cabinet_user_menu_button"><a>{% trans 'Personal data' %}</a></div>
-                            <div id="cabinet_settings_link" class="cabinet_user_menu_button"><a>{% trans 'Settings' %}</a></div>
-                            <div style="width:90px; height:1px; background-color:#f24f00; margin-bottom:10px;"></div>
-                            <div class="cabinet_user_menu_button"><a href="javascript:auth_logout()">{% trans 'Exit' %}</a></div>
-                        <div>
-                    </td>
-                    <td valign="top">
-                        <!-- div открывает кнопка "Сообщения" и показываеся по умолчанию при входе в кабинет (начало)-->
-                        <div id="cabinet_news" class="cabinet_column s__cabinet_block" style="width:600px;">
-                            <table align="center" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td align="center" class="ff_me_button" id="inbox_pet_new_window_link">
-                        			    <a>&dArr;&nbsp;&nbsp;{% trans 'Inbox' %}</a>
-                        			</td>
-                        			<td width="60px">
-                        			    &nbsp;
-                        			</td>
-                        			<td align="center" class="ff_me_button on_button" id="outbox_pet_new_window_link">
-                        			    <a>&uArr;&nbsp;&nbsp;{% trans 'Outbox' %}</a>
-                        			</td>
-                        	    </tr>
-                            </table>
-							<div id="last_comments_id">
-							</div>
-                        </div>
-                        <!-- "Сообщения" (конец)-->
-
-                        <!-- div открывает кнопка "Обсуждения" (начало)-->
-                        <div id="cabinet_discussion" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
-                            <div style="width:610px;">
+                            <div class="cabinet_user_avatar_deletetip">
+                                <div>
+                                    {% trans 'Change the thumbnail...' %}
+                                </div>
                             </div>
                         </div>
-                        <!-- "Обсуждения" (конец)-->
-
-                        <!-- div открывает кнопка "Оценки" (начало)-->
-                        <div id="cabinet_like" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
+                        <div id="cabinet_news_link" class="cabinet_user_menu_button_off">{% trans 'Messages' %}</div>
+                        <div id="cabinet_discussion_link" class="cabinet_user_menu_button">{% trans 'Discussions' %}</div>
+                        <div id="cabinet_like_link" class="cabinet_user_menu_button">{% trans 'Ratings' %}</div>
+                        <div id="cabinet_follow_link" class="cabinet_user_menu_button">{% trans 'Follows' %}</div>
+                        <br>
+                        <div id="cabinet_pets_link" class="cabinet_user_menu_button"><a>{% trans 'Pets' %}</a></div>
+                        <div id="cabinet_mine_link" class="cabinet_user_menu_button"><a>{% trans 'Personal data' %}</a></div>
+                        <div id="cabinet_settings_link" class="cabinet_user_menu_button"><a>{% trans 'Settings' %}</a></div>
+                        <br>
+                        <div class="cabinet_user_menu_button" onclick="auth_logout()">{% trans 'Exit' %}</div>
+                    </div>
+                    <div class="cabinet_body_box">
+                        <!-- Сообщения -->
+                        <div id="cabinet_news" class="s__cabinet_block">
+                            <div class="cabinet_inout">
+                                <div class="cabinet_in_tip_box">
+                                    <div class="cabinet_in_tip">
+                                        <div>
+                                            {% trans 'Inbox' %}
+                                        </div>
+                                    </div>
+                                    <div id="inbox_pet_new_window_link" class="cabinet_inbox opa50"></div>
+                                </div>
+                                <div class="cabinet_out_tip_box">
+                                    <div class="cabinet_out_tip">
+                                        <div>
+                                            {% trans 'Outbox' %}
+                                        </div>
+                                    </div>
+                                    <div id="outbox_pet_new_window_link" class="cabinet_outbox finger"></div>
+                                </div>
+                            </div>
+                            <div id="last_comments_id">
+                            </div>
                         </div>
-                        <!-- "Оценки" (конец)-->
-
-                        <!-- div открывает кнопка "Подписки" (начало)-->
-                        <div id="cabinet_follow" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
+                        <!-- /Сообщения -->                    
+                        <!-- Обсуждения -->
+                        <div id="cabinet_discussion" class="s__cabinet_block" style="display:none;"></div>
+                        <!-- /Обсуждения -->
+                        <!-- Оценки -->
+                        <div id="cabinet_like" class="s__cabinet_block" style="display:none;">
                         </div>
-                        <!-- "Подписки" (конец)-->
+                        <!-- /Оценки -->
+                        <!-- Подписки -->
+                        <div id="cabinet_follow" class="s__cabinet_block" style="display:none;">
+                        </div>
+                        <!-- /Подписки -->
 
-                        <!-- div открывает кнопка "Питомцы" и показываеся по умолчанию при входе в кабинет (начало)-->
-                        <div id="cabinet_pets" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
-                            <center class="add_pet_button">
-                                <a id="pet_new_window_link" class="finger"><b>+</b>&nbsp;&nbsp;{% trans 'Add pet' %}</a>
-                            </center>
+                        <!-- Питомцы -->
+                        <div id="cabinet_pets" class="s__cabinet_block" style="display:none;">
+                            <div class="add_pet_button">
+                                <div id="pet_new_window_link" class="add_pet_big finger" title="{% trans 'Add pet' %}"></div>
+                            </div>
+                            
                             <div id="pet_list"></div>
+
                             <div id="pet_template" style="display:none">
-                                <table align="left" style="margin-top:10px;" border="0" cellspacing="0" cellpadding="0"><!-- входящие -->
-                                    <tr>
-                                        <td class="cabinet_photo_in">
-                                            <a id="pet_upload_photo_link_{id}" class="finger" title="{% trans 'Add picture' %}">
-                                                <img id="pet_last_picture_{id}" src="images/absent.png" width="100px" height="75px">
-                                            </a>
-                                        </td>
-                                        <td align="left" valign="top">
-                                            <span id="pet_name_{id}" class="cabinet_caption_in">{name}</span>
-                                            <div class="cabinet_body_in">
-                                                <table border="0" cellspacing="0" cellpadding="0">
-                                                    <tr>
-                                                        <td width="190px" align="right"><b>{% trans 'Date of Birth:' %}</b></td>
-                                                        <td width="6px"></td>
-                                                        <td width="190px" align="left" id="pet_birthday_{id}">{birthday}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="right"><b>{% trans 'Gender:' %}</b></td>
-                                                        <td></td>
-                                                        <td align="left" id="pet_gender_{id}">{gender_name}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="right"><b>{% trans 'Color:' %}</b></td>
-                                                        <td></td>
-                                                        <td align="left" id="pet_color_{id}">{color}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="right"><b>{% trans 'Breed:' %}</b></td>
-                                                        <td></td>
-                                                        <td align="left" id="pet_breed_{id}">{breed}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="3">
-                                                            <br>
-                                                            <center><b>{% trans 'Additional Information:' %}</b></center>
-                                                            <span id="pet_about_{id}">&nbsp;&nbsp;{about}</span>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                                <!--table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                    <tr>
-                                                        <td align="center"><b>Родился: </b><span id="pet_birthday_{id}">{birthday}</span></td>
-                                                        <td align="center"><b>Пол: </b><span id="pet_gender_{id}">{gender_name}</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="right"><b>Окрас:&nbsp;</b></td>
-                                                        <td><span id="pet_color_{id}">{color}</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td align="right"><b>Порода:&nbsp;</b></td>
-                                                        <td><span id="pet_breed_{id}">{breed}</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="3">
-                                                            <b>Дополнительная информация:</b><br><span id="pet_about_{id}">{about}</span>
-                                                        </td>
-                                                    </tr>
-                                                </table-->
-                                            </div>
-                                        </td>
-                                        <td class="modify_pet_button">
-                                            <a id="pet_edit_window_link_{id}" class="finger">{% trans 'Change' %}</a>
+                                <div class="cabinet_pet_box">
+                                    <a id="pet_upload_photo_link_{id}" class="cabinet_tumbox finger" title="{% trans 'Add picture' %}">
+                                        <img id="pet_last_picture_{id}" src="../images/absent.png">
+                                    </a>
+                                    <div class="cabinet_pet_buttons finger">
                                             <a id="pet_enable_link_{id}" class="finger">{% trans 'Enable' %}</a>
                                             <a id="pet_disable_link_{id}" class="finger">{% trans 'Disable' %}</a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- "Питомцы" (конец)-->
-                        <!-- div открывает кнопка "Личные данные" и показываеся по умолчанию при входе в кабинет (начало)-->
-                        <div id="cabinet_mine" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
-                            <div style="margin-top:10px;">
-                                <!--div style="width:340px; float:right; text-align:justify; text-indent:10px; color:#f24f00;">
-                                    {% trans '<center><b>We recommend:</b></center><p>By sharing information about yourself you gain access to  many advanced search options, which will help you and others to network more efficiently.</p><p>For example: <i>by sharing the city and country where you live will make the photos of your pets geo/searchable by other pet owners in your area with similar interests</i>.</p><br><p><b>Do not be shy in showing off your Pet :-) Share your thoughts, write comments: the more the merrier! We all want to see and hear about the pet in your life!</b></p><br><p>You can use your pet`s picture or your own picture as your avatar, it is all up to you!</p>' %}
-                                </div-->
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td class="user_data_box_top radius_6600" style="pading-top:5px;">
-                                            <div style="display:inline-block; margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'First Name:' %}</span><br>
-                                                <input type="text" id="f_user_firstname" class="redit_body" style="width:120px;">
-                                            </div>
-                                            <div style="display:inline-block; margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'Last Name:' %}</span><br>
-                                                <input type="text" id="f_user_lastname" class="redit_body" style="width:200px;">
-                                            </div>
-                                            <div style="display:inline-block; margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'Gender:' %}</span><br>
-                                                <select class="redit_body" id="f_user_gender" style="width:104px;">
-                                                    <option value=""></option>
-                                                    <option value="M">{% trans 'Male' %}</option>
-                                                    <option value="F">{% trans 'Female' %}</option>
-                                                </select>
-                                            </div>
-                                            <div style="display:inline-block; margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'Date of Birth:' %}</span><br>
-                                                <input type="text" id="f_user_birthday" class="redit_body" style="width:130px;">
-                                            </div>
-                                            <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'Location:' %}</span><br>
-                                                <input type="text" id="f_user_location" class="redit_body" placeholder="Type your location" style="width:586px;">
-                                                <div id="map_canvas" style="margin-top:2px; position:relative; background-color:#fff; width:588px; height:400px; overflow: hidden;"></div>
-
-                                                <input type="hidden" id="f_user_country">
-                                                <input type="hidden" id="f_user_city">
-                                                <input type="hidden" id="f_user_address">
-                                                <input type="hidden" id="f_user_latitude">
-                                                <input type="hidden" id="f_user_longitude">
-                                            </div>
-                                            <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'Tell other pet owners about yourself:' %}</span><br>
-                                                <textarea id="f_user_about" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:234px; height:200px;"></textarea>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="right" valign="bottom" class="user_data_box_bottom radius_0006">
-                                            <input name="button" type="button" class="button_sand" onclick="cabinet_update_profile()" value="{% trans 'Save' %}">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <!--div style="margin-top:10px;">
-                                <div style="width:340px; float:right; text-align:justify; text-indent:1.5em; color:#f24f00; word-break:break-all;">
-                                    <p>&nbsp;</p>
+                                            &nbsp;|&nbsp;
+                                            <a id="pet_edit_window_link_{id}" class="finger">{% trans 'Change' %}</a>
+                                    </div>
+                                    <span class="cabinet_message_info"><a href="" target="_blank">{name}</a>:</span>
+                                    <div class="cabinet_message">
+                                        <p id="pet_birthday_{id}"><b>{% trans 'Date of Birth:' %}</b> {birthday}</p>
+                                        <p id="pet_gender_{id}"><b>{% trans 'Gender:' %}</b> {gender_name}</p>
+                                        <p id="pet_color_{id}"><b>{% trans 'Color:' %}</b> {color}</p>
+                                        <p id="pet_breed_{id}"><b>{% trans 'Breed:' %}</b> {breed}</p>
+                                        <p id="pet_about_{id}"><b>{% trans 'Additional Information:' %}</b> {about}</p>
+                                    </div>
                                 </div>
-                                <table width="248px" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td class="user_data_box_top" style="pading-top:5px;">
-                                            <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'I want to see:' %}</span><br>
-                                                <select class="redit_body" id="f_user_filter_mycountry" style="width:238px;">
-                                                    <option value="True">{% trans 'Pets of my country' %}</option>
-                                                    <option value="False">{% trans 'Pets from around the world' %}</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="right" valign="bottom" class="user_data_box_bottom">
-                                            <input name="button" type="button" class="button_sand" onclick="cabinet_save_myfilter()" value="{% trans 'Save' %}">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div-->
+                            </div>
                         </div>
-                        <!-- "Личные данные" (конец)-->
-                        <!-- div открывает кнопка "Настройки" и показываеся по умолчанию при входе в кабинет (начало)-->
-                        <div id="cabinet_settings" class="cabinet_column s__cabinet_block" style="width:600px; display:none;">
-                            <div style="margin-top:10px;">
-                                <div style="width:340px; float:right; text-align:justify; text-indent:1.5em; color:#f24f00; word-break:break-all;">
-                                    <p>&nbsp;</p>
+                        <!-- /Питомцы-->
+                        <!-- Личные данные -->
+                        <div id="cabinet_mine" class="s__cabinet_block" style="display:none;">
+                            <input type="text" id="f_user_firstname" class="cabinet_mine_input_firstname" placeholder="{% trans 'First Name:' %}">
+                            <input type="text" id="f_user_lastname" class="cabinet_mine_input_lastname" placeholder="{% trans 'Last Name:' %}">
+                            <div class="cabinet_mine_gender">
+                                <div class="cabinet_mine_select_caption">{% trans 'Gender:' %}</div>
+                                <select id="f_user_gender" class="cabinet_mine_select">
+                                    <option value=""></option>
+                                    <option value="M">{% trans 'Male' %}</option>
+                                    <option value="F">{% trans 'Female' %}</option>
+                                </select>
+                            </div>
+                            <input type="text" id="f_user_birthday" class="cabinet_mine_input_birthday" placeholder="{% trans 'Date of Birth:' %}">
+                            <div class="cabinet_mine_location">
+                                <input type="text" id="f_user_location" class="cabinet_mine_input_location" placeholder="{% trans 'Type your location' %}">
+                                <div id="map_canvas" class="cabinet_mine_map"></div>
+                                <input type="hidden" id="f_user_country">
+                                <input type="hidden" id="f_user_city">
+                                <input type="hidden" id="f_user_address">
+                                <input type="hidden" id="f_user_latitude">
+                                <input type="hidden" id="f_user_longitude">
+                            </div>
+                            <textarea id="f_user_about" class="cabinet_mine_textarea" placeholder="{% trans 'Tell other pet owners about yourself:' %}"></textarea>
+                            <center>
+                                <div class="button_input savebox_bttn finger" onclick="cabinet_update_profile()" title="{% trans 'Save' %}">{% trans 'Save' %}</div>
+                            </center>
+                        </div>
+                        <!-- /Личные данные -->
+                        <!-- Настройки -->
+                        <div id="cabinet_settings" class="s__cabinet_block" style="display:none;">
+                            <div class="cabinet_mine_mycountry">
+                                <div class="cabinet_mine_mycountry_caption">{% trans 'I want to see:' %}</div>
+                                <select id="f_user_filter_mycountry" class="cabinet_mine_mycountry_select">
+                                    <option value="True">{% trans 'Pets of my country' %}</option>
+                                    <option value="False">{% trans 'Pets from around the world' %}</option>
+                                </select>
+                            </div>
+                            <center>
+                                <div class="button_input savebox_bttn finger" onclick="cabinet_save_myfilter()" title="{% trans 'Save' %}">{% trans 'Save' %}</div>
+                            </center>
+                            <br><br>
+                            <div>
+                                <div class="cabinet_mine_new_password_tool">
+                                    <div>
+                                        {% trans 'If you are not satisfied with your password, you can always change it.' %}
+                                    </div>
                                 </div>
-                                <table width="248px" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td class="user_data_box_top radius_6000" style="pading-top:5px;">
-                                            <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'I want to see:' %}</span><br>
-                                                <select class="redit_body" id="f_user_filter_mycountry" style="width:238px;">
-                                                    <option value="True">{% trans 'Pets of my country' %}</option>
-                                                    <option value="False">{% trans 'Pets from around the world' %}</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="right" valign="bottom" class="user_data_box_bottom">
-                                            <input name="button" type="button" class="button_sand" onclick="cabinet_save_myfilter()" value="{% trans 'Save' %}">
-                                        </td>
-                                    </tr>
-                                </table>
+                                <input type="password" id="f_new_password" class="cabinet_mine_input_new_password" placeholder="{% trans 'You new password:' %}">
+                                <input type="password" id="f_confirmation" class="cabinet_mine_input_confirmation" placeholder="{% trans 'Confirm new password:' %}">
                             </div>
-                            <div style="margin-top:10px;">
-                                <div style="width:340px; float:right; text-align:justify; text-indent:1.5em; color:#f24f00; word-break:break-all;">
-                                    <p>{% trans 'If you are not satisfied with your password, you can always change it.' %}</p>
-                                </div>
-                                <table width="248px" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td class="user_data_box_top" style="pading-top:5px;">
-                                            <!--div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">e-Mail:</span><br>
-                                                <input type="text" id="f_user_nic" class="redit_body" style="width:234px;">
-                                            </div-->
-                                            <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'You new password:' %}</span><br>
-                                                <input type="password" id="f_new_password" class="redit_body" style="width:234px;">
-                                            </div>
-                                            <!--center><div style="width:234px; height:1px; background-color:#f24f00; margin:10px 0px;"></div></center>
-                                            <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">Текущий пароль:</span><br>
-                                                <input type="text" id="f_user_town" class="redit_body" style="width:234px;">
-                                            </div-->
-                                            <div style="margin-top:5px; margin-left:5px;">
-                                                <span class="redit_caption">{% trans 'Confirm new password:' %}</span><br>
-                                                <input type="password" id="f_confirmation" class="redit_body" style="width:234px;">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="right" valign="bottom" class="user_data_box_bottom radius_0006">
-                                            <input name="button" type="button" class="button_sand" onclick="cabinet_change_password()" value="{% trans 'Save' %}">
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <center>
+                                <div class="button_input savebox_bttn finger" onclick="cabinet_change_password()" title="{% trans 'Save' %}">{% trans 'Save' %}</div>
+                            </center>
                         </div>
-                        <!-- "Настройки" (конец)-->
-                        <!-- Глобальные новости, Анонсы мероприятий и т.п. (начало)-->
-                        <div class="cabinet_column" style="width:182px; background-color:#ffffcc;">
-                            <!--div style="margin-top:10px;">
-                                <div style="font-size:8px; text-align:right;">9/09/2013</div>
-                                <div style="font-size:12px; text-align:center; font-weight:bold; color:#f24f00;">Дорогие друзья!</div>
-                                <div style="font-size:10px; text-align:justify; word-wrap:break-word; margin-top:4px; color:#f24f00;">&nbsp;&nbsp;Мы рады сообщить об окончании работ над пилотным проектом MiXiM.<br>&nbsp;&nbsp;Учитывая Ваши пожелания, мы улучшили интерфейс программных продуктов, внесли ряд изменений в систему поиска, открыли доступ к личным страницам пользователя и добавили ряд интересных функций, с которые не останутся вами не замеченными.</div>
-                            </div>
-                            <div style="margin-top:10px;">
-                                <div style="font-size:8px; text-align:right;">6/06/2013</div>
-                                <div style="font-size:12px; text-align:center; font-weight:bold; color:#f24f00;">Спасибо!</div>
-                                <div style="font-size:10px; text-align:justify; word-wrap:break-word; margin-top:4px; color:#f24f00;">&nbsp;&nbsp;Мы хотели поблагодарить всех членов сообщества, которые не остались безучастными и помогли нам с определением приоритетов дальнейшего развития MiXiM.<br>&nbsp;&nbsp;Ваши рекомендации и замечания нам очень помогли.<br>&nbsp;&nbsp;В данный момент ведется нами активная работа над пилотным проектом, который станет переходным к финальной версии, нашего с вами сообщества.</div>
-                            </div>
-							<br>
-                            <div style="margin-top:10px;">
-                                <div style="font-size:8px; text-align:right;">12/05/2013</div>
-                                <div style="font-size:12px; text-align:center; font-weight:bold; color:#f24f00;">Мы открылись!</div>
-                                <div style="font-size:10px; text-align:justify; word-wrap:break-word; margin-top:4px; color:#f24f00;">&nbsp;&nbsp;Сегодня мы открываем проект «MiXiM» для посетителей. Этот проект будет полезен всем тем, кто хочет разделиться счастье общения и дружбы с животными, с окружающими. Мы так же надеемся помочь в духовном росте, желающим завести питомцев, а так же самим животным, найти защиту в дружбе с человеком.</div>
-                            </div-->
-                        </div>
-                        <!-- Глобальные новости, Анонсы мероприятий и т.п. (конец)-->
-                    </td>
-                </tr>
-            </table>
-            <br>
-        </td>
-    </tr>
-</table>
+                        <!-- /Настройки -->
+                    </div>
+                </td>
+            </tr>
+        </table>
 <!-- Подвал -->
-    {% include 'include/footer.html' %}
+{% include 'include/footer.html' %}
 <!-- /Подвал -->
 
-<!-- Окно сообщений (начало) - по умолчанию скрыто -->
-<div id="info_window" style="display:none">
-	<table class="info_table" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td align="center">
-                <div id="message1" class="info_message">Текст</div>
-            </td>
-        </tr>
-        <tr>
-            <td height="30" align="center"><input type="submit" name="Submit2" value="Закрыть" style="background-color:#f24f00; color:#ffff99; cursor:hand;"></td>
-        </tr>
-    </table>
-</div>
-<!-- Окно сообщений (конец) -->
-
-<!-- Окно фотографии - по умолчанию скрыто -->
+<!-- Окно фотографии -->
 {% include 'include/photo_win.html' %}
 <!-- /Окно фотографии -->
-
+            
 <!-- Окно сообщений -->
 {% include 'include/message_box.html' %}
 <!-- /Окно сообщений -->
 
-<!-- Блок затенения -->
-    <div id="overlay"></div>
-<!-- /Блок затенения -->
-
 <!-- География сообщества -->
 {% include 'include/geo.html' %}
 <!-- /География сообщества -->
-
-<!-- Пишите письма -->
-{% include 'include/feedback.html' %}
-<!-- /Пишите письма -->
-
-<!-- Регламент -->
-{% include 'include/rules.html' %}
-<!-- /Регламент -->
-
-<!-- О проекте -->
-{% include 'include/about.html' %}
-<!-- /О проекте -->
 
 <!-- Загрузка изображений -->
 {% include 'include/media_upload.html' %}
@@ -498,103 +285,105 @@
 <!-- Аналитика -->
 {% include 'include/analytics.html' %}
 <!-- /Аналитика -->
-</body>
-<script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&language={{ LANGUAGE_CODE }}"></script>
-<script>
-function init_gmap() {
-    var f_loc = document.getElementById('f_user_location');
-    f_loc.value = $('#f_user_address').val() || '';
 
-    var lat = Number($('#f_user_latitude').val()) || 55.755826,
-        lng = Number($('#f_user_longitude').val()) || 37.6173,
-        latlng = new google.maps.LatLng(lat, lng);
+<div id="pet_template"></div>
+        </body>
+    <script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&language={{ LANGUAGE_CODE }}"></script>
+    <script>
+        function init_gmap() {
+            var f_loc = document.getElementById('f_user_location');
+            f_loc.value = $('#f_user_address').val() || '';
 
-    var mapOptions = {
-            center: new google.maps.LatLng(lat, lng),
-            zoom: 13,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        },
-        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions),
-        marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-            draggable: true
-        });
+            var lat = Number($('#f_user_latitude').val()) || 55.755826,
+                lng = Number($('#f_user_longitude').val()) || 37.6173,
+                latlng = new google.maps.LatLng(lat, lng);
 
-    var autocomplete = new google.maps.places.Autocomplete(f_loc, {types: ["geocode"]});
+            var mapOptions = {
+                    center: new google.maps.LatLng(lat, lng),
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                },
+                map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions),
+                marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    draggable: true
+                });
 
-    autocomplete.bindTo('bounds', map);
+            var autocomplete = new google.maps.places.Autocomplete(f_loc, {types: ["geocode"]});
 
-    function setPlace(place) {
-        geo = place.geometry;
+            autocomplete.bindTo('bounds', map);
 
-        var country_item = _.find(place.address_components, function (item) {
-            return _.contains(item.types, 'country');
-        });
+            function setPlace(place) {
+                geo = place.geometry;
 
-        if (country_item) {
-            $('#f_user_country').val(country_item.short_name);
-        }
+                var country_item = _.find(place.address_components, function (item) {
+                    return _.contains(item.types, 'country');
+                });
 
-        var city_item = _.find(place.address_components, function (item) {
-            return _.contains(item.types, 'locality');
-        });
+                if (country_item) {
+                    $('#f_user_country').val(country_item.short_name);
+                }
 
-        if (city_item) {
-            $('#f_user_city').val(city_item.short_name);
-        }
+                var city_item = _.find(place.address_components, function (item) {
+                    return _.contains(item.types, 'locality');
+                });
 
-        $(f_loc).val(place.formatted_address);
-        $('#f_user_address').val(place.formatted_address);
-        if (geo) {
-            marker.setPosition(place.geometry.location);
-            $('#f_user_latitude').val(geo.location.lat());
-            $('#f_user_longitude').val(geo.location.lng());
-        }
-    }
+                if (city_item) {
+                    $('#f_user_city').val(city_item.short_name);
+                }
 
-    google.maps.event.addListener(autocomplete, 'place_changed', function() {
-        var place = autocomplete.getPlace();
-        if (!place || !place.geometry) return;
-        if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-        }
-        else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17);
-        }
-        setPlace(place);
-    });
-
-    google.maps.event.addListener(map, 'click', function (event) {
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ "latLng": event.latLng }, function(results, status) {
-            if (status != google.maps.GeocoderStatus.OK) {
-                return;
+                $(f_loc).val(place.formatted_address);
+                $('#f_user_address').val(place.formatted_address);
+                if (geo) {
+                    marker.setPosition(place.geometry.location);
+                    $('#f_user_latitude').val(geo.location.lat());
+                    $('#f_user_longitude').val(geo.location.lng());
+                }
             }
-            setPlace(results[0]);
-        });
-    });
-}
 
-$(function() {
-    // move to extended jquery script to prevent to call it twice
-    $.each(['show', 'hide'], function (i, ev) {
-        var el = $.fn[ev];
-        $.fn[ev] = function () {
-            this.trigger(ev);
-            el.apply(this, arguments);
-            this.trigger('after' + ev);
-        };
-    });
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place || !place.geometry) return;
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                }
+                else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);
+                }
+                setPlace(place);
+            });
 
-    var gmap_initialized = false;
-    $('#cabinet_mine').on('aftershow', function() {
-        if (!gmap_initialized) {
-            init_gmap();
-            gmap_initialized = true;
+            google.maps.event.addListener(map, 'click', function (event) {
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ "latLng": event.latLng }, function(results, status) {
+                    if (status != google.maps.GeocoderStatus.OK) {
+                        return;
+                    }
+                    setPlace(results[0]);
+                });
+            });
         }
-    });
-});
-</script>
+
+        $(function() {
+            // move to extended jquery script to prevent to call it twice
+            $.each(['show', 'hide'], function (i, ev) {
+                var el = $.fn[ev];
+                $.fn[ev] = function () {
+                    this.trigger(ev);
+                    el.apply(this, arguments);
+                    this.trigger('after' + ev);
+                };
+            });
+
+            var gmap_initialized = false;
+            $('#cabinet_mine').on('aftershow', function() {
+                if (!gmap_initialized) {
+                    init_gmap();
+                    gmap_initialized = true;
+                }
+            });
+        });
+    </script>
 </html>

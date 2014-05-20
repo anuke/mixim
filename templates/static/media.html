@@ -3,213 +3,204 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 <html>
-<head>
-<title>{% trans "MiXiM - for those who love pets" %}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
-<meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
-<meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
+    <head>
+        <title>{% trans 'MiXiM - for those who love pets' %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta NAME="description" CONTENT="Сообщество любителей собак, кошек и других животных, где можно выкладывать фотографии своих питомцев, участвовать в конкурсах, голосованиях и оставлять комментарии">
+        <meta NAME="keywords" CONTENT="собаки, кошки, бабочки, богомолы, многоножки, пауки, мадагаскарские тараканы, муравьи, попугаи, канарейки, щеглы, ястребы, соколы, соловьи, перепела, голуби, шиншилы, мышки, морские свинки, крысы, кролики, хомячки, ежики, песчанки, хорьки, аквариумные рыбки, улитки, змеи, лягушки, черепахи, лошади, пони">
+        <meta NAME="AUTHOR" CONTENT="www.mobitoon.ru">
 
-<link href="css/style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+        <link href="/css/style_theme_01.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 
-<script src="/js/underscore-min.js"></script>
-<script src="/js/backbone-min.js"></script>
-<script src="/js/jquery-1.8.3.min.js"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/jquery.watermark.min.js"></script>
-<script src="/js/vendor/jquery.ui.widget.js"></script>
-<script src="/js/jquery.iframe-transport.js"></script>
-<script src="/js/jquery.fileupload.js"></script>
-<script src="/js/sprintf.min.js"></script>
-<script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
-<script src="/js/app/init.js"></script>
-<script src="/js/app/api.js"></script>
-<script src="/js/app/util.js"></script>
-<script src="/js/app/gallery.js"></script>
-<script src="/js/app/keydown.js"></script>
-<script src="/js/app/media.js"></script>
-<script src="/js/app/ui.js"></script>
-<script src="/js/app/auth.js"></script>
-</head>
+        <script src="/js/underscore-min.js"></script>
+        <script src="/js/backbone-min.js"></script>
+        <script src="/js/jquery-1.8.3.min.js"></script>
+        <script src="/js/jquery-ui.js"></script>
+        <script src="/js/jquery.watermark.min.js"></script>
+        <script src="/js/vendor/jquery.ui.widget.js"></script>
+        <script src="/js/jquery.iframe-transport.js"></script>
+        <script src="/js/jquery.fileupload.js"></script>
+        <script src="/js/sprintf.min.js"></script>
+        <script src="/js/app/translations-{{ LANGUAGE_CODE }}.js"></script>
+        <script src="/js/app/init.js"></script>
+        <script src="/js/app/api.js"></script>
+        <script src="/js/app/util.js"></script>
+        <script src="/js/app/gallery.js"></script>
+        <script src="/js/app/keydown.js"></script>
+        <script src="/js/app/media.js"></script>
+        <script src="/js/app/ui.js"></script>
+        <script src="/js/app/auth.js"></script>
+    </head>
 
-<body class="media">
-
-<!-- Главное меню (Навигация) -->
-{% include 'include/navi.html' %}
-<!-- /Главное меню (Навигация) -->
+    <body>
+<!-- Блок затенения -->
+        <script type="text/javascript">
+            function overlay_show() {
+                $('#overlay').css("height", $(document).height());
+                $('#overlay').show();
+                if($('#overlay').css("display") != "none") {
+                    $(window).resize(function() {
+                        $('#overlay').css("height", $(window).height());
+                        $('#overlay').css("height", $(document).height());
+                    });
+                };
+            };
+        </script>
+        <div id="overlay"></div>
+<!-- /Блок затенения -->
 
 <!-- Переключения кластеров -->
 {% include 'include/clusters.html' %}
 <!-- /Переключения кластеров -->
 
+<!-- Главное меню (Навигация) -->
+{% include 'include/navi.html' %}
+<!-- /Главное меню (Навигация) -->
+
 <!-- Блок авторизации, регистрации и востановления пароля (начало) -->
 {% include 'include/login.html' %}
 <!-- /Блок авторизации, регистрации и востановления пароля (конец) -->
 
-<table width="980px" align="center" height="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-        <td height="98px" valign="top">
-            <div class="logo_media s__logged">
-                <a title="{% trans "You are on the main page" %}" target="_self">
-                    <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "You are on the main page" %}">
-                </a>
-            </div>
-            <div class="logo_media s__not_logged">
-                <a href="../index.shtml" title="{% trans "To home page" %}" target="_self">
-                    <img src="../images/logo.png" width="156" height="46" border="0" alt="{% trans "To home page" %}">
-                </a>
-            </div>
-            <div class="app_div">
-                <div id="show_qr" class="show_qr_window">
-                    <table border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td height="68px" align="right" valign="top">
-                                <img src="../images/qr_window_arrow.png" width="53" height="62" border="0">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="show_qr_box" style="padding-top:8px;">
-                                <img src="../images/qr_android_ru.png" width="300" height="300" border="0">
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <table border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td width="141">
-                            <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans "Available on Google play" %}"><img src="../images/{% trans "app_google_play_en.png" %}" width="141" height="46" border="0" alt="{% trans "Available on Google play" %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
-                        </td>
-                        <td align="center" width="90px;">
-                            <img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!">
-                        </td>
-                        <td width="164">
-                            <img src="../images/{% trans "app_stamp_en.png" %}" width="164" height="98" border="0" alt="{% trans "The mobile app Pets! - absolutely free!" %}">
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td class="filter_bubble">
-            <div class="add_slogan" style="background-image:url(../images/{% trans "add_slogan_1_en.png" %});">
-                <div class="s__media_upload_win_open" title="{% trans "Add picture" %}" style="background:url('../images/photo_bubble.gif') no-repeat 0 0; cursor:pointer; height:100px; margin-left:296px; width:80px; overflow:hidden;">
-                    <div class="s__logged">
-                        <input id="media_file" name="file" type="file" data-url="/json/media/upload/" accept="image/jpeg" style="width:1000px; height:100px; font-size:150px; margin-left:-410px; margin-top:0px; filter:alpha(opacity=0); opacity:0; cursor: pointer;">
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td class="media_status">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td>
-                        <div class="search_decor">
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td align="left" width="242px">
-                                        <div class="search_by_breed">
-                                            <input id="breed_filter" class="filter_field" type="text" autocomplete="off">
-                                        </div>
-                                    </td>
-                                    <td align="left" width="242px">
-                                        <div class="search_by_tags">
-                                            <input id="tags_filter" class="filter_field" type="text" autocomplete="off">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div style="width:100%;"></div>
-                                    </td>
-                                    <td align="right" width="36px">
-                                        <a id="male_filter" class="search_button search_sex_m opa50 finger" title="{% trans "Boys" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
-                                    </td>
-                                    <td align="right" width="36px">
-                                        <a id="female_filter" class="search_button search_sex_f opa50 finger" title="{% trans "Girls" %}"><img src="../images/transparent_image.gif" width="30" height="30" border="0"></a>
-                                    </td>
-                                    <td align="right" width="70px">
-                                        <a id="geo_filter" class="search_button search_globe opa50 finger" title="{% trans "География поиска..." %}"><img src="../images/transparent_image.gif" width="58" height="30" border="0"></a>
-                                    </td>
-                                </tr>
-                            </table>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.google_play').on('mouseenter', function(){
+                    $('.google_play').animate({width:'160px'});
+                }).on('mouseleave', function(){
+                    $('.google_play').animate({width:'46px'});
+                });
+            });
+        </script>
+    
+        <table class="bkg_media" width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td valign="top" height="180px">
+                    <div class="box_980px">
+                        <a class="s__logged logo_media" title="{% trans 'You are on the main page' %}"></a>
+                        <a class="s__not_logged logo_media" href="../" target="_self" title="{% trans 'To home page' %}"></a>
+                        <div class="app_links">
+                            <a class="google_play finger" href="https://play.google.com/store/apps/details?id=ru.mixim" target="_blank" title="{% trans 'Available on Google play' %}"></a>
+                            <div class="app_links_slogan">Всегда на связи<br>с новым приложением<br><b>MiXiM</b></div>
                         </div>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td class="media_body" align="center" id="id_media_body">
-
-<script type="text/javascript">
-    IMG_PER_ROW = 7;
-    IMG_PER_COL = parseInt(document.getElementById("id_media_body").offsetHeight / 100, 10);
-</script>
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="48" align="right" valign="middle" class="media_list_opa">
-                        <a href="javascript:prevPage()" title="{% trans "Next page" %}"><img src="images/page_next.png" width="32" height="64" border="0" alt="{% trans "Next page" %}а" title="{% trans "Next page" %}"></a>
-                    </td>
-                    <td align="center" valign="middle">
-                        <table cellpadding="0" cellspacing="6" id="image_container"></table>
-                    </td>
-                    <td width="48" align="left" valign="middle" class="media_list_opa">
-                        <a href="javascript:nextPage()" title="{% trans "Previous page" %}"><img src="images/page_previous.png" width="32" height="64" border="0" alt="{% trans "Previous page" %}" title="{% trans "Previous page" %}"></a>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td class="media_close">&nbsp;</td>
-    </tr>
-</table>
-
-<!-- Разработчикам -->
-{% include 'include/developers.html' %}
-<!-- /Разработчикам -->
+                        <div>
+                            <div class="s__media_upload_win_open add_photo_big finger" title="{% trans 'Add picture' %}">
+                                <div class="s__logged">
+                                    <input id="media_file" name="file" type="file" data-url="/json/media/upload/" accept="image/jpeg" style="width:1000px; font-size:150px; margin-left:-410px; margin-top:0px; filter:alpha(opacity=0); opacity:0; -moz-opacity:0; cursor: pointer;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="search_bar">
+                    <table align="center" width="900" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="search_field_tooltip">
+                                <div class="search_field_tooltip_breed">&nbsp;</div>
+                                <input id="breed_filter" class="search_field" type="text" autocomplete="off">
+                            </td>
+                            <td class="search_field_tooltip">
+                                <div class="search_field_tooltip_tags">&nbsp;</div>
+                                <input id="tags_filter" class="search_field" type="text" autocomplete="off">
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td align="right">
+                                <div id="male_filter" class="search_button search_sex_m finger" title="{% trans 'Boys' %}">&nbsp;</div>
+                                <div id="female_filter" class="search_button search_sex_f finger" title="{% trans 'Girls' %}">&nbsp;</div>
+                                <div id="geo_filter" class="search_button search_globe finger" title="{% trans 'География поиска...' %}">&nbsp;</div>
+                            </td>
+                        </tr>
+                    </table>                    
+                </td>
+            </tr>
+            <tr>
+                <td id="id_media_body">
+                    <script type="text/javascript">
+                        var colNUMB = parseInt(document.getElementById("id_media_body").offsetHeight / 90, 10);
+                        if ( colNUMB < 3 )
+                            colNUMB = 3;
+                        IMG_PER_ROW = 8;
+                        IMG_PER_COL = colNUMB;
+                    </script>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="26" class="media_page_list_bkg">
+                                <div onclick="javascript:prevPage()" class="media_prevpage finger" title="{% trans 'Next page' %}"></div>
+                            </td>
+                            <td width="928" align="center" valign="middle">
+                                <table cellpadding="0" cellspacing="6" id="image_container"></table>
+                            </td>
+                            <td width="26" class="media_page_list_bkg">
+                                <div onclick="javascript:nextPage()" class="media_nextpage finger" title="{% trans 'Previous page' %}"></div>
+                            </td>
+                        </tr>
+                    </table>                    
+                </td>
+            </tr>
+        </table>
 
 <!-- Подвал -->
 {% include 'include/footer.html' %}
 <!-- /Подвал -->
 
-<!-- Окно фотографии - по умолчанию скрыто -->
-{% include 'include/photo_win.html' %}
-<!-- /Окно фотографии -->
+<!-- География сообщества -->
+{% include 'include/geo.html' %}
+<!-- /География сообщества -->
 
 <!-- Окно сообщений -->
 {% include 'include/message_box.html' %}
 <!-- /Окно сообщений -->
 
-<!-- Блок затенения -->
-<div id="overlay"></div>
-<!-- /Блок затенения -->
-
-<!-- География сообщества -->
-{% include 'include/geo.html' %}
-<!-- /География сообщества -->
-
-<!-- Пишите письма -->
-{% include 'include/feedback.html' %}
-<!-- /Пишите письма -->
-
-<!-- Регламент -->
-{% include 'include/rules.html' %}
-<!-- /Регламент -->
-
-<!-- О проекте -->
-{% include 'include/about.html' %}
-<!-- /О проекте -->
-
 <!-- Загрузка изображений -->
 {% include 'include/media_upload.html' %}
 <!-- /Загрузка изображений -->
 
+<!-- Окно фотографии -->
+{% include 'include/photo_win.html' %}
+<!-- /Окно фотографии -->
+
 <!-- Аналитика -->
 {% include 'include/analytics.html' %}
 <!-- /Аналитика -->
-</body>
+    
+        <!--table width="980px" align="center" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="98px" valign="top">
+                    <div class="app_div">
+                        <div id="show_qr" class="show_qr_window">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td height="68px" align="right" valign="top">
+                                        <img src="../images/qr_window_arrow.png" width="53" height="62" border="0">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="show_qr_box" style="padding-top:8px;">
+                                        <img src="../images/qr_android_ru.png" width="300" height="300" border="0">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="141">
+                                    <a href="https://play.google.com/store/apps/details?id=ru.mixim" title="{% trans "Available on Google play" %}"><img src="../images/{% trans "app_google_play_en.png" %}" width="141" height="46" border="0" alt="{% trans "Available on Google play" %}"  onmouseover="document.getElementById('show_qr').style.display = 'block';" onmouseout="document.getElementById('show_qr').style.display = 'none';"></a>
+                                </td>
+                                <td align="center" width="90px;">
+                                    <img src="../images/app_icon_1.png" width="60" height="81" border="0" alt="Pets!">
+                                </td>
+                                <td width="164">
+                                    <img src="../images/{% trans "app_stamp_en.png" %}" width="164" height="98" border="0" alt="{% trans "The mobile app Pets! - absolutely free!" %}">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table-->
+
+    </body>
 </html>
