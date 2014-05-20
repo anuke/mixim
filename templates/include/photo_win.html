@@ -1,289 +1,329 @@
-<script>
-$(document).ready(function(){
-    $( ".pull_code" ).on( "click", function(){
-        $( ".code_window" ).show();
-    });
-    $( "#code_window_close" ).on( "click", function(){
-        $( ".code_window" ).hide();
-    });
-    $( ".code_window_content" ).on( "click", "input", function(){
-        $(this).select();
-    });
-});
-</script>
+{% load i18n %}        <script>
+            $(document).ready(function(){
+                $( ".pull_code" ).on( "click", function(){
+                    $( ".edit_window" ).hide();
+                    $( ".code_window" ).show();
+                });
+                $( "#code_window_close" ).on( "click", function(){
+                    $( ".code_window" ).hide();
+                });
+                $( ".code_window_content" ).on( "click", "input", function(){
+                    $(this).select();
+                });
+                
+                $( ".pull_edit" ).on( "click", function(){
+                    $( ".code_window" ).hide();
+                    $( ".edit_window" ).show();
+                });
+                $( "#edit_window_close" ).on( "click", function(){
+                    $( ".edit_window" ).hide();
+                });
 
-{% load i18n %}
-<div id="photo_window" style="display:none; z-index:1;">
-    <div class="code_window">
-        <div class="code_window_bkg opa75">
-            <div class="code_window_info">
-                {% trans 'Select the row with the code by mouse click and press &#34;ctrl + c&#34; to copy' %}
+
+            });
+        </script>
+
+        <div id="photo_window">
+            <a id="photo_win_close_btn" class="photo_window_close window_close_bttn finger" title="{% trans 'Close window' %}"></a>
+            
+            <div class="author_photo_bar alert_onlymepic">
+                <boxbody class="attention_empty_partition finger" onclick="$('.attention_empty_partition').hide();">
+                    <boxpadding>
+                        <print>
+                            {% trans 'Keep in mind that you need to identify your pet 'Section' if you want it to be visible to other pet owners!' %}
+                        </print>
+                    </boxpadding>
+                </boxbody>
             </div>
-            <img id="code_window_close" class="finger" src="../images/photo_close.png" width="19" height="19" border="0" title="{% trans 'Close window' %}" alt="{% trans 'Close window' %}">
-        </div>
-        <div class="code_window_content">
-            <div class="opa75">
-                <span>{% trans 'Link to image' %}</span>
-                <input id="code1" class="finger" readonly value="">
-                <span>{% trans 'HTML: The image in a text' %}</span>
-                <input id="code2" class="finger" readonly value="http">
-                <span>{% trans 'HTML: thumb - increase by clicking' %}</span>
-                <input id="code3" class="finger" readonly value="http">
-                <span>{% trans 'BBCode, lowercase letters: the image in a text' %}</span>
-                <input id="code4" class="finger" readonly value="http">
-                <span>{% trans 'BBCode, lowercase letters: thumb - increase by clicking' %}</span>
-                <input id="code5" class="finger" readonly value="http">
-                <span>{% trans 'Direct link to view this page images and comments' %}</span>
-                <input id="code6" class="finger" readonly value="http">
+
+            <div class="edit_window">
+                <div class="code_window_bkg opa75">
+                    
+                </div>
+                <div class="edit_window_content">
+                        <div class="edit_species">
+                            <div class="edit_element_text edit_hey_left">
+                                <div>Выбирая тематический раздел, в который следует поместить данную фотографию, вы делаете ее доступной для просмотра и комментирования другими пользователями.</div>
+                            </div>
+                            <div class="edit_species_caption">{% trans 'Section:' %}</div>
+                            <select id="f_photo_species">
+                                <option value="">-</option>
+                                <option value="dog">{% trans 'Dogs' %}</option>
+                                <option value="insect">{% trans 'Insects' %}</option>
+                                <option value="bird">{% trans 'Birds' %}</option>
+                                <option value="cat">{% trans 'Cats' %}</option>
+                                <option value="rodent">{% trans 'Rodents&nbsp;&&nbsp;rabbits' %}</option>
+                                <option value="fish">{% trans 'Fish&nbsp;&&nbsp;shellfish' %}</option>
+                                <option value="reptile">{% trans 'Amphibious&nbsp;&&nbsp;reptiles' %}</option>
+                                <option value="horse">{% trans 'Horses&nbsp;&&nbsp;pony' %}</option>
+                                <option value="other">{% trans 'Other&nbsp;types&nbsp;of&nbsp;animals' %}</option>
+                            </select>
+                        </div>
+                        <div class="edit_pet">
+                            <div class="edit_element_text edit_hey_left">
+                                <div>Указывая питомца на фотографии, вы так же размещаете фотографию на личной страничке вашего питомца. Если вы еще не завели питомца, сделать это можно в личном кабинете.</div>
+                            </div>
+                            <div class="edit_pet_caption">{% trans 'Рet:' %}</div>
+                            <select id="f_photo_pet">
+                                <option value="">-</option>
+                            </select>
+                        </div>
+                        <textarea id="f_photo_description" class="edit_info" placeholder="{% trans 'Description:' %}"></textarea>
+                        <input id="f_photo_tags" class="edit_tags" type="text" placeholder="{% trans 'Tags:' %}">
+                        <!--div class="button_input finger redit_save" onclick="media_save()">{% trans 'Save' %}</div-->
+                </div>
+                <div class="edit_window_footer">
+                    <div class="edit_window_footer_close_box">
+                        <a class="rw100px_bttn finger" onclick="media_save()" title="{% trans 'Save' %}">{% trans 'Save' %}</a>
+                        <a id="edit_window_close" class="rw100px_bttn finger" title="{% trans 'Close window' %}">{% trans 'Close' %}</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="photo_close"><a id="photo_win_close_btn" class="finger" title="{% trans 'Close window' %}"><img src="../images/photo_close.png" width="19" height="19" border="0" alt="{% trans 'Close window' %}" title="{% trans 'Close window' %}"></a></div>
-    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="20" height="20" background="../images/corner_circle.png" style="background-position: 0px 0px;"></td>
-        <td background="../images/corner_top.png"></td>
-        <td background="../images/corner_circle.png" style="background-position: -20px 0px;"></td>
-      </tr>
-      <tr>
-        <td background="../images/corner_left.png"></td>
-        <td bgcolor="#ffff99">
+            <div class="code_window">
+                <div class="code_window_bkg opa75">
+                    <div class="code_window_info">
+                        {% trans 'Select the row with the code by mouse click and press &#34;ctrl + c&#34; to copy' %}
+                    </div>
+                    <!--img id="code_window_close" class="finger" src="../images/photo_close.png" width="19" height="19" border="0" title="{% trans 'Close window' %}" alt="{% trans 'Close window' %}"-->
+                </div>
+                <div class="code_window_content">
+                    <div class="opa75">
+                        <span>{% trans 'Link to image' %}</span>
+                        <input id="code1" class="finger" readonly value="">
+                        <span>{% trans 'HTML: The image in a text' %}</span>
+                        <input id="code2" class="finger" readonly value="http">
+                        <span>{% trans 'HTML: thumb - increase by clicking' %}</span>
+                        <input id="code3" class="finger" readonly value="http">
+                        <span>{% trans 'BBCode, lowercase letters: the image in a text' %}</span>
+                        <input id="code4" class="finger" readonly value="http">
+                        <span>{% trans 'BBCode, lowercase letters: thumb - increase by clicking' %}</span>
+                        <input id="code5" class="finger" readonly value="http">
+                        <span>{% trans 'Direct link to view this page images and comments' %}</span>
+                        <input id="code6" class="finger" readonly value="http">
+                    </div>
+                </div>
+                <div class="code_window_footer">
+                    <div class="code_window_footer_close_box">
+                        <a id="code_window_close" class="rw100px_bttn finger" title="{% trans 'Close window' %}">{% trans 'Close' %}</a>
+                    </div>
+                </div>
+            </div>
             <div id="image_window">
-                <div class="author_photo_bar">
-                    <div class="attention_empty_partition finger" style="display:none;" onclick="$('.attention_empty_partition').hide();">
-                        <img src="../images/error_red_arrow_top.png">
-                        <div style="text-indent:10px;">
-                            <p><b>{% trans 'Keep in mind that you need to identify your pet 'Section' if you want it to be visible to other pet owners!' %}</b></p>
-                            <center style="margin-bottom:5px;">{% trans 'We recommend:' %}</center>
-                            {% trans '<p>Identifying your pets and including a short description and a few tags. This will improve your photo sharing and networking experience, and will make it easier for other pet owners with similar interests to find your pet pictures.</p>' %}
+                <svg class="photo_blur">
+                    <defs>
+                        <filter id="blur" height="200%" width="200%" x="-50%" y="-50%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+                        </filter>
+                    </defs>    
+                    <image id="photo_blur_svg" x="-300" y="-300" width="1200" height="1200" xlink:href="" filter="url(#blur)"/>
+                </svg>  
+                <div id="photo_image" class="photo">
+                    <a href="javascript:full_screen()" rel="prettyPhoto" class="full_screen">
+                        <img src="../images/transparent_image.gif" width="500" height="400" title="{% trans 'Fullscreen' %}" border="0">
+                    </a>
+                    <div class="photo_info_left opacible opa75">
+                        <div>
+                            <b>{% trans 'Author:' %}</b>&nbsp;<a href="#" id="photo_author" target="_blank" title="{% trans 'author`s profile' %}">&nbsp;</a>
+                        </div>
+                        <br>
+                        <div class="__photo_pet">
+                            <b>{% trans 'Рet:' %}</b>&nbsp;<a href="#" id="photo_pet" target="_blank" title="{% trans 'pet`s profile' %}">&nbsp;</a>
+                        </div>
+                        <br>
+                        <div>
+                            <b>{% trans 'Tags:' %}</b>&nbsp;<text id="photo_tags"></text>
+                        </div>
+                    </div>
+                    <div class="photo_info_right opacible opa75">
+                        <div>
+                            <span id="photo_created"></span>
+                        </div>
+                        <br>
+                        <div>
+                            <b>{% trans 'Description:' %}</b><br><text id="photo_description"></text>
+                        </div>
+                    </div>
+                    <div class="pull_box opacible opa75">
+                        <div id="share20init" class="share20init">
+                            <span>{% trans 'Share It:' %}</span>
+                            <a id="share20_fb" target="_blank" class="share20bttn share20bttn_fb" title="Facebook" alt="Facebook"></a>
+                            <a id="share20_gp" target="_blank" class="share20bttn share20bttn_gp" title="Google+" alt="Google+"></a>
+                            <a id="share20_ok" target="_blank" class="share20bttn share20bttn_ok" title="Одноклассники" alt="Одноклассники"></a>
+                            <a id="share20_t" target="_blank" class="share20bttn share20bttn_t" title="Twitter" alt="Twitter"></a>
+                            <a id="share20_vk" target="_blank" class="share20bttn share20bttn_vk" title="ВКонтакте" alt="ВКонтакте"></a>
+                        </div>
+                        <div class="like20">
+                            <a id="media_like_btn" href="javascript:media_like()" class="viewer_photo_bar pull_like" title="{% trans 'I like it!' %}"></a>
+                            <a id="media_unlike_btn" href="javascript:media_unlike()" class="viewer_photo_bar pull_unlike" title="{% trans 'Unlike' %}"></a>
+                            <a id="media_like_logo" class="author_photo_bar pull_like" title="{% trans 'Your likes' %}"></a>
+                            <a id="media_like_logo" class="guest_photo_bar pull_like" title="{% trans 'To like, you should register!' %}"></a>
+                            <span id="media_likes" class="pull_image">{% trans 'I like it!' %}</span>
+                        </div>
+                        <div class="tools20">
+                            <a class="pull_code finger" title="{% trans 'Get image codes' %}"></a>
+                        </div>
+                        <div class="author_photo_bar tools20">
+                            <a class="pull_edit finger">{% trans 'Edit photo info' %}</a>
+                            <a class="pull_delete media_disable finger" title="{% trans 'Delete this image' %}"></a>
                         </div>
                     </div>
                 </div>
-                <!-- эти дивы будут прозначными на 75%, когда курсор будет в пределах класса photo, то прозрачность будет 0%,
-                если курсор покинет пространство класса photo, значение прозрачности будет 25|.25 тоесть сново 75% -->
-                <div class="info_image opa25 opacible">
-                    <table class="comments_image" width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td class="image_h1">{% trans 'Author:' %}</td>
-                            <td valign="top" style="text-transform:uppercase;"><a href="#" id="photo_author" target="_blank" title="{% trans 'author`s profile' %}">&nbsp;</a>&nbsp;</td>
-                            <td valign="bottom"><span class="image_h2">{% trans 'Description:' %}</span></td>
-                            <td align="right" valign="top"><span id="photo_created">&nbsp;</span></td>
-                        </tr>
-                        <tr>
-                            <td class="image_h1">{% trans 'Рet:' %}</td>
-                            <td valign="top" style="text-transform:capitalize;"><a href="#" id="photo_pet" target="_blank" title="{% trans 'pet`s profile' %}">&nbsp;</a>&nbsp;</td>
-                            <td colspan="2" rowspan="2" align="center" class="image_text" id="photo_description">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="image_h1">{% trans 'Tags:' %}</td>
-                            <td valign="top" id="photo_tags"><!-- список тегов --></td>
-                        </tr>
-                    </table>
-                </div>
-                <table class="photo_actions opa25 opacible" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td width="40px" align="center"> <!-- к предыдущему фото -->
-                            <!--a href="" title="К предыдущему фото">
-                                <img src="../images/photo_previous.gif" width="30" height="60" border="0" alt="К предыдущему фото">
-                            </a-->
-                        </td>
-                        <td width="520px" align="center"> <!-- фото на полный экран -->
-                            <a href="javascript:full_screen()" rel="prettyPhoto">
-                                <img src="../images/transparent_image.gif" width="500" height="400" title="{% trans 'Fullscreen' %}" border="0">
-                            </a>
-                        </td>
-                        <td width="40px" align="center"> <!-- к следующему фото -->
-                            <!--a href="" title="К следующему фото">
-                                <img src="../images/photo_next.gif" width="30" height="60" border="0" alt="К следующему фото">
-                            </a-->
-                        </td>
-                    </tr>
-                </table>
-                <div class="pull_box opa25 opacible">
-                    <div id="share20init" class="share20init">
-                        <span>{% trans 'Share It:' %}</span>
-                        <a id="share20_fb" target="_blank" class="share20bttn share20bttn_fb" title="Facebook" alt="Facebook"></a>
-                        <a id="share20_gp" target="_blank" class="share20bttn share20bttn_gp" title="Google+" alt="Google+"></a>
-                        <a id="share20_ok" target="_blank" class="share20bttn share20bttn_ok" title="Одноклассники" alt="Одноклассники"></a>
-                        <a id="share20_t" target="_blank" class="share20bttn share20bttn_t" title="Twitter" alt="Twitter"></a>
-                        <a id="share20_vk" target="_blank" class="share20bttn share20bttn_vk" title="ВКонтакте" alt="ВКонтакте"></a>
-                    </div>
-                	<div class="like20">
-                        <a id="media_like_btn" href="javascript:media_like()" class="viewer_photo_bar pull_like" title="{% trans 'I like it!' %}"></a>
-                        <a id="media_unlike_btn" href="javascript:media_unlike()" class="viewer_photo_bar pull_unlike" title="{% trans 'Unlike' %}"></a>
-                        <a id="media_like_logo" class="author_photo_bar pull_like" title="{% trans 'Your likes' %}"></a>
-                        <a id="media_like_logo" class="guest_photo_bar pull_like" title="{% trans 'To like, you should register!' %}"></a>
-                        <span id="media_likes" class="pull_image">{% trans 'I like it!' %}</span>
-                    </div>
-                    <div class="tools20">
-                        <a class="pull_code finger" title="{% trans 'Get image codes' %}"></a>
-                        <a class="author_photo_bar pull_delete media_disable finger" title="{% trans 'Delete this image' %}"></a>
-                    </div>
-                    
-                    <!-- кнопка лайка -->
-                    <!--table align="center" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td>
-                                <div class="author_photo_bar">
-                                    <a href="#" class="pull_public" title="Показывать фото всем!">
-                                        <img src="../images/transparent_image.gif" width="30" height="30" border="0" alt="Открыть фото">
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    </table-->
-                </div>
-                <!-- конец прозрачных дивов -->
-                <div class="photo">
-                    <img id="photo_image" src="../images/transparent_image.gif" width="600" height="600">
-                </div>
             </div>
             <div class="chat">
-                <!-- Эту часть показывать если фото просматривает сам автор (начало) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                <div style="padding-left:10px;" class="author_photo_bar">
-                    {% trans 'Image data:' %}<br>
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
-                        <tr>
-                            <td class="sand_box_top" style="pading-top:5px; height:150px;">
-                                <table width="238px" border="0" cellspacing="0" cellpadding="0" style="margin-top:5px; margin-left:5px;">
+                            <!-- Эту часть показывать если фото просматривает сам автор (начало) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                            <!--div class="author_photo_bar">
+                                <div class="data_caption">{% trans 'Image data:' %}</div> ЭТО БЛОК РЕДАКТИРОВАНИЯ
+                                <div class="data_redit_box">
+                                    <div class="redit_species">
+                                        <div>{% trans 'Section:' %}</div>
+                                        <select id="f_photo_species">
+                                            <option value="">-</option>
+                                            <option value="dog">{% trans 'Dogs' %}</option>
+                                            <option value="insect">{% trans 'Insects' %}</option>
+                                            <option value="bird">{% trans 'Birds' %}</option>
+                                            <option value="cat">{% trans 'Cats' %}</option>
+                                            <option value="rodent">{% trans 'Rodents&nbsp;&&nbsp;rabbits' %}</option>
+                                            <option value="fish">{% trans 'Fish&nbsp;&&nbsp;shellfish' %}</option>
+                                            <option value="reptile">{% trans 'Amphibious&nbsp;&&nbsp;reptiles' %}</option>
+                                            <option value="horse">{% trans 'Horses&nbsp;&&nbsp;pony' %}</option>
+                                            <option value="other">{% trans 'Other&nbsp;types&nbsp;of&nbsp;animals' %}</option>
+                                        </select>
+                                    </div>
+                                    <div class="redit_pet">
+                                        <div>{% trans 'Рet:' %}</div>
+                                        <select id="f_photo_pet">
+                                            <option value="">-</option>
+                                        </select>
+                                    </div>
+                                    <textarea id="f_photo_description" class="redit_info" placeholder="{% trans 'Description:' %}"></textarea>
+                                    <input id="f_photo_tags" class="redit_tags" type="text" placeholder="{% trans 'Tags:' %}">
+                                    <div class="button_input finger redit_save" onclick="media_save()">{% trans 'Save' %}</div>
+                                </div>
+
+                                {% trans 'User comments:' %}<br>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
                                     <tr>
-                                        <td width="125px">
-                                            <span class="redit_caption">{% trans 'Section:' %}</span><br>
-                                            <select class="redit_body" id="f_photo_species" style="width:113px;">
-                                                <option value="">-</option>
-                                                <option value="dog">{% trans 'Dogs' %}</option>
-                                                <option value="insect">{% trans 'Insects' %}</option>
-                                                <option value="bird">{% trans 'Birds' %}</option>
-                                                <option value="cat">{% trans 'Cats' %}</option>
-                                                <option value="rodent">{% trans 'Rodents&nbsp;&&nbsp;rabbits' %}</option>
-                                                <option value="fish">{% trans 'Fish&nbsp;&&nbsp;shellfish' %}</option>
-                                                <option value="reptile">{% trans 'Amphibious&nbsp;&&nbsp;reptiles' %}</option>
-                                                <option value="horse">{% trans 'Horses&nbsp;&&nbsp;pony' %}</option>
-                                                <option value="other">{% trans 'Other&nbsp;types&nbsp;of&nbsp;animals' %}</option>
-                                            </select>
+                                        <td class="print_box_top">
+                                            <div class="print_box comment_container" style="height:245px;"></div>
                                         </td>
-                                        <td>
-                                            <span class="redit_caption">{% trans 'Рet:' %}</span><br>
-                                            <select class="redit_body" id="f_photo_pet" style="width:113px;">
-                                                <option value="">-</option>
-                                            </select>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" valign="bottom" class="print_box_bottom">
+                                            <input name="button" type="button" class="button_sand" onclick="" value="{% trans 'Disable comments' %}">
                                         </td>
                                     </tr>
                                 </table>
-                                <div style="margin-top:5px; margin-left:5px;">
-                                    <span class="redit_caption">{% trans 'Description:' %}</span><br>
-                                    <textarea id="f_photo_description" class="redit_body" style="overflow-x:hidden; overflow-y:auto; width:234px; height:54px;"></textarea>
-                                </div>
-                                <div style="margin-top:5px; margin-left:5px;">
-                                    <span class="redit_caption">{% trans 'Tags:' %}</span><br>
-                                    <input type="text" id="f_photo_tags" class="redit_body" style="width:234px;">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right" valign="bottom" class="sand_box_bottom">
-                                <input name="button" type="button" class="button_sand" onclick="media_save()" value="{% trans 'Save' %}">
-                            </td>
-                        </tr>
-                    </table>
-                    {% trans 'User comments:' %}<br>
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
-                        <tr>
-                            <td class="print_box_top">
-                                <div class="print_box comment_container" style="height:245px;"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right" valign="bottom" class="print_box_bottom">
-                                <!--input name="button" type="button" class="button_sand" onclick="" value="{% trans 'Disable comments' %}"-->
-                            </td>
-                        </tr>
-                    </table>
-                    {% trans 'Your comment:' %}
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
-                        <tr>
-                            <td class="sand_box_top">
-                                <textarea name="textarea" class="sand" style="height:48px;" id="author_comment_text"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right" valign="bottom" class="sand_box_bottom">
-                                <input id="author_comment_add_btn" type="button" class="button_sand" value="{% trans 'Send' %}">
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <!-- Эту часть показывать если фото просматривает сам автор (конец) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                <!-- показывать этот DIV если пользователь авторизирован -->
-                <div style="padding-left:10px;" class="viewer_photo_bar">
-                    {% trans 'Comments:' %}
-                    <div class="print">
-                        <!-- Если пользователь разрешил коментировать -->
-                        <div class="ss__nocomment_div" style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans 'No comments yet.<br>Be the first to comment!' %}</div>
-                        <!-- Если пользователь не разрешил коментировать -->
-                        <div style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans 'The author has disabled commenting.' %}</div>
-                        <!-- Коментарии -->
-                        <div class="comment_container"></div>
-                    </div>
+                                {% trans 'Your comment:' %}
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
+                                    <tr>
+                                        <td class="sand_box_top">
+                                            <textarea name="textarea" class="sand" style="height:48px;" id="author_comment_text"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" valign="bottom" class="sand_box_bottom">
+                                            <input id="author_comment_add_btn" type="button" class="button_sand" value="{% trans 'Send' %}">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div-->
+
+
+
+                <!-- показывать если фото просматривает сам автор -->
+                <div class="author_photo_bar">
+                    <div class="print_caption">{% trans 'Comments:' %}</div>
+                    <div class="print_box">
+                        <div class="print_box_trec"></div>
+                        <div class="print_box_drec"></div>
+                        <div class="print">
+                            <div class="ss__nocomment_div print_empty">{% trans 'No comments yet.<br>Be the first to comment!' %}</div>
+                            <div class="print_empty" style="display:none;">{% trans 'The author has disabled commenting.' %}</div>
+                            <div class="comment_container"></div>
+                        </div>
+                    </div>            
                     <div id="send_message_auth">
-                        {% trans 'Your comment:' %}
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:10px; margin-top:4px;">
-                            <tr>
-                                <td class="sand_box_top">
-                                    <textarea name="textarea" class="sand" id="viewer_comment_text"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right" valign="bottom" class="sand_box_bottom">
-                                    <input id="viewer_comment_add_btn" type="button" class="button_sand" value="{% trans 'Send' %}">
-                                </td>
-                            </tr>
-                        </table>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="like_box1">
-                            <tr>
-                                <td class="favorite_add">
-                                    <a id="photo_add_friend" class="finger" title="{% trans 'Follow' %}"><img src="../images/favorite_person_add.png" width="64px" height="54" alt="{% trans 'Follow' %}" border="0"></a>
-                                </td>
-                                <!--td class="favorite_add">
-                                    <a href="#" title="Добавить питомца в избранное"><img src="../images/favorite_pet.png" width="64px" height="54" alt="Добавить питомца в избранное" border="0"></a>
-                                </td-->
-                                <td></td>
-                            </tr>
-                        </table>
+                        <div class="sandbox">
+                            <input id="author_comment_text" type="text" placeholder="{% trans 'Your comment:' %}">
+                            <div id="author_comment_add_btn" class="button_input sandbox_bttn finger">{% trans 'Send' %}</div>
+                        </div>
+                                <!--div class="add_to_follow">
+                                    <ul>
+                                        <li id="photo_add_friend" class="finger" title="{% trans 'Follow' %}"></li>
+                                    </ul>
+                                </div-->
+                                <!--table width="100%" border="0" cellspacing="0" cellpadding="0" class="like_box1">
+                                    <tr>
+                                        <td class="favorite_add">
+                                            <a id="photo_add_friend" class="finger" title="{% trans 'Follow' %}"><img src="../images/favorite_person_add.png" width="64px" height="54" alt="{% trans 'Follow' %}" border="0"></a>
+                                        </td>
+                                        <td class="favorite_add">
+                                            <a href="#" title="Добавить питомца в избранное"><img src="../images/favorite_pet.png" width="64px" height="54" alt="Добавить питомца в избранное" border="0"></a>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </table-->
                     </div>
                 </div>
-                <!-- показывать этот DIV если пользователь НЕавторизирован -->
-                <div style="padding-left:10px;" class="guest_photo_bar">
-                    {% trans 'Comments:' %}
-                    <div class="print">
-                        <div class="ss__nocomment_div" style="width:235px; position: absolute; text-align:center; margin-top:180px; display:none;">{% trans 'No comments yet.' %}</div>
-                        <!-- Коментарии -->
-                        <div class="comment_container"></div>
+
+                <!-- показывать если пользователь авторизирован -->
+                <div class="viewer_photo_bar">
+                    <div class="print_caption">{% trans 'Comments:' %}</div>
+                    <div class="print_box">
+                        <div class="print_box_trec"></div>
+                        <div class="print_box_drec"></div>
+                        <div class="print">
+                            <div class="ss__nocomment_div print_empty">{% trans 'No comments yet.<br>Be the first to comment!' %}</div>
+                            <div class="print_empty" style="display:none;">{% trans 'The author has disabled commenting.' %}</div>
+                            <div class="comment_container"></div>
+                        </div>
+                    </div>            
+                    <div id="send_message_auth">
+                        <div class="sandbox">
+                            <input id="viewer_comment_text" type="text" placeholder="{% trans 'Your comment:' %}">
+                            <div id="viewer_comment_add_btn" class="button_input sandbox_bttn finger">{% trans 'Send' %}</div>
+                        </div>
+                                <!--div class="add_to_follow">
+                                    <ul>
+                                        <li id="photo_add_friend" class="finger" title="{% trans 'Follow' %}"></li>
+                                    </ul>
+                                </div-->
+                                <!--table width="100%" border="0" cellspacing="0" cellpadding="0" class="like_box1">
+                                    <tr>
+                                        <td class="favorite_add">
+                                            <a id="photo_add_friend" class="finger" title="{% trans 'Follow' %}"><img src="../images/favorite_person_add.png" width="64px" height="54" alt="{% trans 'Follow' %}" border="0"></a>
+                                        </td>
+                                        <td class="favorite_add">
+                                            <a href="#" title="Добавить питомца в избранное"><img src="../images/favorite_pet.png" width="64px" height="54" alt="Добавить питомца в избранное" border="0"></a>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </table-->
                     </div>
-                    <div id="send_message_noauth" align="center">
-                        <table width="250" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td class="send_message_td">
-                                    <div id="send_message_needauth">
-                                        {% trans 'Please sign in or register to leave a comment!' %}
-                                        <br><br>
-                                        {% trans 'If you are already registered, you can simply' %} <a title="{% trans 'Sign in' %}" class="la_login finger">{% trans 'SIGN IN' %}</a>.
-                                        <br><br>
-                                        {% trans 'Not registered yet? It’s so easy to create your free account! We will be happy to see you join our pet-loving community.' %} <a title="{% trans 'Sign up' %}" class="la_add finger">{% trans 'SIGN UP' %}</a>!
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                </div>
+
+                <!-- показывать этот DIV если пользователь НЕавторизирован -->
+                <div class="guest_photo_bar">
+                    <div class=" print_caption">{% trans 'Comments:' %}</div>
+                    <div class="print_box">
+                        <div class="print_box_trec"></div>
+                        <div class="print_box_drec"></div>
+                        <div class="print">
+                            <div class="ss__nocomment_div print_empty">{% trans 'No comments yet.' %}</div>
+                            <div class="comment_container"></div>
+                        </div>
+                    </div>
+                    <div class="no_send_message_box">
+                        <div class="no_send_message_styling1">
+                            <div class="no_send_message_styling2">
+                                {% trans 'Please sign in or register to leave a comment!' %}
+                                <br><br>
+                                {% trans 'If you are already registered, you can simply' %} <a title="{% trans 'Sign in' %}" class="la_login finger">{% trans 'SIGN IN' %}</a>.
+                                <br><br>
+                                {% trans 'Not registered yet? It’s so easy to create your free account! We will be happy to see you join our pet-loving community.' %} <a title="{% trans 'Sign up' %}" class="la_add finger">{% trans 'SIGN UP' %}</a>!
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </td>
-        <td background="../images/corner_right.png"></td>
-      </tr>
-      <tr>
-        <td background="../images/corner_circle.png" style="background-position: 0px -20px;"></td>
-        <td background="../images/corner_bottom.png"></td>
-        <td width="20" height="20" background="../images/corner_circle.png" style="background-position: -20px -20px;"></td>
-      </tr>
-    </table>
-</div>
+        </div>

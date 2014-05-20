@@ -1,91 +1,90 @@
-{% load i18n %}
-<script type="text/javascript">
-    jQuery(document).ready(
-        function($) {
-            hideClusterElement();
-            $(".cluster").hover(showClusterElement, hideClusterElement);
-        }
-    );
+{% load i18n %}        <script type="text/javascript">
+            jQuery(document).ready(
+                function($) {
+                    hideClusterElement();
+                    $(".cluster").hover(showClusterElement, hideClusterElement);
+                }
+            );
 
-    function hideClusterElement() {
-        $('.__cluster_switcher, .cluster_element_text').hide();
-        $('#cluster_' + current_species).show();
-    };
+            function hideClusterElement() {
+                $('.__cluster_switcher, .cluster_element_text').hide();
+                $('#cluster_' + current_species).show();
+            };
 
-    function showClusterElement() {
-        $('.__cluster_switcher, .cluster_element_text').show();
-    };
+            function showClusterElement() {
+                $('.__cluster_switcher, .cluster_element_text').show();
+            };
 
-jQuery(document).ready(function ($) {
-    $('div.__cluster_switcher a').click(function() {
-        var id = $(this).parents('div.__cluster_switcher').attr('id');
-        var cluster = /cluster_(\w+)/.exec(id)[1];
+            jQuery(document).ready(function ($) {
+                $('div.__cluster_switcher a').click(function() {
+                    var id = $(this).parents('div.__cluster_switcher').attr('id');
+                    var cluster = /cluster_(\w+)/.exec(id)[1];
 
-        var view = {}
-        _.extend(view, Backbone.Events);
+                    var view = {}
+                    _.extend(view, Backbone.Events);
 
-        view.on('set:species', function () {
-            document.location.reload(false);
-        });
+                    view.on('set:species', function () {
+                        document.location.reload(false);
+                    });
 
-        user_species(view, cluster);
-    })
-});
-</script>
+                    user_species(view, cluster);
+                })
+            });
+        </script>
 
-    <div class="cluster">
-        <div class="cluster_element __cluster_switcher" id="cluster_dog">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Dogs" %}</a>
+        <div class="cluster">
+            <div class="cluster_element __cluster_switcher" id="cluster_dog">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Dogs' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_1 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_1.png" width="40" height="40" border="0" alt="{% trans "Dogs" %}"></a>
-        </div>
-        <div class="cluster_element __cluster_switcher" id="cluster_insect">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Insects" %}</a>
+            <div class="cluster_element __cluster_switcher" id="cluster_insect">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Insects' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_2 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_2.png" width="40" height="40" border="0" alt="{% trans "Insects" %}"></a>
-        </div>
-        <div class="cluster_element __cluster_switcher" id="cluster_bird">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Birds" %}</a>
+            <div class="cluster_element __cluster_switcher" id="cluster_bird">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Birds' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_3 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_3.png" width="40" height="40" border="0" alt="{% trans "Birds" %}"></a>
-        </div>
-        <div class="cluster_element __cluster_switcher" id="cluster_cat">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Cats" %}</a>
+            <div class="cluster_element __cluster_switcher" id="cluster_cat">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Cats' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_4 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_4.png" width="40" height="40" border="0" alt="{% trans "Cats" %}"></a>
-        </div>
-        <div class="cluster_element __cluster_switcher" id="cluster_rodent">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Rodents&nbsp;&&nbsp;rabbits" %}</a>
+            <div class="cluster_element __cluster_switcher" id="cluster_rodent">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Rodents&nbsp;&&nbsp;rabbits' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_5 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_5.png" width="40" height="40" border="0" alt="{% trans "Rodents&nbsp;&&nbsp;rabbits" %}"></a>
-        </div>
-        <div class="cluster_element __cluster_switcher" id="cluster_fish">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Fish&nbsp;&&nbsp;shellfish" %}</a>
+            <div class="cluster_element __cluster_switcher" id="cluster_fish">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Fish&nbsp;&&nbsp;shellfish' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_6 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_6.png" width="40" height="40" border="0" alt="{% trans "Fish&nbsp;&&nbsp;shellfish" %}"></a>
-        </div>
-        <div class="cluster_element __cluster_switcher" id="cluster_reptile">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Amphibious&nbsp;&&nbsp;reptiles" %}</a>
+            <div class="cluster_element __cluster_switcher" id="cluster_reptile">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Amphibious&nbsp;&&nbsp;reptiles' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_7 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_7.png" width="40" height="40" border="0" alt="{% trans "Amphibious&nbsp;&&nbsp;reptiles" %}"></a>
-        </div>
-        <div class="cluster_element __cluster_switcher" id="cluster_horse">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Horses&nbsp;&&nbsp;pony" %}</a>
+            <div class="cluster_element __cluster_switcher" id="cluster_horse">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Horses&nbsp;&&nbsp;pony' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_8 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_8.png" width="40" height="40" border="0" alt="{% trans "Horses&nbsp;&&nbsp;pony" %}"></a>
-        </div>
-        <div class="cluster_element __cluster_switcher" id="cluster_other">
-            <div class="cluster_element_text">
-                <a class="finger">{% trans "Other&nbsp;types&nbsp;of&nbsp;animals" %}</a>
+            <div class="cluster_element __cluster_switcher" id="cluster_other">
+                <div class="cluster_element_text cluster_hey_left">
+                    <a class="finger">{% trans 'Other&nbsp;types&nbsp;of&nbsp;animals' %}</a>
+                </div>
+                <a class="cluster_element_a_to_block cluster_block_9 finger"></a>
             </div>
-            <a class="cluster_element_a_to_block finger"><img src="../images/cluster_9.png" width="40" height="40" border="0" alt="{% trans "Other&nbsp;types&nbsp;of&nbsp;animals" %}"></a>
         </div>
-    </div>

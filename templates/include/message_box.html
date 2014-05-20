@@ -1,23 +1,7 @@
-{% load i18n %}
-<div id="alert_window" style="display:none">
-    <table class="info_table" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-            <td>
-                <div class="info_message">
-                    <center id="alert_title"></center><br>
-                    <span id="alert_text"></span>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td height="30" align="center">
-                <div class="button_2"> <!-- id="message" -->
-                    <center>
-                        <a href="#" title="{% trans "Close window" %}" id="alert_window_close">{% trans "Close" %}</a>
-                        <!--input id="alert_window_close" type="button" value="Закрыть!" style="background-color:#f24f00; color:#ffff99; cursor:hand;"-->
-                    </center>
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
+{% load i18n %}        <div id="alert_window" style="display:none">
+            <!--a id="alert_window_close" class="window_close_bttn finger alert_window_close_x" title="{% trans 'Close window' %}"></a-->
+            <div id="alert_title"></div>
+            <div id="alert_text"></div>
+            <div class="alert_window_bkg"></div>
+            <a id="alert_window_close" class="rw100px_bttn finger" title="{% trans 'Close window' %}">{% trans 'Close' %}</a>
+        </div>

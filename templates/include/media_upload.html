@@ -1,87 +1,54 @@
-{% load i18n %}<!-- Добавление фотографии (начало) -->
-    <script>
-        var upload_pet_id = null;
+{% load i18n %}        <script>
+            var upload_pet_id = null;
 
-        function open_upload(pet_id) {
-            return function () {
-                if (!is_logged()) {
-                    my_alert('{% trans "Add picture" %}', '{% trans "&nbsp;&nbsp;Only registered users can post photos. Please sign in. You may create a free account!" %}');
-                    return;
+            function open_upload(pet_id) {
+                return function () {
+                    if (!is_logged()) {
+                        my_alert('{% trans "Add picture" %}', '{% trans "&nbsp;&nbsp;Only registered users can post photos. Please sign in. You may create a free account!" %}');
+                        return;
+                    }
+
+                    upload_pet_id = pet_id;
+
+                    $('body').css('overflow-y', 'hidden');
+                    $('#overlay').show();
+                    $('.add_photo_block').show();
                 }
-
-                upload_pet_id = pet_id;
-
-                $('body').css('overflow-y', 'hidden');
-                $('#overlay').show();
-                $('.add_photo_block').show();
             }
-        }
 
-        jQuery(document).ready(function () {
-            $('#media_file').fileupload({
-                dataType: 'json',
-                formData: function () {
-                    params = [];
-                    if (upload_pet_id != null) {
-                        params.push({ name: 'pet', value: upload_pet_id });
+            jQuery(document).ready(function () {
+                $('#media_file').fileupload({
+                    dataType: 'json',
+                    formData: function () {
+                        params = [];
+                        if (upload_pet_id != null) {
+                            params.push({ name: 'pet', value: upload_pet_id });
+                        }
+                        return params;
+                    },
+                    done: function (e, data) {
+                        $('a.s__media_upload_win_close').click();
+                        gallery_load();
+                        var response = data.result;
+                        if (response.success) {
+                            show_photo(response.result.id);
+                        }
                     }
-                    return params;
-                },
-                done: function (e, data) {
-                    $('a.s__media_upload_win_close').click();
-                    gallery_load();
-                    var response = data.result;
-                    if (response.success) {
-                        show_photo(response.result.id);
+                });
+
+                /*$('a.s__media_upload_win_open').click(open_upload(null));
+
+                $('a.s__media_upload_win_close').click(function() {
+                    $('body').css('overflow-y', 'auto');
+                    $('#overlay').hide();
+                    $('.add_photo_block').hide();
+                });*/
+                
+                $('.s__media_upload_win_open').click(function() {
+                    if (!is_logged()) {
+                        my_alert('{% trans "Add picture" %}', '{% trans "&nbsp;&nbsp;Only registered users can post photos. Please sign in. You may create a free account!" %}');
+                        return;
                     }
-                }
+                });
             });
-
-            $('a.s__media_upload_win_open').click(open_upload(null));
-
-            $('a.s__media_upload_win_close').click(function() {
-                $('body').css('overflow-y', 'auto');
-                $('#overlay').hide();
-                $('.add_photo_block').hide();
-            });
-            
-            $('.s__media_upload_win_open').click(function() {
-                if (!is_logged()) {
-                    my_alert('{% trans "Add picture" %}', '{% trans "&nbsp;&nbsp;Only registered users can post photos. Please sign in. You may create a free account!" %}');
-                    return;
-                }
-            });
-		});
-    </script>
-	<!-- Окно выбора файла (начало)-->
-		<table class="add_photo_block">
-			<tr>
-                <td>
-                    <table width="460" align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
-                        <tr>
-                            <td class="add_photo_window_caption"><span id="w1">{% trans "Uploading image" %}</span><br><span class="animals_window_tooltip" id="w2">&nbsp;</span></td>
-                            <td align="right" valign="top"><a title="{% trans "Close window" %}" class="s__media_upload_win_close finger"><img src="../images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}" title="{% trans "Close window" %}"></a></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align="center">
-                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td width="80px" align="right">
-                                            <img src="../images/upload_photo_ico_64.gif" width="64" height="64" border="0">
-                                        </td>
-                                        <td>
-                                            <div class="add_photo_box">
-                                                <div style="margin-bottom:10px; font-size:12px;">{% trans "Select a file to upload into gallery" %}</div>
-                                                <span><input id="media_file" name="file" type="file" accept="image/jpeg" data-url="/json/media/upload/"></span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-		</table>
-	<!-- Окно выбора файла (конец) -->
-<!-- Добавление фотографии (конец) -->
+        </script>

@@ -1,69 +1,65 @@
-{% load i18n %}
-    <script src="/js/app/geo.js"></script>
+{% load i18n %}        <script src="../js/app/geo.js"></script> <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!! заменить $('overlay').show() на overlay_show() -->
 
-
-    <table class="sitemap_block">
-        <tr>
-            <td class="sitemap_bkg">
-                <table width="880px" align="center" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td width="120px" align="center" class="sitemap_l">
-                            <div class="sitemap_2" onmouseover="show_language('Language_EN')">
-                                <a>Language</a>
-                            </div>
-                            <div class="sitemap_2" onmouseover="show_language('Language_RU')">
-                                <a>Язык</a>
-                            </div>
-                        </td>
-                        <td width="120px" align="center">
-                            <div id="Language_EN" style="display:none;">
-                                <!--div class="sitemap_2" onmouseover="show_map_uk();">
-                                    <a href="http://www.mixim.co.uk">United Kingdom</a>
-                                </div-->
-                                <div class="sitemap_2" onmouseover="show_map_ca();">
-                                    <a href="http://www.mixim.us">Canada</a>
+        <table class="sitemap_block">
+            <tr>
+                <td class="sitemap_bkg">
+                    <table width="880px" align="center" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="120px" align="center" class="sitemap_l">
+                                <div class="sitemap_2" onmouseover="show_language('Language_EN')">
+                                    <a>Language</a>
                                 </div>
-                                <div class="sitemap_2" onmouseover="show_map_us();">
-                                    <a href="http://www.mixim.us">United States</a>
+                                <div class="sitemap_2" onmouseover="show_language('Language_RU')">
+                                    <a>Язык</a>
                                 </div>
-                            </div>
-                            <div id="Language_RU" style="display:none;">
-                                <div class="sitemap_2" onmouseover="show_map_by();">
-                                    <a href="http://www.mixim.ru">Беларусь</a>
+                            </td>
+                            <td width="120px" align="center">
+                                <div id="Language_EN" style="display:none;">
+                                    <!--div class="sitemap_2" onmouseover="show_map_uk();">
+                                        <a href="http://www.mixim.co.uk">United Kingdom</a>
+                                    </div-->
+                                    <div class="sitemap_2" onmouseover="show_map_ca();">
+                                        <a href="http://www.mixim.us">Canada</a>
+                                    </div>
+                                    <div class="sitemap_2" onmouseover="show_map_us();">
+                                        <a href="http://www.mixim.us">United States</a>
+                                    </div>
                                 </div>
-                                <div class="sitemap_2" onmouseover="show_map_ru();">
-                                    <a href="http://www.mixim.ru">Россия</a>
+                                <div id="Language_RU" style="display:none;">
+                                    <div class="sitemap_2" onmouseover="show_map_by();">
+                                        <a href="http://www.mixim.ru">Беларусь</a>
+                                    </div>
+                                    <div class="sitemap_2" onmouseover="show_map_ru();">
+                                        <a href="http://www.mixim.ru">Россия</a>
+                                    </div>
+                                    <div class="sitemap_2" onmouseover="show_map_ua();">
+                                        <a href="http://www.mixim.ru">Украина</a>
+                                    </div>
                                 </div>
-                                <div class="sitemap_2" onmouseover="show_map_ua();">
-                                    <a href="http://www.mixim.ru">Украина</a>
+                            </td>
+                            <td align="center">
+                                <div id="country" class="sitemap_country">
+                                    <a class="button_input" href="../index.shtml" target="_self">{{ hostname }}</a>
                                 </div>
-                            </div>
-                        </td>
-                        <td align="center">
-                            <div id="country" class="sitemap_country">
-                                <a href="index.shtml" target="_self">{{ hostname }}</a>
-                            </div>
-                        </td>
-                        <td width="40px" valign="top" align="right">
-                            <a title="{% trans "Close window" %}" class="sitemap_block_off finger">
-                                <img src="../images/photo_close.png" width="19" height="19" border="0" alt="{% trans "Close window" %}">
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-                <!--table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
-                    <tr>
-                        <td class="animals_window_caption">География</td>
-                        <td align="right" valign="top"><a href="#" title="Закрыть окно" class="sitemap_block_off"><img src="images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <div class="text_block">
-                                География
-                            </div>
-                        </td>
-                    </tr>
-                </table-->
-            </td>
-        </tr>
-    </table>
+                            </td>
+                            <td width="40px" valign="top" align="right">
+                                <a title="{% trans 'Close window' %}" class="sitemap_block_off finger"></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--table align="center" border="0" cellspacing="0" cellpadding="0" class="animals_window">
+                        <tr>
+                            <td class="animals_window_caption">География</td>
+                            <td align="right" valign="top"><a href="#" title="Закрыть окно" class="sitemap_block_off"><img src="images/photo_close.png" width="19" height="19" border="0" alt="Закрыть окно" title="Закрыть окно"></a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="text_block">
+                                    География
+                                </div>
+                            </td>
+                        </tr>
+                    </table-->
+                </td>
+            </tr>
+        </table>

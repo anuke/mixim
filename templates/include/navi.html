@@ -1,51 +1,55 @@
-{% load i18n %}
-<script type="text/javascript">
-    function showNavigationElementText(visible) {
-        $(".navigation_element_text").css("visibility", visible ? "visible" : "hidden");
-    };
-</script>
+{% load i18n %}        <script type="text/javascript">
+            function showNavigationElementText(visible) {
+                $(".navigation_element_text").css("visibility", visible ? "visible" : "hidden");
+            };
+        </script>
 
-<div class="navigation_user s__logged" onmouseover="showNavigationElementText(true)" onmouseout="showNavigationElementText(false)">
-    <img id="sid__gender_image" src="../images/user_unisex.png" widht="38px" height="38px">
-    <font><span id="sid__username"></span> &#9660;</font>
-</div>
+        <div class="navigation_user s__logged" onmouseover="showNavigationElementText(true)" onmouseout="showNavigationElementText(false)">
+            <img id="sid__gender_image" src="../images/user_unisex.png" widht="38px" height="38px">
+            <font><span id="sid__username"></span> &#9660;</font>
+        </div>
 
-<div class="navigation" onmouseover="showNavigationElementText(true)" onmouseout="showNavigationElementText(false)">
-    <div class="navigation_element s__not_logged la_login" style="display:none;">
-        <div class="navigation_element_text" style="visibility:visible;">
-            <a class="media_block_on finger" style="font-weight:bold;">{% trans "Sign&nbsp;in" %}</a>
+        <div class="navigation" onmouseover="showNavigationElementText(true)" onmouseout="showNavigationElementText(false)">
+            <div class="navigation_element s__not_logged la_login" style="display:none;">
+                <div class="navigation_element_text navigation_hey_right">
+                    <a class="media_block_on finger">{% trans 'Sign&nbsp;in' %}</a>
+                </div>
+                <a class="media_block_on navigation_element_a_to_block finger media_block_login"></a>
+            </div>
+            <div class="navigation_element s__not_logged la_add" style="display:none;">
+                <div class="navigation_element_text navigation_hey_right" style="visibility:visible;">
+                    <a class="media_block_on finger">{% trans 'Create&nbsp;an&nbsp;account' %}</a>
+                </div>
+                <a class="media_block_on navigation_element_a_to_block finger media_block_register"></a>
+            </div>
+            <div class="navigation_element s__not_logged la_reset" style="display:none;">
+                <div class="navigation_element_text navigation_hey_right">
+                    <a class="media_block_on finger">{% trans 'Forgot&nbsp;your&nbsp;password?' %}</a>
+                </div>
+                <a class="media_block_on navigation_element_a_to_block finger media_block_reset"></a>
+            </div>
+            <div class="s__logged" style="width:40px; height:50px; display:none;"><!--дельта--></div>
+            <div class="navigation_element s__logged" style="display:none;">
+                <div class="navigation_element_text navigation_hey_right">
+                    <a class="finger"> <!-- s__media_upload_win_open -->
+                        <input id="media_file_" name="file" type="file" data-url="/json/media/upload/" accept="image/jpeg" style="position:absolute; width:1000px; font-size:150px; margin-left:-410px; margin-top:0px; filter:alpha(opacity=0); opacity:0; -moz-opacity:0; cursor: pointer;">
+                        {% trans 'Add&nbsp;picture' %}
+                    </a>
+                </div>
+                <a class="navigation_element_a_to_block finger media_block_photo"> <!-- s__media_upload_win_open -->
+                    <input id="media_file_" name="file" type="file" data-url="/json/media/upload/" accept="image/jpeg" style="width:1000px; font-size:150px; margin-left:-410px; margin-top:0px; filter:alpha(opacity=0); opacity:0; -moz-opacity:0; cursor: pointer;">
+                </a>
+            </div>
+            <div class="navigation_element s__logged" style="display:none;">
+                <div class="navigation_element_text navigation_hey_right">
+                    <a href="cabinet.shtml" class="cabinet_block_on">{% trans 'My&nbsp;account' %}</a>
+                </div>
+                <a href="cabinet.shtml" class="cabinet_block_on navigation_element_a_to_block media_block_cabinet"></a>
+            </div>
+            <div class="navigation_element s__logged" style="display:none;">
+                <div class="navigation_element_text navigation_hey_right">
+                    <a href="javascript:auth_logout()" class="exit_block_on">{% trans 'Exit' %}</a>
+                </div>
+                <a href="javascript:auth_logout()" class="exit_block_on navigation_element_a_to_block media_block_exit"></a>
+            </div>
         </div>
-        <a class="media_block_on navigation_element_a_to_block finger"><img src="../images/login.png" width="40" height="40" border="0" alt="{% trans "Sign&nbsp;in" %}"></a>
-    </div>
-    <div class="navigation_element s__not_logged la_add" style="display:none;">
-        <div class="navigation_element_text" style="visibility:visible;">
-            <a class="media_block_on finger">{% trans "Create&nbsp;an&nbsp;account" %}</a>
-        </div>
-        <a class="media_block_on navigation_element_a_to_block finger"><img src="../images/register.png" width="40" height="40" border="0" alt="{% trans "Create&nbsp;an&nbsp;account" %}"></a>
-    </div>
-    <div class="navigation_element s__not_logged la_reset" style="display:none;">
-        <div class="navigation_element_text">
-            <a class="media_block_on finger">{% trans "Forgot&nbsp;your&nbsp;password?" %}</a>
-        </div>
-        <a class="media_block_on navigation_element_a_to_block finger"><img src="../images/reset.png" width="40" height="40" border="0" alt="{% trans "Forgot&nbsp;your&nbsp;password?" %}"></a>
-    </div>
-    <div class="s__logged" style="width:40px; height:50px; display:none;"><!--дельта--></div>
-    <div class="navigation_element s__logged" style="display:none;">
-        <div class="navigation_element_text">
-            <a class="s__media_upload_win_open finger">{% trans "Add&nbsp;picture" %}</a>
-        </div>
-        <a class="navigation_element_a_to_block s__media_upload_win_open finger"><img src="../images/photo.png" width="40" height="40" border="0" alt="{% trans "Add&nbsp;picture" %}"></a>
-    </div>
-    <div class="navigation_element s__logged" style="display:none;">
-        <div class="navigation_element_text">
-            <a href="cabinet.shtml" class="cabinet_block_on">{% trans "My&nbsp;account" %}</a>
-        </div>
-        <a href="cabinet.shtml" class="cabinet_block_on navigation_element_a_to_block"><img src="../images/cabinet.png" width="40" height="40" border="0" alt="{% trans "My&nbsp;account" %}"></a>
-    </div>
-    <div class="navigation_element s__logged" style="display:none;">
-        <div class="navigation_element_text">
-            <a href="javascript:auth_logout()" class="exit_block_on">{% trans "Exit" %}</a>
-        </div>
-        <a href="javascript:auth_logout()" class="exit_block_on navigation_element_a_to_block"><img src="../images/exit.png" width="40" height="40" border="0" alt="{% trans "Exit" %}"></a>
-    </div>
-</div>

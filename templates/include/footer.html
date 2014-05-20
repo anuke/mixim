@@ -1,19 +1,20 @@
-{% load i18n %}
-<table class="footer" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-        <td height="20px"></td>
-    </tr>
-    <tr>
-        <td class="footer_text">
-            <table width="980" align="center" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="112"><a class="sitemap_block_on finger">{% trans "World wide" %}</a></td>
-                    <td width="112"><a class="feedback_block_on finger">{% trans "Contact us" %}</a></td>
-                    <td align="center">&copy;2006-2014 &nbsp; {% trans "www.mixim.us | pets2show &nbsp; &quot;Mobitoon&quot; Inc." %}</td>
-                    <td width="112"><a class="rules_block_on finger">{% trans "Rules" %}</a></td>
-                    <td width="112"><a class="about_block_on finger">{% trans "About us" %}</a></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+{% load i18n %}        <table class="footer" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="20px"></td>
+            </tr>
+            <tr>
+                <td class="footer_text">
+                    <table width="980" align="center" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="112"><a class="sitemap_block_on finger">{% trans 'World wide' %}</a></td>
+                            <td width="112"><a href="../feedback.shtml" target="_self">{% trans 'Contact us' %}</a></td>
+                            <td width="112"><a href="../develop.shtml" target="_self">{% trans 'Вебмастерам' %}</a></td>
+                            <td align="center">&copy;2006-2014 &nbsp; {% trans 'www.mixim.us | pets2show &nbsp; &quot;Mobitoon&quot; Inc.' %}</td>
+                            <td width="112"><a href="../b2b.shtml" target="_self">{% trans 'Реклама' %}</a></td>
+                            <td width="112"><a href="../rules.shtml" target="_self">{% trans 'Rules' %}</a></td>
+                            <td width="112"><a href="../about.shtml" target="_self">{% trans 'About us' %}</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
