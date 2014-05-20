@@ -169,7 +169,7 @@ function __show_pet_window(pet) {
 
         // render
         $('body').css('overflow-y', 'hidden');
-        $('#overlay').show();
+        overlay_show(); /*$('#overlay').show();*/
         $('#pet_window').show();
 
         $('#pet_id').val(orEmpty(pet.id));
@@ -212,12 +212,12 @@ function pw_showClusterPetData(cluster) {
         $("#pw_name, #pw_gender, #pw_color, #pw_birthday, #pw_about").show();
         if (_.contains(["dog"], cluster)) {
             $("#pw_standard").show();
-            $("#pet_breed_index").css("width", "210px");
+//            $("#pet_breed_index").css("width", "210px");
             $("#pw_breed").show();
         }
         else {
             $("#pw_standard").hide();
-            $("#pet_breed_index").css("width", "301px");
+//            $("#pet_breed_index").css("width", "301px");
         }
         if (_.contains(["cat"], cluster)) {
             $("#pw_breed").show();
@@ -247,7 +247,7 @@ function pw_close() {
         $('#pw_cluster_button_img_' + pw_cluster).removeClass('opa25');
     }
 
-    $("#pw_id_pets_list").text("");
+    $("#pw_id_pets_list").text("Specify the type of animal to which treat your pet");
     pw_cluster = NO_CLUSTER;
     $('#pw_pet_data, #pw_save_button').hide();
 }
@@ -374,13 +374,13 @@ function confirm_delete_comment(event) {
 
 function inbox_outbox() {
     if ($(this).attr("id") == "outbox_pet_new_window_link") {
-        $("#inbox_pet_new_window_link").addClass("on_button");
-        $("#outbox_pet_new_window_link").removeClass("on_button");
+        $("#outbox_pet_new_window_link").addClass("opa50").removeClass("finger");
+        $("#inbox_pet_new_window_link").removeClass("opa50").addClass("finger");
         last_comments("outbox");
     }
     else {
-        $("#outbox_pet_new_window_link").addClass("on_button");
-        $("#inbox_pet_new_window_link").removeClass("on_button");
+        $("#inbox_pet_new_window_link").addClass("opa50 finger").removeClass("finger");
+        $("#outbox_pet_new_window_link").removeClass("opa50 finger").addClass("finger");
         last_comments("inbox");
     }
 }
@@ -394,28 +394,17 @@ function friends_media_load() {
     view.on('load:friend_media', function (media_list) {
         _.each(media_list, function (media) {
             $('#cabinet_follow').append(
-                '<table width="600px" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">\n' +
-                '    <tr>\n' +
-                '        <td align="center" class="cabinet_like_box_from">\n' +
-                '            <a class="finger">\n' +
-                '                <img src="' + media.authorAvatar + '" width="75px" height="75px" border="0">\n' +
-                '            </a>\n' +
-                '        </td>\n' +
-                '        <td align="left" class="cabinet_like_box_username">\n' +
-                '            <div style="position:absolute; color:#999999; margin-top:-20px; font-size:9px;">' + media.created + '</div>\n' +
-                '            <a href="/@' + media.author + '" target="_blank">' + media.author + '</a> ' + trans('added a new photo') + '\n' +
-                '        </td>\n' +
-                '        <td align="center" width="100px">\n' +
-                '            <img src="/images/cabinet_new_photo.png" width="44px" height="44px" border="0" alt="' + trans('Like') + '">\n' +
-                '        </td>\n' +
-                '        <td class="cabinet_like_box_photo">\n' +
-                '            <a id="cabinet_follow_media_' + media.id + '" class="finger">\n' +
-                '                <img src="' + media.thumbnail + '" width="100px" height="75px" border="0" title="' + trans('Comment') + ': ' + media.description + '">\n' +
-                '            </a>\n' +
-                '        </td>\n' +
-                '    </tr>\n' +
-                '</table>\n');
-
+                '            <div class="cabinet_follow_box">' +
+                '                <a class="cabinet_follow_avatar" href="/@' + media.author + '/" target="_blank">' +
+                '                    <img src="' + media.authorAvatar + '">' +
+                '                </a>' +
+                '                <div class="cabinet_follow_text_box">' +
+                '                    <span>' + media.author + '</span>:<br>в ' + media.created + ' ' + trans('added a new photo') +
+                '                </div>' +
+                '                <a id="cabinet_follow_media_' + media.id + '" class="cabinet_follow_tumbox finger" title="' + trans('Comment') + ': ' + media.description + '">' +
+                '                    <img src="' + media.thumbnail + '">' +
+                '                </a>' +
+                '            </div>');
             $('#cabinet_follow_media_' + media.id).click(
                     function () { show_photo(media.id); });
         });
@@ -433,28 +422,18 @@ function my_likes_load() {
     view.on('load:user_likes', function (likes) {
         _.each(likes, function (like, index) {
             $('#cabinet_like').append(
-                '<table width="600px" border="0" cellspacing="0" cellpadding="0" class="cabinet_like_box" style="margin-top:10px;">\n' +
-                '   <tr>\n' +
-                '        <td align="center" class="cabinet_like_box_from">\n' +
-                '            <a href="/@' + like.user + '" target="_blank">\n' +
-                '                <img src="' + like.userAvatar + '" width="75px" height="75px" border="0">\n' +
-                '            </a>\n' +
-                '        </td>\n' +
-                '        <td align="left" class="cabinet_like_box_username">\n' +
-                '            <a href="/@' + like.user + '" target="_blank">' + like.user + '</a> ' + trans('like photo') + '\n' +
-                '        </td>\n' +
-                '        <td align="center" width="100px">\n' +
-                '                <img src="/images/cabinet_like.png" width="44px" height="44px" border="0" alt="' + trans('Like') + '">\n' +
-                '        </td>\n' +
-                '        <td class="cabinet_like_box_photo">\n' +
-                '            <a id="cabinet_like_like_' + index + '" class="finger">\n' +
-                '                <img src="' + like.media.thumbnail + '" width="100px" height="75px" border="0">\n' +
-                '            </a>\n' +
-                '        </td>\n' +
-                '    </tr>\n' +
-                '</table>\n');
-
-            $('#cabinet_like_like_' + index).click(
+                '            <div class="cabinet_like_box">' +
+                '                <a class="cabinet_like_avatar" href="/@' + like.user + '/" target="_blank">' +
+                '                    <img src="' + like.userAvatar + '">' +
+                '                </a>' +
+                '                <div class="cabinet_like_text_box">' +
+                '                    <span>' + like.user + '</span>:<br>' + trans('like photo') +
+                '                </div>' +
+                '                <a id="cabinet_like_photo_' + index + '" class="cabinet_like_tumbox finger">' +
+                '                    <img src="' + like.media.thumbnail + '">' +
+                '                </a>' +
+                '            </div>');
+            $('#cabinet_like_photo_' + index).click(
                     function () { show_photo(like.media.id); });
         });
     });
@@ -464,44 +443,41 @@ function my_likes_load() {
 
 
 function load_discussions() {
-    $('#cabinet_discussion > div').empty();
+    $('#cabinet_discussion').empty();
 
     var view = {};
     _.extend(view, Backbone.Events);
 
     view.on('load:discussions', function (discussions) {
       pager =
-            '<div class="pagination">' +
-            '<div class="step-links">';
+      '        <div class="comment_paginator_box">';
       if (discussions.paginator.has_previous) {
-          pager += '<a class="discussion_previous_page pagination_left_page" href="#page=' + ( discussions.paginator.current_page - 1 ) + '">' + trans('« Back') + '</a>';
+            pager +=
+            '            <div class="comment_horizontal_box">' +
+            '                <a class="discussion_previous_page media_prevpage" href="#page=' + ( discussions.paginator.current_page - 1 ) + '" title="' + trans('« Back') + '"></a>' +
+            '            </div>';
       }
-      else {
-          pager += '<a class="pagination_left_page_off" style="padding:3px 5px 4px"></a>';
-      }
-      pager += '<a class="pagination_current_page">' +
-                   trans('Page %s of %s', discussions.paginator.current_page, discussions.paginator.pages) +
-               '</a>';
       if (discussions.paginator.has_next ) {
-          pager += '<a class="discussion_next_page pagination_right_page" href="#page=' + (discussions.paginator.current_page + 1) + '">' + trans('Forward »') + '</a>';
+            pager +=
+            '            <div class="comment_horizontal_box">' +
+            '                <a class="discussion_next_page media_nextpage" href="#page=' + (discussions.paginator.current_page + 1) + '" title="' + trans('Forward »') + '"></a>' +
+            '            </div>';
       }
-      else {
-          pager += '<a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>';
-      }
-      pager += '</div></div>';
+      pager +=
+      '        </div>';
 
-      $('#cabinet_discussion > div').append(pager);
+      $('#cabinet_discussion').append(pager);
 
       _.each(discussions.results, function (discussion, index) {
-            $('#cabinet_discussion > div').append(
-              '<a id="discussion_photo_' + discussion.id + '" class="cabinet_discussion_box_photo">' +
-              '<div class="cabinet_discussion_box_photo_info_bkg opa50"></div>' +
-              '<div class="cabinet_discussion_box_photo_info">' + discussion.created.replace(/\//g, '.').substr(0, 10) + '</div>' +
-              '<img src="' + discussion.thumbnail + '" height="75px" border="0" width="100px"></a>');
+            $('#cabinet_discussion').append(
+                '<a id="discussion_photo_' + discussion.id + '" class="cabinet_discussion_tumbox finger">' +
+                '    <ul> : ' + discussion.created.replace(/\//g, '.').substr(0, 10) + '</ul>' +
+                '    <img src="' + discussion.thumbnail + '">'+
+                '</a>');
               $('#discussion_photo_' + discussion.id).click(function() { show_photo(discussion.id) } );
         });
 
-      $('#cabinet_discussion > div').append(pager);
+      $('#cabinet_discussion').append(pager);
 
       $('.discussion_next_page').click(function() {
           discussion_page += 1;

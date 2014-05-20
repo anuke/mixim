@@ -2,7 +2,7 @@
 	{
 		if (eventObject.which == 27)
 		{
-			if ($('#photo_window').css('display') == 'block')
+			if ($('#photo_window').is(':visible'))
 			{
 				$('#photo_window').hide();
                 $( ".code_window" ).hide();

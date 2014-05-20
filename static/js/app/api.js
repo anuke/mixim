@@ -32,6 +32,8 @@ function show_photo(picId) {
                     var photo = data.result;
                     current_photo = photo;
 
+                    $('#photo_blur_svg').attr('xlink:href', photo.original.replace('original', 'resized/598x598'));
+
                     $.each(['author', 'pet', 'created', 'description'], function () {
                         var value = photo[this];
                         if (!value) value = "";
@@ -39,7 +41,7 @@ function show_photo(picId) {
                         $('#photo_' + this).html(value);
                     });
                     var tags = photo.tags.join(', ');
-
+ 
                     $('#f_photo_tags').val(tags);
                     $('#f_photo_pet').val(photo.petId || 0);
                     $('#f_photo_species').val(photo.species);
@@ -50,7 +52,7 @@ function show_photo(picId) {
                     $('#photo_pet').attr('href', '/pet' + photo.petId);
                     $('#photo_image').css("background-image", "url(" + photo.original.replace('original', 'resized/598x598') + ")");
                     $('div.full_screen a').first().attr('href', photo.original).attr('title', photo.description).attr('target', 'blank');
-
+                    
                     comment_list();
 
                     var photo_window_top_position = $(window).height() / 2 - 300 + $(window).scrollTop();
@@ -60,6 +62,7 @@ function show_photo(picId) {
 
                     toggle_attention_block(photo.species);
 
+                    $('.edit_window, .code_window').hide();
                     $('#photo_window').show();
                     $('.author_photo_bar').toggle(is_author());
                     $('.viewer_photo_bar').toggle(is_viewer());
@@ -81,7 +84,7 @@ function show_photo(picId) {
                     $('#code4').attr( "value", '[img]' + photo.original + '[/img]');
                     $('#code5').attr( "value", '[url=' + photo.original + '][img]' + photo.thumbnail + '[/img][/url]');
                     $('#code6').attr( "value", 'http://' + window.location.hostname + '/pic' + photo.id );
-
+ 
 
 
                     // Share section
@@ -225,7 +228,8 @@ function auth_logged() {
                         function (data) {
                             current_user = data.result;
                             Auth.trigger("profile:mine", data.result);
-                            $('.f_goto_userpage').attr('href', '@' + data.result.username + '/')
+                            $('.f_goto_userpage').attr('href', '@' + data.result.username + '/');
+                            $('.f_goto_userpage').html('mixim.ru/@' + data.result.username + '/');
                         });
                 }
             });
@@ -630,61 +634,44 @@ function last_comments(type, page) {
     if (page == undefined) {
         page = 1
     }
-    per_page = 10
-    $.getJSON("/json/user/comments/" + type + "/?page="+page + '&per_page=' + per_page , {},
+    per_page = 15 
+    $.getJSON("/json/user/comments/" + type + "/?page="+page + '&per_page=' + per_page, {},
             function (data) {
                 if (data.success) {
                     var html = "";
                     $.each(data.result.items, function (idx, el) {
                         html +=
-                        '<table align="left" style="margin-top:10px;" border="0" cellspacing="0" cellpadding="0"><!-- входящие -->' +
-                        '    <tr>' +
-                        '        <td class="cabinet_photo_in">' +
-                        '             <a id="last_photo_' + el.mediaId + '"class="finger" title="' + trans('Show photo') + '">' +
-                        '                 <img id="" src="' + el.thumbnail + '" width="100px" height="75px">' +
-                        '             </a>' +
-                        '        </td>' +
-                        '        <td align="left" valign="top">' +
-                        '            <span id="" class="cabinet_caption_in">' + trans('Comment') + '</span>' +
-                        '            <div class="cabinet_body_in">' +
-                        '            <table width="386px" border="0" cellspacing="0" cellpadding="0">' +
-                        '                <tr>' +
-                        '                    <td>' +
-                        '                        <div>' + trans('from') + ' <a href="/@' + el.author + '/" target="_blank" style="text-transform:uppercase;">' + el.author + '</a>:</div>' +
-                        '                        <div class="cabinet_body_comment">' + el.text+ '</div>' +
-                        '                        <div style="text-align:right;">' + trans('sent') + ' ' + el.created + '</div>' +
-                        '                    </td>' +
-                        '               </tr>' +
-                        '           </table>' +
-                        '           </div>' +
-                        '        </td>' +
-                        '        <td class="modify_pet_button">' +
-                        '            <a class="message_delete_button finger" id="comment_' + el.id + '" title="' + trans('Remove this comment') + '">' + trans('Remove') + '</a>' +
-                        '        </td>' +
-                        '    </tr>' +
-                        '</table>';
+                                '<div class="cabinet_message_box">' +
+                                '    <a id="last_photo_' + el.mediaId + '" class="cabinet_tumbox finger" title="' + trans('Show photo') + '">' +
+                                '        <img src="' + el.thumbnail + '">' +
+                                '    </a>' +
+                                '    <a class="message_delete_button cabinet_message_delete finger" id="comment_' + el.id + '" title="' + trans('Remove this comment') + '">' + trans('Remove') + '</a>' +
+                                '    <span class="cabinet_message_info">' + trans('Comment') + ' ' + trans('from') + ' <a href="/@' + el.author + '/" target="_blank">' + el.author + '</a>:</span>' +
+                                '    <div class="cabinet_message">' +
+                                '        <span class="opa50">' + trans('sent') + ' ' + el.created + '</span>' +
+                                '        <p>' + el.text + '</p>' +
+                                '    </div>' +
+                                '</div>';
                     });
                     pager =
-                    '<div class="pagination">'+
-                    '<div class="step-links">';
+                    '        <div class="comment_paginator_box">';
                     if ( page > 1 ) {
-                      pager += '<a id="user_comments_previous" class="discussion_previous_page pagination_left_page" href="#">« Туда</a>';
+                      pager +=
+                    '            <div class="comment_horizontal_box">' +
+                    '                <div id="user_comments_previous" class="media_prevpage finger"></div>' +
+                    '            </div>';
                     }
-                    else {
-                        pager += '<a style="padding:3px 5px 4px" class="pagination_left_page_off">';
-                    }
-                    pager += '       <a class="pagination_current_page">Страница ' + page + ' из ' + Math.ceil(data.result.total / per_page)+ '</a>';
                     if (page * per_page < data.result.total) {
-                      pager += '<a id="user_comments_next" class="discussion_next_page pagination_right_page" href="#">Сюда »</a>';
+                      pager +=
+                    '            <div class="comment_horizontal_box">' +
+                    '                <div id="user_comments_next" class="media_nextpage finger"></div>' +
+                    '            </div>';
                     }
-                    else {
-                        pager += '<a class="pagination_right_page_off" style="padding:3px 5px 4px"></a>';
-                    }
-                    pager += '</div>'+
-                    '</div>';
-                    $('#cabinet_news > #last_comments_id').html(html);
-                    $('#user_comments_previous').bind('click', function(){last_comments(type, page-1)})
-                    $('#user_comments_next').bind('click', function(){last_comments(type, page+1)})
+                    pager +=
+                    '        </div>';
+                    $('#cabinet_news > #last_comments_id').html(html+pager);
+                    $('#user_comments_next').click(function(){last_comments(type, page+1)})
+                    $('#user_comments_previous').click(function(){last_comments(type, page-1)})
                     $('a[id*=last_photo]').click(function() {show_photo($(this).attr("id").replace("last_photo_", ""))})
                     $('.message_delete_button').bind('click', function(event) {confirm_delete_comment(event)});
                 }

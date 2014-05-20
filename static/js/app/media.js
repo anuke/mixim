@@ -93,27 +93,27 @@ jQuery(document).ready(function ($) {
 
     $('#male_filter').click(function () {
         __male_filter = !__male_filter;
-        $(this).toggleClass('opa50', !__male_filter);
+        $(this).toggleClass('opa50', __male_filter);
         if (__male_filter) {
             __female_filter = false;
-            $('#female_filter').addClass('opa50');
+            $('#female_filter').removeClass('opa50');
         }
         load_filtered();
     }).blur(load_filtered);
 
     $('#female_filter').click(function () {
         __female_filter = !__female_filter;
-        $(this).toggleClass('opa50', !__female_filter);
+        $(this).toggleClass('opa50', __female_filter);
         if (__female_filter) {
             __male_filter = false;
-            $('#male_filter').addClass('opa50');
+            $('#male_filter').removeClass('opa50');
         }
         load_filtered();
     }).blur(load_filtered);
 
     $('#geo_filter').click(function () {
         __geo_filter = !__geo_filter;
-        $(this).toggleClass('opa50', !__geo_filter);
+        $(this).toggleClass('opa50', __geo_filter);
         load_filtered();
     }).blur(load_filtered);
 
@@ -132,8 +132,8 @@ jQuery(document).ready(function ($) {
     });
 
     $('#image_window').hover(
-        function () { $('.opacible').removeClass('opa25').addClass('opa75'); },
-        function () { $('.opacible').removeClass('opa75').addClass('opa25'); }
+        function () { $('.opacible').removeClass('opa50').addClass('opa75'); },
+        function () { $('.opacible').removeClass('opa75').addClass('opa50'); }
     );
 
     $('#id_media_speech_tab').click(function() {
