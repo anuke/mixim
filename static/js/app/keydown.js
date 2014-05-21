@@ -1,5 +1,14 @@
 	$(this).keydown(function(eventObject)
 	{
+		if (eventObject.which == 13)
+		{
+            if ($('.login_add_block').css('display')!= 'none')
+                if ($('#login_window').css('display') != 'none')
+                    {
+                        auth_login();
+                        return;
+                    };
+        }
 		if (eventObject.which == 27)
 		{
 			if ($('#photo_window').is(':visible'))
