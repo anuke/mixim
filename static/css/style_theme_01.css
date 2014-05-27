@@ -2091,6 +2091,55 @@ input {
     font:12px Verdana,Arial,Helvetica,sans-serif;
 }
 
+input[type=checkbox].css-checkbox {
+    position: absolute; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height:1px; 
+	width:1px; 
+	margin:-1px; 
+	padding:0;
+	border:0;
+}
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:20px;
+	height:15px; 
+	display:inline-block;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	vertical-align:middle;
+	cursor:pointer;
+}
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -15px;
+}
+
+.css-label {
+    background-image:url(http://csscheckbox.com/checkboxes/lite-gray-check.png);
+    font:12px/14px Verdana,Arial,Helvetica,sans-serif;
+}
+
+.cabinet_exinfo_textarea {
+    display:block;
+    width:566px;
+    height:65px;
+    margin:0 0 10px 20px;
+    border:2px solid #b9b7aa;
+    text-align:center;
+    font:12px Verdana, Arial, Helvetica, sans-serif;
+    color:#363636;
+    background-color:#f2efdc;
+}
+.cabinet_exinfo_textarea:disabled  {
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=25);
+	-moz-opacity:0.25;
+	-khtml-opacity:0.25;
+	opacity:0.25;
+}
+
+
+
+
 /* - География сообщества - */
 .sitemap_block {
 	display:none;

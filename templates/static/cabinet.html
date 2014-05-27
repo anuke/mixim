@@ -123,6 +123,7 @@
                         <br>
                         <div id="cabinet_pets_link" class="cabinet_user_menu_button"><a>{% trans 'Pets' %}</a></div>
                         <div id="cabinet_mine_link" class="cabinet_user_menu_button"><a>{% trans 'Personal data' %}</a></div>
+                        <div id="cabinet_sort_link" class="cabinet_user_menu_button"><a>{% trans 'Специализация' %}</a></div>
                         <div id="cabinet_settings_link" class="cabinet_user_menu_button"><a>{% trans 'Settings' %}</a></div>
                         <br>
                         <div class="cabinet_user_menu_button" onclick="auth_logout()">{% trans 'Exit' %}</div>
@@ -223,6 +224,36 @@
                             </center>
                         </div>
                         <!-- /Личные данные -->
+                        <!-- Специальность -->
+                        <div id="cabinet_sort" class="s__cabinet_block" style="display:none;">
+                            <input id="cabinet_box_1" class="css-checkbox" checked type="checkbox"/>
+                            <label for="cabinet_box_1" class="css-label">Заводчик</label>
+                            <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            <br><br>
+                            <input id="cabinet_box_2" class="css-checkbox" type="checkbox"/>
+                            <label for="cabinet_box_2" class="css-label">Кинолог</label>
+                            <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" disabled="disabled" maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            <br><br>
+                            <input id="cabinet_box_3" class="css-checkbox" type="checkbox"/>
+                            <label for="cabinet_box_3" class="css-label">Грумер</label>
+                            <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" disabled maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            <br><br>
+                            <input id="cabinet_box_4" class="css-checkbox" type="checkbox"/>
+                            <label for="cabinet_box_4" class="css-label">Зооняня</label>
+                            <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" disabled maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            <br><br>
+                            <input id="cabinet_box_5" class="css-checkbox" type="checkbox"/>
+                            <label for="cabinet_box_5" class="css-label">Передержка</label>
+                            <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" disabled maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            <br><br>
+                            <input id="cabinet_box_6" class="css-checkbox" type="checkbox"/>
+                            <label for="cabinet_box_6" class="css-label">Ветеринар</label>
+                            <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" disabled maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                        </div>
+                            <center>
+                                <div class="button_input savebox_bttn finger" onclick="" title="{% trans 'Save' %}">{% trans 'Save' %}</div>
+                            </center>
+                        <!-- /Специальность -->
                         <!-- Настройки -->
                         <div id="cabinet_settings" class="s__cabinet_block" style="display:none;">
                             <div class="cabinet_mine_mycountry">
