@@ -23,7 +23,7 @@ function toggle_attention_block(species) {
     $('.attention_empty_partition').toggle(need_attention);
 }
 
-function show_photo(picId) {
+function show_photo(picId, show_edit) {
     $('.ss__nocomment_div').hide();
 
     $.getJSON('/json/media/get/' + picId + '/', {},
@@ -41,7 +41,7 @@ function show_photo(picId) {
                         $('#photo_' + this).html(value);
                     });
                     var tags = photo.tags.join(', ');
- 
+
                     $('#f_photo_tags').val(tags);
                     $('#f_photo_pet').val(photo.petId || 0);
                     $('#f_photo_species').val(photo.species);
@@ -52,7 +52,7 @@ function show_photo(picId) {
                     $('#photo_pet').attr('href', '/pet' + photo.petId);
                     $('#photo_image').css("background-image", "url(" + photo.original.replace('original', 'resized/598x598') + ")");
                     $('div.full_screen a').first().attr('href', photo.original).attr('title', photo.description).attr('target', 'blank');
-                    
+
                     comment_list();
 
                     var photo_window_top_position = $(window).height() / 2 - 300 + $(window).scrollTop();
@@ -63,6 +63,7 @@ function show_photo(picId) {
                     toggle_attention_block(photo.species);
 
                     $('.edit_window, .code_window').hide();
+                    if (show_edit) $('.edit_window').show();
                     $('#photo_window').show();
                     $('.author_photo_bar').toggle(is_author());
                     $('.viewer_photo_bar').toggle(is_viewer());
@@ -84,7 +85,7 @@ function show_photo(picId) {
                     $('#code4').attr( "value", '[img]' + photo.original + '[/img]');
                     $('#code5').attr( "value", '[url=' + photo.original + '][img]' + photo.thumbnail + '[/img][/url]');
                     $('#code6').attr( "value", 'http://' + window.location.hostname + '/pic' + photo.id );
- 
+
 
 
                     // Share section
@@ -634,7 +635,7 @@ function last_comments(type, page) {
     if (page == undefined) {
         page = 1
     }
-    per_page = 15 
+    per_page = 15
     $.getJSON("/json/user/comments/" + type + "/?page="+page + '&per_page=' + per_page, {},
             function (data) {
                 if (data.success) {
