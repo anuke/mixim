@@ -28,6 +28,7 @@ class UserProfile(models.Model):
     location  = models.PointField(_("Location"), blank=True, null=True)
 
     geo = models.GeoManager()
+    objects = models.Manager()
 
     def activate(self):
         self.status = 'verified'
