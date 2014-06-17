@@ -119,9 +119,9 @@ class Speciality(models.Model):
 class UserSpeciality(models.Model):
     user        = models.ForeignKey(User)
     speciality  = models.ForeignKey(Speciality)
-    country     = models.CharField(_("Country"), max_length=50)
-    city        = models.CharField(_("City"), max_length=50)
-    location    = models.PointField(_("Location"))
+    country     = models.CharField(_("Country"), max_length=50, null=True, blank=True)
+    city        = models.CharField(_("City"), max_length=50, null=True, blank=True)
+    location    = models.PointField(_("Location"), null=True, blank=True)
     description = models.TextField(_("Description"), null=True, blank=True)
 
 
