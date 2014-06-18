@@ -67,8 +67,8 @@
                             </div>
                         </div>
                         <div class="pet_avatar" title="{{ pet.name }}">
-                            {% if media_list %}
-                            <img id="petpage_avatar" src="{{ media_list.object_list.0|resized:'90x90'}}">
+                            {% if avatar %}
+                            <img id="petpage_avatar" src="{{ avatar|resized:'90x90'}}">
                             {% endif %}
                         </div>
                     </div>

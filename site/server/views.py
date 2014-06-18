@@ -602,6 +602,7 @@ def show_share_page(request, picture):
 
 def show_pet_page(request, pet_id):
     pet = Pet.objects.get(id=pet_id)
+    avatar = MediaFile.enabled_objects.with_pet(pet_id)
     paginator = Paginator(MediaFile.enabled_objects.with_pet(pet_id), 20)
     page = int(request.GET.get('page', 1))
 
@@ -614,7 +615,8 @@ def show_pet_page(request, pet_id):
 
     context = RequestContext(request, {
         'pet': pet,
-        'media_list': mediafile_list
+        'media_list': mediafile_list,
+        'avatar': avatar[0] if avatar else None
     })
 
     return render_to_response('user/pet_page.html', context_instance=RequestContext(request, context))
