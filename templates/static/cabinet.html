@@ -15,6 +15,7 @@
 
 
         <script src="/js/underscore-min.js"></script>
+        <script src="/js/knockout-3.1.0.js"></script>
         <script src="/js/backbone-min.js"></script>
         <script src="/js/jquery-1.8.3.js"></script>
         <script src="/js/vendor/jquery.ui.widget.js"></script>
@@ -226,11 +227,23 @@
                         <!-- /Личные данные -->
                         <!-- Специальность -->
                         <div id="cabinet_sort" class="s__cabinet_block" style="display:none;">
-                            <input id="cabinet_box_1" class="css-checkbox" checked type="checkbox"/>
-                            <label for="cabinet_box_1" class="css-label">Заводчик</label>
-                            <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            <select id="spec_selection" data-bind="options: availableSpecialities,
+                                                                   optionsText: 'name',
+                                                                   value: selectedSpeciality">
+                            </select>
+                            <br>
+                            <button data-bind="click: addSpeciality, enable: selectedSpeciality().id > 0">Add</button>
                             <br><br>
-                            <input id="cabinet_box_2" class="css-checkbox" type="checkbox"/>
+                            <div data-bind="foreach: specialities">
+                                <span data-bind="text: spec.name"></span>
+                                <button data-bind="click: $root.removeSpeciality">Remove</button>
+                                <textarea data-bind="text: description" class="cabinet_exinfo_textarea" maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            </div>
+                            <!--
+                            <input id="user_spec_breeder" class="css-checkbox" type="checkbox"/>
+                            <label for="user_spec_breeder" class="css-label">Заводчик</label>
+                            <textarea id="user_spec_breeder_desc" class="cabinet_exinfo_textarea" maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            <input id="" class="css-checkbox" type="checkbox"/>
                             <label for="cabinet_box_2" class="css-label">Кинолог</label>
                             <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" disabled="disabled" maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
                             <br><br>
@@ -249,8 +262,10 @@
                             <input id="cabinet_box_6" class="css-checkbox" type="checkbox"/>
                             <label for="cabinet_box_6" class="css-label">Ветеринар</label>
                             <textarea id="cabinet_exinfo_6" class="cabinet_exinfo_textarea" disabled maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                            -->
                             <center>
-                                <div class="button_input savebox_bttn finger" onclick="" title="{% trans 'Save' %}">{% trans 'Save' %}</div>
+                                <button data-bind="click: saveSpecialities">{% trans 'Save' %}</button>
+                                <div class="button_input savebox_bttn finger" title="{% trans 'Save' %}">{% trans 'Save' %}</div>
                             </center>
                         </div>
                         <!-- /Специальность -->
@@ -292,7 +307,7 @@
 <!-- Окно фотографии -->
 {% include 'include/photo_win.html' %}
 <!-- /Окно фотографии -->
-            
+
 <!-- Окно сообщений -->
 {% include 'include/message_box.html' %}
 <!-- /Окно сообщений -->
@@ -416,5 +431,47 @@
                 }
             });
         });
+
+        function UserModel()
+        {
+            var self = this;
+
+            var nullSpeciality = { id: 0, name: "" };
+            self.selectedSpeciality = ko.observable(nullSpeciality);
+            self.specialities = ko.observableArray([]);
+            self.availableSpecialities = ko.observableArray([
+                nullSpeciality,
+                { id: 1, name: "Заводчик" },
+                { id: 2, name: "Кинолог" },
+                { id: 3, name: "Грумер" },
+                { id: 4, name: "Зооняня" },
+                { id: 5, name: "Передержка" },
+                { id: 6, name: "Ветеринар" }
+            ]);
+
+            self.addSpeciality = function() {
+                var spec = self.selectedSpeciality();
+                var userSpec = {
+                    spec: spec,
+                    description: ""
+                };
+                self.selectedSpeciality(nullSpeciality);
+                self.availableSpecialities.destroy(spec);
+                self.specialities.push(userSpec);
+            }
+
+            self.removeSpeciality = function(userSpec) {
+                self.specialities.destroy(userSpec);
+                userSpec.spec._destroy = false;
+                self.availableSpecialities.valueHasMutated();
+            }
+
+            self.saveSpecialities = function() {
+                _.each(self.specialities(), console.log);
+            }
+        }
+
+        var userModel = new UserModel();
+        ko.applyBindings(userModel);
     </script>
 </html>
