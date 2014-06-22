@@ -314,6 +314,7 @@ input {
     display:inline-block;
     width: 200px;
     margin:10px;
+    border:none;
 	font:14px/40px Verdana, Arial, Helvetica, sans-serif;
 	color:#f2efdc;
     text-align:center;
@@ -1898,6 +1899,44 @@ input {
 	-webkit-border-radius:5px 0;
 	border-radius:5px 0;
 }
+.cabinet_sort_spec {
+    display:block;
+    width:285px;
+    height:42px;
+    border:2px solid #b9b7aa;
+    margin:0 0 10px 0;
+    background-color:#f2efdc;
+    text-align:right;
+}
+.cabinet_sort_spec_caption {
+    position:absolute;
+    margin:-2px 0 0 0;
+    background:#b9b7aa;
+    font:10px Verdana,Arial,Helvetica,sans-serif;
+}
+.cabinet_sort_select {
+    width:270px;
+    height:18px;
+    margin:12px 4px 0 0;
+    border:none;
+    text-align:center;
+    font:12px Verdana, Arial, Helvetica, sans-serif;
+    background-color:#f2efdc;
+}
+.cabinet_sort_remove_spec_bttn {
+    float:right;
+    margin:0 0 5px 0;
+    border:0 none;
+    background:#f2efdc;
+    font:11px Verdana, Arial, Helvetica, sans-serif;
+    color:#e74c30;
+    text-transform:uppercase;
+}
+.cabinet_sort_spec_name {
+    font:12px/14px Verdana,Arial,Helvetica,sans-serif;
+}
+
+
 .savebox_bttn {
     background:url(../images/theme_01/save.png) left center no-repeat #e74c30;
     margin:0 0 10px 0;
