@@ -17,6 +17,7 @@
         <script src="/js/underscore-min.js"></script>
         <script src="/js/knockout-3.1.0.js"></script>
         <script src="/js/backbone-min.js"></script>
+        <script src="/js/json2.js"></script>
         <script src="/js/jquery-1.8.3.js"></script>
         <script src="/js/vendor/jquery.ui.widget.js"></script>
         <script src="/js/jquery-ui.js"></script>
@@ -234,12 +235,12 @@
                                                                        value: selectedSpeciality">
                                 </select>
                             </div>
-                            <button data-bind="click: addSpeciality, enable: selectedSpeciality().id > 0">{% trans 'Add' %}</button>
+                            <button data-bind="click: addSpecialityFromUI, enable: selectedSpeciality().id > 0">{% trans 'Add' %}</button>
                             <br><br>
                             <div data-bind="foreach: specialities">
                                 <span data-bind="text: spec.name" class="cabinet_sort_spec_name"></span>
                                 <span data-bind="click: $root.removeSpeciality" class="cabinet_sort_remove_spec_bttn finger">{% trans 'Delete' %}</span>
-                                <textarea data-bind="text: description" class="cabinet_exinfo_textarea" maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
+                                <textarea data-bind="value: description" class="cabinet_exinfo_textarea" maxlength="256" placeholder="{% trans 'Дополнительная информация:' %}"></textarea>
                             </div>
                             <!--
                             <input id="user_spec_breeder" class="css-checkbox" type="checkbox"/>
@@ -451,29 +452,53 @@
                 { id: 6, name: "Ветеринар" }
             ]);
 
-            self.addSpeciality = function() {
+            self.addSpecialityFromUI = function () {
                 var spec = self.selectedSpeciality();
-                var userSpec = {
-                    spec: spec,
-                    description: ""
-                };
+                self.addSpeciality({spec: spec, description: ""});
                 self.selectedSpeciality(nullSpeciality);
-                self.availableSpecialities.destroy(spec);
+            };
+
+            self.addSpeciality = function(userSpec) {
+                userSpec.description = ko.observable(userSpec.description);
+                self.availableSpecialities.destroy(userSpec.spec);
                 self.specialities.push(userSpec);
-            }
+            };
 
             self.removeSpeciality = function(userSpec) {
                 self.specialities.destroy(userSpec);
                 userSpec.spec._destroy = false;
                 self.availableSpecialities.valueHasMutated();
-            }
+            };
 
             self.saveSpecialities = function() {
-                _.each(self.specialities(), console.log);
-            }
+                var specs = _.map(self.specialities(), function (us) {
+                    return {
+                        "id": us.spec.id,
+                        "description": us.description(),
+                        "_destroy": us._destroy
+                    };
+                });
+
+                $.post("/json/user/specialities/", JSON.stringify(specs),
+                    function () { /* inform about successful storing */ });
+            };
         }
 
         var userModel = new UserModel();
         ko.applyBindings(userModel);
+
+        $(function() {
+            // get user specialities
+            $.getJSON("/json/user/specialities/",
+                function (data) {
+                    if (data.success) {
+                        _.each(data.result, function (us) {
+                            var spec = _.find(userModel.availableSpecialities(),
+                                function (s) { return s.id == us.id });
+                            userModel.addSpeciality({spec: spec, description: us.description});
+                        });
+                    }
+                });
+        });
     </script>
 </html>
