@@ -1,3 +1,5 @@
+import json
+
 from serializers import get_serializer
 from errors import *
 
@@ -89,3 +91,14 @@ def require_ownership(model):
         return wrapper
 
     return decor
+
+
+def json_rpc(f):
+    def wrapper(request, *args, **kwargs):
+        json_data = None
+        if request.method == "POST":
+            json_data = json.loads(request.body, "UTF-8")
+        return f(request, json_data, *args, **kwargs)
+
+    wrapper.__name__ = f.__name__
+    return wrapper
