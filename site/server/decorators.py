@@ -17,10 +17,7 @@ def serialize(f):
     return wrapper
 
 
-def require_method(methods):
-    if isinstance(methods, basestring):
-        methods = [methods]
-
+def require_method(*methods):
     def decor(f):
         def wrapper(request, *args, **kwargs):
             if request.method not in methods:
