@@ -157,6 +157,36 @@ def user_likes(request, start=0, limit=10):
 
 
 @serialize
+@require_method("GET", "POST")
+@require_auth
+@json_rpc
+def user_specialities(request, specs):
+    if specs is not None:
+        for spec in specs:
+            # parse json
+            spec_id = spec.get("id")
+            description = spec.get("description")
+            _destroy = spec.get("_destroy")
+
+            # get existent spec
+            speciality = Speciality.objects.get(id=spec_id)
+            assoc = dict(user=request.user, speciality=speciality)
+            user_spec = UserSpeciality.objects.filter(**assoc).first()
+
+            # handle spec
+            if _destroy:
+                if user_spec is not None:
+                    user_spec.delete()
+            else:
+                if user_spec is None:
+                    user_spec = UserSpeciality(**assoc)
+                user_spec.description = description
+                user_spec.save()
+
+    return request.user.specialities
+
+
+@serialize
 @require_method("GET")
 @require_id(User)
 def profile_get(request, user):

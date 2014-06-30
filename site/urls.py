@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     url(r'^([^/]+)/user/species/(?:([^/]+)/)?$', 'server.views.user_species'),
     url(r'^([^/]+)/user/likes/$', 'server.views.user_likes'),
     url(r'^([^/]+)/user/comments/(\w+)/$', 'server.views.user_comments'),
+    url(r'^([^/]+)/user/specialities/$', 'server.views.user_specialities'),
 
     url(r'^([^/]+)/profile/get/(\d+)', 'server.views.profile_get'),
     url(r'^([^/]+)/profile/get/my', 'server.views.profile_my'),
