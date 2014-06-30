@@ -117,13 +117,15 @@ class Speciality(models.Model):
 
 
 class UserSpeciality(models.Model):
-    user        = models.ForeignKey(User)
+    user        = models.ForeignKey(User, related_name = 'specialities')
     speciality  = models.ForeignKey(Speciality)
     country     = models.CharField(_("Country"), max_length=50, null=True, blank=True)
     city        = models.CharField(_("City"), max_length=50, null=True, blank=True)
     location    = models.PointField(_("Location"), null=True, blank=True)
     description = models.TextField(_("Description"), null=True, blank=True)
 
+    def plain_data(self):
+        return to_plain_data(self, 'id:speciality.id', 'code:speciality.name', 'description')
 
 class Pet(models.Model):
     owner    = models.ForeignKey(User, related_name='pets')
