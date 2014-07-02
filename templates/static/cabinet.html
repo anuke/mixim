@@ -480,7 +480,14 @@
                 });
 
                 $.post("/json/user/specialities/", JSON.stringify(specs),
-                    function () { /* inform about successful storing */ });
+                    function (data) {
+                        if (data.success) {
+                            alert("Your settings had been changed successfully");
+                        }
+                        else {
+                            alert("Something is wrong. Please, try again");
+                        }
+                    });
             };
         }
 
