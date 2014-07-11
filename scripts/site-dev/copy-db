@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e
+
+sudo su postgres -c $(dirname $0)/copy-db-postgres

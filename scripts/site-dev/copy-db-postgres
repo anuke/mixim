@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+/usr/bin/dropdb mixim_dev
+/usr/bin/createdb --owner=mixim_dev mixim_dev
+/usr/bin/pg_dump --no-owner idrop > /tmp/mixim.sql
+/usr/bin/psql mixim_dev local < /tmp/mixim.sql
+/usr/bin/psql -c "reassign owned by local to mixim_dev" mixim_dev local

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo su www-data -c "git reset --hard"
+sudo su www-data -c "git pull"
+
+sudo su www-data -c "cd site && ln -s -f settings_development.py settings.py"

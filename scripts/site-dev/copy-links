@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ASWWW="sudo su www-data -c"
+$ASWWW "ln -s /var/www/html/mixim.ru/static/admin /var/www/html/mixim.dev/static/admin"
+$ASWWW "ln -s /var/www/html/mixim.ru/static/media /var/www/html/mixim.dev/static/media"
+$ASWWW "ln -s /var/www/html/mixim.ru/static/widget /var/www/html/mixim.dev/static/widget"
+$ASWWW "ln -s /var/www/html/mixim.ru/upload /var/www/html/mixim.dev/upload"
