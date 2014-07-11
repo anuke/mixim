@@ -23,6 +23,4 @@
 
     ErrorLog /var/www/logs/mixim.ru/error.log
     CustomLog /var/www/logs/mixim.ru/access.log combined
-
 </VirtualHost>
-
