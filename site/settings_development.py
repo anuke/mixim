@@ -1,7 +1,7 @@
 # Django settings for idrop2 project.
 from django.conf import global_settings
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
