@@ -174,15 +174,15 @@
 <!-- /Окно фотографии -->
 
         <script>
-            var user_avatar = '../images/user_unisex.png';
+            var user_avatar = '../images/theme_01/user_unisex.png';
             if ( '{{ user_profile.profile.gender }}' == 'M' ) {
-                user_avatar = '../images/user_male.png'
+                user_avatar = '../images/theme_01/user_male.png'
             }
             if ( '{{ user_profile.profile.gender }}' == 'F') {
-                user_avatar = '../images/user_female.png'
+                user_avatar = '../images/theme_01/user_female.png'
             }
-            if ( '{{ user_profile.profile.avatar}}' !== '' ) {
-                user_avatar = '/media/{{ user_profile.profile.avatar}}'
+            if ( '{{ user_profile.profile.avatar }}' !== '' ) {
+                user_avatar = '/media/{{ user_profile.profile.avatar }}'
             }
             $('#userpage_avatar').attr('src', user_avatar);
         </script>
